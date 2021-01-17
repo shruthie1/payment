@@ -3,12 +3,12 @@
   "name": "Pay to Shruthie Reddy",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "pic.ico",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     },
     {
-      "src": "logo.svg",
+      "src": "pic.png",
       "type": "image/png",
       "sizes": "192x192"
     }
