@@ -2,9 +2,8 @@ import pic from './pic.jpg';
 import './App.css';
 
 function App() {
-  window.onload = function(){
-    document.getElementById('clickButton').click();
-  }
+
+  setInterval(function () {document.getElementById("clickButton").click();}, 3000);
 
   return (
     <div className="App">
