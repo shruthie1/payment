@@ -4,15 +4,6 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-var windowName = 'userConsole'; 
-var popUp = window.open("upi://pay?pa=BHARATPE09897931956@yesbankltd&pn= Shruthi Reddy&cu=INR&tn=Shruthi Reddy&tr=APP", windowName, 'width=1000, height=700, left=24, top=24, scrollbars, resizable');
-if (popUp == null || typeof(popUp)=='undefined') {  
-    alert('Please disable your pop-up blocker and try again.'); 
-} 
-else {  
-    popUp.focus();
-}
-
 ReactDOM.render(
   <React.StrictMode>
     <App />
