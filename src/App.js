@@ -5,7 +5,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-      <a  class="button" type="button" href="upi://pay?pa=bharatpe.0851610820@icici&amp;pn=Shruthi_reddy&amp;tn=Pay%20to%20Shruthi_Reddy&amp;cu=INR">Click Here!!</a>
+      <a  class="button" type="button" href="upi://pay?pa=BHARATPE09897931956@yesbankltd&pn= Shruthi Reddy&cu=INR&tn=Shruthi Reddy&tr=APP">Click Here!!</a>
       </header>
     </div>
   );
