@@ -1,6 +1,18 @@
 .App {
   text-align: center;
 }
+.button {
+  display: block;
+  width: 7em;
+  height: 1.5em;
+  background: #21960a;
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  line-height: 1.3em;
+}
 
 .App-logo {
   height: 40vmin;
