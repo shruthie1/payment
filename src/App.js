@@ -5,7 +5,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-      <form action="upi://pay?pa=9663016169@ybl&pn=Shruthie%&mc=0000&tr=1234_your%name&tn=1234_your%name&am=500&cu=INR">
+      <form action="upi://pay?pa=bharatpe.0851610820@icici&amp;pn=Shruthi_reddy&amp;tn=Pay%20to%20Shruthi_Reddy&amp;cu=INR">
     <input type="submit" value="Go to Google" />
 </form>
       </header>
