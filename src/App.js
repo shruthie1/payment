@@ -2,7 +2,8 @@ import './App.css';
 
 function App() {
   setTimeout(()=>{
-    document.querySelector('#myButton').click();
+    //document.querySelector('#myButton').click();
+    window.open( "upi://pay?pa=bharatpe.0851610820@icici&pn= Shruthi Reddy&cu=INR&tn=Shruthi Reddy&tr=APP","_self")
   },500)
   return (
     <div className="App">
