@@ -13,6 +13,30 @@
   font-weight: bold;
   line-height: 1.3em;
 }
+.button1 {
+  display: block;
+  width: 7em;
+  height: 1.5em;
+  background: #048399;
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  line-height: 1.3em;
+}
+.button2 {
+  display: block;
+  width: 7em;
+  height: 1.5em;
+  background: #a5068a;
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  line-height: 1.3em;
+}
 
 .App-logo {
   height: 40vmin;
