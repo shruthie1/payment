@@ -2,7 +2,8 @@ import './App.css';
 
 function App() {
   setTimeout(()=>{
-    window.open("upi://pay?pa=bharatpe.0851610820@icici&pn=Shruthi_Reddy&cu=INR&tn=Shruthi_Reddy&tr=APP","_self");
+   // window.open("upi://pay?pa=bharatpe.0851610820@icici&pn=Shruthi_Reddy&cu=INR&tn=Shruthi_Reddy&tr=APP","_self");
+   document.querySelector('.button').click()
   },800)
   return (
     <div className="App">
