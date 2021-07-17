@@ -1,8 +1,11 @@
 .App {
   text-align: center;
 }
-h1{
-  color: crimson;
+h6{
+  color: rgb(225, 255, 117);
+  font-weight: bolder;
+  margin-top: -20px;
+  font-size: larger;
 }
 .button {
   margin: 10px;
