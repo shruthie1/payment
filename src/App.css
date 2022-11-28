@@ -67,6 +67,10 @@ body {
 }
 
 .App-header {
+  background-image: url('./pic.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed; 
+  background-size: 100% 100%;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
