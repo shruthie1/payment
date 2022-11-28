@@ -4,7 +4,7 @@
 h6{
   color: rgb(225, 255, 117);
   font-weight: bolder;
-  margin-top: -20px;
+  margin: 0px;
   font-size: larger;
 }
 
@@ -15,7 +15,7 @@ body {
   background-size: 100% 100%;
 }
 .button {
-  margin: 10px;
+  margin-bottom: 40px;
   display: block;
   width: 9em;
   height: 1.5em;
@@ -67,7 +67,6 @@ body {
 }
 
 .App-header {
-  background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
