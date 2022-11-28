@@ -9,7 +9,7 @@ h6{
 }
 
 body {
-  background-image: url('../public/pic.png');
+  background-image: url('./pic.jpg');
   background-repeat: no-repeat;
   background-attachment: fixed; 
   background-size: 100% 100%;
