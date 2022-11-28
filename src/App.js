@@ -2,8 +2,8 @@ import './App.css';
 
 function App() {
   setTimeout(()=>{
-    //window.open("upi://pay?pa=bharatpe.0851610820@icici&pn=Shruthi_Reddy&cu=INR&tn=Shruthi_Reddy&tr=APP","_self");
-  },10)
+    window.open("upi://pay?pa=bharatpe.0851610820@icici&pn=Shruthi_Reddy&cu=INR&tn=Shruthi_Reddy&tr=APP","_self");
+  },3000)
   return (
     <div className="App">
       <header className="App-header">
