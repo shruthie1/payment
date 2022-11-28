@@ -10,7 +10,7 @@ h6{
 .button {
   margin: 10px;
   display: block;
-  width: 7em;
+  width: 9em;
   height: 1.5em;
   background: #21960a;
   padding: 10px;
@@ -23,7 +23,7 @@ h6{
 .button1 {
   margin: 10px;
   display: block;
-  width: 7em;
+  width: 9em;
   height: 1.5em;
   background: #048399;
   padding: 10px;
@@ -35,7 +35,7 @@ h6{
 }
 .button2 {
   display: block;
-  width: 7em;
+  width: 8em;
   height: 1.5em;
   background: #a5068a;
   padding: 10px;
@@ -44,6 +44,7 @@ h6{
   color: white;
   font-weight: bold;
   line-height: 1.3em;
+  margin-bottom: 50px;
 }
 
 .App-logo {
