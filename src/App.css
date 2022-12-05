@@ -9,6 +9,16 @@
     font-size: large;
   }
 
+  .msgBtn {
+    margin-bottom: 9vh;
+  }
+
+
+  .special_modal .modal-content {
+    background: radial-gradient(100% 100% at 100% 0%, #89E5FF 0%, #ffffff 100%);
+    color: rgba(0, 11, 53, 0.758);
+  }
+
   .button {
     display: inline-block;
     outline: 0;
@@ -23,7 +33,6 @@
     height: 48px;
     font-size: 18px;
     font-weight: bold;
-    margin-bottom: 9vh;
     text-shadow: 0 1px 0 rgb(0 0 0 / 40%);
     transition: box-shadow 0.15s ease, transform 0.15s ease;
   }

