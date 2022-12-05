@@ -5,12 +5,11 @@
 h6 {
   color: rgb(225, 255, 117);
   font-weight: bolder;
-  margin: 0px;
+  margin: 0px 0px 20px 0px;
   font-size: larger;
 }
 
 .button {
-
   display: inline-block;
   outline: 0;
   border: 0;
@@ -94,7 +93,7 @@ code {
 }
 
 .card {
-  margin: 20px;
+  margin: 30px 20px;
   border-radius: 20px;
   background-color: rgb(20, 43, 113);
   padding: 10px;
