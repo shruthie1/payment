@@ -29,12 +29,12 @@
   }
 
   .button:hover {
-    box-shadow: 0px 4px 8px rgb(45 35 66 / 40%), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px #3c4fe0;
+    box-shadow: 0px 4px 8px rgb(45 35 66 / 40%), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px #b7aeae;
     transform: translateY(-2px);
   }
 
   .button:active {
-    box-shadow: inset 0px 3px 7px #3c4fe0;
+    box-shadow: inset 0px 3px 7px #a3a5b0;
     transform: translateY(2px);
   }
 
@@ -123,7 +123,7 @@
     border: 1px solid #ccc;
     cursor: pointer;
     will-change: box-shadow, transform;
-    background: radial-gradient(100% 100% at 100% 0%, #89E5FF 0%, #3244ca 100%);
+    background: radial-gradient(100% 100% at 100% 0%, #c3c396 0%, #bea82b 100%);
     box-shadow: 0px 2px 4px rgb(45 35 66 / 40%), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px rgb(58 65 111 / 50%);
     margin-top: 2px;
     padding: 5px;
@@ -136,11 +136,11 @@
   }
 
   .cpybutton:hover {
-    box-shadow: 0px 4px 8px rgb(45 35 66 / 40%), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px #3c4fe0;
+    box-shadow: 0px 4px 8px rgb(45 35 66 / 40%), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px #545b92;
     transform: translateY(-2px);
   }
 
   .cpybutton:active {
-    box-shadow: inset 0px 3px 7px #3c4fe0;
+    box-shadow: inset 0px 3px 7px #575e92;
     transform: translateY(2px);
   }

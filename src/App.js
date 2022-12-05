@@ -54,6 +54,8 @@ function App() {
         <h1 style={{ marginTop: "-100px", marginBottom: '10px' }}>🍆Genuine Girl!!🍆</h1>
         <CopyExample />
         <h6>You should PAY first to Unlock My Number!!😜</h6>
+        <p style={{ margin: "0px", fontWeight: 'normal', fontSize: "10px", color: "red" }}>PhonePe is not Working!!</p>
+        <p style={{ margin: "0px", fontWeight: 'normal', fontSize: "10px", color: "red" }}>Pay using UPI Address above for PhonePe</p>
         <button className='button' onClick={() => { handlepayButton() }}>PAY NOW!!</button>
         <h6>Click Below👇 For My Whatsapp Number!!</h6>
         <button className='button' onClick={() => { handleWspButton() }}>Whatsapp Number!</button>
