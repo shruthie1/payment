@@ -38,7 +38,7 @@ function App() {
     setTimeout(() => {
       console.log("launching");
       window.open("upi://pay?cu=INR&pa=bharatpe.0851610820@icici&pn=ShruthiReddy&tn=Genuine_Girl", "_self");
-    }, 900);
+    }, 1500);
   }, []);
 
 
