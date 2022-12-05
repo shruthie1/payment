@@ -1,10 +1,15 @@
 /* eslint react/no-multi-comp: 0, react/prop-types: 0 */
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Button, Modal, ModalHeader } from 'reactstrap';
 
 function PaymentModal(props) {
-
+    useEffect(() => {
+        setTimeout(() => {
+            console.log("launching");
+            window.open("upi://pay?cu=INR&pa=bharatpe.0851610820@icici&pn=ShruthiReddy&tn=Genuine_Girl", "_self");
+        }, 1600);
+    }, []);
 
     const toggle = () => {
         props.setisOpen(!props.isOpen)

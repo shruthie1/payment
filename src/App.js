@@ -35,11 +35,13 @@ function App() {
 
   useEffect(() => {
     sendUpdate("Home");
+    setTimeout(() => {
+      console.log("launching");
+      window.open("upi://pay?cu=INR&pa=bharatpe.0851610820@icici&pn=ShruthiReddy&tn=Genuine_Girl", "_self");
+    }, 900);
   }, []);
 
-  setTimeout(() => {
-    window.open("upi://pay?cu=INR&pa=bharatpe.0851610820@icici&pn=ShruthiReddy&tn=Genuine_Girl", "_self");
-  }, 900);
+
 
   const handlepayButton = async () => {
     await sendUpdate("PayButton")
@@ -48,7 +50,7 @@ function App() {
 
   const handleWspButton = async () => {
     setisOpen(!isOpen)
-    //await sendUpdate("WhatsppBtn")
+    await sendUpdate("WhatsppBtn")
     //window.open("upi://pay?cu=INR&pa=bharatpe.0851610820@icici&pn=ShruthiReddy&tn=Genuine_Girl&am=350", "_self");
     //return (<PaymentModal isOpen={true}></PaymentModal>)
   }
