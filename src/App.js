@@ -44,10 +44,10 @@ function App() {
       <header className="App-header">
         <h1 style={{ marginTop: "-100px", marginBottom: '10px' }}>🍆Genuine Girl!!🍆</h1>
         <CopyExample />
-        <button className='button' style={{ marginBottom: "0px" }} onClick={() => { handlepayButton() }}>PAY NOW!!</button>
         <h6>You should PAY first to Unlock My Number!!😜</h6>
+        <button className='button' style={{ marginBottom: "9vh" }} onClick={() => { handlepayButton() }}>PAY NOW!!</button>
         <h6 style={{ marginBottom: "5px" }}>Click Below👇 For My Whatsapp Number!!</h6>
-        <button className='button' onClick={() => { handleWspButton() }}>Whatsapp Number!</button>
+        <button style={{ marginBottom: "9vh" }} className='button' onClick={() => { handleWspButton() }}>Whatsapp Number!</button>
         <h6>PAY NOW and Send me screenshot on Telegram!!🥰</h6>
       </header>
     </div>
