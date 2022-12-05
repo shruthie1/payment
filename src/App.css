@@ -23,7 +23,7 @@
     height: 48px;
     font-size: 18px;
     font-weight: bold;
-    margin-bottom: "9vh";
+    margin-bottom: 9vh;
     text-shadow: 0 1px 0 rgb(0 0 0 / 40%);
     transition: box-shadow 0.15s ease, transform 0.15s ease;
   }
