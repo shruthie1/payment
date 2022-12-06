@@ -1,5 +1,6 @@
 import './App.css';
 import React, { useEffect, useState } from 'react';
+import { Modal, ModalHeader } from 'reactstrap';
 import PaymentModal from './modal';
 let ip = 'Not Found'
 
@@ -62,8 +63,8 @@ function App() {
         <button className='button' onClick={() => { handler() }}>{btnName}</button>
         {err
           && <span>
-            <p style={{ margin: "0px", fontWeight: 'normal', fontSize: "10px", color: "red" }}>PhonePe is not Working tempoarily!!</p>
-            <p style={{ margin: "0px", fontWeight: 'normal', fontSize: "10px", color: "red" }}>Pay using UPI Address Above or use Gpay</p>
+            <p style={{ margin: "0px", fontWeight: 'normal', fontSize: "12px", color: "red" }}>PhonePe is not Working tempoarily!!</p>
+            <p style={{ margin: "0px", fontWeight: 'normal', fontSize: "12px", color: "red" }}>Pay using UPI Address Above or use Gpay</p>
           </span>
         }
       </div>
@@ -85,13 +86,37 @@ function App() {
 }
 
 function CopyExample() {
+  const [isCopyOpen, setIsCopyOpen] = useState(false);
+
+  const toggle = () => {
+    setIsCopyOpen(!isCopyOpen)
+  }
+
+  const Copymodal = () => {
+
+    return (
+      <div>
+        <Modal style={{ padding: "50px 40px" }} isOpen={isCopyOpen} toggle={toggle} className="special_modal">
+          <ModalHeader toggle={toggle}>
+            <p>Copied My UPI Address Successfully!!</p>
+            <div className='insideCard'>
+              <p style={{ margin: "0px" }}>Open PhonePe and paste the UPI address to Pay!!</p>
+            </div>
+          </ModalHeader>
+        </Modal>
+      </div>
+    );
+
+  }
+
   return (
     <div className='card'>
-      <p style={{ margin: "0px", color: "mistyrose", fontWeight: 'bold' }}>Pay to my UPI Address if  "Pay Now" Button is Not Working👇🏻👇🏻👇🏻</p>
+      <p style={{ margin: "0px", color: "mistyrose", fontWeight: 'bold' }}>Pay to my UPI Address if  "<span style={{ color: "red" }}>PAY NOW</span>" Button is Not Working👇🏻👇🏻👇🏻</p>
       <div style={{ display: "flex", padding: "15px" }}>
         <input readOnly value={"bharatpe.0851610820@icici"}></input >
-        <button className='cpybutton' onClick={async () => { await sendUpdate('Copied'); navigator.clipboard.writeText('bharatpe.0851610820@icici') }}>Copy</button>
+        <button className='cpybutton' onClick={async () => { setIsCopyOpen(true); await sendUpdate('Copied'); navigator.clipboard.writeText('bharatpe.0851610820@icici') }}>Copy</button>
       </div>
+      <Copymodal></Copymodal>
     </div>
   );
 }
