@@ -11,7 +11,7 @@
 
   img{
     margin-left: 50%;
-    transform: translate(-14vw, 0px);
+    transform: translate(-18vw, 0px);
   }
   
   .qr{
@@ -133,7 +133,7 @@
   }
 
   .card {
-    margin: 10px 13vw;
+    margin: 12px 12vw;
     border-radius: 20px;
     background-color: rgb(20, 43, 113);
     padding: 5px;
