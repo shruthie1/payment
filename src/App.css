@@ -9,12 +9,13 @@
     font-size: large;
   }
 
-  img {
+  .upi {
     margin-left: 50%;
     transform: translate(-70px, 0px);
   }
 
   .qr {
+    margin-left: 50%;
     height: 50vw;
     width: 50vw;
     transform: translate(-25vw, 0px);
