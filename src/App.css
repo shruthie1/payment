@@ -8,11 +8,15 @@
     margin: 0px 0px 5px 0px;
     font-size: large;
   }
+
   img{
-    height: 40vw;
-    width: 40vw;
     margin-left: 50%;
     transform: translate(-20vw, 0px);
+  }
+  
+  .qr{
+    height: 40vw;
+    width: 40vw;
   }
 
   h5 {
@@ -20,7 +24,7 @@
   }
 
   .msgBtn {
-    margin-bottom: 3vh;
+    margin-bottom: 2vh;
   }
 
 
@@ -128,10 +132,10 @@
   }
 
   .card {
-    margin: 20px 20px;
+    margin: 5px 20px;
     border-radius: 20px;
     background-color: rgb(20, 43, 113);
-    padding: 10px;
+    padding: 5px;
   }
 
   input {
@@ -151,22 +155,16 @@
   }
 
   .cpybutton {
-
     display: inline-block;
     outline: 0;
     border: 1px solid #ccc;
     cursor: pointer;
-    will-change: box-shadow, transform;
     background: radial-gradient(100% 100% at 100% 0%, #c3c396 0%, #bea82b 100%);
-    box-shadow: 0px 2px 4px rgb(45 35 66 / 40%), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px rgb(58 65 111 / 50%);
-    margin-top: 2px;
-    padding: 5px;
     font-weight: bold;
     border-radius: 6px;
     color: #fff;
-    font-size: 18px;
+    font-size: 10px;
     text-shadow: 0 1px 0 rgb(0 0 0 / 40%);
-    transition: box-shadow 0.15s ease, transform 0.15s ease;
   }
 
   .cpybutton:hover {
