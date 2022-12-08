@@ -25,7 +25,7 @@
   }
 
   .msgBtn {
-    margin-bottom: 3vh;
+    margin-bottom: 2.8vh;
   }
 
 
@@ -80,7 +80,7 @@
   }
 
   .App-header {
-    background-color: #282c34;
+    background: radial-gradient(100% 100% at 100% 0%, rgb(15, 43, 127) 0%, #18033f 100%);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -134,9 +134,11 @@
 
   .card {
     margin: 16px 6vw;
+    outline: 0px;
     border-radius: 20px;
-    background-color: rgb(20, 43, 113);
+    background: radial-gradient(100% 100% at 100% 0%, #650843 0%, rgb(15, 43, 127) 100%);
     padding: 8px;
+    box-shadow: 0px 4px 8px rgb(45 35 66 / 40%), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px #061059;
   }
 
   input {

