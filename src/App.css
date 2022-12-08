@@ -11,12 +11,13 @@
 
   img{
     margin-left: 50%;
-    transform: translate(-20vw, 0px);
+    transform: translate(-14vw, 0px);
   }
   
   .qr{
     height: 40vw;
     width: 40vw;
+    transform: translate(-20vw, 0px);
   }
 
   h5 {
@@ -132,7 +133,7 @@
   }
 
   .card {
-    margin: 5px 20px;
+    margin: 5px 20vw;
     border-radius: 20px;
     background-color: rgb(20, 43, 113);
     padding: 5px;
