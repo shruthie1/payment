@@ -9,12 +9,12 @@
     font-size: large;
   }
 
-  img{
+  img {
     margin-left: 50%;
-    transform: translate(-18vw, 0px);
+    transform: translate(-70px, 0px);
   }
-  
-  .qr{
+
+  .qr {
     height: 40vw;
     width: 40vw;
     transform: translate(-20vw, 0px);
@@ -25,7 +25,7 @@
   }
 
   .msgBtn {
-    margin-bottom: 5vh;
+    margin-bottom: 3vh;
   }
 
 
@@ -133,7 +133,7 @@
   }
 
   .card {
-    margin: 12px 12vw;
+    margin: 16px 12vw;
     border-radius: 20px;
     background-color: rgb(20, 43, 113);
     padding: 5px;
@@ -156,6 +156,8 @@
   }
 
   .cpybutton {
+    height: 30px;
+    margin-top: -3px;
     display: inline-block;
     outline: 0;
     border: 1px solid #ccc;
