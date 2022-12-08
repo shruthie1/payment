@@ -111,7 +111,7 @@ function CopyExample() {
 
   return (
     <div className='card'>
-      <div style={{ color: "mistyrose", fontWeight: 'bold' }}>
+      <div style={{ color: "mistyrose", fontWeight: 'bold', padding: "0px 10px" }}>
         <p style={{ fontSize: "15px" }}>If "<span style={{ color: "red" }}>PAY NOW</span>" Button is Not Working!!</p>
         <p style={{ marginTop: "-20px" }}> Pay to my QR Code 👇🏻👇🏻👇🏻</p>
       </div>
