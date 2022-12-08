@@ -8,13 +8,19 @@
     margin: 0px 0px 5px 0px;
     font-size: large;
   }
+  img{
+    height: 40vw;
+    width: 40vw;
+    margin-left: 50%;
+    transform: translate(-20vw, 0px);
+  }
 
   h5 {
     font-size: medium;
   }
 
   .msgBtn {
-    margin-bottom: 9vh;
+    margin-bottom: 3vh;
   }
 
 

