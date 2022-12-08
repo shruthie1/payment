@@ -15,9 +15,9 @@
   }
 
   .qr {
-    height: 40vw;
-    width: 40vw;
-    transform: translate(-20vw, 0px);
+    height: 50vw;
+    width: 50vw;
+    transform: translate(-25vw, 0px);
   }
 
   h5 {
@@ -133,10 +133,10 @@
   }
 
   .card {
-    margin: 16px 12vw;
+    margin: 16px 6vw;
     border-radius: 20px;
     background-color: rgb(20, 43, 113);
-    padding: 5px;
+    padding: 8px;
   }
 
   input {

