@@ -74,7 +74,7 @@ function App() {
   return (
     <div className="App" onClick={() => { /*setisOpen(false) */ }}>
       <header className="App-header">
-        <h1 style={{ marginTop: '-40px', color: "#82ffa5" }}><img style={{width:"300px"}} alt='' src='./logo.svg'></img></h1>
+        <h1 style={{ marginTop: '-40px', color: "#82ffa5" }}><img style={{width:"200px"}} alt='' src='./logo.svg'></img></h1>
         <CopyExample />
         <MsgBtnCombo msg="You should PAY first to Unlock My Number!!😜" btnName="PAY NOW!!" handler={handlepayButton} err={true}></MsgBtnCombo>
         <MsgBtnCombo msg="Click Below👇 For My Whatsapp Number!!" btnName="Whatsapp Number!" handler={handleWspButton} err={false}></MsgBtnCombo>
