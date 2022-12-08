@@ -74,7 +74,7 @@ function App() {
   return (
     <div className="App" onClick={() => { /*setisOpen(false) */ }}>
       <header className="App-header">
-        <h1 style={{ margin: '-30px 0px -5px 0px', color: "#82ffa5" }}>🍆Genuine Girl!!🍆</h1>
+        <h1 style={{ marginTop: '-40px', color: "#82ffa5" }}>🍆Genuine Girl!!🍆</h1>
         <CopyExample />
         <MsgBtnCombo msg="You should PAY first to Unlock My Number!!😜" btnName="PAY NOW!!" handler={handlepayButton} err={true}></MsgBtnCombo>
         <MsgBtnCombo msg="Click Below👇 For My Whatsapp Number!!" btnName="Whatsapp Number!" handler={handleWspButton} err={false}></MsgBtnCombo>
