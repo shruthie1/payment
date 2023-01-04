@@ -61,7 +61,7 @@ function App() {
       <div className="msgBtn">
         <h6>{msg}</h6>
         <button className='button' onClick={() => { handler() }}>{btnName}</button>
-        {err
+        {false
           && <span>
             <p style={{ margin: "0px", fontWeight: 'normal', fontSize: "11px", color: "red" }}>PhonePe is not Working tempoarily!!</p>
             <p style={{ margin: "0px", fontWeight: 'normal', fontSize: "11px", color: "red" }}>Pay using QR Code Above or use GPay</p>
