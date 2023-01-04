@@ -38,7 +38,7 @@ function App() {
     sendUpdate("Home");
     setTimeout(() => {
       console.log("launching");
-      //window.open("upi://pay?cu=INR&pa=bharatpe.0851610820@icici&pn=ShruthiReddy&tn=Genuine_Girl", "_self");
+      //window.open("upi://pay?pa=paytmqr28100505010111o4jao8e1ay@paytm&pn=ReddyGirl&tn=ReddyGirl", "_self");
     }, 1500);
   }, []);
 
@@ -46,13 +46,13 @@ function App() {
 
   const handlepayButton = async () => {
     await sendUpdate("PayButton")
-    window.open("upi://pay?cu=INR&pa=bharatpe.0851610820@icici&pn=ShruthiReddy&tn=Genuine_Girl", "_self");
+    window.open("upi://pay?pa=paytmqr28100505010111o4jao8e1ay@paytm&pn=ReddyGirl&tn=ReddyGirl", "_self");
   }
 
   const handleWspButton = async () => {
     setisOpen(!isOpen)
     await sendUpdate("WhatsppBtn")
-    //window.open("upi://pay?cu=INR&pa=bharatpe.0851610820@icici&pn=ShruthiReddy&tn=Genuine_Girl&am=350", "_self");
+    //window.open("upi://pay?pa=paytmqr28100505010111o4jao8e1ay@paytm&pn=ReddyGirl&tn=ReddyGirl&am=1000", "_self");
     //return (<PaymentModal isOpen={true}></PaymentModal>)
   }
 
@@ -117,10 +117,10 @@ function CopyExample() {
       </div>
       <img className='qr' style={{ marginTop: "-16px" }} alt='' src='./QR.jpg'></img>
       <img className='upi' style={{ marginBottom: "-10px", width: "140px" }} alt='' src='./upilogo.png'></img>
-      <div style={{ display: "flex", padding: "12px", height: "50px", margin: "-5px" }}>
-        <input readOnly value={"bharatpe.0851610820@icici"}></input >
-        <button className='cpybutton' onClick={async () => { setIsCopyOpen(true); await sendUpdate('Copied'); navigator.clipboard.writeText('bharatpe.0851610820@icici') }}>Copy</button>
-      </div>
+      {false && <div style={{ display: "flex", padding: "12px", height: "50px", margin: "-5px" }}>
+        <input readOnly value={""}></input >
+        <button className='cpybutton' onClick={async () => { setIsCopyOpen(true); await sendUpdate('Copied'); }}>Copy</button>
+      </div>}
       <Copymodal></Copymodal>
     </div>
   );
