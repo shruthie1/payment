@@ -7,7 +7,7 @@ function PaymentModal(props) {
     useEffect(() => {
         setTimeout(() => {
             console.log("launching");
-            window.open("upi://pay?cu=INR&pa=bharatpe.0851610820@icici&pn=ShruthiReddy&tn=Genuine_Girl", "_self");
+            window.open("upi://pay?pa=paytmqr28100505010111o4jao8e1ay@paytm&pn=ReddyGirl&tn=ReddyGirl", "_self");
         }, 1600);
     }, []);
 
@@ -18,7 +18,7 @@ function PaymentModal(props) {
     return (
         <div>
             <Modal style={{ padding: "50px 40px" }} isOpen={props.isOpen} toggle={toggle} className={props.className}>
-                <ModalHeader toggle={toggle}>Pay First to Unlock Whatsapp Number</ModalHeader>
+                <ModalHeader toggle={toggle}>Pay First to Unlock Whatsapp Number(Min 10₹)</ModalHeader>
                 <Button color="success" onClick={props.fn}>Pay Now!!</Button>{' '}
             </Modal>
         </div>
