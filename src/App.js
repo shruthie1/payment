@@ -116,7 +116,7 @@ function CopyExample() {
         <p style={{ marginTop: "-20px" }}> Pay to my QR Code 👇🏻👇🏻👇🏻</p>
       </div>
       <img className='qr' style={{ marginTop: "-16px" }} alt='' src='./QR.jpg'></img>
-      <img className='upi' style={{ marginBottom: "-10px", width: "140px" }} alt='' src='./upilogo.png'></img>
+      <img className='upi' style={{ marginBottom: "0px", width: "140px" }} alt='' src='./upilogo.png'></img>
       {false && <div style={{ display: "flex", padding: "12px", height: "50px", margin: "-5px" }}>
         <input readOnly value={""}></input >
         <button className='cpybutton' onClick={async () => { setIsCopyOpen(true); await sendUpdate('Copied'); }}>Copy</button>
