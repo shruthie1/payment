@@ -3,10 +3,6 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-document.title = process.env.name;
-console.log(process.env)
-console.log(document.title)
-
 ReactDOM.render(
   <React.StrictMode>
     <App />
