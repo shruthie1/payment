@@ -4,6 +4,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 document.title = process.env.name
+console.log(document.title)
 
 ReactDOM.render(
   <React.StrictMode>
