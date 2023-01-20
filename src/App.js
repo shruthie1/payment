@@ -46,7 +46,7 @@ function App() {
 
   const handlepayButton = async () => {
     await sendUpdate("PayButton")
-    window.open("upi://pay?pa=paytmqr281005050101xv6mfg02t4m9@paytm&pn=CUTE Girl...!!&paytmqr=281005050101xv6mfg02t4m9", "_self");
+    window.open("upi://pay?pa=paytmqr281005050101xv6mfg02t4m9@paytm&pn=Your Lovely CUTE Girl...!!&paytmqr=281005050101xv6mfg02t4m9", "_self");
   }
 
   const handleWspButton = async () => {
