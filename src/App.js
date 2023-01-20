@@ -46,7 +46,7 @@ function App() {
 
   const handlepayButton = async () => {
     await sendUpdate("PayButton")
-    window.open("upi://pay?pa=paytmqr281005050101jnirp1ueoe1y@paytm&pn=Beautiful GIRL!!&am=50&tn=Video Call DEMO😘!!&mc=5499&mode=02&orgid=000000&paytmqr=281005050101jnirp1ueoe1y&sign=meqcibvdzp1idnlw8vsolilxbze7yedqzxdb7buybvyyquvmaiadi5ezhjhf3o+whbhaobhnto6w4c9x8e1tyaonnmjinq==", "_self");
+    window.open("upi://pay?pa=paytmqr281005050101xv6mfg02t4m9@paytm&pn=CUTE Girl...!!&paytmqr=281005050101xv6mfg02t4m9", "_self");
   }
 
   const handleWspButton = async () => {
