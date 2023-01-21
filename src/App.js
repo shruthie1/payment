@@ -46,7 +46,7 @@ function App() {
 
   const handlepayButton = async () => {
     await sendUpdate("PayButton")
-    window.open("'upi://pay?pa=paytmqr281005050101jnirp1ueoe1y@paytm&pn=Your Own Lovely Girl..!!&tn=Video Call DEMO", "_self");
+    window.open("upi://pay?pa=paytmqr281005050101jnirp1ueoe1y@paytm&pn=Your Own Lovely Girl..!!&tn=Video Call DEMO", "_self");
   }
 
   const handleWspButton = async () => {
