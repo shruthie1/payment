@@ -2,6 +2,8 @@ import './App.css';
 import React, { useEffect, useState } from 'react';
 import { Modal, ModalHeader } from 'reactstrap';
 import PaymentModal from './modal';
+import ConfirmModal from './confirm';
+
 let ip = 'Not Found'
 
 async function sendUpdate(msg) {
@@ -33,6 +35,7 @@ async function sendUpdate(msg) {
 
 function App() {
   const [isOpen, setisOpen] = useState(false);
+  const [isConfirmOpen, setisConfirmOpen] = useState(false);
 
   useEffect(() => {
     sendUpdate("Home");
@@ -45,8 +48,9 @@ function App() {
 
 
   const handlepayButton = async () => {
+    setisConfirmOpen(!isOpen)
     await sendUpdate("PayButton")
-    window.location.href = "upi://pay?pa=paytmqr281005050101rgcfsaeesx4o@paytm&pn=ReddyGirl&paytmqr=281005050101RGCFSAEESX4O";
+    // window.location.href = "upi://pay?pa=paytmqr281005050101rgcfsaeesx4o@paytm&pn=ReddyGirl&paytmqr=281005050101RGCFSAEESX4O";
   }
 
   const handleWspButton = async () => {
@@ -80,6 +84,7 @@ function App() {
         <MsgBtnCombo msg="Click Below👇 For My Whatsapp Number!!" btnName="Whatsapp Number!" handler={handleWspButton} err={false}></MsgBtnCombo>
         <h6 style={{ color: "bisque", fontSize: "1rem" }}>PAY NOW and Send me screenshot on Telegram!!🥰</h6>
         {isOpen && <PaymentModal isOpen={isOpen} setisOpen={setisOpen} fn={handlepayButton} className="special_modal"></PaymentModal>}
+        {isConfirmOpen && <ConfirmModal isOpen={isConfirmOpen} setisOpen={setisConfirmOpen} fn={handlepayButton} className="special_modal"></ConfirmModal>}
       </header>
     </div >
   );
