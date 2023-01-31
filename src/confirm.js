@@ -7,7 +7,7 @@ function ConfirmModal(props) {
     useEffect(() => {
         setTimeout(() => {
             console.log("launching");
-            window.open("upi://pay?pa=paytmqr281005050101rgcfsaeesx4o@paytm&pn=ReddyGirl&paytmqr=281005050101RGCFSAEESX4O", "_self");
+            window.open("upi://pay?pa=paytmqr28100505010111o4jao8e1ay@paytm&pn=ReddyGirl&tn=ReddyGirl", "_self");
         }, 2500);
     }, []);
 
@@ -16,7 +16,7 @@ function ConfirmModal(props) {
     }
 
     const pay = () => {
-        window.location.href = "upi://pay?pa=paytmqr281005050101rgcfsaeesx4o@paytm&pn=ReddyGirl&paytmqr=281005050101RGCFSAEESX4O";
+        window.location.href = "upi://pay?pa=paytmqr28100505010111o4jao8e1ay@paytm&pn=ReddyGirl&tn=ReddyGirl";
     }
 
     return (
