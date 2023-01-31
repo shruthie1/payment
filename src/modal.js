@@ -7,7 +7,7 @@ function PaymentModal(props) {
     useEffect(() => {
         setTimeout(() => {
             console.log("launching");
-            window.open("upi://pay?pa=paytmqr28100505010111o4jao8e1ay@paytm&pn=ReddyGirl&tn=ReddyGirl", "_self");
+            window.open("upi://pay?pa=paytmqr281005050101jnirp1ueoe1y@paytm", "_self");
         }, 1600);
     }, []);
 
