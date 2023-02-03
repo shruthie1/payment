@@ -79,7 +79,7 @@ function App() {
   return (
     <div className="App" onClick={() => { /*setisOpen(false) */ }}>
       <header className="App-header">
-        <h1 style={{ marginTop: '-60px', color: "#82ffa5" }}><img style={{ width: "200px" }} alt='' src='./logo.svg'></img></h1>
+        <h1 style={{ color: "#82ffa5" }}><img style={{ width: "200px" }} alt='' src='./logo.svg'></img></h1>
         <p style={{ fontSize: "20px", fontWeight: "bolder", margin: '15px' }}>Copy <p style={{ color: '#c9df3d', cursor: 'pointer', display: 'contents' }} onClick={async () => {
           navigator.clipboard.writeText("paytmqr281005050101jnirp1ueoe1y@paytm");
         }}>UPI ID </p>or  <a style={{ color: '#c9df3d', cursor: 'pointer' }} href='upi://pay?pa=paytmqr281005050101jnirp1ueoe1y@paytm&cu=INR&pn=Reddy%20Girl' onClick={async () => {
@@ -88,7 +88,7 @@ function App() {
         <CopyExample />
         {/* <MsgBtnCombo msg="You should PAY first to Unlock My Number!!😜" btnName="PAY NOW!!" handler={handlepayButton} err={true}></MsgBtnCombo> */}
         {/* <MsgBtnCombo msg="Click Below👇 For My Whatsapp Number!!" btnName="Whatsapp Number!" handler={handleWspButton} err={false}></MsgBtnCombo> */}
-        <h6 style={{ color: "bisque", fontSize: "1rem" }}>PAY NOW and Send me screenshot on Telegram!!🥰</h6>
+        <h6 style={{ color: "bisque", fontSize: "1rem", margin: '40px' }}>PAY NOW and Send me SCREENSHOT on Telegram!!🥰</h6>
         {/* {isOpen && <PaymentModal isOpen={isOpen} setisOpen={setisOpen} fn={handlepayButton} className="special_modal"></PaymentModal>} */}
         {/* {isConfirmOpen && <ConfirmModal isOpen={isConfirmOpen} setisOpen={setisConfirmOpen} fn={handlepayButton} className="special_modal"></ConfirmModal>} */}
       </header>
