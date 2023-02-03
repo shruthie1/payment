@@ -32,9 +32,9 @@
 
   .special_modal .modal-content {
     background: rgb(90 90 90);
-    color: rgb(255 255 255);
+    color: #49ff3b;
     border-radius: 0.9rem;
-    border: 0px;
+    border: 2px solid #49ff3b
   }
 
 
@@ -132,8 +132,9 @@
     border-radius: 5px;
     background: radial-gradient(100% 100% at 100% 0%, #060614 0%, rgb(0 68 65) 100%);
     padding: 10px;
+    border: 1px solid #fdff00;
     font-size: small;
-    color: white;
+    color: #fdff00;
   }
 
   .card {

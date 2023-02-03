@@ -107,11 +107,11 @@ function CopyExample() {
 
     return (
       <div>
-        <Modal style={{ padding: "50px 40px" }} isOpen={isCopyOpen} toggle={toggle} className="special_modal">
-          <ModalHeader toggle={toggle}>
+        <Modal style={{ padding: "10vh 15px" }} isOpen={isCopyOpen} toggle={toggle} className="special_modal">
+          <ModalHeader toggle={toggle} style={{ borderBottom: '0px' }}>
             <p style={{ fontSize: "15px" }}>UPI Address Copied to Clipboard!!</p>
             <div className='insideCard'>
-              <p style={{ margin: "0px" }}>Open PhonePe/PayTm and Paste the UPI Address to Pay!!</p>
+              <p style={{ margin: "0px" }}>Open <span style={{ color: "#e0f2ff" }}>PhonePe/PayTm</span> and Paste the UPI Address to Pay!!</p>
             </div>
           </ModalHeader>
         </Modal>
