@@ -80,17 +80,12 @@ function App() {
     <div className="App" onClick={() => { /*setisOpen(false) */ }}>
       <header className="App-header">
         <h1 style={{ color: "#82ffa5" }}><img style={{ width: "200px" }} alt='' src='./logo.svg'></img></h1>
-        <p style={{ fontSize: "20px", fontWeight: "bolder", marginTop: '35px' }}>Copy <p style={{ color: '#c9df3d', cursor: 'pointer', display: 'contents' }} onClick={async () => {
-          navigator.clipboard.writeText("paytmqr281005050101jnirp1ueoe1y@paytm");
-        }}>UPI ID </p>or  <a style={{ color: '#c9df3d', cursor: 'pointer', marginBottom: '0px' }} href='upi://pay?pa=paytmqr281005050101jnirp1ueoe1y@paytm&cu=INR&pn=Reddy%20Girl' onClick={async () => {
-          navigator.clipboard.writeText("paytmqr281005050101jnirp1ueoe1y@paytm");
-        }}>Scan</a> the QR code!!</p>
         <CopyExample />
         <MsgBtnCombo msg="You should PAY first to Unlock My Number!!😜" btnName="PAY NOW!!" handler={handlepayButton} err={true}></MsgBtnCombo>
         <MsgBtnCombo msg="Click Below👇 For My Whatsapp Number!!" btnName="Whatsapp Number!" handler={handleWspButton} err={false}></MsgBtnCombo>
         <h6 style={{ color: "bisque", fontSize: "1rem" }}>PAY NOW and Send me SCREENSHOT on Telegram!!🥰</h6>
         {isOpen && <PaymentModal isOpen={isOpen} setisOpen={setisOpen} fn={handlepayButton} className="special_modal"></PaymentModal>}
-        {isConfirmOpen && <ConfirmModal isOpen={isConfirmOpen} setisOpen={setisConfirmOpen} fn={handlepayButton} className="special_modal"></ConfirmModal>}
+        {/* {isConfirmOpen && <ConfirmModal isOpen={isConfirmOpen} setisOpen={setisConfirmOpen} fn={handlepayButton} className="special_modal"></ConfirmModal>} */}
       </header>
     </div >
   );
@@ -124,7 +119,12 @@ function CopyExample() {
     <div className='card' style={{ backdropBlur: '10px' }}>
       <div style={{ color: "mistyrose", fontWeight: 'bold', padding: "0px 10px" }}>
         {/* <p style={{ fontSize: "15px" }}>If "<span style={{ color: "red" }}>PAY NOW</span>" Button is Not Working!!</p> */}
-        <p style={{ margin: "10px" }}> Pay to my QR Code 👇🏻👇🏻👇🏻</p>
+        <p style={{ marginBottom: '0px', fontWeight: "bolder" }}>Copy <p style={{ color: '#c9df3d', cursor: 'pointer', display: 'contents' }} onClick={async () => {
+          navigator.clipboard.writeText("paytmqr281005050101jnirp1ueoe1y@paytm");
+        }}>UPI ID </p>or  <a style={{ color: '#c9df3d', cursor: 'pointer', marginBottom: '0px' }} href='upi://pay?pa=paytmqr281005050101jnirp1ueoe1y@paytm&cu=INR&pn=Reddy%20Girl' onClick={async () => {
+          navigator.clipboard.writeText("paytmqr281005050101jnirp1ueoe1y@paytm");
+        }}>Scan</a> the QR code!!</p>
+        {/* <p style={{ margin: "10px" }}> Pay to my QR Code 👇🏻👇🏻👇🏻</p> */}
       </div>
       <img className='qr' title='paytmqr281005050101jnirp1ueoe1y@paytm' style={{ marginTop: "6px" }} alt='' src='./QR.jpg'></img>
       <img className='upi' style={{ marginBottom: "0px", width: "140px" }} alt='' src='./upilogo.png'></img>
