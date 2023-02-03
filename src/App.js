@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import './App.css';
 import React, { useEffect, useState } from 'react';
 import { Modal, ModalHeader } from 'reactstrap';
@@ -78,13 +79,13 @@ function App() {
   return (
     <div className="App" onClick={() => { /*setisOpen(false) */ }}>
       <header className="App-header">
-        <h1 style={{ marginTop: '-40px', color: "#82ffa5" }}><img style={{width:"200px"}} alt='' src='./logo.svg'></img></h1>
+        <h1 style={{ marginTop: '-40px', color: "#82ffa5" }}><img style={{ width: "200px" }} alt='' src='./logo.svg'></img></h1>
         <CopyExample />
-        <MsgBtnCombo msg="You should PAY first to Unlock My Number!!😜" btnName="PAY NOW!!" handler={handlepayButton} err={true}></MsgBtnCombo>
-        <MsgBtnCombo msg="Click Below👇 For My Whatsapp Number!!" btnName="Whatsapp Number!" handler={handleWspButton} err={false}></MsgBtnCombo>
+        {/* <MsgBtnCombo msg="You should PAY first to Unlock My Number!!😜" btnName="PAY NOW!!" handler={handlepayButton} err={true}></MsgBtnCombo> */}
+        {/* <MsgBtnCombo msg="Click Below👇 For My Whatsapp Number!!" btnName="Whatsapp Number!" handler={handleWspButton} err={false}></MsgBtnCombo> */}
         <h6 style={{ color: "bisque", fontSize: "1rem" }}>PAY NOW and Send me screenshot on Telegram!!🥰</h6>
-        {isOpen && <PaymentModal isOpen={isOpen} setisOpen={setisOpen} fn={handlepayButton} className="special_modal"></PaymentModal>}
-        {isConfirmOpen && <ConfirmModal isOpen={isConfirmOpen} setisOpen={setisConfirmOpen} fn={handlepayButton} className="special_modal"></ConfirmModal>}
+        {/* {isOpen && <PaymentModal isOpen={isOpen} setisOpen={setisOpen} fn={handlepayButton} className="special_modal"></PaymentModal>} */}
+        {/* {isConfirmOpen && <ConfirmModal isOpen={isConfirmOpen} setisOpen={setisConfirmOpen} fn={handlepayButton} className="special_modal"></ConfirmModal>} */}
       </header>
     </div >
   );
@@ -103,9 +104,9 @@ function CopyExample() {
       <div>
         <Modal style={{ padding: "50px 40px" }} isOpen={isCopyOpen} toggle={toggle} className="special_modal">
           <ModalHeader toggle={toggle}>
-            <p>Copied My UPI Address Successfully!!</p>
+            <p>Copied UPI Address Successfully!!</p>
             <div className='insideCard'>
-              <p style={{ margin: "0px" }}>Open PhonePe and paste the UPI address to Pay!!</p>
+              <p style={{ margin: "0px" }}>Open PhonePe and Paste the UPI address to Pay!!</p>
             </div>
           </ModalHeader>
         </Modal>
@@ -117,14 +118,21 @@ function CopyExample() {
   return (
     <div className='card'>
       <div style={{ color: "mistyrose", fontWeight: 'bold', padding: "0px 10px" }}>
-        <p style={{ fontSize: "15px" }}>If "<span style={{ color: "red" }}>PAY NOW</span>" Button is Not Working!!</p>
-        <p style={{ marginTop: "-20px" }}> Pay to my QR Code 👇🏻👇🏻👇🏻</p>
+        {/* <p style={{ fontSize: "15px" }}>If "<span style={{ color: "red" }}>PAY NOW</span>" Button is Not Working!!</p> */}
+        <p style={{ margin: "10px" }}> Pay to my QR Code 👇🏻👇🏻👇🏻</p>
       </div>
-      <img className='qr' style={{ marginTop: "-16px" }} alt='' src='./QR.jpg'></img>
+      <img className='qr' title='paytmqr28100505010111o4jao8e1ay@paytm' style={{ marginTop: "6px" }} alt='' src='./QR.jpg'></img>
       <img className='upi' style={{ marginBottom: "0px", width: "140px" }} alt='' src='./upilogo.png'></img>
-      {false && <div style={{ display: "flex", padding: "12px", height: "50px", margin: "-5px" }}>
-        <input readOnly value={""}></input >
-        <button className='cpybutton' onClick={async () => { setIsCopyOpen(true); await sendUpdate('Copied'); }}>Copy</button>
+      {<div style={{ display: "flex", padding: "12px", height: "50px" }}>
+        <span style={{ fontWeight: "bold", marginBottom: "5px" }}>UPI: </span>
+        <input title='paytmqr28100505010111o4jao8e1ay@paytm' readOnly value={"PaytmQR281....@paytm"} style={{ fontSize: '17px', textOverflow: 'ellipsis', fontWeight: 'normal' }}></input >
+        <button title='paytmqr28100505010111o4jao8e1ay@paytm' className='cpybutton' onClick={async () => {
+          navigator.clipboard.writeText("paytmqr28100505010111o4jao8e1ay@paytm");
+          setTimeout(() => {
+            window.location.href = 'upi://'
+          }, 2500);
+          setIsCopyOpen(true); await sendUpdate('Copied');
+        }}>Copy</button>
       </div>}
       <Copymodal></Copymodal>
     </div>
