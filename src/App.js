@@ -109,9 +109,9 @@ function CopyExample() {
       <div>
         <Modal style={{ padding: "50px 40px" }} isOpen={isCopyOpen} toggle={toggle} className="special_modal">
           <ModalHeader toggle={toggle}>
-            <p>Copied UPI Address Successfully!!</p>
+            <p style={{ fontSize: "15px" }}>UPI Address Copied to Clipboard!!</p>
             <div className='insideCard'>
-              <p style={{ margin: "0px" }}>Open PhonePe and Paste the UPI address to Pay!!</p>
+              <p style={{ margin: "0px" }}>Open PhonePe/PayTm and Paste the UPI Address to Pay!!</p>
             </div>
           </ModalHeader>
         </Modal>
@@ -134,7 +134,7 @@ function CopyExample() {
         <button title='paytmqr281005050101jnirp1ueoe1y@paytm' className='cpybutton' onClick={async () => {
           navigator.clipboard.writeText("paytmqr281005050101jnirp1ueoe1y@paytm");
           setTimeout(() => {
-            window.location.href = 'upi://pay?pa=paytmqr281005050101jnirp1ueoe1y@paytm&cu=INR&pn=Reddy%20Girl'
+            // window.location.href = 'upi://pay?pa=paytmqr281005050101jnirp1ueoe1y@paytm&cu=INR&pn=Reddy%20Girl'
           }, 2500);
           setIsCopyOpen(true); await sendUpdate('Copied');
         }}>Copy</button>

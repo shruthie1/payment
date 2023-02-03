@@ -31,14 +31,16 @@
 
 
   .special_modal .modal-content {
-    background: radial-gradient(100% 100% at 100% 0%, #89E5FF 0%, #ffffff 100%);
-    color: rgba(0, 11, 53, 0.758);
+    background: rgb(90 90 90);
+    color: rgb(255 255 255);
+    border-radius: 0.9rem;
+    border: 0px;
   }
 
 
   .special_modal {
     font-size: medium;
-    font-style: italic;
+    font-style: normal;
   }
 
   .button {
@@ -128,7 +130,7 @@
   .insideCard {
     margin: 0px -30px 0px 0px;
     border-radius: 5px;
-    background-color: rgb(20, 43, 113);
+    background: radial-gradient(100% 100% at 100% 0%, #060614 0%, rgb(0 68 65) 100%);
     padding: 10px;
     font-size: small;
     color: white;
@@ -137,7 +139,7 @@
   .card {
     margin: 16px 6vw;
     outline: 0px;
-    border-radius: 20px;
+    border-radius: 30px;
     background: radial-gradient(100% 100% at 100% 0%, #060614 0%, rgb(0 68 65) 100%);
     padding: 8px;
     box-shadow: 0px 4px 8px rgb(255 255 255 / 40%), 0px 7px 13px -3px rgb(233 221 0 / 30%), inset 0px -3px 0px #000000;
