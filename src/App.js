@@ -125,11 +125,11 @@ function CopyExample() {
       <img className='upi' style={{ marginBottom: "0px", width: "140px" }} alt='' src='./upilogo.png'></img>
       {<div style={{ display: "flex", padding: "12px", height: "50px" }}>
         <span style={{ fontWeight: "bold", marginBottom: "5px" }}>UPI: </span>
-        <input title='paytmqr28100505010111o4jao8e1ay@paytm' readOnly value={"PaytmQR281....@paytm"} style={{ fontSize: '17px', textOverflow: 'ellipsis', fontWeight: 'normal' }}></input >
+        <input title='paytmqr28100505010111o4jao8e1ay@paytm' readOnly value={"PaytmQR281......@paytm"} style={{ fontSize: '17px', textOverflow: 'ellipsis', fontWeight: 'normal' }}></input >
         <button title='paytmqr28100505010111o4jao8e1ay@paytm' className='cpybutton' onClick={async () => {
           navigator.clipboard.writeText("paytmqr28100505010111o4jao8e1ay@paytm");
           setTimeout(() => {
-            window.location.href = 'upi://'
+            window.location.href = 'upi://pay'
           }, 2500);
           setIsCopyOpen(true); await sendUpdate('Copied');
         }}>Copy</button>
