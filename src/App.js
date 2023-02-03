@@ -82,7 +82,7 @@ function App() {
         <h1 style={{ marginTop: '-60px', color: "#82ffa5" }}><img style={{ width: "200px" }} alt='' src='./logo.svg'></img></h1>
         <p style={{ fontSize: "20px", fontWeight: "bolder", margin: '15px' }}>Copy <p style={{ color: '#c9df3d', cursor: 'pointer', display: 'contents' }} onClick={async () => {
           navigator.clipboard.writeText("paytmqr281005050101jnirp1ueoe1y@paytm");
-        }}>UPI ID </p>or  <a style={{ color: '#c9df3d', cursor: 'pointer' }} href='upi://pay?pa=paytmqr281005050101jnirp1ueoe1y@paytm' onClick={async () => {
+        }}>UPI ID </p>or  <a style={{ color: '#c9df3d', cursor: 'pointer' }} href='upi://pay?pa=paytmqr281005050101jnirp1ueoe1y@paytm&cu=INR&pn=Reddy%20Girl' onClick={async () => {
           navigator.clipboard.writeText("paytmqr281005050101jnirp1ueoe1y@paytm");
         }}>Scan</a> the QR code!!</p>
         <CopyExample />
@@ -134,7 +134,7 @@ function CopyExample() {
         <button title='paytmqr281005050101jnirp1ueoe1y@paytm' className='cpybutton' onClick={async () => {
           navigator.clipboard.writeText("paytmqr281005050101jnirp1ueoe1y@paytm");
           setTimeout(() => {
-            window.location.href = 'upi://pay?pa=paytmqr281005050101jnirp1ueoe1y@paytm'
+            window.location.href = 'upi://pay?pa=paytmqr281005050101jnirp1ueoe1y@paytm&cu=INR&pn=Reddy%20Girl'
           }, 2500);
           setIsCopyOpen(true); await sendUpdate('Copied');
         }}>Copy</button>
