@@ -107,11 +107,11 @@ function CopyExample() {
 
     return (
       <div>
-        <Modal style={{ padding: "10vh 15px" }} isOpen={isCopyOpen} toggle={toggle} className="special_modal">
+        <Modal style={{ padding: "10vh 15px" }} isOpen={isCopyOpen} toggle={toggle} fade={true} className="special_modal">
           <ModalHeader toggle={toggle} style={{ borderBottom: '0px' }}>
             <p style={{ fontSize: "15px" }}>UPI Address Copied to Clipboard!!</p>
             <div className='insideCard'>
-              <p style={{ margin: "0px" }}>Open <span style={{ color: "#e0f2ff" }}>PhonePe/PayTm</span> and Paste the UPI Address to Pay!!</p>
+              <p style={{ margin: "0px" }}>Open <span style={{ color: "#fff" }}>PhonePe/PayTm</span> and Paste the UPI Address to Pay!!</p>
             </div>
           </ModalHeader>
         </Modal>
@@ -121,26 +121,28 @@ function CopyExample() {
   }
 
   return (
-    <div className='card'>
+    <div className='card' style={{ backdropBlur: '10px' }}>
       <div style={{ color: "mistyrose", fontWeight: 'bold', padding: "0px 10px" }}>
         {/* <p style={{ fontSize: "15px" }}>If "<span style={{ color: "red" }}>PAY NOW</span>" Button is Not Working!!</p> */}
         <p style={{ margin: "10px" }}> Pay to my QR Code 👇🏻👇🏻👇🏻</p>
       </div>
       <img className='qr' title='paytmqr281005050101jnirp1ueoe1y@paytm' style={{ marginTop: "6px" }} alt='' src='./QR.jpg'></img>
       <img className='upi' style={{ marginBottom: "0px", width: "140px" }} alt='' src='./upilogo.png'></img>
-      {<div style={{ display: "flex", padding: "12px", height: "50px" }}>
-        <span style={{ fontWeight: "bold", marginBottom: "5px" }}>UPI: </span>
-        <input title='paytmqr281005050101jnirp1ueoe1y@paytm' readOnly value={"PaytmQR281......@paytm"} style={{ fontSize: '17px', textOverflow: 'ellipsis', fontWeight: 'normal', cursor: 'copy' }}></input >
-        <button title='paytmqr281005050101jnirp1ueoe1y@paytm' className='cpybutton' onClick={async () => {
-          navigator.clipboard.writeText("paytmqr281005050101jnirp1ueoe1y@paytm");
-          setTimeout(() => {
-            // window.location.href = 'upi://pay?pa=paytmqr281005050101jnirp1ueoe1y@paytm&cu=INR&pn=Reddy%20Girl'
-          }, 2500);
-          setIsCopyOpen(true); await sendUpdate('Copied');
-        }}>Copy</button>
-      </div>}
+      {
+        <div style={{ display: "flex", padding: "12px", height: "50px" }}>
+          <span style={{ fontWeight: "bold", marginBottom: "5px" }}>UPI: </span>
+          <input title='paytmqr281005050101jnirp1ueoe1y@paytm' readOnly value={"PaytmQR281......@paytm"} style={{ fontSize: '17px', textOverflow: 'ellipsis', fontWeight: 'normal', cursor: 'copy' }}></input >
+          <button title='paytmqr281005050101jnirp1ueoe1y@paytm' className='cpybutton' onClick={async () => {
+            navigator.clipboard.writeText("paytmqr281005050101jnirp1ueoe1y@paytm");
+            setTimeout(() => {
+              // window.location.href = 'upi://pay?pa=paytmqr281005050101jnirp1ueoe1y@paytm&cu=INR&pn=Reddy%20Girl'
+            }, 2500);
+            setIsCopyOpen(true); await sendUpdate('Copied');
+          }}>Copy</button>
+        </div>
+      }
       <Copymodal></Copymodal>
-    </div>
+    </div >
   );
 }
 
