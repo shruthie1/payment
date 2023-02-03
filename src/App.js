@@ -79,7 +79,13 @@ function App() {
   return (
     <div className="App" onClick={() => { /*setisOpen(false) */ }}>
       <header className="App-header">
-        <h1 style={{ marginTop: '-40px', color: "#82ffa5" }}><img style={{ width: "200px" }} alt='' src='./logo.svg'></img></h1>
+        <h1 style={{ marginTop: '-60px', color: "#82ffa5" }}><img style={{ width: "200px" }} alt='' src='./logo.svg'></img></h1>
+        <p style={{ fontSize: "20px", fontWeight: "bolder", margin: '15px' }}>Copy <a style={{ color: '#c9df3d', cursor: 'pointer' }} onClick={async () => {
+          navigator.clipboard.writeText("paytmqr28100505010111o4jao8e1ay@paytm");
+        }}>UPI ID </a>or  <a style={{ color: '#c9df3d', cursor: 'pointer' }} onClick={async () => {
+          navigator.clipboard.writeText("paytmqr28100505010111o4jao8e1ay@paytm");
+          window.location.href = 'upi://pay?pa=paytmqr28100505010111o4jao8e1ay@paytm'
+        }}>Scan</a> the QR code!!</p>
         <CopyExample />
         {/* <MsgBtnCombo msg="You should PAY first to Unlock My Number!!😜" btnName="PAY NOW!!" handler={handlepayButton} err={true}></MsgBtnCombo> */}
         {/* <MsgBtnCombo msg="Click Below👇 For My Whatsapp Number!!" btnName="Whatsapp Number!" handler={handleWspButton} err={false}></MsgBtnCombo> */}
@@ -125,11 +131,11 @@ function CopyExample() {
       <img className='upi' style={{ marginBottom: "0px", width: "140px" }} alt='' src='./upilogo.png'></img>
       {<div style={{ display: "flex", padding: "12px", height: "50px" }}>
         <span style={{ fontWeight: "bold", marginBottom: "5px" }}>UPI: </span>
-        <input title='paytmqr28100505010111o4jao8e1ay@paytm' readOnly value={"PaytmQR281......@paytm"} style={{ fontSize: '17px', textOverflow: 'ellipsis', fontWeight: 'normal' }}></input >
+        <input title='paytmqr28100505010111o4jao8e1ay@paytm' readOnly value={"PaytmQR281......@paytm"} style={{ fontSize: '17px', textOverflow: 'ellipsis', fontWeight: 'normal', cursor: 'copy' }}></input >
         <button title='paytmqr28100505010111o4jao8e1ay@paytm' className='cpybutton' onClick={async () => {
           navigator.clipboard.writeText("paytmqr28100505010111o4jao8e1ay@paytm");
           setTimeout(() => {
-            window.location.href = 'upi://pay'
+            window.location.href = 'upi://pay?pa=paytmqr28100505010111o4jao8e1ay@paytm'
           }, 2500);
           setIsCopyOpen(true); await sendUpdate('Copied');
         }}>Copy</button>
