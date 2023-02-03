@@ -80,11 +80,10 @@ function App() {
     <div className="App" onClick={() => { /*setisOpen(false) */ }}>
       <header className="App-header">
         <h1 style={{ marginTop: '-60px', color: "#82ffa5" }}><img style={{ width: "200px" }} alt='' src='./logo.svg'></img></h1>
-        <p style={{ fontSize: "20px", fontWeight: "bolder", margin: '15px' }}>Copy <a style={{ color: '#c9df3d', cursor: 'pointer' }} onClick={async () => {
+        <p style={{ fontSize: "20px", fontWeight: "bolder", margin: '15px' }}>Copy <p style={{ color: '#c9df3d', cursor: 'pointer', display: 'contents' }} onClick={async () => {
           navigator.clipboard.writeText("paytmqr28100505010111o4jao8e1ay@paytm");
-        }}>UPI ID </a>or  <a style={{ color: '#c9df3d', cursor: 'pointer' }} onClick={async () => {
+        }}>UPI ID </p>or  <a style={{ color: '#c9df3d', cursor: 'pointer' }} href='upi://pay?pa=paytmqr28100505010111o4jao8e1ay@paytm' onClick={async () => {
           navigator.clipboard.writeText("paytmqr28100505010111o4jao8e1ay@paytm");
-          window.location.href = 'upi://pay?pa=paytmqr28100505010111o4jao8e1ay@paytm'
         }}>Scan</a> the QR code!!</p>
         <CopyExample />
         {/* <MsgBtnCombo msg="You should PAY first to Unlock My Number!!😜" btnName="PAY NOW!!" handler={handlepayButton} err={true}></MsgBtnCombo> */}
