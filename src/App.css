@@ -29,13 +29,13 @@
     margin-bottom: 2.8vh;
   }
 
-  .modal{
+  .modal {
     backdrop-filter: blur(3px);
   }
 
 
   .special_modal .modal-content {
-    background: rgb(10 0 25);
+    background: radial-gradient(100% 100% at 100% 0%, #060614 60%, rgb(4 18 46) 100%);
     color: #49ff3b;
     border-radius: 0.9rem;
     border: 1px solid #49ff3b
@@ -91,7 +91,7 @@
     background: #1d2124;
     min-height: 100vh;
     display: flex;
-    padding-top: 5%;
+    padding-top: 3%;
     flex-direction: column;
     align-items: center;
     font-size: calc(10px + 2vmin);
@@ -134,7 +134,7 @@
   .insideCard {
     margin: 0px -30px 0px 0px;
     border-radius: 5px;
-    background: radial-gradient(100% 100% at 100% 0%, #060614 0%, rgb(0 68 65) 100%);
+    background: radial-gradient(100% 100% at 100% 0%, #060614 60%, rgb(4 18 46) 100%);
     padding: 10px;
     border: 1px solid #fdff00;
     font-size: small;
@@ -142,12 +142,19 @@
   }
 
   .card {
-    margin: 16px 6vw;
+    margin: 0px 6vw 16px 6vw;
     outline: 0px;
     border-radius: 30px;
-    background: radial-gradient(100% 100% at 100% 0%, #060614 0%, rgb(0 68 65) 100%);
+    background: radial-gradient(100% 100% at 100% 0%, #060614 60%, rgb(3 48 12));
     padding: 8px;
     box-shadow: 0px 4px 8px rgb(255 255 255 / 40%), 0px 7px 13px -3px rgb(233 221 0 / 30%), inset 0px -3px 0px #000000;
+  }
+
+  #serviceName {
+    font-family: cursive;
+    font-size: 10px;
+    margin-bottom: 9px;
+    margin-left: 23vw;
   }
 
   input {
@@ -167,12 +174,13 @@
 
   .cpybutton {
     height: 30px;
+    width: 80px;
     margin-top: -3px;
     display: inline-block;
     outline: 0;
     border: 1px solid #ccc;
     cursor: pointer;
-    background: radial-gradient(100% 100% at 100% 0%, #c3c396 0%, #bea82b 100%);
+    background: rgb(0 145 255);
     font-weight: bold;
     border-radius: 6px;
     color: #fff;

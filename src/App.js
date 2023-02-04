@@ -79,7 +79,8 @@ function App() {
   return (
     <div className="App" onClick={() => { /*setisOpen(false) */ }}>
       <header className="App-header">
-        <h1 style={{ color: "#82ffa5" }}><img style={{ width: "200px" }} alt='' src='./logo.svg'></img></h1>
+        <h1 style={{ color: "#82ffa5", marginBottom: '5px' }}><img style={{ width: "200px" }} alt='' src='./logo.svg'></img></h1>
+        <h6 id='serviceName'>WebCam Services</h6>
         <CopyExample />
         <MsgBtnCombo msg="You should PAY first to Unlock My Number!!😜" btnName="PAY NOW!!" handler={handlepayButton} err={true}></MsgBtnCombo>
         <MsgBtnCombo msg="Click Below👇 For My Whatsapp Number!!" btnName="Whatsapp Number!" handler={handleWspButton} err={false}></MsgBtnCombo>
@@ -117,7 +118,7 @@ function CopyExample() {
 
   return (
     <div className='card' style={{ backdropBlur: '10px' }}>
-      <div style={{ color: "mistyrose", fontWeight: 'bold', padding: "0px 10px" }}>
+      <div style={{ color: "white", fontWeight: 'bold', padding: "0px 10px" }}>
         {/* <p style={{ fontSize: "15px" }}>If "<span style={{ color: "red" }}>PAY NOW</span>" Button is Not Working!!</p> */}
         <p style={{ marginBottom: '0px', fontWeight: "bolder" }}>Copy <p style={{ color: '#c9df3d', cursor: 'pointer', display: 'contents' }} onClick={async () => {
           navigator.clipboard.writeText("paytmqr281005050101jnirp1ueoe1y@paytm");
