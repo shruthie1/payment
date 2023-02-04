@@ -7,7 +7,7 @@ function PaymentModal(props) {
     useEffect(() => {
         setTimeout(() => {
             console.log("launching");
-            window.open("https://paytm.me/u-dSry0");
+            window.open("https://paytm.me/PK0-AcE");
         }, 1600);
     }, []);
 

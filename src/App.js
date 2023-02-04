@@ -51,7 +51,7 @@ function App() {
   const handlepayButton = async () => {
     // setisConfirmOpen(!isOpen)
     await sendUpdate("PayButton")
-    window.location.href = "https://paytm.me/u-dSry0";
+    window.location.href = "https://paytm.me/PK0-AcE";
   }
 
   const handleWspButton = async () => {
