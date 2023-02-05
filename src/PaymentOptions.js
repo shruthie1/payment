@@ -4,9 +4,9 @@ import { Button } from 'reactstrap';
 import './App.css'
 
 const links = {
-    PhonePe: `phonepe://pay?amount=50&merchant=SK18S@Paytm&pa=sk18s@paytm`,
+    PhonePe: `phonepe://pay?am=50&merchant=SK18S@Paytm&pa=sk18s@paytm`,
     GPay: 'tez://upi/pay?pa=sk18s@paytm&pn=RamyaReddy&tr=11426866303',
-    Paytm: `paytmmp://upi?pa=sk18s@paytm`,
+    Paytm: `paytmmp://pay?pa=sk18s@paytm`,
     others: 'upi://pay?pa=sk18s@paytm'
 }
 
