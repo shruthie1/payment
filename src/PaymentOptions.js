@@ -89,7 +89,7 @@ const PaymentOptions = (props) => {
             </form >
 
             {/* <p>Selected option: {selectedOption}</p> */}
-            <Button color='success' style={{ marginTop: '10px', borderRadius: '0 0 12px 12px', width: '100%', fontWeight: 'bolder' }} onClick={() => {
+            <Button color='success' style={{ marginTop: '10px', borderRadius: '0 0 12px 12px', width: '100%', fontWeight: 'bolder', height: '50px' }} onClick={() => {
                 window.open(links[selectedOption], '_self');
             }}>{props.isPay ? 'Pay Now' : 'Open APP'} ({seconds})</Button>
 

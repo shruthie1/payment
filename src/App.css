@@ -39,6 +39,7 @@
     border-radius: 0.9rem;
     border: 1px solid #49ff3b
   }
+
   .special_modal2 .modal-content {
     background: radial-gradient(100% 100% at 100% 0%, #060614 60%, rgb(4 18 46) 100%);
     border-radius: 0.9rem;
@@ -209,8 +210,8 @@
   .paymentform div {
     justify-content: left;
     display: flex;
-    height: 40px;
-    padding-left: 18%;
+    height: 50px;
+    padding-left: 14%;
   }
 
   .paymentOption h6 {
