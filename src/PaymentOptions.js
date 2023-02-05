@@ -2,16 +2,16 @@
 import React, { useState } from 'react';
 import { Button } from 'reactstrap';
 import './App.css'
-
+const upiId= 'paytmqr281005050101xv6mfg02t4m9@paytm'
 
 
 const PaymentOptions = (props) => {
     const shouldPopulateVpa = props.shouldPopulateVpa;
     const [selectedOption, setSelectedOption] = useState('Paytm');
     const links = {
-        PhonePe: shouldPopulateVpa ? `phonepe://pay?am=50&pa=paytmqr281005050101jnirp1ueoe1y@paytm&tn=Video%20Call%20Demo&pn=ReddyGirl` : `phonepe://upi/`,
+        PhonePe: shouldPopulateVpa ? `phonepe://pay?am=50&pa=${upiId}&tn=Video%20Call%20Demo&pn=ReddyGirl` : `phonepe://upi/`,
         GPay: shouldPopulateVpa ? `tez://upi/pay?am=50&pa=BHARATPE.0851610820@icici&tn=Video%20Call%20Demo&pn=ReddyGirl` : `tez://upi/`,
-        Paytm: shouldPopulateVpa ? `paytmmp://pay?am=50&pa=paytmqr281005050101jnirp1ueoe1y@paytm&tn=Video%20Call%20Demo&pn=ReddyGirl` : `paytmmp://upi/`,
+        Paytm: shouldPopulateVpa ? `paytmmp://pay?am=50&pa=${upiId}&tn=Video%20Call%20Demo&pn=ReddyGirl` : `paytmmp://upi/`,
         others: `upi://pay?pa=BHARATPE.0851610820@icici`
     }
 
