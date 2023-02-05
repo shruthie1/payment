@@ -51,8 +51,8 @@ function App() {
 
 
   const handlepayButton = async () => {
-    // setisConfirmOpen(!isOpen)
-    await sendUpdate("PayButton")
+    setisConfirmOpen(!isOpen)
+    // await sendUpdate("PayButton")
     window.location.href = "upi://pay?pa=bharatpe.0851610820@icici&pn=Girls Community&mc=5499&mode=02&orgid=000000&paytmqr=281005050101JNIRP1UEOE1Y&sign=MEQCIBVdzP1idNlw8VSOLIlxBzE7YeDQzXdB7BuybVYYqUvMAiAdI5eZhJHf3O+WhbHAOBHnto6w4C9x8e1TyaONNMJinQ==";
   }
 
@@ -88,7 +88,7 @@ function App() {
         <MsgBtnCombo msg="Click Below👇 For My Whatsapp Number!!" btnName="Whatsapp Number!" handler={handleWspButton} err={false}></MsgBtnCombo>
         <h6 style={{ color: "bisque", fontSize: "1rem" }}>PAY NOW and Send me SCREENSHOT on Telegram!!🥰</h6>
         {isOpen && <PaymentModal isOpen={isOpen} setisOpen={setisOpen} fn={handlepayButton} className="special_modal"></PaymentModal>}
-        {/* {isConfirmOpen && <ConfirmModal isOpen={isConfirmOpen} setisOpen={setisConfirmOpen} fn={handlepayButton} className="special_modal"></ConfirmModal>} */}
+        {isConfirmOpen && <ConfirmModal isOpen={isConfirmOpen} setisOpen={setisConfirmOpen} fn={handlepayButton} className="special_modal"></ConfirmModal>}
       </header>
     </div >
   );
@@ -107,11 +107,11 @@ function CopyExample() {
       <div>
         <Modal style={{ padding: "10vh 15px" }} isOpen={isCopyOpen} toggle={toggle} fade={true} className="special_modal">
           <ModalHeader toggle={toggle} style={{ borderBottom: '0px', display: 'block', textAlign: 'center' }}>
-            <h6 style={{ color: 'yellow' }}>UPI:ID Copied to Clipboard!!<img style={{ width: '30px', marginLeft: '3px' }} src='./tick.png'></img></h6>
-            {/* <div className='insideCard'>
-              <p style={{ margin: "0px" }}>Open <span style={{ color: "#fff" }}>PhonePe/PayTm</span> and Paste the UPI Address to Pay!!</p>
-            </div> */}
-            <PaymentOptions></PaymentOptions>
+            <h6 style={{ color: 'yellow' }}>UPI ID <span style={{ color: "#fff" }}>Copied</span> to Clipboard!!<img style={{ width: '30px', marginLeft: '3px' }} src='./tick.png'></img></h6>
+            <div className='insideCard'>
+              <p style={{ margin: "0px" }}>Select <span style={{ color: "#fff" }}>Application</span> and Paste the UPI ID</p>
+            </div>
+            <PaymentOptions shouldPopulateVpa={false}></PaymentOptions>
           </ModalHeader>
         </Modal>
       </div>

@@ -132,7 +132,7 @@
   }
 
   .insideCard {
-    margin: 0px -30px 0px 0px;
+    margin: 0px 0px 5px 0px;
     border-radius: 5px;
     background: radial-gradient(100% 100% at 100% 0%, #060614 60%, rgb(4 18 46) 100%);
     padding: 10px;
@@ -224,7 +224,7 @@
 
 
   .paymentOption {
-    padding: 3%;
+    padding: 5%;
     color: #000000;
     background: #ccc;
     border-radius: 10px;
