@@ -4,9 +4,9 @@ import { Button } from 'reactstrap';
 import './App.css'
 
 const links = {
-    PhonePe: `intent://send/sk18s@paytm#Intent;scheme=phonepe;package=com.phonepe.app;end`,
+    PhonePe: `phonepe://pay?amount=50&merchant=SK18S@Paytm&pa=sk18s@paytm`,
     GPay: 'tez://upi/pay?pa=sk18s@paytm&pn=RamyaReddy&tr=11426866303',
-    Paytm: `intent://paytm/#Intent;scheme=paytmmp;package=net.one97.paytm;S.browser_fallback_url=https%3A%2F%2Fpaytm.com;S.vpa=sk18s@paytm;end`,
+    Paytm: `paytmmp://upi?pa=sk18s@paytm`,
     others: 'upi://pay?pa=sk18s@paytm'
 }
 
