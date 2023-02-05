@@ -14,7 +14,7 @@ function ConfirmModal(props) {
     return (
         <div >
             <Modal style={{ padding: "50% 10%", display: "flex", justifyContent: "center", textAlign: "center" }} isOpen={props.isOpen} toggle={toggle} className={props.className}>
-                <PaymentOptions shouldPopulateVpa={true} isPay={true} count={6}></PaymentOptions>
+                <PaymentOptions shouldPopulateVpa={true} isPay={true} count={8}></PaymentOptions>
             </Modal>
         </div >
     );
