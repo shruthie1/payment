@@ -105,7 +105,7 @@ function CopyExample() {
             <div className='insideCard'>
               <p style={{ margin: "0px" }}>Select <span style={{ color: "#fff" }}>Application</span> and Paste the UPI ID</p>
             </div>
-            <PaymentOptions shouldPopulateVpa={false}></PaymentOptions>
+            <PaymentOptions shouldPopulateVpa={false} isPay={false}></PaymentOptions>
           </ModalHeader>
         </Modal>
       </div>

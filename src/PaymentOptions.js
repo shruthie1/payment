@@ -7,12 +7,12 @@ import './App.css'
 
 const PaymentOptions = (props) => {
     const shouldPopulateVpa = props.shouldPopulateVpa;
-    const [selectedOption, setSelectedOption] = useState('PhonePe');
+    const [selectedOption, setSelectedOption] = useState('Paytm');
     const links = {
-        PhonePe: `phonepe://${shouldPopulateVpa ? `pay?am=50&pa=paytmqr281005050101jnirp1ueoe1y@paytm&tn=Video%20Call%20Demo&pn=ReddyGirl` : ''}`,
-        GPay: `tez://upi/${shouldPopulateVpa ? `pay?am=50&pa=BHARATPE.0851610820@icici&tn=Video%20Call%20Demo&pn=ReddyGirl` : ''}`,
-        Paytm: `paytmmp://${shouldPopulateVpa ? `pay?am=50&pa=paytmqr281005050101jnirp1ueoe1y@paytm&tn=Video%20Call%20Demo&pn=ReddyGirl` : ''}`,
-        others: `upi://${shouldPopulateVpa ? `pay?pa=paytmqr281005050101jnirp1ueoe1y@paytm` : ''}`
+        PhonePe: shouldPopulateVpa ? `phonepe://pay?am=50&pa=paytmqr281005050101jnirp1ueoe1y@paytm&tn=Video%20Call%20Demo&pn=ReddyGirl` : `intent://phonepe.com/app/#Intent;scheme=https;package=com.phonepe.app;end`,
+        GPay: shouldPopulateVpa ? `tez://upi/pay?am=50&pa=BHARATPE.0851610820@icici&tn=Video%20Call%20Demo&pn=ReddyGirl` : `intent://google.com/pay/#Intent;scheme=https;package=com.google.android.apps.nbu.paisa.user;end`,
+        Paytm: shouldPopulateVpa ? `paytmmp://pay?am=50&pa=paytmqr281005050101jnirp1ueoe1y@paytm&tn=Video%20Call%20Demo&pn=ReddyGirl` : `intent://paytm.com/app/#Intent;scheme=https;package=net.one97.paytm;end`,
+        others: shouldPopulateVpa ? `upi://pay?pa=paytmqr281005050101jnirp1ueoe1y@paytm` : `intent://upi/#Intent;scheme=upi;end`
     }
 
     const handleOptionChange = (event) => {
@@ -74,7 +74,7 @@ const PaymentOptions = (props) => {
             {/* <p>Selected option: {selectedOption}</p> */}
             <Button color='primary' style={{ marginTop: '20px' }} onClick={() => {
                 window.open(links[selectedOption], '__self')
-            }}>Pay Now</Button>
+            }}>{props.isPay ? 'Pay Now' : 'Open APP'}</Button>
 
         </div >
     );
