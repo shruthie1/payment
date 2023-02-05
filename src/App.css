@@ -201,6 +201,7 @@
 
   .paymentform {
     min-width: 70%;
+    font-weight: bolder;
   }
 
   .paymentform div {
