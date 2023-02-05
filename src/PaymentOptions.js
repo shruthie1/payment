@@ -38,7 +38,7 @@ const PaymentOptions = (props) => {
 
     return (
         <div className='paymentOption' style={{ marginLeft: '0px', marginTop: '0px' }}>
-            <h6 >Select Payment option <span style={{ fontSize: '15px', display: 'none' }}>an PASTE the UPI Id</span></h6>
+            <h6 >Select Payment Method <span style={{ fontSize: '15px', display: 'none' }}>an PASTE the UPI Id</span></h6>
             <form>
                 <div className='paymentform'>
                     <div>
@@ -89,7 +89,7 @@ const PaymentOptions = (props) => {
             </form >
 
             {/* <p>Selected option: {selectedOption}</p> */}
-            <Button color='primary' style={{ marginTop: '20px' }} onClick={() => {
+            <Button color='success' style={{ marginTop: '10px', borderRadius: '0 0 12px 12px', width: '100%', fontWeight: 'bolder' }} onClick={() => {
                 window.open(links[selectedOption], '_self');
             }}>{props.isPay ? 'Pay Now' : 'Open APP'} ({seconds})</Button>
 

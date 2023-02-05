@@ -80,7 +80,7 @@ function App() {
         <MsgBtnCombo msg="Click Below👇 For My Whatsapp Number!!" btnName="Whatsapp Number!" handler={handleWspButton} err={false}></MsgBtnCombo>
         <h6 style={{ color: "bisque", fontSize: "1rem" }}>PAY NOW and Send me SCREENSHOT on Telegram!!🥰</h6>
         <WhatsappModal isOpen={isWhatsappOpen} setisOpen={setIsWhatsappOpen} togglePay={togglePay} className="special_modal"></WhatsappModal>
-        <PaymentModal isOpen={isPaymentOpen} setisOpen={setIsPaymentOpen} className="special_modal"></PaymentModal>
+        <PaymentModal isOpen={isPaymentOpen} setisOpen={setIsPaymentOpen} className="special_modal2"></PaymentModal>
       </header>
     </div >
   );
