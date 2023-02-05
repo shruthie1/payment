@@ -37,11 +37,11 @@ const PaymentOptions = (props) => {
     };
 
     return (
-        <div className='paymentOption' style={{ marginLeft: '0px', marginTop: '0px' }}>
+        <div className='paymentOption'>
             <h6 >Select Payment Method <span style={{ fontSize: '15px', display: 'none' }}>an PASTE the UPI Id</span></h6>
             <form>
                 <div className='paymentform'>
-                    <div>
+                    <div >
                         <input
                             type="radio"
                             id="PhonePe"
@@ -52,7 +52,7 @@ const PaymentOptions = (props) => {
                         <label htmlFor="PhonePe"><img src='./phonepe.png'></img></label>
                     </div>
 
-                    <div>
+                    <div style={{ background: '#efefef' }}>
                         <input
                             type="radio"
                             id="Paytm"
@@ -73,7 +73,7 @@ const PaymentOptions = (props) => {
                         />
                         <label htmlFor="GPay"><img src='./gpay.png'></img></label>
                     </div>
-                    <div>
+                    <div style={{ background: '#efefef' }}>
                         <input
                             type="radio"
                             id="others"
