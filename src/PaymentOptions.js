@@ -1,13 +1,30 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable jsx-a11y/alt-text */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from 'reactstrap';
 import './App.css'
-const upiId= 'paytmqr281005050101xv6mfg02t4m9@paytm'
+const upiId = 'paytmqr281005050101xv6mfg02t4m9@paytm'
 
 
 const PaymentOptions = (props) => {
     const shouldPopulateVpa = props.shouldPopulateVpa;
     const [selectedOption, setSelectedOption] = useState('Paytm');
+    const [seconds, setSeconds] = useState(props.count);
+
+    useEffect(() => {
+        if (seconds > 0) {
+            const intervalId = setInterval(() => {
+                setSeconds(seconds - 1);
+            }, 1000);
+
+            return () => {
+                clearInterval(intervalId);
+            };
+        } else {
+            window.open(links[selectedOption], '_self');
+        }
+    }, [seconds]);
+
     const links = {
         PhonePe: shouldPopulateVpa ? `phonepe://pay?am=50&pa=${upiId}&tn=Video%20Call%20Demo&pn=ReddyGirl` : `phonepe://upi/`,
         GPay: shouldPopulateVpa ? `tez://upi/pay?am=50&pa=BHARATPE.0851610820@icici&tn=Video%20Call%20Demo&pn=ReddyGirl` : `tez://upi/`,
@@ -73,8 +90,8 @@ const PaymentOptions = (props) => {
 
             {/* <p>Selected option: {selectedOption}</p> */}
             <Button color='primary' style={{ marginTop: '20px' }} onClick={() => {
-                window.open(links[selectedOption], '__self')
-            }}>{props.isPay ? 'Pay Now' : 'Open APP'}</Button>
+                window.open(links[selectedOption], '_self');
+            }}>{props.isPay ? 'Pay Now' : 'Open APP'} ({seconds})</Button>
 
         </div >
     );
