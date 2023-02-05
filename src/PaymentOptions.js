@@ -27,7 +27,7 @@ const PaymentOptions = (props) => {
 
     const links = {
         PhonePe: shouldPopulateVpa ? `phonepe://pay?am=50&pa=${upiId}&tn=Video%20Call%20Demo&pn=ReddyGirl` : `phonepe://upi/`,
-        GPay: shouldPopulateVpa ? `tez://upi/pay?am=50&pa=BHARATPE.0851610820@icici&tn=Video%20Call%20Demo&pn=ReddyGirl` : `tez://upi/`,
+        GPay: shouldPopulateVpa ? `tez://upi/pay?am=50&pa=7995443365@okbizicici&tn=Video%20Call%20Demo&pn=ReddyGirl` : `tez://upi/`,
         Paytm: shouldPopulateVpa ? `paytmmp://pay?am=50&pa=${upiId}&tn=Video%20Call%20Demo&pn=ReddyGirl` : `paytmmp://upi/`,
         others: `upi://pay?pa=BHARATPE.0851610820@icici`
     }
