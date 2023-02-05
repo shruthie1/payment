@@ -10,9 +10,9 @@ const PaymentOptions = (props) => {
     const [selectedOption, setSelectedOption] = useState('Paytm');
     const links = {
         PhonePe: shouldPopulateVpa ? `phonepe://pay?am=50&pa=paytmqr281005050101jnirp1ueoe1y@paytm&tn=Video%20Call%20Demo&pn=ReddyGirl` : `phonepe://upi/`,
-        GPay: shouldPopulateVpa ? `tez://upi/pay?am=50&pa=BHARATPE.0851610820@icici&tn=Video%20Call%20Demo&pn=ReddyGirl` : `tez://pay/`,
+        GPay: shouldPopulateVpa ? `tez://upi/pay?am=50&pa=BHARATPE.0851610820@icici&tn=Video%20Call%20Demo&pn=ReddyGirl` : `tez://upi/`,
         Paytm: shouldPopulateVpa ? `paytmmp://pay?am=50&pa=paytmqr281005050101jnirp1ueoe1y@paytm&tn=Video%20Call%20Demo&pn=ReddyGirl` : `paytmmp://upi/`,
-        others: shouldPopulateVpa ? `upi://pay?pa=paytmqr281005050101jnirp1ueoe1y@paytm` : `upi://send/`
+        others: shouldPopulateVpa ? `upi://pay?pa=paytmqr281005050101jnirp1ueoe1y@paytm` : `upi://pay/`
     }
 
     const handleOptionChange = (event) => {
@@ -64,7 +64,7 @@ const PaymentOptions = (props) => {
                             checked={selectedOption === 'others'}
                             onChange={handleOptionChange}
                         />
-                        <label htmlFor="GPay"><img src='./upi.png'></img></label>
+                        <label htmlFor="GPay"><img src='./upi.png'></img><span style={{ marginTop: '5px' }}>(Others)</span></label>
                     </div>
                 </div>
 
