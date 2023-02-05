@@ -197,3 +197,50 @@
     box-shadow: inset 0px 3px 7px #575e92;
     transform: translateY(2px);
   }
+
+  .paymentform {
+    min-width: 70%;
+  }
+
+  .paymentform div {
+    justify-content: left;
+    display: flex;
+    height: 40px;
+  }
+
+  .paymentOption h6 {
+    color: #000000;
+  }
+
+  .paymentOption img {
+    width: 100%;
+  }
+
+  .paymentOption form {
+    justify-content: center;
+    display: inline-flex;
+    min-width: 100%;
+  }
+
+
+  .paymentOption {
+    padding: 3%;
+    color: #000000;
+    background: #ccc;
+    border-radius: 10px;
+    text-align: center;
+  }
+
+  .paymentOption input {
+    width: 13%;
+    padding-left: 3%;
+  }
+
+  .paymentOption label {
+    display: inline-flex;
+    margin: 0%;
+  }
+
+  .modal-header .close {
+    display: none
+  }

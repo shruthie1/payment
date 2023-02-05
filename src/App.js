@@ -1,9 +1,11 @@
+/* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable no-unused-vars */
 import './App.css';
 import React, { useEffect, useState } from 'react';
 import { Modal, ModalHeader } from 'reactstrap';
 import PaymentModal from './modal';
 import ConfirmModal from './confirm';
+import PaymentOptions from './PaymentOptions';
 
 let ip = 'Not Found'
 
@@ -104,11 +106,12 @@ function CopyExample() {
     return (
       <div>
         <Modal style={{ padding: "10vh 15px" }} isOpen={isCopyOpen} toggle={toggle} fade={true} className="special_modal">
-          <ModalHeader toggle={toggle} style={{ borderBottom: '0px' }}>
-            <p style={{ fontSize: "15px" }}>UPI Address Copied to Clipboard!!</p>
-            <div className='insideCard'>
+          <ModalHeader toggle={toggle} style={{ borderBottom: '0px', display: 'block', textAlign: 'center' }}>
+            <h6 style={{ color: 'yellow' }}>UPI:ID Copied to Clipboard!!<img style={{ width: '30px', marginLeft: '3px' }} src='./tick.png'></img></h6>
+            {/* <div className='insideCard'>
               <p style={{ margin: "0px" }}>Open <span style={{ color: "#fff" }}>PhonePe/PayTm</span> and Paste the UPI Address to Pay!!</p>
-            </div>
+            </div> */}
+            <PaymentOptions></PaymentOptions>
           </ModalHeader>
         </Modal>
       </div>
@@ -138,7 +141,8 @@ function CopyExample() {
             setTimeout(() => {
               // window.location.href = 'upi://pay?pa=paytmqr281005050101jnirp1ueoe1y@paytm&cu=INR&pn=Reddy%20Girl'
             }, 2500);
-            setIsCopyOpen(true); await sendUpdate('Copied');
+            setIsCopyOpen(true);
+            // await sendUpdate('Copied');
           }}>Copy</button>
         </div>
       }
