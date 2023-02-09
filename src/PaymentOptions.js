@@ -1,15 +1,15 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable jsx-a11y/alt-text */
 import React, { useState, useEffect } from 'react';
-import { Button } from 'reactstrap';
 import './App.css'
 const upiId = 'paytmqr281005050101xv6mfg02t4m9@paytm'
 
 
 const PaymentOptions = (props) => {
     const shouldPopulateVpa = props.shouldPopulateVpa;
-    const [selectedOption, setSelectedOption] = useState('Paytm');
+    const [selectedOption, setSelectedOption] = useState('PhonePe');
     const [seconds, setSeconds] = useState(props.count);
+    const amount = (props.amount !== 'others') ? props.amount : undefined
 
     useEffect(() => {
         if (seconds > 0) {
@@ -26,9 +26,9 @@ const PaymentOptions = (props) => {
     }, [seconds]);
 
     const links = {
-        PhonePe: shouldPopulateVpa ? `phonepe://pay?am=50&pa=${upiId}&tn=Video%20Call%20Demo&pn=ReddyGirl` : `phonepe://upi/`,
-        GPay: shouldPopulateVpa ? `tez://upi/pay?am=50&pa=BHARATPE.0851610820@icici&tn=Video%20Call%20Demo&pn=ReddyGirl` : `tez://upi/`,
-        Paytm: shouldPopulateVpa ? `paytmmp://pay?am=50&pa=${upiId}&tn=Video%20Call%20Demo&pn=ReddyGirl` : `paytmmp://upi/`,
+        PhonePe: shouldPopulateVpa ? `phonepe://pay?pa=${upiId}&tn=Video%20Call%20Demo&pn=${process.env.REACT_APP_USERNAME}${amount ? `&am=${amount}` : ''}` : `phonepe://upi/`,
+        GPay: shouldPopulateVpa ? `tez://upi/pay?pa=BHARATPE.0851610820@icici&tn=Video%20Call%20Demo&pn=${process.env.REACT_APP_USERNAME}${amount ? `&am=${amount}` : ''}` : `tez://upi/`,
+        Paytm: shouldPopulateVpa ? `paytmmp://pay?pa=${upiId}&tn=Video%20Call%20Demo&pn=${process.env.REACT_APP_USERNAME}${amount ? `&am=${amount}` : ''}` : `paytmmp://upi/`,
         others: `upi://pay?pa=BHARATPE.0851610820@icici`
     }
 
@@ -89,9 +89,9 @@ const PaymentOptions = (props) => {
             </form >
 
             {/* <p>Selected option: {selectedOption}</p> */}
-            <Button color='success' style={{ marginTop: '10px', borderRadius: '0 0 12px 12px', width: '100%', fontWeight: 'bolder', height: '50px' }} onClick={() => {
+            <button style={{ background: '#54b454', border: '0px', color: 'white', marginTop: '10px', borderRadius: '0 0 12px 12px', width: '100%', fontWeight: 'bolder', height: '50px' }} onClick={() => {
                 window.open(links[selectedOption], '_self');
-            }}>{props.isPay ? 'Pay Now' : 'Open APP'} ({seconds})</Button>
+            }}>{props.isPay ? 'Pay Now' : 'Open APP'} ({seconds})</button>
 
         </div >
     );

@@ -36,13 +36,13 @@
   .special_modal .modal-content {
     background: radial-gradient(100% 100% at 100% 0%, #060614 60%, rgb(4 18 46) 100%);
     color: #49ff3b;
-    border-radius: 0.9rem;
+    border-radius: 30px;
     border: 1px solid #49ff3b
   }
 
   .special_modal2 .modal-content {
     background: radial-gradient(100% 100% at 100% 0%, #060614 60%, rgb(4 18 46) 100%);
-    border-radius: 0.9rem;
+    border-radius: 30px;
   }
 
   .special_modal {
@@ -146,7 +146,7 @@
   }
 
   .card {
-    margin: 0px 6vw 16px 6vw;
+    margin: 0px;
     outline: 0px;
     border-radius: 30px;
     background: radial-gradient(100% 100% at 100% 0%, #060614 60%, rgb(3 48 12));

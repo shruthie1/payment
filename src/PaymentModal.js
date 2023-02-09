@@ -2,7 +2,8 @@
 
 import React from 'react';
 import { Modal } from 'reactstrap';
-import PaymentOptions from './PaymentOptions';
+// import PaymentOptions from './PaymentOptions';
+import PaymentSelect from './paymentSelect';
 
 function ConfirmModal(props) {
 
@@ -13,8 +14,8 @@ function ConfirmModal(props) {
 
     return (
         <div >
-            <Modal style={{ padding: "50% 10%", display: "flex", justifyContent: "center", textAlign: "center" }} isOpen={props.isOpen} toggle={toggle} className={props.className}>
-                <PaymentOptions shouldPopulateVpa={true} isPay={true} count={8}></PaymentOptions>
+            <Modal style={{ padding: "30% 10%", display: "flex", justifyContent: "center", textAlign: "center" }} isOpen={props.isOpen} toggle={toggle} className={props.className}>
+                <PaymentSelect shouldPopulateVpa={true} isPay={true} count={8}></PaymentSelect>
             </Modal>
         </div >
     );
