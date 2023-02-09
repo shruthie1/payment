@@ -27,7 +27,7 @@ const ProfileCard = () => {
                     />
                 </div>
                 <div style={{ marginLeft: "20px", textAlign: "left" }} className='ptext'>
-                    <h3 style={{ fontFamily: "cursive", fontWeight: "bold", fontSize: '4.5vw', color: "#cee236" }}>{profile.name}</h3>
+                    <h3 style={{ fontFamily: 'Courgette', fontWeight: "bold", fontSize: '4.5vw', color: "#cee236" }}>{profile.name}</h3>
                     <p style={{ marginBottom: '0px', fontSize: '2.8vw' }}>Status:  <span style={{ fontWeight: "bold" }}>Verified</span><img style={{ marginLeft: '5px', width: '4.5vw', marginTop: '-1vw' }} alt="verified batch" src="./tick.png"></img></p>
                     <p style={{ marginBottom: '0px', fontSize: '3vw' }}>Age:  <span style={{ fontWeight: "bold" }}>{profile.age}</span></p>
                     <p style={{ marginBottom: '0px', fontSize: '3vw' }}>Telegram ID: <span style={{ fontWeight: "bold" }}>{profile.telegram}</span></p>
