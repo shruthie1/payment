@@ -20,7 +20,7 @@ const ProfileCard = () => {
                         src={profileImage}
                         alt="Profile"
                         style={{
-                            width: "22vw", height: "22vw", borderRadius: "75px", marginTop: '3vw',
+                            width: "25vw", height: "25vw", borderRadius: "100%", marginTop: '4vw',
                             boxShadow: '0 0 19px 6px #4a477e', border: '1px dotted #4e4e4e'
 
                         }}
@@ -28,11 +28,11 @@ const ProfileCard = () => {
                 </div>
                 <div style={{ marginLeft: "20px", textAlign: "left" }} className='ptext'>
                     <h3 style={{ fontFamily: 'Courgette', fontWeight: "bold", fontSize: '4.5vw', color: "#cee236" }}>{profile.name}</h3>
-                    <p style={{ marginBottom: '0px', fontSize: '2.8vw' }}>Status:  <span style={{ fontWeight: "bold" }}>Verified</span><img style={{ marginLeft: '5px', width: '4.5vw', marginTop: '-1vw' }} alt="verified batch" src="./tick.png"></img></p>
-                    <p style={{ marginBottom: '0px', fontSize: '3vw' }}>Age:  <span style={{ fontWeight: "bold" }}>{profile.age}</span></p>
-                    <p style={{ marginBottom: '0px', fontSize: '3vw' }}>Telegram ID: <span style={{ fontWeight: "bold" }}>{profile.telegram}</span></p>
-                    <p style={{ marginBottom: '0px', fontSize: '2.8vw' }}>Location:  <span style={{ fontWeight: "bold" }}>{profile.location}</span><img style={{ marginLeft: '5px', width: '3vw', marginTop: '-1vw' }} alt="Location Icon" src="./location.svg"></img></p>
-                    <p style={{ marginBottom: '0px', fontSize: '2.8vw' }}>
+                    <p style={{ marginBottom: '0px', fontSize: '3.5vw' }}>Status:  <span style={{ fontWeight: "bold" }}>Verified</span><img style={{ marginLeft: '5px', width: '5.5vw', marginTop: '-1vw' }} alt="verified batch" src="./tick.png"></img></p>
+                    <p style={{ marginBottom: '0px', fontSize: '3.5vw' }}>Age:  <span style={{ fontWeight: "bold" }}>{profile.age}</span></p>
+                    <p style={{ marginBottom: '0px', fontSize: '3.5vw' }}>Telegram ID: <span style={{ fontWeight: "bold" }}>{profile.telegram}</span></p>
+                    <p style={{ marginBottom: '0px', fontSize: '3.5vw' }}>Location:  <span style={{ fontWeight: "bold" }}>{profile.location}</span><img style={{ marginLeft: '5px', width: '3vw', marginTop: '-1vw' }} alt="Location Icon" src="./location.svg"></img></p>
+                    <p style={{ marginBottom: '0px', fontSize: '3.5vw' }}>
                         Phone:{" "}
                         <span style={{ fontWeight: "bold", color: '#cee236' }}>
                             {showPhoneNumber ? "XXX-XXX-XXX" : "PAY to Unlock"}{" "}

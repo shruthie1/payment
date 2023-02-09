@@ -26,8 +26,8 @@
   }
 
   .msgBtn {
-    margin-bottom: 1vh;
-    margin-top: 2vh;
+    margin-bottom: 3vh;
+    margin-top: 1.5vh;
   }
 
   .modal {
@@ -151,7 +151,7 @@
     border: 1px solid#a6a6a6;
     border-style: "groove";
     border-color: "#dcb600";
-    margin: 0px;
+    margin: 5vh 0px;
     min-width: 85%;
     outline: 0px;
     border-radius: 20px;
