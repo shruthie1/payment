@@ -2,7 +2,7 @@
 /* eslint react/no-multi-comp: 0, react/prop-types: 0 */
 
 import React, { useEffect, useState } from 'react';
-import { Button, Modal, ModalHeader } from 'reactstrap';
+import { Modal, ModalHeader } from 'reactstrap';
 
 function WhatsappModal(props) {
     const [seconds, setSeconds] = useState(6);
@@ -29,12 +29,14 @@ function WhatsappModal(props) {
 
     return (
         <div>
-            <Modal style={{ padding: "50px 40px" }} isOpen={props.isOpen} toggle={toggle} className={props.className}>
+            <Modal style={{
+                padding: "50px 40px"
+            }} isOpen={props.isOpen} toggle={toggle} className={props.className}>
                 <ModalHeader toggle={toggle} style={{ color: 'yellow' }}>Pay First to Unlock Whatsapp Number (Min 10₹)</ModalHeader>
-                <Button color="success" onClick={() => {
+                <button className='button' color="success" onClick={() => {
                     toggle();
                     props.togglePay();
-                }} style={{ borderTopLeftRadius: '0px', borderTopRightRadius: '0px', borderBottomLeftRadius: '10px', borderBottomRightRadius: '10px', }}>Pay Now!! ({seconds})</Button>{' '}
+                }} style={{ borderTopLeftRadius: '0px', borderTopRightRadius: '0px', borderBottomLeftRadius: '20px', borderBottomRightRadius: '20px', }}>Pay Now!! ({seconds})</button>{' '}
             </Modal>
         </div>
     );

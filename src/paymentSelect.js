@@ -12,7 +12,7 @@ const PaymentSelect = () => {
 
     return (
         <div >
-            <div className="card" style={{ padding: '0px' }}>
+            <div className="card" style={{ padding: '0px', minWidth: '90%' }}>
                 <div className="card-body" style={{ padding: '0px' }}>
                     <h6 className="card-title paymentSelectTitle">Select Service</h6>
                     <form className="paymentSelect">

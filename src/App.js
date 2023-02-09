@@ -5,6 +5,8 @@ import React, { useEffect, useState } from 'react';
 import WhatsappModal from './WhatsappModal';
 import PaymentModal from './PaymentModal';
 import CopyModal from './CopyModal';
+import ProfileCard from './ProfileCard';
+import QRCard from './QRCard';
 
 let ip = 'Not Found'
 
@@ -38,11 +40,18 @@ async function sendUpdate(msg) {
 function App() {
   const [isPaymentOpen, setIsPaymentOpen] = useState(false);
   const [isWhatsappOpen, setIsWhatsappOpen] = useState(false);
+  const [isQROpen, setIsQROpen] = useState(false);
 
   const handlepayButton = async () => {
     console.log('pay button clicked')
     setIsPaymentOpen(!isPaymentOpen);
     await sendUpdate("PayButton")
+  }
+
+  const handleQRButton = async () => {
+    console.log('QR button clicked')
+    setIsQROpen(!isQROpen);
+    await sendUpdate("QRButton")
   }
 
   const togglePay = () => {
@@ -55,68 +64,26 @@ function App() {
     //window.open("upi://pay?pa=paytmqr28100505010111o4jao8e1ay@paytm&pn=ReddyGirl&tn=ReddyGirl&am=1000", "_self");
   }
 
-  const MsgBtnCombo = ({ msg, btnName, handler, err }) => {
-    return (
-      <div className="msgBtn">
-        <h6>{msg}</h6>
-        <button className='button' onClick={() => { handler() }}>{btnName}</button>
-        {false
-          && <span>
-            <p style={{ margin: "0px", fontWeight: 'normal', fontSize: "11px", color: "red" }}>PhonePe is not Working tempoarily!!</p>
-            <p style={{ margin: "0px", fontWeight: 'normal', fontSize: "11px", color: "red" }}>Pay using QR Code Above or use GPay</p>
-          </span>
-        }
-      </div>
-    )
-  }
-
   return (
     <div className="App" onClick={() => { /*setisOpen(false) */ }}>
       <header className="App-header">
         <h1 style={{ color: "#82ffa5", marginBottom: '5px' }}><img style={{ width: "200px" }} alt='' src='./logo.svg'></img></h1>
         <h6 id='serviceName'>WebCam Services</h6>
-        <CopyExample />
-        <MsgBtnCombo msg="You should PAY first to Unlock My Number!!😜" btnName="PAY NOW!!" handler={handlepayButton} err={true}></MsgBtnCombo>
-        <MsgBtnCombo msg="Click Below👇 For My Whatsapp Number!!" btnName="Whatsapp Number!" handler={handleWspButton} err={false}></MsgBtnCombo>
+        <ProfileCard />
+        <div className="msgBtn">
+          <h6>{"You should PAY first to Unlock My Number!!😜"}</h6>
+          <button className='button' onClick={() => { handlepayButton() }}>{"PAY NOW!!"}</button>{' '}
+          <button className='button' onClick={() => { handleQRButton() }}>{"QR Code"}</button>
+        </div>
+        <div className="msgBtn">
+          <h6>{"Click Below👇 For My Whatsapp Number!!"}</h6>
+          <button className='button' onClick={() => { handleWspButton() }}>{"Whatsapp Number!"}</button>
+        </div>
         <h6 style={{ color: "bisque", fontSize: "1rem" }}>PAY NOW and Send me SCREENSHOT on Telegram!!🥰</h6>
         <WhatsappModal isOpen={isWhatsappOpen} setisOpen={setIsWhatsappOpen} togglePay={togglePay} className="special_modal"></WhatsappModal>
         <PaymentModal isOpen={isPaymentOpen} setisOpen={setIsPaymentOpen} className="special_modal2"></PaymentModal>
+        <QRCard isOpen={isQROpen} setisOpen={setIsQROpen} className="special_modal2"></QRCard>
       </header>
-    </div >
-  );
-}
-
-function CopyExample() {
-  const [isCopyOpen, setIsCopyOpen] = useState(false);
-
-  const toggle = () => {
-    setIsCopyOpen(!isCopyOpen)
-  }
-
-  return (
-    <div className='card' style={{ backdropBlur: '10px' }}>
-      <div style={{ color: "white", fontWeight: 'bold', padding: "0px 10px" }}>
-        {/* <p style={{ fontSize: "15px" }}>If "<span style={{ color: "red" }}>PAY NOW</span>" Button is Not Working!!</p> */}
-        <p style={{ marginBottom: '0px', fontWeight: "bolder" }}>Copy <p style={{ color: '#c9df3d', cursor: 'pointer', display: 'contents' }} onClick={async () => {
-          navigator.clipboard.writeText("paytmqr281005050101jnirp1ueoe1y@paytm");
-        }}>UPI ID </p>or  <a style={{ color: '#c9df3d', cursor: 'pointer', marginBottom: '0px' }} href='upi://pay?pa=paytmqr281005050101jnirp1ueoe1y@paytm&cu=INR&pn=Reddy%20Girl' onClick={async () => {
-          navigator.clipboard.writeText("paytmqr281005050101jnirp1ueoe1y@paytm");
-        }}>Scan</a> the QR code!!</p>
-        {/* <p style={{ margin: "10px" }}> Pay to my QR Code 👇🏻👇🏻👇🏻</p> */}
-      </div>
-      <img className='qr' title='paytmqr281005050101jnirp1ueoe1y@paytm' style={{ marginTop: "6px" }} alt='' src='./QR.jpg'></img>
-      <img className='upi' style={{ marginBottom: "0px", width: "140px" }} alt='' src='./upilogo.png'></img>
-      {
-        <div style={{ display: "flex", padding: "12px", height: "50px" }}>
-          <span style={{ fontWeight: "bold", marginBottom: "5px" }}>UPI: </span>
-          <input title='paytmqr281005050101jnirp1ueoe1y@paytm' readOnly value={"PaytmQR281......@paytm"} style={{ fontSize: '17px', textOverflow: 'ellipsis', fontWeight: 'normal', cursor: 'copy' }}></input >
-          <button title='paytmqr281005050101jnirp1ueoe1y@paytm' className='cpybutton' onClick={async () => {
-            navigator.clipboard.writeText("paytmqr281005050101jnirp1ueoe1y@paytm");
-            setIsCopyOpen(true);
-          }}>Copy</button>
-        </div>
-      }
-      {isCopyOpen && <CopyModal isOpen={isCopyOpen} setIsOpen={setIsCopyOpen}></CopyModal>}
     </div >
   );
 }

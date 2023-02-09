@@ -26,7 +26,8 @@
   }
 
   .msgBtn {
-    margin-bottom: 2.8vh;
+    margin-bottom: 1vh;
+    margin-top: 2vh;
   }
 
   .modal {
@@ -36,13 +37,15 @@
   .special_modal .modal-content {
     background: radial-gradient(100% 100% at 100% 0%, #060614 60%, rgb(4 18 46) 100%);
     color: #49ff3b;
-    border-radius: 30px;
-    border: 1px solid #49ff3b
+    border-radius: 20px;
+    border: 1px solid#b0b0b0;
+    border-style: "groove";
+    border-color: "#dcb600"
   }
 
   .special_modal2 .modal-content {
     background: radial-gradient(100% 100% at 100% 0%, #060614 60%, rgb(4 18 46) 100%);
-    border-radius: 30px;
+    border-radius: 20px;
   }
 
   .special_modal {
@@ -54,16 +57,15 @@
     display: inline-block;
     outline: 0;
     border: 0;
+    padding: 0px 10px;
     cursor: pointer;
     will-change: box-shadow, transform;
     background: radial-gradient(100% 100% at 100% 0%, #559d00 0%, rgb(31 192 0) 100%);
-    padding: 8px;
     box-shadow: 0px 4px 8px rgb(255 255 255 / 40%), 0px 7px 13px -3px rgb(233 221 0 / 30%), inset 0px -3px 0px #000000;
-    padding: 0 32px;
     border-radius: 6px;
     color: #fff;
-    height: 48px;
-    font-size: 18px;
+    min-width: 35vw;
+    height: 40px;
     font-weight: bold;
     text-shadow: 0 1px 0 rgb(0 0 0 / 40%);
     transition: box-shadow 0.15s ease, transform 0.15s ease;
@@ -146,10 +148,14 @@
   }
 
   .card {
+    border: 1px solid#a6a6a6;
+    border-style: "groove";
+    border-color: "#dcb600";
     margin: 0px;
+    min-width: 85%;
     outline: 0px;
-    border-radius: 30px;
-    background: radial-gradient(100% 100% at 100% 0%, #060614 60%, rgb(3 48 12));
+    border-radius: 20px;
+    background: radial-gradient(100% 100% at 100% 0%, #060614 60%, rgb(3 19 48));
     padding: 8px;
     box-shadow: 0px 4px 8px rgb(255 255 255 / 40%), 0px 7px 13px -3px rgb(233 221 0 / 30%), inset 0px -3px 0px #000000;
   }
@@ -184,7 +190,7 @@
     outline: 0;
     border: 1px solid #ccc;
     cursor: pointer;
-    background: rgb(0 145 255);
+    background: radial-gradient(100% 100% at 100% 0%, #3695e2 0%, rgb(80, 50, 215) 100%);
     font-weight: bold;
     border-radius: 6px;
     color: #fff;
@@ -216,7 +222,7 @@
 
   .paymentOption h6 {
     border-radius: 12px 12px 0px 0px;
-    background: #666a66;
+    background: radial-gradient(100% 100% at 100% 0%, #9c9d9a 0%, rgb(86, 87, 86) 100%);
     color: #fff;
     padding: 10px;
   }
