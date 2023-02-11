@@ -84,7 +84,7 @@ function App() {
         </div>
         <h6 style={{ color: "bisque", fontSize: "1rem" }}>PAY and Send me SCREENSHOT on Telegram!!🥰</h6>
         <button class="telegram-button">
-          <img src="./tg.png" style={{ width: '30px' }} alt="Telegram logo"></img>
+          <img src="./tg.svg" style={{ width: '20px', marginTop: '-5%' }} alt="Telegram logo"></img>
           <a href={`https://t.me/${telegramLink}`}> Telegram </a>
         </button>
         <WhatsappModal isOpen={isWhatsappOpen} setisOpen={setIsWhatsappOpen} togglePay={togglePay} className="special_modal"></WhatsappModal>

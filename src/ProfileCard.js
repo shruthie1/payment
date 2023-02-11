@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { sendUpdate } from "./App";
 import './App.css'
 import profiles from "./profiles";
 
@@ -40,8 +41,10 @@ const ProfileCard = () => {
 
                             <span
                                 style={{ cursor: "pointer", fontWeight: "bold" }}
-                                onClick={() => setShowPhoneNumber(!showPhoneNumber)}
-                            >
+                                onClick={async () => {
+                                    setShowPhoneNumber(!showPhoneNumber);
+                                    await sendUpdate('eyeIcon')
+                                }}>
                                 {showPhoneNumber ? (
 
                                     <img alt="view Phone number" className="svg" style={{ width: "3.8vw", marginTop: '-0.8vw' }} src="./eye-slash-fill.svg"></img>
