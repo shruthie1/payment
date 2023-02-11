@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css'
 import { sendUpdate } from './App';
+import profiles from './profiles';
 //const upiId = 'paytmqr281005050101xv6mfg02t4m9@paytm'
 const upiId = `paytmqr281005050101jnirp1ueoe1y@paytm&mc=5499&mode=02&orgid=000000&paytmqr=281005050101JNIRP1UEOE1Y&sign=MEQCIBVdzP1idNlw8VSOLIlxBzE7YeDQzXdB7BuybVYYqUvMAiAdI5eZhJHf3O+WhbHAOBHnto6w4C9x8e1TyaONNMJinQ==`;
 const gpayUpi = `7995443365@okbizicici&mc=5137&aid=uGICAgMDM_rXIFQ&tr=BCR2DN4T6TKJPZRO`;
@@ -12,7 +13,8 @@ const PaymentOptions = (props) => {
     const [selectedOption, setSelectedOption] = useState('PhonePe');
     const [seconds, setSeconds] = useState(props.count);
     const amount = (props.amount !== 'others') ? props.amount : undefined;
-    const userName = process.env.REACT_APP_USERNAME?.toUpperCase() || 'ReddyGirl';
+    const userName = profiles[process.env.REACT_APP_USERNAME?.toLowerCase()].name.replace('Ms', '') || 'ReddyGirl';
+
 
     useEffect(() => {
         if (seconds > 0) {
