@@ -42,7 +42,7 @@
     background: radial-gradient(100% 100% at 100% 0%, #060614 60%, rgb(4 18 46) 100%);
     color: #49ff3b;
     border-radius: 20px;
-    border: 1px solid#b0b0b0;
+    border: 3px solid#b0b0b0;
     border-style: "groove";
     border-color: "#dcb600"
   }
@@ -150,14 +150,14 @@
     border-radius: 5px;
     background: rgb(7, 14, 125);
     padding: 10px;
-    border: 1px solid #fdff00;
+    border: 3px solid #fdff00;
     font-size: small;
     color: #fdff00;
     display: inline-flex;
   }
 
   .card {
-    border: 1px solid#a6a6a6;
+    border: 3px solid#a6a6a6;
     border-style: "groove";
     border-color: "#dcb600";
     min-width: 85%;
@@ -181,7 +181,7 @@
     padding: 0px;
     font-size: 16px;
     margin: 0px 10px;
-    border: 1px solid #ccc;
+    border: 3px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
     font-weight: bold;
@@ -196,7 +196,7 @@
     margin-top: -3px;
     display: inline-block;
     outline: 0;
-    border: 1px solid #ccc;
+    border: 3px solid #ccc;
     cursor: pointer;
     background: radial-gradient(100% 100% at 100% 0%, #3695e2 0%, rgb(80, 50, 215) 100%);
     font-weight: bold;

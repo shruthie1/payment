@@ -23,7 +23,7 @@ const ProfileCard = () => {
                         alt="Profile"
                         style={{
                             width: "25vw", height: "25vw", borderRadius: "100%", marginTop: '4vw',
-                            boxShadow: '0 0 19px 6px #4a477e', border: '1px dotted #4e4e4e'
+                            boxShadow: '0 0 19px 6px #666', border: '1px dotted #4e4e4e'
 
                         }}
                     />
