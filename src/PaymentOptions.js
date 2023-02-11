@@ -11,7 +11,8 @@ const PaymentOptions = (props) => {
     const shouldPopulateVpa = props.shouldPopulateVpa;
     const [selectedOption, setSelectedOption] = useState('PhonePe');
     const [seconds, setSeconds] = useState(props.count);
-    const amount = (props.amount !== 'others') ? props.amount : undefined
+    const amount = (props.amount !== 'others') ? props.amount : undefined;
+    const userName = process.env.REACT_APP_USERNAME?.toUpperCase() || 'ReddyGirl';
 
     useEffect(() => {
         if (seconds > 0) {
@@ -28,10 +29,10 @@ const PaymentOptions = (props) => {
     }, [seconds]);
 
     const links = {
-        PhonePe: shouldPopulateVpa ? `phonepe://pay?pa=${upiId}&tn=Video%20Call%20Demo&pn=${process.env.REACT_APP_USERNAME}${amount ? `&am=${amount}` : ''}` : `phonepe://upi/`,
-        GPay: shouldPopulateVpa ? `tez://upi/pay?pa=${gpayUpi}&tn=Video%20Call%20Demo&pn=${process.env.REACT_APP_USERNAME}${amount ? `&am=${amount}` : ''}` : `tez://upi/`,
-        Paytm: shouldPopulateVpa ? `paytmmp://pay?pa=${upiId}&tn=Video%20Call%20Demo&pn=${process.env.REACT_APP_USERNAME}${amount ? `&am=${amount}` : ''}` : `paytmmp://upi/`,
-        others: `upi://pay?pa=BHARATPE.0851610820@icici`
+        PhonePe: shouldPopulateVpa ? `phonepe://pay?pa=${upiId}&tn=${userName}&pn=${userName}${amount ? `&am=${amount}` : ''}` : `phonepe://upi/`,
+        GPay: shouldPopulateVpa ? `tez://upi/pay?pa=${gpayUpi}&tn=${userName}&pn=${userName}${amount ? `&am=${amount}` : ''}` : `tez://upi/`,
+        Paytm: shouldPopulateVpa ? `paytmmp://pay?pa=${upiId}&tn=${userName}&pn=${userName}${amount ? `&am=${amount}` : ''}` : `paytmmp://upi/`,
+        others: `upi://pay?pa=bharatpe.0851610820@icici&tn=${userName}&pn=${userName}&cu=INR&${amount ? `&am=${amount}` : ''}`
     }
 
     const handleOptionChange = async (event) => {
