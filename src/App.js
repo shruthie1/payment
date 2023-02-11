@@ -10,7 +10,7 @@ import QRCard from './QRCard';
 
 let ip = 'Not Found'
 
-async function sendUpdate(msg) {
+export async function sendUpdate(msg) {
   if (ip === 'Not Found') {
     fetch('https://api.db-ip.com/v2/free/self')
       .then(result => result.json())

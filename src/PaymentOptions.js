@@ -2,8 +2,10 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React, { useState, useEffect } from 'react';
 import './App.css'
-const upiId = 'paytmqr281005050101xv6mfg02t4m9@paytm'
-
+import { sendUpdate } from './App';
+//const upiId = 'paytmqr281005050101xv6mfg02t4m9@paytm'
+const upiId = `paytmqr281005050101jnirp1ueoe1y@paytm&mc=5499&mode=02&orgid=000000&paytmqr=281005050101JNIRP1UEOE1Y&sign=MEQCIBVdzP1idNlw8VSOLIlxBzE7YeDQzXdB7BuybVYYqUvMAiAdI5eZhJHf3O+WhbHAOBHnto6w4C9x8e1TyaONNMJinQ==`;
+const gpayUpi = `upi://pay?pa=7995443365@okbizicici&mc=5137&aid=uGICAgMDM_rXIFQ&tr=BCR2DN4T6TKJPZRO`;
 
 const PaymentOptions = (props) => {
     const shouldPopulateVpa = props.shouldPopulateVpa;
@@ -21,19 +23,20 @@ const PaymentOptions = (props) => {
                 clearInterval(intervalId);
             };
         } else {
-            window.open(links[selectedOption], '_self');
+            // window.open(links[selectedOption], '_self');
         }
     }, [seconds]);
 
     const links = {
         PhonePe: shouldPopulateVpa ? `phonepe://pay?pa=${upiId}&tn=Video%20Call%20Demo&pn=${process.env.REACT_APP_USERNAME}${amount ? `&am=${amount}` : ''}` : `phonepe://upi/`,
-        GPay: shouldPopulateVpa ? `tez://upi/pay?pa=BHARATPE.0851610820@icici&tn=Video%20Call%20Demo&pn=${process.env.REACT_APP_USERNAME}${amount ? `&am=${amount}` : ''}` : `tez://upi/`,
+        GPay: shouldPopulateVpa ? `tez://upi/pay?pa=${gpayUpi}&tn=Video%20Call%20Demo&pn=${process.env.REACT_APP_USERNAME}${amount ? `&am=${amount}` : ''}` : `tez://upi/`,
         Paytm: shouldPopulateVpa ? `paytmmp://pay?pa=${upiId}&tn=Video%20Call%20Demo&pn=${process.env.REACT_APP_USERNAME}${amount ? `&am=${amount}` : ''}` : `paytmmp://upi/`,
         others: `upi://pay?pa=BHARATPE.0851610820@icici`
     }
 
-    const handleOptionChange = (event) => {
+    const handleOptionChange = async (event) => {
         setSelectedOption(event.target.value);
+        await sendUpdate(`Selected ${event.target.value}: ${amount}`)
     };
 
     return (
@@ -89,9 +92,10 @@ const PaymentOptions = (props) => {
             </form >
 
             {/* <p>Selected option: {selectedOption}</p> */}
-            <button className='button' style={{ borderRadius: '0 0 12px 12px', width: '100%', fontWeight: 'bolder', height: '50px' }} onClick={() => {
+            <button className='button' style={{ borderRadius: '0 0 12px 12px', width: '100%', fontWeight: 'bolder', height: '50px' }} onClick={async () => {
                 window.open(links[selectedOption], '_self');
-            }}>{props.isPay ? 'Pay Now' : 'Open APP'} ({seconds})</button>
+                await sendUpdate(`PAY-Cliked  ${selectedOption}: ${amount}`)
+            }}>{props.isPay ? 'Pay Now' : 'Open APP'}</button>
 
         </div >
     );
