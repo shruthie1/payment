@@ -12,7 +12,7 @@ const ProfileCard = () => {
         <div className='card' style={{
             backdropBlur: '10px',
             borderStyle: "groove",
-            margin: '5vh 0px'
+            margin: '4vh 0px'
         }}>
 
             <div style={{ display: "flex", padding: "4px" }}>

