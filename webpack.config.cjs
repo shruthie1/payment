@@ -3,7 +3,7 @@ const path = require('path');
 module.exports = {
   entry: './src/index.js', // the entry point of your app
   output: {
-    path: path.resolve(__dirname, 'dist'), // the output directory
+    path: path.resolve(__dirname, 'build'), // the output directory
     filename: 'bundle.js' // the name of the bundled file
   },
   module: {
