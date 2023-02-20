@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
   entry: './src/index.js', // the entry point of your app
@@ -6,6 +7,11 @@ module.exports = {
     path: path.resolve(__dirname, 'build'), // the output directory
     filename: 'bundle.js' // the name of the bundled file
   },
+  plugins:[
+    new webpack.DefinePlugin({
+        process: {env: {}}
+    })
+  ],
   module: {
     rules: [
       {
