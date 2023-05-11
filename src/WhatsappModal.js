@@ -36,9 +36,9 @@ function WhatsappModal(props) {
                 <button className='button' color="success" onClick={() => {
                     toggle();
                     props.togglePay();
-                }} style={{ borderTopLeftRadius: '0px', borderTopRightRadius: '0px', borderBottomLeftRadius: '20px', borderBottomRightRadius: '20px', }}>Pay Now!! ({seconds})</button>{' '}
+                }} style={{ width: '100%', margin: '0px', borderTopLeftRadius: '0px', borderTopRightRadius: '0px', borderBottomLeftRadius: '20px', borderBottomRightRadius: '20px', }}>Pay Now!! ({seconds})</button>{' '}
             </Modal>
-        </div>
+        </div >
     );
 }
 

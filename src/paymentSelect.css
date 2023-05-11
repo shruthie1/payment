@@ -1,14 +1,15 @@
 .selectAmountForm {
-    color: white;
-    min-width: 100%;
-    font-weight: bolder;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .selectAmountForm div {
-    justify-content: left;
+    justify-content: center;
     display: flex;
-    height: 30px;
-    padding-left: 15vw;
+    width: 80%;
     margin: 2px 0px;
 }
 
@@ -43,12 +44,14 @@
 }
 
 .paymentSelect input {
-    width: 10%;
+    width: 25px;
     padding-left: 3%;
 }
 
 .paymentSelect label {
+    font-weight: bolder;
     display: inline-flex;
-    margin: 0%;
+    margin: 3px;
+    width: 120px;
     font-size: medium;
 }

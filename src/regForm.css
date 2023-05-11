@@ -1,0 +1,134 @@
+.register-form {
+    justify-content: center;
+    display: flex;
+    color: #fff;
+    padding: 2vw 12vw;
+    border-radius: 5px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+}
+
+.register-form label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.register-form input[type="text"],
+.register-form input[type="email"],
+.register-form input[type="tel"],
+.register-form input[type="password"] {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin: 3px 0px 20px 0px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #373b35;
+    color: #fff;
+}
+
+.register-form input[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 2vw;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #00cc66;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.register-form input[type="submit"]:hover {
+    background-color: #00b359;
+}
+
+.register-form input:focus {
+    outline: none;
+    box-shadow: 0 0 5px #00cc66;
+}
+
+.myform input[type="text"],
+.myform input[type="email"],
+.myform input[type="tel"],
+.myform input[type="date"],
+.myform input[type="password"] {
+    border: rgb(29, 33, 36);
+    display: block;
+    width: 0;
+    height: 0;
+    margin: -20px 0 0 -20px;
+    padding: 0px;
+}
+
+.success-message {
+    align-items: center;
+    color: #85e89c;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 9vh;
+}
+
+.tick {
+    width: 50px;
+    margin-right: 10px;
+}
+
+.success-message p {
+    margin: 0;
+    font-size: 14px;
+    color: #b9ca8c;
+}
+
+
+.success-message h1 {
+    color: #62ac65;
+    /* green */
+    font-size: 18px;
+}
+
+.spinner-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.phone-number-input {
+    display: flex;
+    height: 50px;
+    width: 100%;
+    font-size: 16px;
+}
+
+.phone-number-input select {
+    height: 100%;
+    padding: 5px;
+    margin-right: 5px;
+    width: 30%;
+    font-weight: bold;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #373b35;
+    color: #fff;
+}
+
+.phone-number-input input {
+    height: 100%;
+    padding: 5px;
+    /* other styles */
+}
+
+.otp-input {
+    display: flex;
+    height: 50px;
+}
+
+.otp-input input {
+    margin: 2px;
+    background: #faecd1;
+    color: #109300;
+}

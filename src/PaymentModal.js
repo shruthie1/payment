@@ -11,11 +11,10 @@ function ConfirmModal(props) {
         props.setisOpen(!props.isOpen)
     }
 
-
     return (
-        <div >
-            <Modal style={{ padding: "20% 10%", display: "flex", justifyContent: "center", textAlign: "center" }} isOpen={props.isOpen} toggle={toggle} className={props.className}>
-                <PaymentSelect shouldPopulateVpa={true} isPay={true} count={8}></PaymentSelect>
+        <div className='hella'>
+            <Modal isOpen={props.isOpen} toggle={toggle} className={props.className}>
+                <PaymentSelect shouldPopulateVpa={true} handleModals={props.handleModals} isPay={true} count={8}></PaymentSelect>
             </Modal>
         </div >
     );

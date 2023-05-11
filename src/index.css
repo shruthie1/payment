@@ -10,7 +10,6 @@ h6 {
 }
 
 .button {
-
   display: inline-block;
   outline: 0;
   border: 0;
@@ -18,7 +17,6 @@ h6 {
   will-change: box-shadow, transform;
   background: radial-gradient(100% 100% at 100% 0%, #89E5FF 0%, #2db20c 100%);
   box-shadow: 0px 2px 4px rgb(45 35 66 / 40%), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px rgba(100, 110, 178, 0.5);
-  padding: 0 32px;
   border-radius: 6px;
   color: #fff;
   height: 48px;

@@ -1,0 +1,55 @@
+body {
+    background-color: #242b2e;
+    font-family: Arial, sans-serif;
+    color: #ffffff;
+}
+
+h1 {
+    font-size: initial;
+    font-weight: bolder;
+    color: #8dfff2;
+    margin: 0px;
+}
+
+.dropdown-container {
+    display: flex;
+    justify-content: center;
+}
+
+.qrSelect {
+    height: 35px;
+    margin: 5px;
+    padding: 3px;
+    width: 60%;
+    font-weight: bolder;
+    text-align-last: center;
+    color: #710000;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+    background-repeat: no-repeat;
+    background-position-x: 100%;
+    background-position-y: 5px;
+    padding-right: 2rem;
+    border: none;
+    border-radius: 5px;
+    box-shadow: none;
+}
+
+.qr-code {
+    background: #798cb5;
+    border-radius: 10px;
+    padding: 3px 12px 12px 12px;
+}
+
+.Qr {
+    padding: 3px;
+    background-color: #ffffff;
+}
+
+.qr-code svg {
+    background-color: #e1f1dd;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: none;
+}

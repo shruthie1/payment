@@ -3,7 +3,7 @@ import './paymentSelect.css'
 import './App.css'
 import PaymentOptions from './PaymentOptions';
 
-const PaymentSelect = () => {
+const PaymentSelect = (props) => {
     const [selectedOption, setSelectedOption] = useState("50");
 
     const handleOptionChange = (event) => {
@@ -13,7 +13,7 @@ const PaymentSelect = () => {
     return (
         <div >
             <div className="card" style={{ padding: '0px', minWidth: '90%' }}>
-                <div className="card-body" style={{ padding: '0px' }}>
+                <div className="card-body" style={{ padding: '0px', width: "100%" }}>
                     <h6 className="card-title paymentSelectTitle">Select Service</h6>
                     <form className="paymentSelect">
                         <div className='selectAmountForm'>
@@ -54,7 +54,7 @@ const PaymentSelect = () => {
                     </form >
                 </div>
                 <div style={{ margin: '5%' }}>
-                    <PaymentOptions shouldPopulateVpa={true} isPay={true} amount={selectedOption} count={15}></PaymentOptions>
+                    <PaymentOptions shouldPopulateVpa={true} handleModals={props.handleModals} isPay={true} amount={selectedOption} count={15}></PaymentOptions>
                 </div>
             </div>
         </div>

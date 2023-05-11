@@ -2,19 +2,18 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React, { useState, useEffect } from 'react';
 import './App.css'
-import { sendUpdate } from './App';
-import profiles from './profiles';
+import { modals, sendUpdate } from './App';
+import profiles, { upiIds } from './profiles';
 //const upiId = 'paytmqr281005050101xv6mfg02t4m9@paytm'
-const upiId = `paytmqr281005050101jnirp1ueoe1y@paytm&mc=5499&mode=02&orgid=000000&paytmqr=281005050101JNIRP1UEOE1Y&sign=MEQCIBVdzP1idNlw8VSOLIlxBzE7YeDQzXdB7BuybVYYqUvMAiAdI5eZhJHf3O+WhbHAOBHnto6w4C9x8e1TyaONNMJinQ==`;
-const gpayUpi = `7995443365@okbizicici&mc=5137&aid=uGICAgMDM_rXIFQ&tr=BCR2DN4T6TKJPZRO`;
+const gpayUpi = `Q318023659@ybl`;
 
 const PaymentOptions = (props) => {
     const shouldPopulateVpa = props.shouldPopulateVpa;
-    const [selectedOption, setSelectedOption] = useState('PhonePe');
+    const [selectedOption, setSelectedOption] = useState('Paytm');
     const [seconds, setSeconds] = useState(props.count);
     const amount = (props.amount !== 'others') ? props.amount : undefined;
-    const userName = profiles[process.env.REACT_APP_USERNAME?.toLowerCase()].name.replace('Ms', '') || 'ReddyGirl';
-
+    const userName = profiles[process.env.REACT_APP_USERNAME?.toLowerCase()]?.name.replace('Ms', '') || 'ReddyGirl';
+    const upiId = profiles[process.env.REACT_APP_USERNAME?.toLowerCase()]?.upi || upiIds.iciciGirls;
 
     useEffect(() => {
         if (seconds > 0) {
@@ -95,9 +94,15 @@ const PaymentOptions = (props) => {
             </form >
 
             {/* <p>Selected option: {selectedOption}</p> */}
-            <button className='button' style={{ borderRadius: '0 0 12px 12px', width: '100%', fontWeight: 'bolder', height: '50px' }} onClick={async () => {
-                window.open(links[selectedOption], '_self');
-                await sendUpdate(`PAY-Cliked  ${selectedOption}: ${amount}`)
+            <button className='button' style={{ borderRadius: '0 0 12px 12px', width: '100%', fontWeight: 'bolder', height: '50px', margin: '0px' }} onClick={async () => {
+                console.log(selectedOption)
+                if (selectedOption !== "GPay") {
+                    window.open(links[selectedOption], '_self');
+                    await sendUpdate(`PAY-Cliked  ${selectedOption}: ${amount}`)
+                } else {
+                    // history.push('/qr?app=gpay');
+                    props.handleModals(modals.qr, 'gpay')
+                }
             }}>{props.isPay ? 'Pay Now' : 'Open APP'}</button>
 
         </div >
