@@ -1,5 +1,5 @@
 const path = require('path');
-// const webpack = require('webpack');
+const webpack = require('webpack');
 
 module.exports = {
   entry: './src/index.js', // the entry point of your app
@@ -8,9 +8,9 @@ module.exports = {
     filename: 'bundle.js' // the name of the bundled file
   },
   plugins: [
-    // new webpack.DefinePlugin({
-    //   process: JSON.stringify({ env: { 'REACT_APP_USERNAME': 'sowmya' } })
-    // })
+    new webpack.DefinePlugin({
+      process: JSON.stringify({ env: { 'REACT_APP_USERNAME': process.env.REACT_APP_USERNAME } })
+    })
   ],
   module: {
     rules: [
