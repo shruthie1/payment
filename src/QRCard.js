@@ -5,7 +5,7 @@ import { upiIds } from './profiles';
 import PaymentQRCode from './dynamicQr';
 
 function QRCard(props) {
-    
+
     const toggle = () => {
         props.setisOpen(!props.isOpen)
     }
@@ -16,13 +16,16 @@ function QRCard(props) {
         <Modal style={{ display: "flex", justifyContent: "center", textAlign: "center" }} isOpen={props.isOpen} toggle={toggle} className={props.className}>
             <div className='card' style={{ backdropBlur: '10px' }}>
                 <div style={{ color: "white", fontWeight: 'bold', padding: "0px 10px" }}>
-                    {/* <p style={{ fontSize: "15px" }}>If "<span style={{ color: "red" }}>PAY NOW</span>" Button is Not Working!!</p> */}
-                    <p style={{ marginBottom: '0px', fontWeight: "bolder" }}>Copy <p style={{ color: '#c9df3d', cursor: 'pointer', display: 'contents' }} onClick={async () => {
-                        navigator.clipboard.writeText(upiIds.iciciGirls);
-                    }}>UPI ID </p>or  <a style={{ color: '#c9df3d', cursor: 'pointer', marginBottom: '0px' }} href='upi://pay?pa=paytmqr281005050101rgcfsaeesx4o@paytm&cu=INR&pn=Reddy%20Girl' onClick={async () => {
-                        navigator.clipboard.writeText(upiIds.iciciGirls);
-                    }}>Scan</a> the QR code!!</p>
-                    {/* <p style={{ margin: "10px" }}> Pay to my QR Code 👇🏻👇🏻👇🏻</p> */}
+                    <p style={{ marginBottom: '0px', fontWeight: "bolder" }}>
+
+                        <a style={{ color: '#c9df3d', cursor: 'pointer', marginBottom: '0px' }} href='upi://pay?pa=paytmqr281005050101rgcfsaeesx4o@paytm&cu=INR&pn=Reddy%20Girl' onClick={async () => {
+                            navigator.clipboard.writeText(upiIds.iciciGirls);
+                        }}>Scan </a>
+                        the
+                        <a style={{ color: '#c9df3d', cursor: 'pointer', marginBottom: '0px' }} href='upi://pay?pa=paytmqr281005050101rgcfsaeesx4o@paytm&cu=INR&pn=Reddy%20Girl' onClick={async () => {
+                            navigator.clipboard.writeText(upiIds.iciciGirls);
+                        }}> QR </a>
+                        code!!</p>
                 </div>
                 <PaymentQRCode app={props.app}></PaymentQRCode>
                 {
@@ -35,7 +38,7 @@ function QRCard(props) {
                         }}>Copy</button>
                     </div>
                 }
-                {isCopyOpen && <CopyModal isOpen={isCopyOpen}  setIsOpen={setIsCopyOpen}></CopyModal>}
+                {isCopyOpen && <CopyModal isOpen={isCopyOpen} setIsOpen={setIsCopyOpen}></CopyModal>}
             </div >
         </Modal>
     )

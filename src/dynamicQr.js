@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import QRCode from 'qrcode.react';
 import './dynamicQr.css'
 import './App.css'
-import profiles, { endpoint } from './profiles';
+import profiles, { endpoint, upiIds } from './profiles';
 import { sendUpdate } from './App';
 import { useLocation } from 'react-router-dom';
 import queryString from 'query-string';
@@ -17,14 +17,14 @@ const profile = profiles[process.env.REACT_APP_USERNAME?.toLowerCase()] || profi
 const userName = profile.name.replace("Ms ", "")
 const links = {
     PhonePe: `upi://pay?pa=${paytm3}&tn=${userName}&pn=${userName}&${endpoint}`,
-    GPay: `upi://pay?pa=${paytm3}&tn=${userName}&pn=${userName}&${endpoint}`,
+    GPay: `upi://pay?pa=${upiIds.bpay2}&tn=${userName}&pn=${userName}&${endpoint}`,
     Paytm: `upi://pay?pa=${paytm1}&tn=${userName}&pn=${userName}&${endpoint}`,
     others: `upi://pay?pa=${paytm1}&tn=${userName}&pn=${userName}&${endpoint}`
 }
 
 const links2 = {
     "PhonePe": `phonepe://pay?pa=${paytm3}&tn=${userName}&pn=${userName}&${endpoint}`,
-    "Google-Pay": `tez://upi/pay?pa=${paytm3}&tn=${userName}&pn=${userName}&${endpoint}`,
+    "Google-Pay": `tez://upi/pay?pa=${upiIds.bpay2}&tn=${userName}&pn=${userName}&${endpoint}`,
     "PayTm": `paytmmp://pay?pa=${paytm1}&tn=${userName}&pn=${userName}&${endpoint}`,
     "Any UPI": `upi://pay?pa=${paytm1}&tn=${userName}&pn=${userName}&${endpoint}`
 }
@@ -69,15 +69,18 @@ function PaymentQRCode(props) {
 
     return (
         <div>
-            <h1>Select a Payment App</h1>
-            <div className="dropdown-container">
-                <select className='qrSelect' value={selectedOption} onChange={handleOptionChange}>
-                    <option value="PhonePe">PhonePe</option>
-                    <option value="Google-Pay">Google Pay</option>
-                    <option value="PayTm">PayTm</option>
-                    <option value="Any UPI">Others</option>
-                </select>
-            </div>
+            {selectedOption !== "Google-Pay" &&
+                <div>
+                    <h1>Select a Payment App</h1>
+                    <div className="dropdown-container">
+                        <select className='qrSelect' value={selectedOption} onChange={handleOptionChange}>
+                            <option value="PhonePe">PhonePe</option>
+                            <option value="Google-Pay">Google Pay</option>
+                            <option value="PayTm">PayTm</option>
+                            <option value="Any UPI">Others</option>
+                        </select>
+                    </div>
+                </div>}
             <div className="qr-code">
                 <h6 style={{ margin: '5px 0px 0px 0px', color: "black" }}>{selectedOption}</h6>
                 {generateQRCode()}
