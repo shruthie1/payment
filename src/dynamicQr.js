@@ -19,7 +19,7 @@ const links = {
     PhonePe: `upi://pay?pa=${paytm3}&tn=${userName}&pn=${userName}`,
     GPay: `upi://pay?pa=${paytm3}&tn=${userName}&pn=${userName}`,
     Paytm: `upi://pay?pa=${paytm1}&tn=${userName}&pn=${userName}`,
-    others: `upi://pay?pa=${paytm3}&tn=${userName}&pn=${userName}`
+    others: `upi://pay?pa=${paytm1}&tn=${userName}&pn=${userName}`
 }
 
 const links2 = {
