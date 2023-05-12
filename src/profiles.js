@@ -1,3 +1,4 @@
+export const endpoint = `purpose=00&mc=5999&cu=INR&orgid=180001&sign=MEYCIQCjvR38ahbfnCqmHenaK6LpCrEcoP5szCfFI1qCMI4RagIhAPMfy2hSw8k3NMmDV2zGR5I9yjZmWMV774tar2ujAunI`
 export const upiIds = {
     iciciGirls: `paytmqr281005050101rgcfsaeesx4o@paytm`,
     gpay: `Q318023659@ybl`,
@@ -17,13 +18,6 @@ const profiles = {
         age: "24",
         location: "Vizag",
         upi: upiIds.iciciGirls
-    },
-    pooja: {
-        name: 'Ms Pooja Reddy',
-        telegram: "PoojaReddy4",
-        age: "24",
-        location: "Bangalore",
-        upi: '9392717367@ybl'
     },
     arpitha: {
         name: 'Arpitha Reddy',

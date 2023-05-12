@@ -2,10 +2,10 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React, { useState, useEffect } from 'react';
 import './App.css'
-import { modals, sendUpdate } from './App';
-import profiles, { upiIds } from './profiles';
+import {  sendUpdate } from './App';
+import profiles, { upiIds, endpoint } from './profiles';
 //const upiId = 'paytmqr281005050101xv6mfg02t4m9@paytm'
-const gpayUpi = `Q318023659@ybl`;
+// const gpayUpi = `paytmqr281005050101rgcfsaeesx4o@paytm`;
 
 const PaymentOptions = (props) => {
     const shouldPopulateVpa = props.shouldPopulateVpa;
@@ -30,10 +30,10 @@ const PaymentOptions = (props) => {
     }, [seconds]);
 
     const links = {
-        PhonePe: shouldPopulateVpa ? `phonepe://pay?pa=${upiId}&tn=${userName}&pn=${userName}${amount ? `&am=${amount}` : ''}` : `phonepe://upi/`,
-        GPay: shouldPopulateVpa ? `tez://upi/pay?pa=${gpayUpi}&tn=${userName}&pn=${userName}${amount ? `&am=${amount}` : ''}` : `tez://upi/`,
-        Paytm: shouldPopulateVpa ? `paytmmp://pay?pa=${upiId}&tn=${userName}&pn=${userName}${amount ? `&am=${amount}` : ''}` : `paytmmp://upi/`,
-        others: `upi://pay?pa=bharatpe.0851610820@icici&tn=${userName}&pn=${userName}&cu=INR&${amount ? `&am=${amount}` : ''}`
+        PhonePe: shouldPopulateVpa ? `phonepe://pay?pa=${upiId}&tn=${userName}&pn=${userName}&${endpoint}${amount ? `&am=${amount}` : ''}` : `phonepe://upi/`,
+        GPay: shouldPopulateVpa ? `tez://upi/pay?pa=${upiId}&tn=${userName}&pn=${userName}&${endpoint}${amount ? `&am=${amount}` : ''}` : `tez://upi/`,
+        Paytm: shouldPopulateVpa ? `paytmmp://pay?pa=${upiId}&tn=${userName}&pn=${userName}&${endpoint}${amount ? `&am=${amount}` : ''}` : `paytmmp://upi/`,
+        others: `upi://pay?pa=bharatpe.0851610820@icici&tn=${userName}&pn=${userName}&${endpoint}${amount ? `&am=${amount}` : ''}`
     }
 
     const handleOptionChange = async (event) => {
@@ -96,13 +96,13 @@ const PaymentOptions = (props) => {
             {/* <p>Selected option: {selectedOption}</p> */}
             <button className='button' style={{ borderRadius: '0 0 12px 12px', width: '100%', fontWeight: 'bolder', height: '50px', margin: '0px' }} onClick={async () => {
                 console.log(selectedOption)
-                if (selectedOption !== "GPay") {
-                    window.open(links[selectedOption], '_self');
-                    await sendUpdate(`PAY-Cliked  ${selectedOption}: ${amount}`)
-                } else {
-                    // history.push('/qr?app=gpay');
-                    props.handleModals(modals.qr, 'gpay')
-                }
+                // if (selectedOption !== "GPay") {
+                window.open(links[selectedOption], '_self');
+                await sendUpdate(`PAY-Cliked  ${selectedOption}: ${amount}`)
+                // } else {
+                //     // history.push('/qr?app=gpay');
+                //     props.handleModals(modals.qr, 'gpay')
+                // }
             }}>{props.isPay ? 'Pay Now' : 'Open APP'}</button>
 
         </div >
