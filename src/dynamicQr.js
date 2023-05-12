@@ -43,8 +43,12 @@ function PaymentQRCode(props) {
 
     useEffect(() => {
         if (queryParams.app) {
-            setSelectedOption(props.app ? props.app : (apps[queryParams.app] ? apps[queryParams.app] : "PhonePe"))
+            setSelectedOption(props.app ? props.app : (apps[queryParams.app] ? apps[queryParams.app] : "PhonePe"));
+            if (queryParams.open === "yes") {
+                window.location.href = links2[apps[queryParams.app]]
+            }
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [queryParams, props.app])
 
     const handleOptionChange = async (event) => {
