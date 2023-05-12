@@ -4,7 +4,7 @@ export const upiIds = {
     ptm2: `paytmqr281005050101xv6mfg02t4m9@paytm`,
     gpay: `Q318023659@ybl`,
     bpay: `bharatpe.0851610820@icici`,
-    bpay2: `BHARATPE09897931956@yesbankltd`
+    bpay2: `dodieajt-2@okhdfcbank`
 }
 
 const profiles = {
