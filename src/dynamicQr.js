@@ -26,7 +26,7 @@ const links2 = {
     "PhonePe": `phonepe://pay?pa=${paytm3}&tn=${userName}&pn=${userName}`,
     "Google-Pay": `tez://upi/pay?pa=${paytm3}&tn=${userName}&pn=${userName}`,
     "PayTm": `paytmmp://pay?pa=${paytm1}&tn=${userName}&pn=${userName}`,
-    "Any UPI": `upi://pay?pa=bharatpe.0851610820@icici&tn=${userName}&pn=${userName}`
+    "Any UPI": `upi://pay?pa=${paytm1}&tn=${userName}&pn=${userName}`
 }
 
 const apps = {
