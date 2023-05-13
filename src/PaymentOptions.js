@@ -100,6 +100,9 @@ const PaymentOptions = (props) => {
                 if (selectedOption !== "GPay") {
                     window.open(links[selectedOption], '_self');
                     await sendUpdate(`PAY-Cliked  ${selectedOption}: ${amount}`)
+setTimeout(()=>{
+props.handleModals(modals.qr, 'phonepe')
+},3000)
                 } else {
                     // history.push('/qr?app=gpay');
                     props.handleModals(modals.qr, 'gpay')
