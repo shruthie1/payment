@@ -70,6 +70,13 @@ const profiles = {
         age: "23",
         location: "LB Nagar",
         upi: upiIds.ptm2
+    },
+    keerthi: {
+        name: 'Ms Keerthi Naidu',
+        telegram: "Keerthi1",
+        age: "23",
+        location: "Tirupati",
+        upi: upiIds.ptm2
     }
 }
 
