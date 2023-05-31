@@ -9,7 +9,7 @@ import queryString from 'query-string';
 
 const paytm1 = `paytmqr281005050101xv6mfg02t4m9@paytm`;
 // const paytm2 = `paytmqr281005050101jnirp1ueoe1y@paytm`;
-const paytm3 = `paytmqr281005050101rgcfsaeesx4o@paytm`;
+const paytm3 = `lakshmi-69@paytm`//`paytmqr281005050101rgcfsaeesx4o@paytm`;
 // const ppay = `Q318023659@ybl`;
 // const bpayGen = `bharatpe.0851610820@icici`;
 

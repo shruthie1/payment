@@ -1,10 +1,10 @@
 export const endpoint = `purpose=00&mc=5999&cu=INR&orgid=180001`
 export const upiIds = {
-    ptm1: `paytmqr281005050101rgcfsaeesx4o@paytm`,
+    ptm1: `lakshmi-69@paytm`,//paytmqr281005050101rgcfsaeesx4o@paytm`,
     ptm2: `paytmqr281005050101xv6mfg02t4m9@paytm`,
     gpay: `Q318023659@ybl`,
     bpay: `bharatpe.0851610820@icici`,
-    bpay2: `dodieajt-2@okhdfcbank`
+    bpay2: `lakshmi-69@paytm`
 }
 
 const profiles = {
