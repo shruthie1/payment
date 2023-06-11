@@ -12,7 +12,6 @@ async function setUpiIds() {
                 }
             })
             .then((data) => {
-                console.log("UPI: ", data); // Log the parsed response data
                 upiIds = {
                     ...upiIds,
                     ...data
