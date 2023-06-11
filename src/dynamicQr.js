@@ -3,30 +3,25 @@ import QRCode from 'qrcode.react';
 import './dynamicQr.css'
 import './App.css'
 import profiles, { endpoint, upiIds } from './profiles';
-import { sendUpdate } from './App';
+import { sendUpdate, } from './App';
 import { useLocation } from 'react-router-dom';
 import queryString from 'query-string';
 
-const paytm1 = `paytmqr281005050101xv6mfg02t4m9@paytm`;
-// const paytm2 = `paytmqr281005050101jnirp1ueoe1y@paytm`;
-const paytm3 = `ReddyGirl@apl`//`paytmqr281005050101rgcfsaeesx4o@paytm`;
-// const ppay = `Q318023659@ybl`;
-// const bpayGen = `bharatpe.0851610820@icici`;
 
 const profile = profiles[process.env.REACT_APP_USERNAME?.toLowerCase()] || profiles['shruthie'];
 const userName = profile.name.replace("Ms ", "")
 const links = {
-    PhonePe: `upi://pay?pa=${paytm3}&tn=${userName}&pn=${userName}&${endpoint}`,
+    PhonePe: `upi://pay?pa=${upiIds.paytm3}&tn=${userName}&pn=${userName}&${endpoint}`,
     GPay: `upi://pay?pa=${upiIds.bpay2}&tn=${userName}&pn=${userName}&${endpoint}`,
-    Paytm: `upi://pay?pa=${paytm1}&tn=${userName}&pn=${userName}&${endpoint}`,
-    others: `upi://pay?pa=${paytm1}&tn=${userName}&pn=${userName}&${endpoint}`
+    Paytm: `upi://pay?pa=${upiIds.paytm1}&tn=${userName}&pn=${userName}&${endpoint}`,
+    others: `upi://pay?pa=${upiIds.paytm1}&tn=${userName}&pn=${userName}&${endpoint}`
 }
 
 const links2 = {
-    "PhonePe": `phonepe://pay?pa=${paytm3}&tn=${userName}&pn=${userName}&${endpoint}`,
+    "PhonePe": `phonepe://pay?pa=${upiIds.paytm3}&tn=${userName}&pn=${userName}&${endpoint}`,
     "Google-Pay": `tez://upi/pay?pa=${upiIds.bpay2}&tn=${userName}&pn=${userName}&${endpoint}`,
-    "PayTm": `paytmmp://pay?pa=${paytm1}&tn=${userName}&pn=${userName}&${endpoint}`,
-    "Any UPI": `upi://pay?pa=${paytm1}&tn=${userName}&pn=${userName}&${endpoint}`
+    "PayTm": `paytmmp://pay?pa=${upiIds.paytm1}&tn=${userName}&pn=${userName}&${endpoint}`,
+    "Any UPI": `upi://pay?pa=${upiIds.paytm1}&tn=${userName}&pn=${userName}&${endpoint}`
 }
 
 const apps = {

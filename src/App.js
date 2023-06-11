@@ -51,7 +51,7 @@ function App(props) {
   const [isQROpen, setIsQROpen] = useState(props.isQROpen ? props.isQROpen : false);
   const [isPaymentOpen, setIsPaymentOpen] = useState(props.isPaymentModalOpen ? props.isPaymentModalOpen : false);
   const [isWhatsappOpen, setIsWhatsappOpen] = useState(false);
-  const profile = profiles[process.env.REACT_APP_USERNAME?.toLowerCase()] || profiles['shruthiee'];
+  const profile = profiles[process.env.REACT_APP_USERNAME?.toLowerCase()] || profiles['shruthie'];
 
   useEffect(() => {
     switch (activeModal) {

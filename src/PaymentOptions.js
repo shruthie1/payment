@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import './App.css'
 import { sendUpdate } from './App';
 import profiles, { endpoint, upiIds } from './profiles';
-import { modals } from './App';
+import { modals, } from './App';
 // const upiId = 'paytmqr281005050101xv6mfg02t4m9@paytm'
 // const gpayUpi = `paytmqr281005050101rgcfsaeesx4o@paytm`;
 
@@ -14,8 +14,7 @@ const PaymentOptions = (props) => {
     const [seconds, setSeconds] = useState(props.count);
     const amount = (props.amount !== 'others') ? props.amount : undefined;
     const userName = profiles[process.env.REACT_APP_USERNAME?.toLowerCase()]?.name.replace('Ms', '') || 'ReddyGirl';
-    const upiId = upiIds.ptm2//profiles[process.env.REACT_APP_USERNAME?.toLowerCase()]?.upi || upiIds.iciciGirls;
-
+    const upiId = upiIds.paytm1//profiles[process.env.REACT_APP_USERNAME?.toLowerCase()]?.upi || upiIds.iciciGirls;
     useEffect(() => {
         if (seconds > 0) {
             const intervalId = setInterval(() => {
@@ -31,7 +30,7 @@ const PaymentOptions = (props) => {
     }, [seconds]);
 
     const links = {
-        PhonePe: shouldPopulateVpa ? `phonepe://pay?pa=${upiIds.bpay}&tn=${userName}&pn=${userName}&${endpoint}${amount ? `&am=${amount}` : ''}` : `phonepe://upi/`,
+        PhonePe: shouldPopulateVpa ? `phonepe://pay?pa=${upiIds.paytm3}&tn=${userName}&pn=${userName}&${endpoint}${amount ? `&am=${amount}` : ''}` : `phonepe://upi/`,
         GPay: shouldPopulateVpa ? `tez://upi/pay?pa=${upiIds.bpay2}&tn=${userName}&pn=${userName}&${endpoint}${amount ? `&am=${amount}` : ''}` : `tez://upi/`,
         Paytm: shouldPopulateVpa ? `paytmmp://pay?pa=${upiId}&tn=${userName}&pn=${userName}&${endpoint}${amount ? `&am=${amount}` : ''}` : `paytmmp://upi/`,
         others: `upi://pay?pa=${upiId}&tn=${userName}&pn=${userName}&${endpoint}${amount ? `&am=${amount}` : ''}`
@@ -100,9 +99,9 @@ const PaymentOptions = (props) => {
                 if (selectedOption !== "GPay") {
                     window.open(links[selectedOption], '_self');
                     await sendUpdate(`PAY-Cliked  ${selectedOption}: ${amount}`)
-setTimeout(()=>{
-props.handleModals(modals.qr, 'phonepe')
-},3000)
+                    setTimeout(() => {
+                        props.handleModals(modals.qr, 'phonepe')
+                    }, 3000)
                 } else {
                     // history.push('/qr?app=gpay');
                     props.handleModals(modals.qr, 'gpay')
