@@ -16,16 +16,30 @@ function QRCard(props) {
         <Modal style={{ display: "flex", justifyContent: "center", textAlign: "center" }} isOpen={props.isOpen} toggle={toggle} className={props.className}>
             <div className='card' style={{ backdropBlur: '10px' }}>
                 <div style={{ color: "white", fontWeight: 'bold', padding: "0px 10px" }}>
-                    <p style={{ marginBottom: '0px', fontWeight: "bolder" }}>
-
-                        <a style={{ color: '#c9df3d', cursor: 'pointer', marginBottom: '0px' }} href={`upi://pay?pa=${upiIds.paytm3}&cu=INR&pn=Reddy%20Girl`} onClick={async () => {
-                            navigator.clipboard.writeText(upiIds.iciciGirls);
-                        }}>Scan </a>
-                        the
-                        <a style={{ color: '#c9df3d', cursor: 'pointer', marginBottom: '0px' }} href={`upi://pay?pa=${upiIds.paytm3}&cu=INR&pn=Reddy%20Girl`} onClick={async () => {
-                            navigator.clipboard.writeText(upiIds.iciciGirls);
-                        }}> QR </a>
-                        code!!</p>
+                    <div>
+                        <p style={{ marginBottom: '0px', fontWeight: "bolder" }}>
+                            <a style={{ color: '#c9df3d', cursor: 'pointer', marginBottom: '0px' }} href={`upi://pay?pa=${upiIds.paytm3}&cu=INR&pn=Reddy%20Girl`} onClick={async () => {
+                                navigator.clipboard.writeText(upiIds.iciciGirls);
+                            }}> </a>
+                            Take the
+                            <a style={{ color: '#c9df3d', cursor: 'pointer', marginBottom: '0px' }} href={`upi://pay?pa=${upiIds.paytm3}&cu=INR&pn=Reddy%20Girl`} onClick={async () => {
+                                navigator.clipboard.writeText(upiIds.iciciGirls);
+                            }}> Screenshot </a>
+                            and
+                        </p>
+                    </div>
+                    <div>
+                        <p style={{ marginBottom: '0px', fontWeight: "bolder" }}>
+                            <a style={{ color: '#c9df3d', cursor: 'pointer', marginBottom: '0px' }} href={`upi://pay?pa=${upiIds.paytm3}&cu=INR&pn=Reddy%20Girl`} onClick={async () => {
+                                navigator.clipboard.writeText(upiIds.iciciGirls);
+                            }}>Scan </a>
+                            the
+                            <a style={{ color: '#c9df3d', cursor: 'pointer', marginBottom: '0px' }} href={`upi://pay?pa=${upiIds.paytm3}&cu=INR&pn=Reddy%20Girl`} onClick={async () => {
+                                navigator.clipboard.writeText(upiIds.iciciGirls);
+                            }}> QR </a>
+                            code!!
+                        </p>
+                    </div>
                 </div>
                 <PaymentQRCode app={props.app}></PaymentQRCode>
                 {
