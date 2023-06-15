@@ -7,7 +7,7 @@ import PaymentQRCode from './dynamicQr';
 function QRCard(props) {
 
     const toggle = () => {
-        props.setisOpen(!props.isOpen)
+        props.setisOpen(!props.isOpen);
     }
 
     const [isCopyOpen, setIsCopyOpen] = useState(false);

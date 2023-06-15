@@ -71,9 +71,18 @@ function App(props) {
         setIsWhatsappOpen(true)
         break;
       default:
+        setIsPaymentOpen(false);
+        setIsQROpen(false);
+        setIsWhatsappOpen(false)
         break;
     }
   }, [activeModal]);
+
+  useEffect(() => {
+    if (!isQROpen) {
+      handleModals("none", "phonepe")
+    }
+  }, [isQROpen]);
 
   const handleModals = (activeModal, app) => {
     setActiveModal(activeModal);
