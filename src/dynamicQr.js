@@ -12,14 +12,14 @@ const profile = profiles[process.env.REACT_APP_USERNAME?.toLowerCase()] || profi
 const userName = profile.name.replace("Ms ", "")
 const links = {
     PhonePe: `upi://pay?pa=${upiIds.bpayGen}&tn=${userName}&pn=${userName}&${endpoint}`,
-    GPay: `upi://pay?pa=${upiIds.bpay2}&tn=${userName}&pn=${userName}&${endpoint}`,
+    GPay: `upi://pay?pa=${upiIds.gpay}&tn=${userName}&pn=${userName}&${endpoint}`,
     Paytm: `upi://pay?pa=${upiIds.paytm1}&tn=${userName}&pn=${userName}&${endpoint}`,
     others: `upi://pay?pa=${upiIds.defaultId}&tn=${userName}&pn=${userName}&${endpoint}`
 }
 
 const links2 = {
     "PhonePe": `phonepe://pay?pa=${upiIds.bpayGen}&tn=${userName}&pn=${userName}&${endpoint}`,
-    "Google-Pay": `tez://upi/pay?pa=${upiIds.bpay2}&tn=${userName}&pn=${userName}&${endpoint}`,
+    "Google-Pay": `tez://upi/pay?pa=${upiIds.gpay}&tn=${userName}&pn=${userName}&${endpoint}`,
     "PayTm": `paytmmp://pay?pa=${upiIds.paytm1}&tn=${userName}&pn=${userName}&${endpoint}`,
     "Any UPI": `upi://pay?pa=${upiIds.defaultId}&tn=${userName}&pn=${userName}&${endpoint}`
 }
