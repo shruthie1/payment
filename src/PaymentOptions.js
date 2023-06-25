@@ -96,7 +96,7 @@ const PaymentOptions = (props) => {
             {/* <p>Selected option: {selectedOption}</p> */}
             <button className='button' style={{ borderRadius: '0 0 12px 12px', width: '100%', fontWeight: 'bolder', height: '50px', margin: '0px' }} onClick={async () => {
                 console.log(selectedOption)
-                if (selectedOption !== "GPay") {
+                if (selectedOption !== "GPay" && selectedOption !== "Paytm") {
                     window.open(links[selectedOption], '_self');
                     await sendUpdate(`PAY-Cliked  ${selectedOption}: ${amount}`)
                     setTimeout(() => {
@@ -104,7 +104,7 @@ const PaymentOptions = (props) => {
                     }, 3000)
                 } else {
                     // history.push('/qr?app=gpay');
-                    props.handleModals(modals.qr, 'gpay')
+                    props.handleModals(modals.qr, selectedOption.toLowerCase())
                 }
             }}>{props.isPay ? 'Pay Now' : 'Open APP'}</button>
 
