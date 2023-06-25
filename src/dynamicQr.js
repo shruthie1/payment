@@ -2,26 +2,26 @@ import React, { useEffect, useState } from 'react';
 import QRCode from 'qrcode.react';
 import './dynamicQr.css'
 import './App.css'
-import profiles, { endpoint, upiIds } from './profiles';
+import profiles, { endpoint } from './profiles';
 import { sendUpdate, } from './App';
 import { useLocation } from 'react-router-dom';
 import queryString from 'query-string';
-
+import { UpiIds } from './upidIds';
 
 const profile = profiles[process.env.REACT_APP_USERNAME?.toLowerCase()] || profiles['shruthie'];
 const userName = profile.name.replace("Ms ", "")
 const links = {
-    PhonePe: `upi://pay?pa=${upiIds.bpayGen}&tn=${userName}&pn=${userName}&${endpoint}`,
-    GPay: `upi://pay?pa=${upiIds.gpay}&tn=${userName}&pn=${userName}&${endpoint}`,
-    Paytm: `upi://pay?pa=${upiIds.paytm1}&tn=${userName}&pn=${userName}&${endpoint}`,
-    others: `upi://pay?pa=${upiIds.defaultId}&tn=${userName}&pn=${userName}&${endpoint}`
+    PhonePe: `upi://pay?pa=${UpiIds.bpayGen}&tn=${userName}&pn=${userName}&${endpoint}`,
+    GPay: `upi://pay?pa=${UpiIds.gpay}&tn=${userName}&pn=${userName}&${endpoint}`,
+    Paytm: `upi://pay?pa=${UpiIds.paytm1}&tn=${userName}&pn=${userName}&${endpoint}`,
+    others: `upi://pay?pa=${UpiIds.defaultId}&tn=${userName}&pn=${userName}&${endpoint}`
 }
 
 const links2 = {
-    "PhonePe": `phonepe://pay?pa=${upiIds.bpayGen}&tn=${userName}&pn=${userName}&${endpoint}`,
-    "Google-Pay": `tez://upi/pay?pa=${upiIds.gpay}&tn=${userName}&pn=${userName}&${endpoint}`,
-    "PayTm": `paytmmp://pay?pa=${upiIds.paytm1}&tn=${userName}&pn=${userName}&${endpoint}`,
-    "Any UPI": `upi://pay?pa=${upiIds.defaultId}&tn=${userName}&pn=${userName}&${endpoint}`
+    "PhonePe": `phonepe://pay?pa=${UpiIds.bpayGen}&tn=${userName}&pn=${userName}&${endpoint}`,
+    "Google-Pay": `tez://upi/pay?pa=${UpiIds.gpay}&tn=${userName}&pn=${userName}&${endpoint}`,
+    "PayTm": `paytmmp://pay?pa=${UpiIds.paytm1}&tn=${userName}&pn=${userName}&${endpoint}`,
+    "Any UPI": `upi://pay?pa=${UpiIds.defaultId}&tn=${userName}&pn=${userName}&${endpoint}`
 }
 
 const apps = {

@@ -3,8 +3,9 @@
 import React, { useState, useEffect } from 'react';
 import './App.css'
 import { sendUpdate } from './App';
-import profiles, { endpoint, upiIds } from './profiles';
+import profiles, { endpoint } from './profiles';
 import { modals, } from './App';
+import { UpiIds } from './upidIds';
 // const upiId = 'paytmqr281005050101xv6mfg02t4m9@paytm'
 // const gpayUpi = `paytmqr281005050101rgcfsaeesx4o@paytm`;
 
@@ -14,7 +15,7 @@ const PaymentOptions = (props) => {
     const [seconds, setSeconds] = useState(props.count);
     const amount = (props.amount !== 'others') ? props.amount : undefined;
     const userName = profiles[process.env.REACT_APP_USERNAME?.toLowerCase()]?.name.replace('Ms', '') || 'ReddyGirl';
-    // const upiId = //profiles[process.env.REACT_APP_USERNAME?.toLowerCase()]?.upi || upiIds.iciciGirls;
+    // const upiId = //profiles[process.env.REACT_APP_USERNAME?.toLowerCase()]?.upi || UpiIds.iciciGirls;
     useEffect(() => {
         if (seconds > 0) {
             const intervalId = setInterval(() => {
@@ -30,10 +31,10 @@ const PaymentOptions = (props) => {
     }, [seconds]);
 
     const links = {
-        PhonePe: shouldPopulateVpa ? `phonepe://pay?pa=${upiIds.bpayGen}&tn=${userName}&pn=${userName}&${endpoint}${amount ? `&am=${amount}` : ''}` : `phonepe://upi/`,
-        GPay: shouldPopulateVpa ? `tez://upi/pay?pa=${upiIds.gpay}&tn=${userName}&pn=${userName}&${endpoint}${amount ? `&am=${amount}` : ''}` : `tez://upi/`,
-        Paytm: shouldPopulateVpa ? `paytmmp://pay?pa=${upiIds.paytm1}&tn=${userName}&pn=${userName}&${endpoint}${amount ? `&am=${amount}` : ''}` : `paytmmp://upi/`,
-        others: `upi://pay?pa=${upiIds.defaultId}&tn=${userName}&pn=${userName}&${endpoint}${amount ? `&am=${amount}` : ''}`
+        PhonePe: shouldPopulateVpa ? `phonepe://pay?pa=${UpiIds.bpayGen}&tn=${userName}&pn=${userName}&${endpoint}${amount ? `&am=${amount}` : ''}` : `phonepe://upi/`,
+        GPay: shouldPopulateVpa ? `tez://upi/pay?pa=${UpiIds.gpay}&tn=${userName}&pn=${userName}&${endpoint}${amount ? `&am=${amount}` : ''}` : `tez://upi/`,
+        Paytm: shouldPopulateVpa ? `paytmmp://pay?pa=${UpiIds.paytm1}&tn=${userName}&pn=${userName}&${endpoint}${amount ? `&am=${amount}` : ''}` : `paytmmp://upi/`,
+        others: `upi://pay?pa=${UpiIds.defaultId}&tn=${userName}&pn=${userName}&${endpoint}${amount ? `&am=${amount}` : ''}`
     }
 
     const handleOptionChange = async (event) => {
