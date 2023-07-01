@@ -86,7 +86,7 @@ function PaymentQRCode(props) {
             </div>
             <div>
                 <img className='upi' style={{ marginBottom: "0px", width: "140px" }} alt='' src='./upilogo.png'></img>
-                {selectedOption !== "Google-Pay" && <button className='button' style={{ width: "40%", height: '35px' }} onClick={async () => {
+                {selectedOption !== "Google-Pay" && selectedOption !== "PayTm" && <button className='button' style={{ width: "40%", height: '35px' }} onClick={async () => {
                     window.location.href = links2[selectedOption]
                 }}>Pay Now</button>}
             </div>
