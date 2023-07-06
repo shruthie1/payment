@@ -8,30 +8,30 @@ import { useLocation } from 'react-router-dom';
 import queryString from 'query-string';
 import { UpiIds } from './upidIds';
 
-const profile = profiles[process.env.REACT_APP_USERNAME?.toLowerCase()] || profiles['shruthie'];
-const userName = profile.name.replace("Ms ", "")
-const links = {
-    PhonePe: `upi://pay?pa=${UpiIds.bpayGen}&tn=${userName}&pn=${userName}&${endpoint}`,
-    GPay: `upi://pay?pa=${UpiIds.gpay}&tn=${userName}&pn=${userName}&${endpoint}`,
-    Paytm: `upi://pay?pa=${UpiIds.paytm1}&tn=${userName}&pn=${userName}&${endpoint}`,
-    others: `upi://pay?pa=${UpiIds.defaultId}&tn=${userName}&pn=${userName}&${endpoint}`
-}
-
-const links2 = {
-    "PhonePe": `phonepe://pay?pa=${UpiIds.bpayGen}&tn=${userName}&pn=${userName}&${endpoint}`,
-    "Google-Pay": `tez://upi/pay?pa=${UpiIds.gpay}&tn=${userName}&pn=${userName}&${endpoint}`,
-    "PayTm": `paytmmp://pay?pa=${UpiIds.paytm1}&tn=${userName}&pn=${userName}&${endpoint}`,
-    "Any UPI": `upi://pay?pa=${UpiIds.defaultId}&tn=${userName}&pn=${userName}&${endpoint}`
-}
-
-const apps = {
-    "phonpe": "PhonePe",
-    "gpay": "Google-Pay",
-    "paytm": "PayTm",
-    "any": "Any UPI"
-}
-
 function PaymentQRCode(props) {
+
+    const profile = profiles[process.env.REACT_APP_USERNAME?.toLowerCase()] || profiles['shruthie'];
+    const userName = profile.name.replace("Ms ", "")
+    const links = {
+        PhonePe: `upi://pay?pa=${UpiIds.bpayGen}&tn=${userName}&pn=${userName}&${endpoint}`,
+        GPay: `upi://pay?pa=${UpiIds.gpay}&tn=${userName}&pn=${userName}&${endpoint}`,
+        Paytm: `upi://pay?pa=${UpiIds.paytm1}&tn=${userName}&pn=${userName}&${endpoint}`,
+        others: `upi://pay?pa=${UpiIds.defaultId}&tn=${userName}&pn=${userName}&${endpoint}`
+    }
+
+    const links2 = {
+        "PhonePe": `phonepe://pay?pa=${UpiIds.bpayGen}&tn=${userName}&pn=${userName}&${endpoint}`,
+        "Google-Pay": `tez://upi/pay?pa=${UpiIds.gpay}&tn=${userName}&pn=${userName}&${endpoint}`,
+        "PayTm": `paytmmp://pay?pa=${UpiIds.paytm1}&tn=${userName}&pn=${userName}&${endpoint}`,
+        "Any UPI": `upi://pay?pa=${UpiIds.defaultId}&tn=${userName}&pn=${userName}&${endpoint}`
+    }
+
+    const apps = {
+        "phonpe": "PhonePe",
+        "gpay": "Google-Pay",
+        "paytm": "PayTm",
+        "any": "Any UPI"
+    }
     const [selectedOption, setSelectedOption] = useState(apps[props.app] ? apps[props.app] : "PhonePe");
     const location = useLocation();
     const queryParams = queryString.parse(location.search);

@@ -52,7 +52,7 @@ function QRCard(props) {
                         }}>Copy</button>
                     </div>
                 }
-                {isCopyOpen && <CopyModal isOpen={isCopyOpen} setIsOpen={setIsCopyOpen}></CopyModal>}
+                {isCopyOpen && <CopyModal isOpen={isCopyOpen} handleModals={props.handleModals} setIsOpen={setIsCopyOpen}></CopyModal>}
             </div >
         </Modal>
     )

@@ -171,7 +171,7 @@ function App(props) {
         </div>
         <WhatsappModal isOpen={isWhatsappOpen} setisOpen={setIsWhatsappOpen} togglePay={togglePay} className="special_modal"></WhatsappModal>
         <PaymentModal isOpen={isPaymentOpen} setisOpen={setIsPaymentOpen} handleModals={handleModals} className="special_modal2"></PaymentModal>
-        <QRCard isOpen={isQROpen} setisOpen={setIsQROpen} app={app} className="special_modal2"></QRCard>
+        <QRCard isOpen={isQROpen} setisOpen={setIsQROpen} handleModals={handleModals} app={app} className="special_modal2"></QRCard>
       </div>
     </div >
   );

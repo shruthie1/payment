@@ -1,28 +1,5 @@
-import { UpiIds } from "./upidIds";
+import { UpiIds, setUpiIds } from "./upidIds";
 export const endpoint = `purpose=00&mc=5999&cu=INR&orgid=180001`
-
-async function setUpiIds() {
-    try {
-        fetch("https://uptimechecker.onrender.com/getAllUpiIds")
-            .then((resp) => {
-                if (resp.ok) {
-                    return resp.json(); // Parse response body as JSON
-                }
-            })
-            .then((data) => {
-                console.log("UpiIds set")
-                UpiIds = {
-                    ...UpiIds,
-                    ...data
-                }
-            })
-            .catch((e) => {
-                console.log(e); // Handle any errors that occurred during the request
-            });
-    } catch (error) {
-        // Handle any synchronous errors
-    }
-}
 setUpiIds();
 const profiles = {
     shruthie: {

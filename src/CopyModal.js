@@ -17,7 +17,7 @@ const CopyModal = (props) => {
                         <div className='insideCard'>
                             <p style={{ margin: "0px" }}>Select <span style={{ color: "#fff" }}>Application</span> and Paste the UPI ID</p>
                         </div>
-                        <PaymentOptions shouldPopulateVpa={false} isPay={false} count={12}></PaymentOptions>
+                        <PaymentOptions shouldPopulateVpa={false}  handleModals={props.handleModals} isPay={false} count={12}></PaymentOptions>
                     </div>
                 </ModalHeader>
             </Modal>
