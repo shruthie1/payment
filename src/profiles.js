@@ -39,21 +39,21 @@ const profiles = {
     },
     kavya: {
         name: 'Ms Kavya R',
-        telegram: "KavyaRed",
+        telegram: "KavyaRed6",
         age: "23",
         location: "Hyderabad",
         upi: UpiIds.paytm1
     },
     sowmya: {
         name: 'Ms Sowmya R',
-        telegram: "SowmyaRed1",
+        telegram: "SowmyaRed3",
         age: "23",
         location: "Bangalore",
         upi: UpiIds.paytm1
     },
     nidhi: {
         name: 'Ms Nidhi R',
-        telegram: "NidhiRed",
+        telegram: "NidhiRed2",
         age: "23",
         location: "HiTech City",
         upi: UpiIds.paytm1
