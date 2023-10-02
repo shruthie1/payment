@@ -25,9 +25,6 @@ ReactDOM.render(
           <Route exact path="/">
             <App />
           </Route>
-          <Route exact path="/:user">
-            <App />
-          </Route>
           <Route path="/qr">
             <App isQROpen={true} isPaymentModalOpen={false} />
           </Route>

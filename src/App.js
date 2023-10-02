@@ -8,7 +8,7 @@ import QRCard from './QRCard';
 import profiles, { setProfiles } from './profiles';
 import './sidebar.css'
 import { useHistory } from 'react-router-dom';
-import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
+import queryString from 'query-string';
 
 let ip = 'Not Found'
 
@@ -46,7 +46,6 @@ export const modals = {
 }
 
 function App(props) {
-  const { user } = useParams();
   const history = useHistory();
   const [profile, setProfile] = useState({ telegram: "shruthiee", clientId: 'shruthi1', name: "Shruthi R", age: 23, location: "hyderabd" });
   const [activeModal, setActiveModal] = useState(modals.none)
@@ -54,14 +53,15 @@ function App(props) {
   const [isQROpen, setIsQROpen] = useState(props.isQROpen ? props.isQROpen : false);
   const [isPaymentOpen, setIsPaymentOpen] = useState(props.isPaymentModalOpen ? props.isPaymentModalOpen : false);
   const [isWhatsappOpen, setIsWhatsappOpen] = useState(false);
-  console.log(user);
+
   useEffect(() => {
+    const parsedQuery = queryString.parse(window.location.search);
+    const user = parsedQuery['k'] || 'shruthi1';
     setProfiles().then(profiles => {
       setProfile(user ? profiles[user] : profiles['shruthi1']);
-
     })
     console.log(profiles);
-  }, [user])
+  }, [])
 
   useEffect(() => {
     switch (activeModal) {
