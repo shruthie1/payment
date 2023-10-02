@@ -1,5 +1,5 @@
 import { UpiIds, setUpiIds } from "./upidIds";
-export const endpoint = `purpose=00&mc=5999&cu=INR&orgid=180001`
+export const endpoint = `mam=9&purpose=00&mc=5999&cu=INR&orgid=180001`
 setUpiIds();
 const profiles = {
     shruthie: {
