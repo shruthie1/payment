@@ -21,7 +21,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "webpack --mode production && mv ./build/bundle.js ./build/bundle.js",
+    "build": "webpack --mode production && mv ./build/bundle.js ./build/bundle1.js",
     "compile": "webpack --mode development && mv ./build/bundle.js ./public/bundle.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
