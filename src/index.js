@@ -17,12 +17,15 @@ ReactDOM.render(
         <header >
           <Link to="/">
             <h1 style={{ color: "#82ffa5", marginBottom: '5px' }}>
-              <img style={{ width: "200px" }} alt='' src='./logo.svg'></img>
+              <img style={{ width: "200px" }} alt='' src='../logo.svg'></img>
             </h1>
           </Link>
         </header >
         <Switch>
           <Route exact path="/">
+            <App />
+          </Route>
+          <Route exact path="/k/:user">
             <App />
           </Route>
           <Route path="/qr">

@@ -51,7 +51,7 @@ const PaymentOptions = (props) => {
                             checked={selectedOption === 'PhonePe'}
                             onChange={handleOptionChange}
                         />
-                        <label htmlFor="PhonePe"><img src='./phonepe.png'></img></label>
+                        <label htmlFor="PhonePe"><img src='../phonepe.png'></img></label>
                     </div>
 
                     <div style={{ background: '#efefef' }}>
@@ -62,7 +62,7 @@ const PaymentOptions = (props) => {
                             checked={selectedOption === 'Paytm'}
                             onChange={handleOptionChange}
                         />
-                        <label htmlFor="Paytm"><img src='./paytm.png'></img></label>
+                        <label htmlFor="Paytm"><img src='../paytm.png'></img></label>
                     </div>
 
                     <div>
@@ -73,7 +73,7 @@ const PaymentOptions = (props) => {
                             checked={selectedOption === 'GPay'}
                             onChange={handleOptionChange}
                         />
-                        <label htmlFor="GPay"><img src='./gpay.png'></img></label>
+                        <label htmlFor="GPay"><img src='../gpay.png'></img></label>
                     </div>
                     <div style={{ background: '#efefef' }}>
                         <input
@@ -83,7 +83,7 @@ const PaymentOptions = (props) => {
                             checked={selectedOption === 'others'}
                             onChange={handleOptionChange}
                         />
-                        <label htmlFor="GPay"><img src='./upi.png'></img><span style={{ marginTop: '11%' }}>(Others)</span></label>
+                        <label htmlFor="GPay"><img src='../upi.png'></img><span style={{ marginTop: '11%' }}>(Others)</span></label>
                     </div>
                 </div>
 

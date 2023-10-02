@@ -199,7 +199,7 @@ const RegForm = (props) => {
                 )}
             </div>}
             {ok && <div className='success-message'>
-                <img src="./tick2.png" alt="Tick Mark" class="tick"></img>
+                <img src="../tick2.png" alt="Tick Mark" class="tick"></img>
                 <h1>Application has been submitted</h1>
                 <p>We will contact you soon</p>
             </div>}

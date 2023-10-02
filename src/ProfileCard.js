@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import { sendUpdate } from "./App";
 import './App.css'
-import profiles from "./profiles";
+import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
 
-const ProfileCard = () => {
+const ProfileCard = (props) => {
     const [showPhoneNumber, setShowPhoneNumber] = useState(true);
 
-    const profileImage = `./${process.env.REACT_APP_USERNAME?.toLowerCase() || 'shruthie'}.jfif`;
-    const profile = profiles[process.env.REACT_APP_USERNAME?.toLowerCase()] || profiles['shruthie'];
-
+    const { user } = useParams();
+    const profile = props.profile
+    const profileImage = user ? `../${user.replace(/\d/g, '')}.jfif` : `./${process.env.REACT_APP_USERNAME?.toLowerCase() || 'shruthie'}.jfif`;
+    console.log(user);
+    console.log(profileImage)
     return (
         <div className='card' style={{
             backdropBlur: '10px',
@@ -29,11 +31,11 @@ const ProfileCard = () => {
                     />
                 </div>
                 <div style={{ marginLeft: "20px", textAlign: "left" }} className='ptext'>
-                    <h3 className="neon" style={{  fontWeight: "bold", fontSize: '4.5vw', color: "rgb(0 255 236)" }}>{profile.name}</h3>
-                    <p style={{ marginBottom: '0px', fontSize: '3.5vw' }}>Status:  <span style={{ fontWeight: "bold" }}>Verified</span><img style={{ marginLeft: '5px', width: '5.5vw', marginTop: '-1vw' }} alt="verified batch" src="./tick.png"></img></p>
+                    <h3 className="neon" style={{ fontWeight: "bold", fontSize: '4.5vw', color: "rgb(0 255 236)" }}>{profile.name}</h3>
+                    <p style={{ marginBottom: '0px', fontSize: '3.5vw' }}>Status:  <span style={{ fontWeight: "bold" }}>Verified</span><img style={{ marginLeft: '5px', width: '5.5vw', marginTop: '-1vw' }} alt="verified batch" src="../tick.png"></img></p>
                     <p style={{ marginBottom: '0px', fontSize: '3.5vw' }}>Age:  <span style={{ fontWeight: "bold" }}>{profile.age}</span></p>
                     <p style={{ marginBottom: '0px', fontSize: '3.5vw' }}>Telegram ID: <span style={{ fontWeight: "bold" }}>{profile.telegram}</span></p>
-                    <p style={{ marginBottom: '0px', fontSize: '3.5vw' }}>Location:  <span style={{ fontWeight: "bold" }}>{profile.location}</span><img style={{ marginLeft: '5px', width: '3vw', marginTop: '-1vw' }} alt="Location Icon" src="./location.svg"></img></p>
+                    <p style={{ marginBottom: '0px', fontSize: '3.5vw' }}>Location:  <span style={{ fontWeight: "bold" }}>{profile.location}</span><img style={{ marginLeft: '5px', width: '3vw', marginTop: '-1vw' }} alt="Location Icon" src="../location.svg"></img></p>
                     <p style={{ marginBottom: '0px', fontSize: '3.5vw' }}>
                         Phone:{" "}
                         <span style={{ fontWeight: "bold", color: '#cee236' }}>
@@ -47,9 +49,9 @@ const ProfileCard = () => {
                                 }}>
                                 {showPhoneNumber ? (
 
-                                    <img alt="view Phone number" className="svg" style={{ width: "3.8vw", marginTop: '-0.8vw' }} src="./eye-slash-fill.svg"></img>
+                                    <img alt="view Phone number" className="svg" style={{ width: "3.8vw", marginTop: '-0.8vw' }} src="../eye-slash-fill.svg"></img>
                                 ) : (
-                                    <img alt="view Phone number" className="svg" style={{ width: "3.8vw", marginTop: '-0.8vw' }} src="./eye-fill.svg"></img>
+                                    <img alt="view Phone number" className="svg" style={{ width: "3.8vw", marginTop: '-0.8vw' }} src="../eye-fill.svg"></img>
                                 )}
                             </span>
                         </span>

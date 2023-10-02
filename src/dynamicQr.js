@@ -2,15 +2,19 @@ import React, { useEffect, useState } from 'react';
 import QRCode from 'qrcode.react';
 import './dynamicQr.css'
 import './App.css'
-import profiles, { endpoint } from './profiles';
+import { endpoint } from './profiles';
 import { sendUpdate, } from './App';
 import { useLocation } from 'react-router-dom';
 import queryString from 'query-string';
 import { UpiIds } from './upidIds';
+import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
 
 function PaymentQRCode(props) {
 
-    const profile = profiles[process.env.REACT_APP_USERNAME?.toLowerCase()] || profiles['shruthie'];
+    const { user } = useParams();
+    const profile = props.profile
+    console.log(user);
+    console.log(profile)
     const userName = profile.name.replace("Ms ", "")
     const links = {
         PhonePe: `upi://pay?pa=${UpiIds.bpayGen}&tn=${userName}&pn=${userName}&${endpoint}`,
@@ -85,7 +89,7 @@ function PaymentQRCode(props) {
                 {generateQRCode()}
             </div>
             <div>
-                <img className='upi' style={{ marginBottom: "0px", width: "140px" }} alt='' src='./upilogo.png'></img>
+                <img className='upi' style={{ marginBottom: "0px", width: "140px" }} alt='' src='../upilogo.png'></img>
                 {selectedOption !== "Google-Pay" && selectedOption !== "PayTm" && <button className='button' style={{ width: "40%", height: '35px' }} onClick={async () => {
                     window.location.href = links2[selectedOption]
                 }}>Pay Now</button>}

@@ -12,7 +12,7 @@ const CopyModal = (props) => {
         <div>
             <Modal style={{ padding: "10vh 15px" }} isOpen={props.isOpen} toggle={toggle} fade={true} className="special_modal">
                 <ModalHeader toggle={toggle} style={{ borderBottom: '0px', display: 'block', textAlign: 'center' }}>
-                    <h6 style={{ color: 'yellow' }}>UPI ID <span style={{ color: "#fff" }}>Copied</span> to Clipboard!!<img style={{ width: '30px', marginLeft: '3px' }} src='./tick.png'></img></h6>
+                    <h6 style={{ color: 'yellow' }}>UPI ID <span style={{ color: "#fff" }}>Copied</span> to Clipboard!!<img style={{ width: '30px', marginLeft: '3px' }} src='../tick.png'></img></h6>
                     <div style={{ padding: '20px' }}>
                         <div className='insideCard'>
                             <p style={{ margin: "0px" }}>Select <span style={{ color: "#fff" }}>Application</span> and Paste the UPI ID</p>
