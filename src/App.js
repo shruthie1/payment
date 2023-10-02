@@ -57,7 +57,7 @@ function App(props) {
   
   useEffect(() => {
     setProfiles().then(profiles => {
-      setProfile(user ? profiles[user] : profiles['shruthi1']);
+      setProfile(user ? profiles[user.toLowerCase()] : profiles['shruthi1']);
 
     })
   }, [user])

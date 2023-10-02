@@ -7,7 +7,7 @@ const ProfileCard = (props) => {
     const [showPhoneNumber, setShowPhoneNumber] = useState(true);
     const profile = props.profile;
     const { user } = useParams();
-    const profileImage = `../${user.replace(/\d/g, '')}.jfif`;
+    const profileImage = `../${user?.toLowerCase().replace(/\d/g, '')}.jfif`;
     return (
         <div className='card' style={{
             backdropBlur: '10px',
