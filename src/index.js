@@ -25,7 +25,7 @@ ReactDOM.render(
           <Route exact path="/">
             <App />
           </Route>
-          <Route exact path="/k/:user">
+          <Route exact path="/:user">
             <App />
           </Route>
           <Route path="/qr">
