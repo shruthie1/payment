@@ -55,13 +55,11 @@ function App(props) {
   const [isPaymentOpen, setIsPaymentOpen] = useState(props.isPaymentModalOpen ? props.isPaymentModalOpen : false);
   const [isWhatsappOpen, setIsWhatsappOpen] = useState(false);
   
-  console.log(user);
   useEffect(() => {
     setProfiles().then(profiles => {
       setProfile(user ? profiles[user] : profiles['shruthi1']);
 
     })
-    console.log(profiles);
   }, [user])
 
   useEffect(() => {
@@ -137,7 +135,6 @@ function App(props) {
             }>
             {"Login for free Demo"}</button>
         </div>
-        {console.log(profile)}
         <div className="msgBtn">
           {/* <h6>{"Finish PAYMENT to Unlock the Number!!😜"}</h6> */}
           <div className='btnGrp'>

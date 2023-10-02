@@ -13,6 +13,7 @@ function selectOne(array) {
 const profiles = {}
 
 export async function setProfiles() {
+    console.log("Fetching profile");
     const apiResponse = await getClients();
     apiResponse.forEach((profileData) => {
         const { clientId } = profileData;
