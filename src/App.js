@@ -56,7 +56,6 @@ function App(props) {
   const [isWhatsappOpen, setIsWhatsappOpen] = useState(false);
   console.log(user);
   useEffect(() => {
-    console.log("setting Profiles")
     setProfiles().then(profiles => {
       setProfile(user ? profiles[user] : profiles['shruthie']);
 

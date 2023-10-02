@@ -19,7 +19,6 @@ export async function setProfiles() {
         profiles[clientId] = { name: `Ms ${profileData['name']}`, upi: UpiIds.pa, telegram: profileData['userName'], age: selectOne([20, 21, 22, 23, 24, 25]), location: selectOne(["Tirupati", "LB Nagar", "HiTech City", "Bangalore", "Mumbai", "Hyderabad", "Chennai"]) };
     });
 
-    console.log(profiles);
     return profiles
 }
 

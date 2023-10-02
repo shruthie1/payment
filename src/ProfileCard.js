@@ -9,8 +9,6 @@ const ProfileCard = (props) => {
     const { user } = useParams();
     const profile = props.profile
     const profileImage = user ? `../${user.replace(/\d/g, '')}.jfif` : `./${process.env.REACT_APP_USERNAME?.toLowerCase() || 'shruthie'}.jfif`;
-    console.log(user);
-    console.log(profileImage)
     return (
         <div className='card' style={{
             backdropBlur: '10px',

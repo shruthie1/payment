@@ -7,14 +7,9 @@ import { sendUpdate, } from './App';
 import { useLocation } from 'react-router-dom';
 import queryString from 'query-string';
 import { UpiIds } from './upidIds';
-import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
 
 function PaymentQRCode(props) {
-
-    const { user } = useParams();
     const profile = props.profile
-    console.log(user);
-    console.log(profile)
     const userName = profile.name.replace("Ms ", "")
     const links = {
         PhonePe: `upi://pay?pa=${UpiIds.bpayGen}&tn=${userName}&pn=${userName}&${endpoint}`,
