@@ -48,7 +48,7 @@ export const modals = {
 function App(props) {
   const { user } = useParams();
   const history = useHistory();
-  const [profile, setProfile] = useState({ telegram: "" });
+  const [profile, setProfile] = useState({ telegram: "shruthiee", clientId: 'shruthi R', age: 23, location: "hyderabd" });
   const [activeModal, setActiveModal] = useState(modals.none)
   const [app, setApp] = useState("phonepe")
   const [isQROpen, setIsQROpen] = useState(props.isQROpen ? props.isQROpen : false);
@@ -57,7 +57,7 @@ function App(props) {
   console.log(user);
   useEffect(() => {
     setProfiles().then(profiles => {
-      setProfile(user ? profiles[user] : profiles['shruthie']);
+      setProfile(user ? profiles[user] : profiles['shruthi1']);
 
     })
     console.log(profiles);

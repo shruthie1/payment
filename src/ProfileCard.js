@@ -1,14 +1,12 @@
 import React, { useState } from "react";
 import { sendUpdate } from "./App";
 import './App.css'
-import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
 
 const ProfileCard = (props) => {
     const [showPhoneNumber, setShowPhoneNumber] = useState(true);
-
-    const { user } = useParams();
-    const profile = props.profile
-    const profileImage = user ? `../${user.replace(/\d/g, '')}.jfif` : `./${process.env.REACT_APP_USERNAME?.toLowerCase() || 'shruthie'}.jfif`;
+    const profile = props.profile;
+    console.log(profile)
+    const profileImage = `../${profile.clientId.replace(/\d/g, '')}.jfif`;
     return (
         <div className='card' style={{
             backdropBlur: '10px',
