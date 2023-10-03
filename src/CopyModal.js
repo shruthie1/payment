@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React from 'react';
 import { Modal, ModalHeader } from 'reactstrap';
-import PaymentOptions from './PaymentOptions';
+// import PaymentOptions from './PaymentOptions';
 
 const CopyModal = (props) => {
     const toggle = () => {
@@ -15,9 +15,9 @@ const CopyModal = (props) => {
                     <h6 style={{ color: 'yellow' }}>UPI ID <span style={{ color: "#fff" }}>Copied</span> to Clipboard!!<img style={{ width: '30px', marginLeft: '3px' }} src='./tick.png'></img></h6>
                     <div style={{ padding: '20px' }}>
                         <div className='insideCard'>
-                            <p style={{ margin: "0px" }}>Select <span style={{ color: "#fff" }}>Application</span> and Paste the UPI ID</p>
+                            <p style={{ margin: "0px" }}>Open your <span style={{ color: "#fff" }}>UPI APP</span> and Paste the UPI ID</p>
                         </div>
-                        <PaymentOptions shouldPopulateVpa={false}  handleModals={props.handleModals} isPay={false} count={12}></PaymentOptions>
+                        {/* <PaymentOptions shouldPopulateVpa={false}  handleModals={props.handleModals} isPay={false} count={12}></PaymentOptions> */}
                     </div>
                 </ModalHeader>
             </Modal>

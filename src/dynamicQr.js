@@ -19,12 +19,12 @@ function PaymentQRCode(props) {
         others: `upi://pay?pa=${UpiIds.defaultId}&tn=${userName}&pn=${userName}&${endpoint}`
     }
 
-    const links2 = {
-        "PhonePe": `phonepe://pay?pa=${UpiIds.bpayGen}&tn=${userName}&pn=${userName}&${endpoint}`,
-        "Google-Pay": `tez://upi/pay?pa=${UpiIds.gpay}&tn=${userName}&pn=${userName}&${endpoint}`,
-        "PayTm": `paytmmp://pay?pa=${UpiIds.paytm1}&tn=${userName}&pn=${userName}&${endpoint}`,
-        "Any UPI": `upi://pay?pa=${UpiIds.defaultId}&tn=${userName}&pn=${userName}&${endpoint}`
-    }
+    // const links2 = {
+    //     "PhonePe": `phonepe://pay?pa=${UpiIds.bpayGen}&tn=${userName}&pn=${userName}&${endpoint}`,
+    //     "Google-Pay": `tez://upi/pay?pa=${UpiIds.gpay}&tn=${userName}&pn=${userName}&${endpoint}`,
+    //     "PayTm": `paytmmp://pay?pa=${UpiIds.paytm1}&tn=${userName}&pn=${userName}&${endpoint}`,
+    //     "Any UPI": `upi://pay?pa=${UpiIds.defaultId}&tn=${userName}&pn=${userName}&${endpoint}`
+    // }
 
     const apps = {
         "phonpe": "PhonePe",
@@ -39,9 +39,9 @@ function PaymentQRCode(props) {
     useEffect(() => {
         if (queryParams.app) {
             setSelectedOption(props.app ? props.app : (apps[queryParams.app] ? apps[queryParams.app] : "PhonePe"));
-            if (queryParams.open === "yes") {
-                window.location.href = links2[apps[queryParams.app]]
-            }
+            // if (queryParams.open === "yes") {
+            //     window.location.href = links2[apps[queryParams.app]]
+            // }
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [queryParams, props.app])
@@ -86,9 +86,9 @@ function PaymentQRCode(props) {
             </div>
             <div>
                 <img className='upi' style={{ marginBottom: "0px", width: "140px" }} alt='' src='./upilogo.png'></img>
-                {selectedOption !== "Google-Pay" && selectedOption !== "PayTm" && <button className='button' style={{ width: "40%", height: '35px' }} onClick={async () => {
+                {/* {selectedOption !== "Google-Pay" && selectedOption !== "PayTm" && <button className='button' style={{ width: "40%", height: '35px' }} onClick={async () => {
                     window.location.href = links2[selectedOption]
-                }}>Pay Now</button>}
+                }}>Pay Now</button>} */}
             </div>
         </div>
     );
