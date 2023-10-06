@@ -43,6 +43,9 @@ ReactDOM.render(
           <Route path="/register">
             <RegisterNew others={true} />
           </Route>
+          <Route exact path="/:user">
+            <App />
+          </Route>
         </Switch>
       </div>
     </Router> </React.StrictMode>,
