@@ -55,12 +55,14 @@ function App(props) {
   const [isPaymentOpen, setIsPaymentOpen] = useState(props.isPaymentModalOpen ? props.isPaymentModalOpen : false);
   const [isWhatsappOpen, setIsWhatsappOpen] = useState(false);
 
+
   useEffect(() => {
     setActiveProfile(user)
     setProfiles().then(profiles => {
       setProfile(profiles[getActiveProfile()]);
     })
-  }, [user])
+    history.push(`/${getActiveProfile()}`)
+  }, [history, user])
 
   useEffect(() => {
     switch (activeModal) {
