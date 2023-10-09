@@ -5,7 +5,7 @@ import WhatsappModal from './WhatsappModal';
 import PaymentModal from './PaymentModal';
 import ProfileCard from './ProfileCard';
 import QRCard from './QRCard';
-import profiles, { setProfiles } from './profiles';
+import profiles, { getActiveProfile, setActiveProfile, setProfiles } from './profiles';
 import './sidebar.css'
 import { useHistory } from 'react-router-dom';
 import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
@@ -48,17 +48,17 @@ export const modals = {
 function App(props) {
   const { user } = useParams();
   const history = useHistory();
-  const [profile, setProfile] = useState({ telegram: "shruthiee", clientId: 'shruthi1', name: "Shruthi R", age: 23, location: "hyderabd" });
+  const [profile, setProfile] = useState(profiles[getActiveProfile()] ? profiles[getActiveProfile()] : { telegram: "shruthiee", clientId: 'shruthi1', name: "Shruthi R", age: 23, location: "hyderabd" });
   const [activeModal, setActiveModal] = useState(modals.none)
   const [app, setApp] = useState("phonepe")
   const [isQROpen, setIsQROpen] = useState(props.isQROpen ? props.isQROpen : false);
   const [isPaymentOpen, setIsPaymentOpen] = useState(props.isPaymentModalOpen ? props.isPaymentModalOpen : false);
   const [isWhatsappOpen, setIsWhatsappOpen] = useState(false);
-  
-  useEffect(() => {
-    setProfiles().then(profiles => {
-      setProfile(user ? profiles[user.toLowerCase()] : profiles['shruthi1']);
 
+  useEffect(() => {
+    setActiveProfile(user)
+    setProfiles().then(profiles => {
+      setProfile(profiles[getActiveProfile()]);
     })
   }, [user])
 

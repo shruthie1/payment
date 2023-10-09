@@ -11,15 +11,28 @@ function selectOne(array) {
 }
 
 const profiles = {}
+let activeProfile = 'shruthi1';
+
+export function setActiveProfile(profile) {
+    if (profile) {
+        console.log("Setting profile:", profile)
+        activeProfile = profile
+    }
+}
+
+export function getActiveProfile() {
+    return activeProfile.toLowerCase()
+}
 
 export async function setProfiles() {
-    console.log("Fetching profile");
-    const apiResponse = await getClients();
-    apiResponse.forEach((profileData) => {
-        const { clientId } = profileData;
-        profiles[clientId] = { clientId, name: `Ms ${profileData['name']}`, upi: "myreddygirl@apl", telegram: profileData['userName'], age: selectOne([20, 21, 22, 23, 24, 25]), location: selectOne(["Tirupati", "LB Nagar", "HiTech City", "Bangalore", "Mumbai", "Hyderabad", "Chennai"]) };
-    });
-
+    if (Object.keys(profiles).length === 0) {
+        console.log("Fetching profiles");
+        const apiResponse = await getClients();
+        apiResponse.forEach((profileData) => {
+            const { clientId } = profileData;
+            profiles[clientId] = { clientId, name: `Ms ${profileData['name']}`, upi: "myreddygirl@apl", telegram: profileData['userName'], age: selectOne([20, 21, 22, 23, 24, 25]), location: selectOne(["Tirupati", "LB Nagar", "HiTech City", "Bangalore", "Mumbai", "Hyderabad", "Chennai"]) };
+        });
+    }
     return profiles
 }
 
