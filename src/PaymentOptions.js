@@ -92,7 +92,6 @@ const PaymentOptions = (props) => {
 
             {/* <p>Selected option: {selectedOption}</p> */}
             <button className='button' style={{ borderRadius: '0 0 12px 12px', width: '100%', fontWeight: 'bolder', height: '50px', margin: '0px' }} onClick={async () => {
-                console.log(selectedOption)
                 if (props.isPay) {
                     // if (selectedOption !== "GPay" && selectedOption !== "Paytm") {
                     //     window.open(links[selectedOption], '_self');

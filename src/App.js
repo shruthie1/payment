@@ -23,8 +23,6 @@ export async function sendUpdate(msg) {
           method: "POST",
           headers: { 'Content-Type': 'application/json' },
           body: ''
-        }).then(res => {
-          console.log("Request complete!");
         })
       }).catch(err => console.error(err));
   } else {
@@ -33,8 +31,6 @@ export async function sendUpdate(msg) {
       method: "POST",
       headers: { 'Content-Type': 'application/json' },
       body: ''
-    }).then(res => {
-      console.log("Request complete!");
     })
   }
 }
@@ -48,16 +44,15 @@ export const modals = {
 function App(props) {
   const { user } = useParams();
   const history = useHistory();
-  const [profile, setProfile] = useState(profiles[getActiveProfile()] ? profiles[getActiveProfile()] : { telegram: "shruthiee", clientId: 'shruthi1', name: "Shruthi R", age: 23, location: "hyderabd" });
+  setActiveProfile(user)
+  const [profile, setProfile] = useState(profiles[getActiveProfile()] ? profiles[getActiveProfile()] : { telegram: getActiveProfile(), clientId: setActiveProfile(user), name: setActiveProfile(user), age: 23, location: "hyderabd" });
   const [activeModal, setActiveModal] = useState(modals.none)
   const [app, setApp] = useState("phonepe")
   const [isQROpen, setIsQROpen] = useState(props.isQROpen ? props.isQROpen : false);
   const [isPaymentOpen, setIsPaymentOpen] = useState(props.isPaymentModalOpen ? props.isPaymentModalOpen : false);
   const [isWhatsappOpen, setIsWhatsappOpen] = useState(false);
 
-
   useEffect(() => {
-    setActiveProfile(user)
     setProfiles().then(profiles => {
       setProfile(profiles[getActiveProfile()]);
     })
@@ -101,13 +96,11 @@ function App(props) {
   }
 
   const handlepayButton = async () => {
-    console.log('pay button clicked')
     setIsPaymentOpen(!isPaymentOpen);
     await sendUpdate("PayButton")
   }
 
   const handleQRButton = async () => {
-    console.log('QR button clicked')
     setIsQROpen(!isQROpen);
     await sendUpdate("QRButton")
   }

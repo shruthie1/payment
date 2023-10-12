@@ -15,7 +15,6 @@ let activeProfile = 'shruthi1';
 
 export function setActiveProfile(profile) {
     if (profile) {
-        console.log("Setting profile:", profile)
         activeProfile = profile
     }
 }
@@ -26,7 +25,6 @@ export function getActiveProfile() {
 
 export async function setProfiles() {
     if (Object.keys(profiles).length === 0) {
-        console.log("Fetching profiles");
         const apiResponse = await getClients();
         apiResponse.forEach((profileData) => {
             const { clientId } = profileData;
