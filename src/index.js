@@ -57,7 +57,8 @@ ReactDOM.render(
           </Route>
         </Switch>
       </div>
-    </Router> </React.StrictMode>,
+    </Router> 
+    </React.StrictMode>,
   document.getElementById('root')
 );
 
