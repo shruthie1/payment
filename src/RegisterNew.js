@@ -1,8 +1,10 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import './regForm.css';
 import { Spinner } from 'reactstrap';
 import axios from 'axios';
 import { sendUpdate } from './App';
+import profiles, { getActiveProfile, setActiveProfile, setProfiles } from './profiles';
+import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
 
 const forms = {
     phoneNumber: "phoneNumber",
@@ -30,6 +32,14 @@ const RegForm = (props) => {
             [event.target.name]: event.target.value,
         });
     };
+    const { user } = useParams();
+    useEffect(() => {
+        if (!profiles[getActiveProfile()]) {
+            setProfiles().then(profiles => {
+                setActiveProfile(user)
+            })
+        }
+    }, [user])
 
     const handlePhoneSubmit = async (event) => {
         event.preventDefault();

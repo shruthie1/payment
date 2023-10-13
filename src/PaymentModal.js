@@ -10,7 +10,6 @@ function ConfirmModal(props) {
     const toggle = () => {
         props.setisOpen(!props.isOpen)
     }
-
     return (
         <div className='hella'>
             <Modal isOpen={props.isOpen} toggle={toggle} className={props.className}>

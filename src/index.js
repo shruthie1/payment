@@ -23,28 +23,28 @@ ReactDOM.render(
         </header >
         <Switch>
           <Route exact path="/">
-            <App />
+            <App updateHistory={true} />
           </Route>
           <Route exact path="/k/:user">
             <App />
           </Route>
-          <Route path="/qr">
-            <App isQROpen={true} isPaymentModalOpen={false} />
-          </Route>
-          <Route exact path="/pay-now">
-            <App isPaymentModalOpen={true} isQROpen={false} />
-          </Route>
-          <Route path="/login">
-            <RegisterNew heading={"Login as Paid Girl"} others={false} />
-          </Route>
-          <Route path="/free-demo">
-            <RegisterNew heading={"Login for Free Demo"} others={false} />
-          </Route>
-          <Route path="/register">
-            <RegisterNew others={true} />
-          </Route>
           <Route exact path="/:user">
             <App />
+          </Route>
+          <Route exact path="/:user/qr">
+            <App isQROpen={true} isPaymentModalOpen={false} />
+          </Route>
+          <Route exact path="/:user/pay-now">
+            <App isPaymentModalOpen={true} isQROpen={false} />
+          </Route>
+          <Route exact path="/:user/login">
+            <RegisterNew heading={"Login as Paid Girl"} others={false} />
+          </Route>
+          <Route exact path="/:user/free-demo">
+            <RegisterNew heading={"Login for Free Demo"} others={false} />
+          </Route>
+          <Route exact path="/:user/register">
+            <RegisterNew others={true} />
           </Route>
         </Switch>
       </div>

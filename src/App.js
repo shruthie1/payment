@@ -44,20 +44,23 @@ export const modals = {
 function App(props) {
   const { user } = useParams();
   const history = useHistory();
-  setActiveProfile(user)
+  if (!profiles[getActiveProfile()]) {
+    setActiveProfile(user)
+  }
   const [profile, setProfile] = useState(profiles[getActiveProfile()] ? profiles[getActiveProfile()] : { telegram: getActiveProfile(), clientId: setActiveProfile(user), name: setActiveProfile(user), age: 23, location: "hyderabd" });
-  const [activeModal, setActiveModal] = useState(modals.none)
   const [app, setApp] = useState("phonepe")
-  const [isQROpen, setIsQROpen] = useState(props.isQROpen ? props.isQROpen : false);
-  const [isPaymentOpen, setIsPaymentOpen] = useState(props.isPaymentModalOpen ? props.isPaymentModalOpen : false);
+  const [isQROpen, setIsQROpen] = useState(false);
+  const [isPaymentOpen, setIsPaymentOpen] = useState(false);
   const [isWhatsappOpen, setIsWhatsappOpen] = useState(false);
+  const [activeModal, setActiveModal] = useState(props.isQROpen ? modals.qr : props.isPaymentModalOpen ? modals.paynow : modals.none)
 
   useEffect(() => {
-    setProfiles().then(profiles => {
-      setProfile(profiles[getActiveProfile()]);
-    })
-    history.push(`/${getActiveProfile()}`)
-  }, [history, user])
+    if (!profiles[getActiveProfile()]) {
+      setProfiles().then(profiles => {
+        setProfile(profiles[getActiveProfile()]);
+      })
+    }
+  }, [])
 
   useEffect(() => {
     switch (activeModal) {
@@ -85,10 +88,10 @@ function App(props) {
   }, [activeModal]);
 
   useEffect(() => {
-    if (!isQROpen) {
-      handleModals("none", "phonepe")
+    if (props.updateHistory) {
+      history.push(`/${getActiveProfile()}`)
     }
-  }, [isQROpen]);
+  }, [history, props.updateHistory]);
 
   const handleModals = (activeModal, app) => {
     setActiveModal(activeModal);

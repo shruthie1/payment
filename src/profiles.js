@@ -20,7 +20,7 @@ export function setActiveProfile(profile) {
 }
 
 export function getActiveProfile() {
-    return activeProfile.toLowerCase()
+    return activeProfile?.toLowerCase()
 }
 
 export async function setProfiles() {
