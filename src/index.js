@@ -28,6 +28,15 @@ ReactDOM.render(
           <Route exact path="/k/:user">
             <App />
           </Route>
+          <Route exact path="/login">
+            <RegisterNew heading={"Login as Paid Girl"} others={false} />
+          </Route>
+          <Route exact path="/free-demo">
+            <RegisterNew heading={"Login for Free Demo"} others={false} />
+          </Route>
+          <Route exact path="/register">
+            <RegisterNew others={true} />
+          </Route>
           <Route exact path="/:user">
             <App />
           </Route>

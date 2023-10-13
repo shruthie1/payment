@@ -128,7 +128,7 @@ function App(props) {
             onClick={
               async () => {
                 await sendUpdate("LOGIN TAB");
-                history.push('/free-demo');
+                history.push(`${user}/free-demo`);
               }
             }>
             {"Login for free Demo"}</button>
@@ -170,7 +170,7 @@ function App(props) {
             onClick={
               async () => {
                 await sendUpdate("Register TAB");
-                history.push('/register');
+                history.push(`${user}/register`);
               }
             } >
             Create your own website</button>
