@@ -1,13 +1,14 @@
 export class UpiIds {
     static paytm1 = 'newreddygirl@apl';
     static paytm2 = 'paytmqr281005050101jnirp1ueoe1y@paytm';
-    static paytm3 = 'myreddygirl@apl';
-    static ppay = 'BHARATPE.8000073302@fbpe&bpsign=RUR1L3B2d1Z2WVJwdVVCNE5OMm4rL3pBS3pMVHF2MTJ0T3VtY3pnOGZUND0';
+    static paytm3 = 'BHARATPE.8000073302@fbpe&bpsign=RUR1L3B2d1Z2WVJwdVVCNE5OMm4rL3pBS3pMVHF2MTJ0T3VtY3pnOGZUND0';;
+    static ppay = "myreddygirl@apl";
     static bpayGen = 'newreddygirl@apl';
     static bpay2 = 'BHARATPE.8000073302@fbpe&bpsign=RUR1L3B2d1Z2WVJwdVVCNE5OMm4rL3pBS3pMVHF2MTJ0T3VtY3pnOGZUND0';
     static axisUPI = 'lakshmi.stores6160@axisbank';
     static gpay = 'Q137045557@ybl';
     static defaultId = 'myreddygirl@apl';
+    static gpayid = "Q210249262@ybl"
 
     static getUpiId(key) {
         return UpiIds[key];
