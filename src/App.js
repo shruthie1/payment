@@ -63,6 +63,12 @@ function App(props) {
   }, [])
 
   useEffect(() => {
+    if (!isQROpen) {
+      handleModals('none')
+    }
+  }, [isQROpen])
+
+  useEffect(() => {
     switch (activeModal) {
       case modals.paynow:
         setIsPaymentOpen(true);

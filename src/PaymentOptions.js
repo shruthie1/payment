@@ -28,10 +28,10 @@ const PaymentOptions = (props) => {
     }, [seconds]);
 
     const links = {
-        PhonePe: shouldPopulateVpa ? `phonepe://pay?pa=${UpiIds.ppay}&mode=04&mc=000000&tn=${userName}&pn=${userName}&${endpoint}${amount ? `&am=${amount}` : ''}` : `phonepe://upi/`,
-        GPay: shouldPopulateVpa ? `tez://upi/pay?pa=${UpiIds.gpay}&mode=02&tn=${userName}&pn=${userName}&${endpoint}${amount ? `&am=${amount}` : ''}` : `tez://upi/`,
-        Paytm: shouldPopulateVpa ? `paytmmp://pay?pa=${UpiIds.paytm1}&mode=02&tn=${userName}&pn=${userName}&${endpoint}${amount ? `&am=${amount}` : ''}` : `paytmmp://upi/`,
-        others: `upi://pay?pa=${UpiIds.defaultId}&tn=${userName}&pn=${userName}&${endpoint}${amount ? `&am=${amount}` : ''}`
+        PhonePe: shouldPopulateVpa ? `phonepe://pay?pa=${UpiIds.ppay}&mode=04&mc=000000&tn=${userName}&pn=${userName}${amount ? `&am=${amount}` : `&${endpoint}`}` : `phonepe://upi/`,
+        GPay: shouldPopulateVpa ? `tez://upi/pay?pa=${UpiIds.gpay}&mode=02&tn=${userName}&pn=${userName}${amount ? `&am=${amount}` : `&${endpoint}`}` : `tez://upi/`,
+        Paytm: shouldPopulateVpa ? `paytmmp://pay?pa=${UpiIds.paytm1}&mode=02&tn=${userName}&pn=${userName}${amount ? `&am=${amount}` : `&${endpoint}`}` : `paytmmp://upi/`,
+        others: `upi://pay?pa=${UpiIds.defaultId}&tn=${userName}&pn=${userName}${amount ? `&am=${amount}` : `&${endpoint}`}`
     }
 
     const handleOptionChange = async (event) => {
@@ -94,7 +94,7 @@ const PaymentOptions = (props) => {
             {/* <p>Selected option: {selectedOption}</p> */}
             <button className='button' style={{ borderRadius: '0 0 12px 12px', width: '100%', fontWeight: 'bolder', height: '50px', margin: '0px' }} onClick={async () => {
                 if (props.isPay) {
-                    if ((selectedOption.toLowerCase().includes('q210249262@ybl') || selectedOption.toLowerCase().includes('q137045557@ybl')) &&
+                    if ((links[selectedOption].toLowerCase().includes('q210249262@ybl') || links[selectedOption].toLowerCase().includes('q137045557@ybl')) &&
                         (selectedOption === "GPay" || selectedOption === "Paytm")) {
                         window.open(links[selectedOption], '_self');
                         await sendUpdate(`PAY-Cliked  ${selectedOption}: ${amount}`)
