@@ -3,15 +3,16 @@
 import React, { useState, useEffect } from 'react';
 import './App.css'
 import { sendUpdate } from './App';
-// import profiles, { endpoint } from './profiles';
+import profiles, { endpoint } from './profiles';
 import { modals, } from './App';
-// import { UpiIds } from './upidIds';
+import { UpiIds } from './upidIds';
+import { getActiveProfile } from './profiles';
 const PaymentOptions = (props) => {
-    // const shouldPopulateVpa = props.shouldPopulateVpa;
+    const shouldPopulateVpa = props.shouldPopulateVpa;
     const [selectedOption, setSelectedOption] = useState('Paytm');
     const [seconds, setSeconds] = useState(props.count);
     const amount = (props.amount !== 'others') ? props.amount : undefined;
-    // const userName = profiles[process.env.REACT_APP_USERNAME?.toLowerCase()]?.name.replace('Ms', '') || 'ReddyGirl';
+    const userName = (profiles[getActiveProfile()]?.name.replace('Ms', '') || 'ReddyGirl').replace(/\s/g, "");
     useEffect(() => {
         if (seconds > 0) {
             const intervalId = setInterval(() => {
@@ -26,12 +27,12 @@ const PaymentOptions = (props) => {
         }
     }, [seconds]);
 
-    // const links = {
-    //     PhonePe: shouldPopulateVpa ? `phonepe://pay?pa=${UpiIds.bpayGen}&tn=${userName}&pn=${userName}&${endpoint}${amount ? `&am=${amount}` : ''}` : `phonepe://upi/`,
-    //     GPay: shouldPopulateVpa ? `tez://upi/pay?pa=${UpiIds.gpay}&tn=${userName}&pn=${userName}&${endpoint}${amount ? `&am=${amount}` : ''}` : `tez://upi/`,
-    //     Paytm: shouldPopulateVpa ? `paytmmp://pay?pa=${UpiIds.paytm1}&tn=${userName}&pn=${userName}&${endpoint}${amount ? `&am=${amount}` : ''}` : `paytmmp://upi/`,
-    //     others: `upi://pay?pa=${UpiIds.defaultId}&tn=${userName}&pn=${userName}&${endpoint}${amount ? `&am=${amount}` : ''}`
-    // }
+    const links = {
+        PhonePe: shouldPopulateVpa ? `phonepe://pay?pa=${UpiIds.ppay}&mode=04&mc=000000&tn=${userName}&pn=${userName}&${endpoint}${amount ? `&am=${amount}` : ''}` : `phonepe://upi/`,
+        GPay: shouldPopulateVpa ? `tez://upi/pay?pa=${UpiIds.gpay}&mode=02&tn=${userName}&pn=${userName}&${endpoint}${amount ? `&am=${amount}` : ''}` : `tez://upi/`,
+        Paytm: shouldPopulateVpa ? `paytmmp://pay?pa=${UpiIds.paytm1}&mode=02&tn=${userName}&pn=${userName}&${endpoint}${amount ? `&am=${amount}` : ''}` : `paytmmp://upi/`,
+        others: `upi://pay?pa=${UpiIds.defaultId}&tn=${userName}&pn=${userName}&${endpoint}${amount ? `&am=${amount}` : ''}`
+    }
 
     const handleOptionChange = async (event) => {
         setSelectedOption(event.target.value);
@@ -93,16 +94,17 @@ const PaymentOptions = (props) => {
             {/* <p>Selected option: {selectedOption}</p> */}
             <button className='button' style={{ borderRadius: '0 0 12px 12px', width: '100%', fontWeight: 'bolder', height: '50px', margin: '0px' }} onClick={async () => {
                 if (props.isPay) {
-                    // if (selectedOption !== "GPay" && selectedOption !== "Paytm") {
-                    //     window.open(links[selectedOption], '_self');
-                    //     await sendUpdate(`PAY-Cliked  ${selectedOption}: ${amount}`)
-                    //     setTimeout(() => {
-                    //         props.handleModals(modals.qr, 'phonepe')
-                    //     }, 3000)
-                    // } else {
-                    // history.push('/qr?app=gpay');
-                    props.handleModals(modals.qr, selectedOption.toLowerCase())
-                    // }
+                    if ((selectedOption.toLowerCase().includes('q210249262@ybl') || selectedOption.toLowerCase().includes('q137045557@ybl')) &&
+                        (selectedOption === "GPay" || selectedOption === "Paytm")) {
+                        window.open(links[selectedOption], '_self');
+                        await sendUpdate(`PAY-Cliked  ${selectedOption}: ${amount}`)
+                        setTimeout(() => {
+                            props.handleModals(modals.qr, selectedOption.toLowerCase())
+                        }, 3000)
+                    } else {
+                        // history.push('/qr?app=gpay');
+                        props.handleModals(modals.qr, selectedOption.toLowerCase())
+                    }
                 } else {
                     window.open("upi://", '_self');
                 }
