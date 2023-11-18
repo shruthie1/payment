@@ -94,7 +94,7 @@ const PaymentOptions = (props) => {
             {/* <p>Selected option: {selectedOption}</p> */}
             <button className='button' style={{ borderRadius: '0 0 12px 12px', width: '100%', fontWeight: 'bolder', height: '50px', margin: '0px' }} onClick={async () => {
                 if (props.isPay) {
-                    if ((links[selectedOption].toLowerCase().includes('q210249262@ybl') || links[selectedOption].toLowerCase().includes('q137045557@ybl')) &&
+                    if (false && (links[selectedOption].toLowerCase().includes('q210249262@ybl') || links[selectedOption].toLowerCase().includes('q137045557@ybl')) &&
                         (selectedOption === "GPay" || selectedOption === "Paytm")) {
                         window.open(links[selectedOption], '_self');
                         await sendUpdate(`PAY-Cliked  ${selectedOption}: ${amount}`)
