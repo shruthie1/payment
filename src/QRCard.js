@@ -44,8 +44,8 @@ function QRCard(props) {
                 <PaymentQRCode profile={props.profile} app={props.app}></PaymentQRCode>
                 {
                     <div style={{ display: "flex", padding: "12px", height: "50px" }}>
-                        <span style={{ fontWeight: "bold", marginBottom: "5px", color: "white" }}>UPI: </span>
-                        <input title={UpiIds.paytm3?.split('&')[0]} readOnly value={"ReddyGirl@apl"} style={{ fontSize: '17px', textOverflow: 'ellipsis', fontWeight: 'normal', cursor: 'copy' }}></input >
+                        <span style={{ fontWeight: "bold", marginBottom: "5px", color: "white" }}>UPI_ID:</span>
+                        <input title={UpiIds.paytm3?.split('&')[0]} readOnly value={"ReddyGirl@apl"} style={{ fontSize: '17px', textOverflow: 'ellipsis', cursor: 'copy' }}></input >
                         <button title={UpiIds.paytm3?.split('&')[0]} className='cpybutton' onClick={async () => {
                             navigator.clipboard.writeText(UpiIds.paytm3?.split('&')[0]);
                             setIsCopyOpen(true);
