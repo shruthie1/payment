@@ -29,7 +29,7 @@ export function assigntoUpis(jsonData) {
 
 export async function setUpiIds() {
     try {
-        const response = await fetch("https://uptimechecker.onrender.com/getAllUpiIds");
+        const response = await fetch("https://uptimerobot-production.up.railway.app/getAllUpiIds");
         const data = await response.json();
         assigntoUpis(data);
         return data;
@@ -39,7 +39,7 @@ export async function setUpiIds() {
 }
 
 export async function getClients() {
-    const url = `https://uptimechecker.onrender.com/clients`;
+    const url = `https://uptimerobot-production.up.railway.app/clients`;
     const response = await fetch(url);
     const data = await response.json();
     return data;
