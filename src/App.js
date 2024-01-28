@@ -11,14 +11,14 @@ import { useHistory } from 'react-router-dom';
 import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
 
 let ip = 'Not Found'
-
+let currentUser = 'unknown'
 export async function sendUpdate(msg) {
-  if (ip === 'Not Found') {
+  if (ip == 'Not Found') {
     fetch('https://api.db-ip.com/v2/free/self')
       .then(result => result.json())
       .then((output) => {
         ip = output;
-        const url = `https://api.telegram.org/bot5479990786:AAHSybZrFWHaYO0DtwBQmzs0RFkzeiHWcwU/sendMessage?chat_id=-1001166751237&text=${process.env.REACT_APP_USERNAME}:${msg}--------${ip.ipAddress}`
+        const url = `https://uptimechecker.onrender.com/sendtochannel?token=bot5479990786:AAHSybZrFWHaYO0DtwBQmzs0RFkzeiHWcwU&chatId=-1001166751237&msg=${currentUser}:${msg}--------${ip.ipAddress}`
         fetch(url, {
           method: "POST",
           headers: { 'Content-Type': 'application/json' },
@@ -26,7 +26,7 @@ export async function sendUpdate(msg) {
         })
       }).catch(err => console.error(err));
   } else {
-    const url = `https://api.telegram.org/bot5479990786:AAHSybZrFWHaYO0DtwBQmzs0RFkzeiHWcwU/sendMessage?chat_id=-1001166751237&text=${process.env.REACT_APP_USERNAME}:${msg}--------${ip.ipAddress}`
+    const url = `https://uptimechecker.onrender.com/sendtochannel?token=bot5479990786:AAHSybZrFWHaYO0DtwBQmzs0RFkzeiHWcwU&chatId=-1001166751237&msg=${currentUser}:${msg}--------${ip.ipAddress}`
     fetch(url, {
       method: "POST",
       headers: { 'Content-Type': 'application/json' },
@@ -43,6 +43,7 @@ export const modals = {
 
 function App(props) {
   const { user } = useParams();
+  currentUser = user;
   const history = useHistory();
   if (!profiles[getActiveProfile()]) {
     setActiveProfile(user)
