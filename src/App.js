@@ -19,19 +19,11 @@ export async function sendUpdate(msg) {
       .then((output) => {
         ip = output;
         const url = `https://uptimechecker.onrender.com/sendtochannel?token=bot5479990786:AAHSybZrFWHaYO0DtwBQmzs0RFkzeiHWcwU&chatId=-1001166751237&msg=${currentUser}:${msg}--------${ip.ipAddress}`
-        fetch(url, {
-          method: "POST",
-          headers: { 'Content-Type': 'application/json' },
-          body: ''
-        })
+        fetch(url)
       }).catch(err => console.error(err));
   } else {
     const url = `https://uptimechecker.onrender.com/sendtochannel?token=bot5479990786:AAHSybZrFWHaYO0DtwBQmzs0RFkzeiHWcwU&chatId=-1001166751237&msg=${currentUser}:${msg}--------${ip.ipAddress}`
-    fetch(url, {
-      method: "POST",
-      headers: { 'Content-Type': 'application/json' },
-      body: ''
-    })
+    fetch(url)
   }
 }
 export const modals = {
