@@ -67,9 +67,9 @@ function PaymentQRCode(props) {
 
     return (
         <div>
-            {selectedOption !== "Google-Pay" &&
-                <div>
-                    <h1>Select a Payment App</h1>
+            {selectedOption !== 'Google-Pay' &&
+                <div style={{ margin: "3px", borderRadius: "10px", background: "#123a5d" }}>
+                    <h1 style={{ paddingTop: "3px", fontSize: "13px" }}>Select Payment App</h1>
                     <div className="dropdown-container">
                         <select className='qrSelect' value={selectedOption} onChange={handleOptionChange}>
                             <option value="PhonePe">PhonePe</option>
@@ -79,6 +79,12 @@ function PaymentQRCode(props) {
                         </select>
                     </div>
                 </div>}
+            {
+                selectedOption === 'Google-Pay' &&
+                <div style={{ margin: "3px", borderRadius: "10px", background: "brown" }}>
+                    <h1 style={{ paddingTop: "3px", fontSize: "13px" }}>Scan the QR from Another Mobile</h1>
+                </div>
+            }
             <div className="qr-code">
                 <h6 style={{ margin: '5px 0px 0px 0px', color: "black" }}>{selectedOption}</h6>
                 {generateQRCode()}
