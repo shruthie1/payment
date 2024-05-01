@@ -1,5 +1,5 @@
 import { setUpiIds, getClients, UpiIds } from "./upidIds";
-export const endpoint = `mam=15&mode=02`
+export const endpoint = `mode=02`//&mam=15
 setUpiIds();
 function selectOne(array) {
     if (array.length === 0) {
