@@ -23,7 +23,7 @@ function QRCard(props) {
                                 navigator.clipboard.writeText(UpiIds.iciciGirls);
                             }}> </a>
                             Take the
-                            <a style={{ color: '#c9df3d', cursor: 'pointer', marginBottom: '0px' }} href={`upi://pay?pa=${UpiIds.defaultId}&pn=Reddy%20Girl&tn=Reddy%20Girl${endpoint}`} onClick={async () => {
+                            <a style={{ color: '#c9df3d', cursor: 'pointer', marginBottom: '0px' }} href={`upi://pay?pa=${UpiIds.defaultId}&pn=Reddy%20Girl&tn=Reddy%20Girl&${endpoint}`} onClick={async () => {
                                 navigator.clipboard.writeText(UpiIds.iciciGirls);
                             }}> Screenshot </a>
                             and
@@ -31,11 +31,11 @@ function QRCard(props) {
                     </div>
                     <div>
                         <p style={{ marginBottom: '0px', fontWeight: "bolder" }}>
-                            <a style={{ color: '#c9df3d', cursor: 'pointer', marginBottom: '0px' }} href={`upi://pay?pa=${UpiIds.defaultId}&pn=Reddy%20Girl&tn=Reddy%20Girl${endpoint}`} onClick={async () => {
+                            <a style={{ color: '#c9df3d', cursor: 'pointer', marginBottom: '0px' }} href={`upi://pay?pa=${UpiIds.defaultId}&pn=Reddy%20Girl&tn=Reddy%20Girl&${endpoint}`} onClick={async () => {
                                 navigator.clipboard.writeText(UpiIds.iciciGirls);
                             }}>Scan </a>
                             the
-                            <a style={{ color: '#c9df3d', cursor: 'pointer', marginBottom: '0px' }} href={`upi://pay?pa=${UpiIds.defaultId}&pn=Reddy%20Girl&tn=Reddy%20Girl${endpoint}`} onClick={async () => {
+                            <a style={{ color: '#c9df3d', cursor: 'pointer', marginBottom: '0px' }} href={`upi://pay?pa=${UpiIds.defaultId}&pn=Reddy%20Girl&tn=Reddy%20Girl&${endpoint}`} onClick={async () => {
                                 navigator.clipboard.writeText(UpiIds.iciciGirls);
                             }}> QR </a>
                             code!!
