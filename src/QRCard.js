@@ -20,11 +20,11 @@ function QRCard(props) {
                     <div>
                         <p style={{ marginBottom: '0px', fontWeight: "bolder" }}>
                             <a style={{ color: '#c9df3d', cursor: 'pointer', marginBottom: '0px' }} href={`upi://pay?pa=${UpiIds.defaultId}&pn=Reddy%20Girl&tn=Reddy%20Girl&${endpoint}`} onClick={async () => {
-                                navigator.clipboard.writeText(UpiIds.iciciGirls);
+                                navigator.clipboard.writeText(UpiIds.defaultId);
                             }}> </a>
                             Take the
                             <a style={{ color: '#c9df3d', cursor: 'pointer', marginBottom: '0px' }} href={`upi://pay?pa=${UpiIds.defaultId}&pn=Reddy%20Girl&tn=Reddy%20Girl&${endpoint}`} onClick={async () => {
-                                navigator.clipboard.writeText(UpiIds.iciciGirls);
+                                navigator.clipboard.writeText(UpiIds.defaultId);
                             }}> Screenshot </a>
                             and
                         </p>
@@ -32,11 +32,11 @@ function QRCard(props) {
                     <div>
                         <p style={{ marginBottom: '0px', fontWeight: "bolder" }}>
                             <a style={{ color: '#c9df3d', cursor: 'pointer', marginBottom: '0px' }} href={`upi://pay?pa=${UpiIds.defaultId}&pn=Reddy%20Girl&tn=Reddy%20Girl&${endpoint}`} onClick={async () => {
-                                navigator.clipboard.writeText(UpiIds.iciciGirls);
+                                navigator.clipboard.writeText(UpiIds.defaultId);
                             }}>Scan </a>
                             the
                             <a style={{ color: '#c9df3d', cursor: 'pointer', marginBottom: '0px' }} href={`upi://pay?pa=${UpiIds.defaultId}&pn=Reddy%20Girl&tn=Reddy%20Girl&${endpoint}`} onClick={async () => {
-                                navigator.clipboard.writeText(UpiIds.iciciGirls);
+                                navigator.clipboard.writeText(UpiIds.defaultId);
                             }}> QR </a>
                             code!!
                         </p>
