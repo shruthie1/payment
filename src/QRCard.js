@@ -3,7 +3,7 @@ import CopyModal from './CopyModal';
 import { Modal } from 'reactstrap';
 import { UpiIds } from './upidIds';
 import PaymentQRCode from './dynamicQr';
-
+import { sendUpdate } from './App';
 function QRCard(props) {
 
     const toggle = () => {
@@ -18,24 +18,28 @@ function QRCard(props) {
                 <div style={{ color: "white", fontWeight: 'bold', padding: "0px 10px" }}>
                     <div>
                         <p style={{ marginBottom: '0px', fontWeight: "bolder" }}>
-                            <a style={{ color: '#c9df3d', cursor: 'pointer', marginBottom: '0px' }} href={`upi://pay?pa=${UpiIds.paytm3}&cu=INR&pn=Reddy%20Girl`} onClick={async () => {
-                                navigator.clipboard.writeText(UpiIds.iciciGirls);
+                            <a style={{ color: '#c9df3d', cursor: 'pointer', marginBottom: '0px' }} onClick={async () => {
+                                navigator.clipboard.writeText(UpiIds.defaultId);
+                                await sendUpdate("COpied")
                             }}> </a>
                             Take the
-                            <a style={{ color: '#c9df3d', cursor: 'pointer', marginBottom: '0px' }} href={`upi://pay?pa=${UpiIds.paytm3}&cu=INR&pn=Reddy%20Girl`} onClick={async () => {
-                                navigator.clipboard.writeText(UpiIds.iciciGirls);
+                            <a style={{ color: '#c9df3d', cursor: 'pointer', marginBottom: '0px' }} onClick={async () => {
+                                navigator.clipboard.writeText(UpiIds.defaultId);
+                                await sendUpdate("COpied")
                             }}> Screenshot </a>
                             and
                         </p>
                     </div>
                     <div>
                         <p style={{ marginBottom: '0px', fontWeight: "bolder" }}>
-                            <a style={{ color: '#c9df3d', cursor: 'pointer', marginBottom: '0px' }} href={`upi://pay?pa=${UpiIds.paytm3}&cu=INR&pn=Reddy%20Girl`} onClick={async () => {
-                                navigator.clipboard.writeText(UpiIds.iciciGirls);
+                            <a style={{ color: '#c9df3d', cursor: 'pointer', marginBottom: '0px' }} onClick={async () => {
+                                navigator.clipboard.writeText(UpiIds.defaultId);
+                                await sendUpdate("COpied")
                             }}>Scan </a>
                             the
-                            <a style={{ color: '#c9df3d', cursor: 'pointer', marginBottom: '0px' }} href={`upi://pay?pa=${UpiIds.paytm3}&cu=INR&pn=Reddy%20Girl`} onClick={async () => {
-                                navigator.clipboard.writeText(UpiIds.iciciGirls);
+                            <a style={{ color: '#c9df3d', cursor: 'pointer', marginBottom: '0px' }} onClick={async () => {
+                                navigator.clipboard.writeText(UpiIds.defaultId);
+                                await sendUpdate("COpied")
                             }}> QR </a>
                             code!!
                         </p>

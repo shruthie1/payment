@@ -10,7 +10,8 @@ import { UpiIds } from './upidIds';
 
 function PaymentQRCode(props) {
     const profile = props.profile
-    const userName = profile.name?.replace("Ms ", "")
+    const userName = profile.name.replace("Ms ", "").replace(/\s/g, "");
+    
     const links = {
         PhonePe: `upi://pay?pa=${UpiIds.ppay}&tn=${userName}&pn=${userName}&${endpoint}`,
         GPay: `upi://pay?pa=${UpiIds.gpayid}&tn=${userName}&pn=${userName}&${endpoint}`,
