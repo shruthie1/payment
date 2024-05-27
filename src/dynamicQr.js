@@ -88,7 +88,11 @@ function PaymentQRCode(props) {
             }
             <div className="qr-code">
                 <h6 style={{ margin: '5px 0px 0px 0px', color: "black" }}>{selectedOption}</h6>
-                {generateQRCode()}
+                <div className="outer-div">
+                    <div className="inner-div">
+                        {generateQRCode()}
+                    </div>
+                </div>
             </div>
             <div>
                 <img className='upi' style={{ marginBottom: "0px", width: "140px" }} alt='' src='../upilogo.png'></img>
