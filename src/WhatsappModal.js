@@ -32,7 +32,7 @@ function WhatsappModal(props) {
             <Modal style={{
                 padding: "50px 40px"
             }} isOpen={props.isOpen} toggle={toggle} className='whatsappModal'>
-                <ModalHeader toggle={toggle} style={{ color: 'black' }}>Finish Payment to Unlock Whatsapp Number (Min 10₹)</ModalHeader>
+                <ModalHeader toggle={toggle} style={{ color: 'black' }}>Finish Payment to Unlock Whatsapp Number (Min 15₹)</ModalHeader>
                 <button className='button' color="success" onClick={() => {
                     toggle();
                     props.togglePay();

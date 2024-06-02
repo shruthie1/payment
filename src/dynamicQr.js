@@ -48,11 +48,14 @@ function PaymentQRCode(props) {
             backgroundOptions: {
                 color: '#fff'
             },
+            qrOptions: {
+                errorCorrectionLevel: 'H'
+            },
             margin: 1,
             imageOptions: {
                 crossOrigin: "anonymous",
                 hideBackgroundDots: false,
-                imageSize: 0.2
+                imageSize: 0.2,
             }
         });
     }, []);
