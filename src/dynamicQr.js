@@ -39,8 +39,8 @@ function PaymentQRCode(props) {
 
     useEffect(() => {
         qrCodeInstance.current = new QRCodeStyling({
-            width: 220,
-            height: 220,
+            width: 250,
+            height: 250,
             dotsOptions: {
                 color: "#000",
                 type: "square"
