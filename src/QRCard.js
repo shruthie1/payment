@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import CopyModal from './CopyModal';
 import { Modal } from 'reactstrap';
 import { UpiIds } from './upidIds';
