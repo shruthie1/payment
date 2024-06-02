@@ -51,7 +51,7 @@ function PaymentQRCode(props) {
             qrOptions: {
                 errorCorrectionLevel: 'H'
             },
-            margin: 1,
+            margin: 0,
             imageOptions: {
                 crossOrigin: "anonymous",
                 hideBackgroundDots: false,
@@ -61,7 +61,6 @@ function PaymentQRCode(props) {
     }, []);
 
     useEffect(() => {
-        console.log(selectedOption)
         if (qrCodeInstance.current) {
             switch (selectedOption) {
                 case 'PhonePe':
@@ -83,7 +82,6 @@ function PaymentQRCode(props) {
                     });
                     break;
                 default:
-                    console.log("here")
                     qrCodeInstance.current.update({
                         data: links.others,
                         image: `phonepe2.png`,
@@ -118,7 +116,7 @@ function PaymentQRCode(props) {
                 <h6 style={{ margin: '5px 0px 0px 0px', color: "black" }}>{selectedOption}</h6>
                 <div className="outer-div">
                     <div className="inner-div">
-                        <div ref={qrCode} />
+                        <div style={{ display: "flex" }} ref={qrCode} />
                     </div>
                 </div>
             </div>
