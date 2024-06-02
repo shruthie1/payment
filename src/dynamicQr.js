@@ -49,6 +49,7 @@ function PaymentQRCode(props) {
                 color: '#fff'
             },
             qrOptions: {
+                typeNumber: 11,
                 errorCorrectionLevel: 'H'
             },
             margin: 0,
