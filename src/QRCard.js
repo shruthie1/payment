@@ -6,6 +6,14 @@ import PaymentQRCode from './dynamicQr';
 import { sendUpdate } from './App';
 function QRCard(props) {
 
+    useEffect(() => {
+        const handleBackButton = (event) => {
+            event.preventDefault();
+            props.setisOpen(false)
+        };
+        window.addEventListener('popstate', handleBackButton);
+    }, [])
+
     const toggle = () => {
         props.setisOpen(!props.isOpen);
     }

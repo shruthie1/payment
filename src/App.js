@@ -58,9 +58,6 @@ function App(props) {
       setActiveModal(modals.none)
     };
     window.addEventListener('popstate', handleBackButton);
-    return () => {
-      window.removeEventListener('popstate', handleBackButton);
-    };
   }, [])
 
   useEffect(() => {

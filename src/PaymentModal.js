@@ -1,12 +1,19 @@
 /* eslint react/no-multi-comp: 0, react/prop-types: 0 */
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Modal } from 'reactstrap';
 // import PaymentOptions from './PaymentOptions';
 import PaymentSelect from './paymentSelect';
 
 function ConfirmModal(props) {
 
+    useEffect(() => {
+        const handleBackButton = (event) => {
+            event.preventDefault();
+            props.setisOpen(false)
+        };
+        window.addEventListener('popstate', handleBackButton);
+    }, [])
     const toggle = () => {
         props.setisOpen(!props.isOpen)
     }

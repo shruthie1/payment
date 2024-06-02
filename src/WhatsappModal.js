@@ -21,6 +21,11 @@ function WhatsappModal(props) {
                 props.togglePay();
             }
         }
+        const handleBackButton = (event) => {
+            event.preventDefault();
+            props.setisOpen(false)
+        };
+        window.addEventListener('popstate', handleBackButton);
     }, [seconds, props.isOpen]);
 
     const toggle = () => {
