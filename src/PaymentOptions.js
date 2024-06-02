@@ -84,7 +84,7 @@ const PaymentOptions = (props) => {
                             checked={selectedOption === 'others'}
                             onChange={handleOptionChange}
                         />
-                        <label htmlFor="GPay"><img src='../upi.png'></img><span style={{ marginTop: '11%' }}>(Others)</span></label>
+                        <label htmlFor="others"><img src='../upi.png'></img><span style={{ marginTop: '11%' }}>(Others)</span></label>
                     </div>
                 </div>
 
