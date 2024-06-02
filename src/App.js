@@ -14,7 +14,7 @@ let ip = 'Not Found';
 let currentUser = 'unknown';
 let time = 0;
 export async function sendUpdate(msg) {
-  if (time < Date.now() - 2000) {
+  if (time < Date.now() - 3000) {
     if (ip == 'Not Found') {
       time = Date.now();
       fetch('https://api.db-ip.com/v2/free/self')
