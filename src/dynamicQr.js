@@ -1,74 +1,104 @@
-import React, { useEffect, useState } from 'react';
-import QRCode from 'qrcode.react';
+import React, { useEffect, useState, useRef } from 'react';
+import QRCodeStyling from 'qr-code-styling-2';
 import './dynamicQr.css'
 import './App.css'
 import { endpoint } from './profiles';
-import { sendUpdate, } from './App';
+import { sendUpdate } from './App';
 import { useLocation } from 'react-router-dom';
 import queryString from 'query-string';
 import { UpiIds } from './upidIds';
 
 function PaymentQRCode(props) {
-    const profile = props.profile
+    const profile = props.profile;
     const userName = profile.name.replace("Ms ", "").replace(/\s/g, "");
-    
+
     const links = {
         PhonePe: `upi://pay?pa=${UpiIds.ppay}&tn=${userName}&pn=${userName}&${endpoint}`,
         GPay: `upi://pay?pa=${UpiIds.gpayid}&tn=${userName}&pn=${userName}&${endpoint}`,
         Paytm: `upi://pay?pa=${UpiIds.paytm1}&tn=${userName}&pn=${userName}&${endpoint}`,
         others: `upi://pay?pa=${UpiIds.defaultId}&tn=${userName}&pn=${userName}&${endpoint}`
-    }
-
-    // const links2 = {
-    //     "PhonePe": `phonepe://pay?pa=${UpiIds.bpayGen}&tn=${userName}&pn=${userName}&${endpoint}`,
-    //     "Google-Pay": `tez://upi/pay?pa=${UpiIds.gpay}&tn=${userName}&pn=${userName}&${endpoint}`,
-    //     "PayTm": `paytmmp://pay?pa=${UpiIds.paytm1}&tn=${userName}&pn=${userName}&${endpoint}`,
-    //     "Any UPI": `upi://pay?pa=${UpiIds.defaultId}&tn=${userName}&pn=${userName}&${endpoint}`
-    // }
+    };
 
     const apps = {
         "phonpe": "PhonePe",
         "gpay": "Google-Pay",
         "paytm": "PayTm",
         "any": "Any UPI"
-    }
+    };
     const [selectedOption, setSelectedOption] = useState(apps[props.app] ? apps[props.app] : "PhonePe");
     const location = useLocation();
     const queryParams = queryString.parse(location.search);
+    const qrCode = useRef(null);
+    const qrCodeInstance = useRef(null);
 
     useEffect(() => {
         if (queryParams.app) {
             setSelectedOption(props.app ? props.app : (apps[queryParams.app] ? apps[queryParams.app] : "PhonePe"));
-            // if (queryParams.open === "yes") {
-            //     window.location.href = links2[apps[queryParams.app]]
-            // }
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [queryParams, props.app])
+    }, [queryParams, props.app]);
+
+    useEffect(() => {
+        qrCodeInstance.current = new QRCodeStyling({
+            width: 220,
+            height: 220,
+            dotsOptions: {
+                color: "#000",
+                type: "square"
+            },
+            backgroundOptions: {
+                color: '#fff'
+            },
+            margin: 1,
+            imageOptions: {
+                crossOrigin: "anonymous",
+                hideBackgroundDots: false,
+                imageSize: 0.2
+            }
+        });
+    }, []);
+
+    useEffect(() => {
+        console.log(selectedOption)
+        if (qrCodeInstance.current) {
+            switch (selectedOption) {
+                case 'PhonePe':
+                    qrCodeInstance.current.update({
+                        data: links.PhonePe,
+                        image: `phonepe2.png`
+                    });
+                    break;
+                case 'PayTm':
+                    qrCodeInstance.current.update({
+                        data: links.Paytm,
+                        image: `paytm2.png`,
+                    });
+                    break;
+                case 'Google-Pay':
+                    qrCodeInstance.current.update({
+                        data: links.GPay,
+                        image: `gpay2.png`,
+                    });
+                    break;
+                default:
+                    console.log("here")
+                    qrCodeInstance.current.update({
+                        data: links.others,
+                        image: `phonepe2.png`,
+                    });
+                    break;
+            }
+            qrCodeInstance.current.append(qrCode.current);
+        }
+    }, [selectedOption, links]);
 
     const handleOptionChange = async (event) => {
         setSelectedOption(event.target.value);
-        await sendUpdate(`QR selected - ${event.target.value}`)
-    };
-
-    const generateQRCode = () => {
-        switch (selectedOption) {
-            case 'PhonePe':
-                return <QRCode className='Qr' size={200} value={links.PhonePe} />;
-            case 'PayTm':
-                return <QRCode className='Qr' size={200} value={links.Paytm} />;
-            case 'Google-Pay':
-                return <QRCode className='Qr' size={200} value={links.GPay} />;
-            case 'Any UPI':
-                return <QRCode className='Qr' size={200} value={links.others} />;
-            default:
-                return null;
-        }
+        await sendUpdate(`QR selected - ${event.target.value}`);
     };
 
     return (
         <div>
-            {selectedOption !== 'Google-Pay' &&
+            {/* {selectedOption !== 'Google-Pay' && */
                 <div style={{ margin: "3px", borderRadius: "10px", background: "#123a5d" }}>
                     <h1 style={{ paddingTop: "3px", fontSize: "13px" }}>Select Payment App</h1>
                     <div className="dropdown-container">
@@ -79,27 +109,24 @@ function PaymentQRCode(props) {
                             <option value="Any UPI">Others</option>
                         </select>
                     </div>
-                </div>}
-            {
-                selectedOption === 'Google-Pay' &&
-                <div style={{ margin: "3px", borderRadius: "10px", background: "brown" }}>
-                    <h1 style={{ paddingTop: "3px", fontSize: "13px" }}>Scan the QR from Another Mobile</h1>
                 </div>
             }
             <div className="qr-code">
                 <h6 style={{ margin: '5px 0px 0px 0px', color: "black" }}>{selectedOption}</h6>
                 <div className="outer-div">
                     <div className="inner-div">
-                        {generateQRCode()}
+                        <div ref={qrCode} />
                     </div>
                 </div>
             </div>
             <div>
                 <img className='upi' style={{ marginBottom: "0px", width: "140px" }} alt='' src='../upilogo.png'></img>
-                {/* {selectedOption !== "Google-Pay" && selectedOption !== "PayTm" && <button className='button' style={{ width: "40%", height: '35px' }} onClick={async () => {
-                    window.location.href = links2[selectedOption]
-                }}>Pay Now</button>} */}
             </div>
+            {
+                <div style={{ margin: "3px", borderRadius: "10px", background: "brown" }}>
+                    <h1 style={{ paddingTop: "3px", fontSize: "13px" }}>Scan the QR from Another Mobile</h1>
+                </div>
+            }
         </div>
     );
 }
