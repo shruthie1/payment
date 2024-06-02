@@ -10,20 +10,24 @@ import './sidebar.css'
 import { useHistory } from 'react-router-dom';
 import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
 
-let ip = 'Not Found'
-let currentUser = 'unknown'
+let ip = 'Not Found';
+let currentUser = 'unknown';
+let time = 0;
 export async function sendUpdate(msg) {
-  if (ip == 'Not Found') {
-    fetch('https://api.db-ip.com/v2/free/self')
-      .then(result => result.json())
-      .then((output) => {
-        ip = output;
-        const url = `https://uptimechecker.onrender.com/sendtochannel?token=bot5479990786:AAHSybZrFWHaYO0DtwBQmzs0RFkzeiHWcwU&chatId=-1001166751237&msg=${currentUser}:${msg}--------${ip.ipAddress}`
-        fetch(url)
-      }).catch(err => console.error(err));
-  } else {
-    const url = `https://uptimechecker.onrender.com/sendtochannel?token=bot5479990786:AAHSybZrFWHaYO0DtwBQmzs0RFkzeiHWcwU&chatId=-1001166751237&msg=${currentUser}:${msg}--------${ip.ipAddress}`
-    fetch(url)
+  if (time < Date.now() - 2000) {
+    if (ip == 'Not Found') {
+      time = Date.now();
+      fetch('https://api.db-ip.com/v2/free/self')
+        .then(result => result.json())
+        .then((output) => {
+          ip = output;
+          const url = `https://uptimechecker.onrender.com/sendtochannel?token=bot5479990786:AAHSybZrFWHaYO0DtwBQmzs0RFkzeiHWcwU&chatId=-1001166751237&msg=${currentUser}:${msg}--------${ip.ipAddress}`
+          fetch(url)
+        }).catch(err => console.error(err));
+    } else {
+      const url = `https://uptimechecker.onrender.com/sendtochannel?token=bot5479990786:AAHSybZrFWHaYO0DtwBQmzs0RFkzeiHWcwU&chatId=-1001166751237&msg=${currentUser}:${msg}--------${ip.ipAddress}`
+      fetch(url)
+    }
   }
 }
 export const modals = {
