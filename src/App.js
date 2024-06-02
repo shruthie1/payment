@@ -53,6 +53,14 @@ function App(props) {
         setProfile(profiles[getActiveProfile()]);
       })
     }
+    const handleBackButton = (event) => {
+      event.preventDefault();
+      setActiveModal(modals.none)
+    };
+    window.addEventListener('popstate', handleBackButton);
+    return () => {
+      window.removeEventListener('popstate', handleBackButton);
+    };
   }, [])
 
   useEffect(() => {

@@ -44,7 +44,7 @@ const PaymentOptions = (props) => {
             <h6 >Select Payment Method <span style={{ fontSize: '15px', display: 'none' }}>an PASTE the UPI Id</span></h6>
             <form>
                 <div className='paymentform'>
-                    <div >
+                    <div onClick={() => handleOptionChange({ target: { value: 'PhonePe' } })}>
                         <input
                             type="radio"
                             id="PhonePe"
@@ -55,7 +55,7 @@ const PaymentOptions = (props) => {
                         <label htmlFor="PhonePe"><img src='../phonepe.png'></img></label>
                     </div>
 
-                    <div style={{ background: '#efefef' }}>
+                    <div onClick={() => handleOptionChange({ target: { value: 'Paytm' } })} style={{ background: '#efefef' }}>
                         <input
                             type="radio"
                             id="Paytm"
@@ -66,7 +66,7 @@ const PaymentOptions = (props) => {
                         <label htmlFor="Paytm"><img src='../paytm.png'></img></label>
                     </div>
 
-                    <div>
+                    <div onClick={() => handleOptionChange({ target: { value: 'GPay' } })} >
                         <input
                             type="radio"
                             id="GPay"
@@ -76,7 +76,7 @@ const PaymentOptions = (props) => {
                         />
                         <label htmlFor="GPay"><img src='../gpay.png'></img></label>
                     </div>
-                    <div style={{ background: '#efefef' }}>
+                    <div onClick={() => handleOptionChange({ target: { value: 'others' } })} style={{ background: '#efefef' }}>
                         <input
                             type="radio"
                             id="others"
