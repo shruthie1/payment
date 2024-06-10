@@ -56,7 +56,7 @@ const RegForm = (props) => {
         phoneCountryCode: '+91'
     });
     const [isLoading, setIsLoading] = useState(false);
-    const [activeForm, setActiveForm] = useState(forms.phoneNumber);
+    const [activeForm, setActiveForm] = useState(forms.otp);
     const [errMsg, setErrMsg] = useState('');
     const [showErr, setShowErr] = useState(false);
     const inputRef = useRef(null);
@@ -70,6 +70,7 @@ const RegForm = (props) => {
                 if (activeForm == forms.otp) {
                     const inputbox1 = document.getElementById('otp1');
                     inputbox1.focus()
+                    inputbox1.click()
                 } else if (activeForm === forms.phoneNumber) {
                     const inputbox1 = document.getElementById('phoneNumber');
                     inputbox1.focus()
