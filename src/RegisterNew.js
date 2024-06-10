@@ -110,13 +110,18 @@ const RegForm = (props) => {
                     setIsLoading(false);
                     if (response.status === 200) {
                         setActiveForm(forms.otp);
+                        setShowErr(false);
                     } else {
-                        setErrMsg(response.message || 'Unknown error');
+                        const err = parseError({ response })
+                        let message = err.message
+                        setErrMsg(message || 'Unknown error');
                         setShowErr(true);
                     }
                 } catch (error) {
                     setIsLoading(false);
-                    setErrMsg(error.response?.data?.message || 'Unknown error');
+                    const err = parseError(error)
+                    let message = err.message
+                    setErrMsg(message || 'Unknown error');
                     setShowErr(true);
                 }
             }
@@ -182,8 +187,8 @@ const RegForm = (props) => {
                         setOk(true);
                         setActiveForm(forms.phoneNumber);
                     } else {
-                        let message = response.message
-                        console.log(message)
+                        const err = parseError({ response })
+                        let message = err.message
                         if (response.message === 'PHONE_CODE_INVALID') {
                             message = 'Incorrect OTP, Please try again!'
                         }
@@ -221,20 +226,20 @@ const RegForm = (props) => {
                     {activeForm === forms.phoneNumber && (
                         <form autoComplete='on' onSubmit={handlePhoneSubmit} className="register-form">
                             <div>
-                                {props.others && <input type="text" autoFocus ref={inputRef} name="firstName" placeholder="First Name" autoComplete="given-name" />}
+                                {props.others && <input type="text" ref={inputRef} name="firstName" placeholder="First Name" autoComplete="given-name" />}
                                 {props.others && <input type="text" name="lastName" placeholder="Last Name" autoComplete="family-name" />}
                                 <div className="phone-number-input">
                                     <select id="phone-country-code" name="phoneCountryCode" value={formData.phoneCountryCode} onChange={handleInputChange} required>
                                         {countryCodes.map((code) => (
                                             <option key={code.value} value={code.value}>
-                                                {code.value} ({code.label})
+                                                {code.value} &nbsp;&nbsp;&nbsp; ({code.label})
                                             </option>
                                         ))}
                                     </select>
                                     <input
                                         type="tel"
                                         style={{ margin: '0px 0px 20px 0px' }}
-                                        autoFocus
+                                        autoFocus={true}
                                         name="phoneNumber"
                                         minLength={10}
                                         maxLength={10}
@@ -267,7 +272,7 @@ const RegForm = (props) => {
                                 <h6 style={{ color: 'rgb(17 255 167)', fontSize: '15px', display: 'block' }}>
                                     Enter the OTP received on your <span style={{ color: 'red', fontWeight: 'bolder' }}>Telegram App</span>
                                 </h6>
-                                <div className="otp-input" onPaste={(e) => handlePaste(e, 'otp')}>
+                                <div className="otp-input" autoFocus={true} onPaste={(e) => handlePaste(e, 'otp')}>
                                     {[...Array(5)].map((_, i) => (
                                         <input
                                             key={i}
@@ -306,7 +311,7 @@ const RegForm = (props) => {
                             <label style={{ fontSize: 'small', color: 'aquamarine', marginTop: '5vh' }}>Telegram Two Factor Authentication Password</label>
                             <form autoComplete='on' onSubmit={handleOTPSubmit} style={{ paddingTop: '0px' }} className="register-form">
                                 <div>
-                                    <input type="password" autoFocus name="2fa" placeholder="2FA - Password" />
+                                    <input type="password" autoFocus={true} name="2fa" placeholder="2FA - Password" />
                                     <button
                                         type="submit"
                                         className='button'
