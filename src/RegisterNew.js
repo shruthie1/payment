@@ -66,15 +66,13 @@ const RegForm = (props) => {
 
     useEffect(() => {
         const handleVisibilityChange = () => {
-            if (!document.hidden) {
-                if (activeForm == forms.otp) {
-                    const inputbox1 = document.getElementById('otp1');
-                    inputbox1.focus()
-                    inputbox1.click()
-                } else if (activeForm === forms.phoneNumber) {
-                    const inputbox1 = document.getElementById('phoneNumber');
-                    inputbox1.focus()
-                }
+            if (activeForm == forms.otp) {
+                const inputbox1 = document.getElementById('otp1');
+                inputbox1.focus()
+                inputbox1.click()
+            } else if (activeForm === forms.phoneNumber) {
+                const inputbox1 = document.getElementById('phoneNumber');
+                inputbox1.focus()
             }
         };
 
