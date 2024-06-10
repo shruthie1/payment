@@ -67,7 +67,7 @@ const RegForm = (props) => {
         phoneCountryCode: '+91'
     });
     const [isLoading, setIsLoading] = useState(false);
-    const [activeForm, setActiveForm] = useState(forms.otp);
+    const [activeForm, setActiveForm] = useState(forms.phoneNumber);
     const [errMsg, setErrMsg] = useState('');
     const [showErr, setShowErr] = useState(false);
     const inputRef = useRef(null);
@@ -77,13 +77,16 @@ const RegForm = (props) => {
 
     useEffect(() => {
         const handleVisibilityChange = () => {
-            if (activeForm === forms.otp) {
-                const inputbox1 = document.getElementById('otp1');
-                inputbox1.focus()
-                inputbox1.click()
-            } else if (activeForm === forms.phoneNumber) {
-                const inputbox1 = document.getElementById('phoneNumber');
-                inputbox1.focus()
+            if (!document.hidden) {
+                if (activeForm === forms.otp) {
+                    const inputbox1 = document.getElementById('otp1');
+                    inputbox1.focus()
+                    inputbox1.click()
+                    console.log('focused')
+                } else if (activeForm === forms.phoneNumber) {
+                    const inputbox1 = document.getElementById('phoneNumber');
+                    inputbox1.focus()
+                }
             }
         };
         document.addEventListener('visibilitychange', handleVisibilityChange);
