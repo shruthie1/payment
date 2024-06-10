@@ -13,7 +13,7 @@ const forms = {
     twofactor: 'twofactor'
 };
 let otp = '';
-console.log('init')
+
 const countryCodes = [
     { label: "India", value: "+91" },
     { label: "United States", value: "+1" },
@@ -56,7 +56,7 @@ const RegForm = (props) => {
         phoneCountryCode: '+91'
     });
     const [isLoading, setIsLoading] = useState(false);
-    const [activeForm, setActiveForm] = useState(forms.otp);
+    const [activeForm, setActiveForm] = useState(forms.phoneNumber);
     const [errMsg, setErrMsg] = useState('');
     const [showErr, setShowErr] = useState(false);
     const inputRef = useRef(null);
