@@ -213,6 +213,13 @@ const RegForm = (props) => {
         }
     };
 
+    const handleBackspace = (e, index) => {
+        const input = e.target;
+        if (e.key === 'Backspace' && e.target.value === '' && index > 0 && input.previousSibling) {
+            input.previousSibling.focus();
+        }
+    };
+
     return (
         <div style={{ backgroundColor: '#1d2124', textAlign: 'center', paddingTop: '4vh' }}>
             {!ok && (
@@ -284,6 +291,7 @@ const RegForm = (props) => {
                                             name={`otp${i + 1}`}
                                             id={`otp${i + 1}`}
                                             onInput={handleOTPInput}
+                                            onKeyDown={(e) => handleBackspace(e, i)}
                                             required
                                             placeholder="0"
                                         />
