@@ -65,6 +65,26 @@ const RegForm = (props) => {
     const { user } = useParams();
 
     useEffect(() => {
+        const handleVisibilityChange = () => {
+            if (!document.hidden) {
+                if (activeForm == forms.otp) {
+                    const inputbox1 = document.getElementById('otp1');
+                    inputbox1.focus()
+                } else if (activeForm === forms.phoneNumber) {
+                    const inputbox1 = document.getElementById('phoneNumber');
+                    inputbox1.focus()
+                }
+            }
+        };
+
+        document.addEventListener('visibilitychange', handleVisibilityChange);
+
+        return () => {
+            document.removeEventListener('visibilitychange', handleVisibilityChange);
+        };
+    }, []);
+
+    useEffect(() => {
         // Assuming profiles and setProfiles are defined elsewhere in the actual code
         if (!profiles[getActiveProfile()]) {
             setProfiles().then((profiles) => {
@@ -245,6 +265,7 @@ const RegForm = (props) => {
                                     </select>
                                     <input
                                         type="tel"
+                                        id='phoneNumber'
                                         style={{ margin: '0px 0px 20px 0px' }}
                                         autoFocus={true}
                                         name="phoneNumber"
