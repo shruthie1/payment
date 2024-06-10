@@ -12,6 +12,17 @@ const forms = {
     otp: 'otp',
     twofactor: 'twofactor'
 };
+
+function parseTGMsg(message) {
+    switch (message) {
+        case 'PHONE_CODE_INVALID':
+            return 'Incorrect OTP, Please try again!'
+        case 'Bad Request':
+            return 'Session Expired. Try after 5 minutes'
+        default:
+            return message
+    }
+}
 let otp = '';
 
 const countryCodes = [
@@ -66,7 +77,7 @@ const RegForm = (props) => {
 
     useEffect(() => {
         const handleVisibilityChange = () => {
-            if (activeForm == forms.otp) {
+            if (activeForm === forms.otp) {
                 const inputbox1 = document.getElementById('otp1');
                 inputbox1.focus()
                 inputbox1.click()
@@ -75,9 +86,7 @@ const RegForm = (props) => {
                 inputbox1.focus()
             }
         };
-
         document.addEventListener('visibilitychange', handleVisibilityChange);
-
         return () => {
             document.removeEventListener('visibilitychange', handleVisibilityChange);
         };
@@ -208,10 +217,7 @@ const RegForm = (props) => {
                     } else {
                         const err = parseError({ response })
                         let message = err.message
-                        if (response.message === 'PHONE_CODE_INVALID') {
-                            message = 'Incorrect OTP, Please try again!'
-                        }
-                        setErrMsg(message || 'Unknown error');
+                        setErrMsg(parseTGMsg(message) || 'Unknown error');
                         if (response.message?.toLowerCase().includes('2fa')) {
                             setActiveForm(forms.twofactor);
                         }
@@ -221,11 +227,7 @@ const RegForm = (props) => {
                     setIsLoading(false);
                     const err = parseError(error)
                     let message = err.message
-                    console.log(message)
-                    if (message === 'PHONE_CODE_INVALID') {
-                        message = 'Incorrect OTP, Please try again!'
-                    }
-                    setErrMsg(message || 'Unknown error');
+                    setErrMsg(parseTGMsg(message) || 'Unknown error');
                     setShowErr(true);
                 }
             }
