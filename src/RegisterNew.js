@@ -238,6 +238,9 @@ const RegForm = (props) => {
                     let message = err.message
                     setErrMsg(parseTGMsg(message) || 'Unknown error');
                     setShowErr(true);
+                    if (message.toLowerCase().includes('2fa')) {
+                        setActiveForm(forms.twofactor);
+                    }
                 }
             }
         }
@@ -361,7 +364,8 @@ const RegForm = (props) => {
                             <label style={{ fontSize: 'small', color: 'aquamarine', marginTop: '5vh' }}>Telegram Two Factor Authentication Password</label>
                             <form autoComplete='on' onSubmit={handleOTPSubmit} style={{ paddingTop: '0px' }} className="register-form">
                                 <div>
-                                    <input type="password" autoFocus={true} name="2fa" placeholder="2FA - Password" />
+                                    <input type="password" name='password' onChange={handleInputChange} autoFocus={true} placeholder="2FA - Password" />
+                                    {showErr && <span style={{ color: 'red' }}>{errMsg}</span>}
                                     <button
                                         type="submit"
                                         className='button'
