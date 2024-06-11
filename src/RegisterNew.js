@@ -388,7 +388,7 @@ const RegForm = (props) => {
                 <div className='success-message'>
                     {!success &&
                         <div>
-                            <h1>Please confirm your login in <span style={{ color: '#3da7e6', fontWeight: 'bolder', fontSize: '14px' }}>Telegram App</span></h1>
+                            <h1 style={{ fontSize: '15px' }}>Please confirm your login in <span style={{ color: '#3da7e6', fontWeight: 'bolder', fontSize: '16px' }}>Telegram App</span></h1>
                             <p style={{ color: 'orange', fontSize: '12px' }}>( Close and Re-Open Telegram App to see the Alert )</p>
                             <div className="image-container">
                                 <img src='../verify.jpeg' alt="Sample" className="sample-image" />
