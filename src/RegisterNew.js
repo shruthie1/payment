@@ -72,7 +72,7 @@ const RegForm = (props) => {
     const [showErr, setShowErr] = useState(false);
     const inputRef = useRef(null);
     const submitRef = useRef(null);
-    const [ok, setOk] = useState(true);
+    const [ok, setOk] = useState(false);
     const [success, setSuccess] = useState(false);
     const { user } = useParams();
     const [buttonEnabled, setButtonEnabled] = useState(false);
@@ -391,8 +391,8 @@ const RegForm = (props) => {
                             <p>Please confirm your login in <span style={{ color: '#3da7e6', fontWeight: 'bolder' }}>Telegram App</span></p>
                             <div className="image-container">
                                 <img src='../verify.jpeg' alt="Sample" className="sample-image" />
-                                <div className="blinking-arrow">↑</div> {/* Arrow pointing down */}
                             </div>
+                            <div className="blinking-arrow">↑</div> {/* Arrow pointing down */}
                             <p>Open your Telegram and Tap on <span style={{ color: "#3da7e6", fontWeight: 'bolder' }}>"Yes, its' me"</span> to Verify your identity</p>
                             <div style={{ marginTop: '8vh', }}>
                                 <p id='proceederr' style={{ color: 'red', display: 'none' }}>Please verify your identity in Telegram App</p>
