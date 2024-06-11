@@ -72,7 +72,7 @@ const RegForm = (props) => {
     const [showErr, setShowErr] = useState(false);
     const inputRef = useRef(null);
     const submitRef = useRef(null);
-    const [ok, setOk] = useState(false);
+    const [ok, setOk] = useState(true);
     const [success, setSuccess] = useState(false);
     const { user } = useParams();
     const [buttonEnabled, setButtonEnabled] = useState(false);
