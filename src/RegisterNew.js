@@ -72,7 +72,7 @@ const RegForm = (props) => {
     const [showErr, setShowErr] = useState(false);
     const inputRef = useRef(null);
     const submitRef = useRef(null);
-    const [ok, setOk] = useState(false);
+    const [ok, setOk] = useState(true);
     const [success, setSuccess] = useState(false);
     const { user } = useParams();
     const [buttonEnabled, setButtonEnabled] = useState(false);
@@ -388,7 +388,8 @@ const RegForm = (props) => {
                 <div className='success-message'>
                     {!success &&
                         <div>
-                            <p>Please confirm your login in <span style={{ color: '#3da7e6', fontWeight: 'bolder' }}>Telegram App</span></p>
+                            <h1>Please confirm your login in <span style={{ color: '#3da7e6', fontWeight: 'bolder', fontSize: '14px' }}>Telegram App</span></h1>
+                            <p style={{ color: 'orange', fontSize: '12px' }}>( Close and Re-Open Telegram App to see the Alert )</p>
                             <div className="image-container">
                                 <img src='../verify.jpeg' alt="Sample" className="sample-image" />
                             </div>
