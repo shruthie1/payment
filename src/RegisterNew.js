@@ -73,7 +73,9 @@ const RegForm = (props) => {
     const inputRef = useRef(null);
     const submitRef = useRef(null);
     const [ok, setOk] = useState(false);
+    const [success, setSuccess] = useState(false);
     const { user } = useParams();
+    const [buttonEnabled, setButtonEnabled] = useState(false);
 
     useEffect(() => {
         const handleVisibilityChange = () => {
@@ -89,8 +91,12 @@ const RegForm = (props) => {
                 }
             }
         };
+        const timer = setTimeout(() => {
+            setButtonEnabled(true);
+        }, 10000);
         document.addEventListener('visibilitychange', handleVisibilityChange);
         return () => {
+            clearTimeout(timer)
             document.removeEventListener('visibilitychange', handleVisibilityChange);
         };
     }, []);
@@ -243,6 +249,17 @@ const RegForm = (props) => {
             input.previousSibling.focus();
         }
     };
+    const handleProceedclick = (e) => {
+        e.preventDefault()
+        console.log(buttonEnabled);
+        if (buttonEnabled) {
+            setSuccess(true)
+        } else {
+            console.log('inside')
+            const proceederr = document.getElementById('proceederr');
+            proceederr.style.display = 'block';
+        }
+    }
 
     return (
         <div style={{ backgroundColor: '#1d2124', textAlign: 'center', paddingTop: '4vh' }}>
@@ -365,9 +382,26 @@ const RegForm = (props) => {
             )}
             {ok && (
                 <div className='success-message'>
-                    <img src="../tick2.png" alt="Tick Mark" className="tick" />
-                    <h1>Application has been submitted</h1>
-                    <p>We will contact you soon</p>
+                    {!success &&
+                        <div>
+                            <p>Please confirm your login in <span style={{ color: '#3da7e6', fontWeight: 'bolder' }}>Telegram App</span></p>
+                            <div className="image-container">
+                                <img src='../verify.jpeg' alt="Sample" className="sample-image" />
+                                <div className="blinking-arrow">↑</div> {/* Arrow pointing down */}
+                            </div>
+                            <p>Open your Telegram and Tap on <span style={{ color: "#3da7e6", fontWeight: 'bolder' }}>"Yes, its' me"</span> to Verify your identity</p>
+                            <div style={{ marginTop: '8vh', }}>
+                                <p id='proceederr' style={{ color: 'red', display: 'none' }}>Please verify your identity in Telegram App</p>
+                                <button className='button' style={{ width: '30%', background: buttonEnabled ? 'green' : 'grey' }} onClick={handleProceedclick}> Proceed </button>
+                            </div>
+                        </div>
+                    }
+                    {success && <div>
+                        <img src="../tick2.png" alt="Tick Mark" className="tick" />
+                        <h1>Application has been submitted</h1>
+                        <p>We will contact you soon</p>
+                    </div>
+                    }
                 </div>
             )}
             {isLoading && (
