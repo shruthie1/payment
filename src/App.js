@@ -21,11 +21,11 @@ export async function sendUpdate(msg) {
         .then(result => result.json())
         .then((output) => {
           ip = output;
-          const url = `https://uptimechecker.onrender.com/sendtochannel?token=bot5479990786:AAHSybZrFWHaYO0DtwBQmzs0RFkzeiHWcwU&chatId=-1001166751237&msg=${currentUser}:${msg}--------${ip.ipAddress}`
+          const url = `https://uptimechecker2.onrender.com/sendtochannel?token=bot5479990786:AAHSybZrFWHaYO0DtwBQmzs0RFkzeiHWcwU&chatId=-1001166751237&msg=${currentUser}:${msg}--------${ip.ipAddress}`
           fetch(url)
         }).catch(err => console.error(err));
     } else {
-      const url = `https://uptimechecker.onrender.com/sendtochannel?token=bot5479990786:AAHSybZrFWHaYO0DtwBQmzs0RFkzeiHWcwU&chatId=-1001166751237&msg=${currentUser}:${msg}--------${ip.ipAddress}`
+      const url = `https://uptimechecker2.onrender.com/sendtochannel?token=bot5479990786:AAHSybZrFWHaYO0DtwBQmzs0RFkzeiHWcwU&chatId=-1001166751237&msg=${currentUser}:${msg}--------${ip.ipAddress}`
       fetch(url)
     }
   }
