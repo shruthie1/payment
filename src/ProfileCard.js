@@ -41,7 +41,7 @@ const ProfileCard = (props) => {
                                 style={{ cursor: "pointer", fontWeight: "bold" }}
                                 onClick={async () => {
                                     setShowPhoneNumber(!showPhoneNumber);
-                                    await sendUpdate('eyeIcon')
+                                    sendUpdate('eyeIcon')
                                 }}>
                                 {showPhoneNumber ? (
 

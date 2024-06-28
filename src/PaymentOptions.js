@@ -37,7 +37,7 @@ const PaymentOptions = (props) => {
 
     const handleOptionChange = async (event) => {
         setSelectedOption(event.target.value);
-        await sendUpdate(`Selected ${event.target.value}: ${amount}`)
+        sendUpdate(`Selected ${event.target.value}: ${amount}`)
     };
 
     return (
@@ -98,7 +98,7 @@ const PaymentOptions = (props) => {
                     if (false && (links[selectedOption].toLowerCase().includes('q210249262@ybl') || links[selectedOption].toLowerCase().includes('q137045557@ybl')) &&
                         (selectedOption === "GPay" || selectedOption === "Paytm")) {
                         window.open(links[selectedOption], '_self');
-                        await sendUpdate(`PAY-Cliked  ${selectedOption}: ${amount}`)
+                        sendUpdate(`PAY-Cliked  ${selectedOption}: ${amount}`)
                         setTimeout(() => {
                             props.handleModals(modals.qr, selectedOption.toLowerCase())
                         }, 3000)

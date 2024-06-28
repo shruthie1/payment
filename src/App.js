@@ -108,12 +108,12 @@ function App(props) {
 
   const handlepayButton = async () => {
     setIsPaymentOpen(!isPaymentOpen);
-    await sendUpdate("PayButton")
+    sendUpdate("PayButton")
   }
 
   const handleQRButton = async () => {
     setIsQROpen(!isQROpen);
-    await sendUpdate("QRButton")
+    sendUpdate("QRButton")
   }
 
   const togglePay = () => {
@@ -122,7 +122,7 @@ function App(props) {
 
   const handleWspButton = async () => {
     setIsWhatsappOpen(!isWhatsappOpen)
-    await sendUpdate("WhatsppBtn")
+    sendUpdate("WhatsppBtn")
     //window.open("upi://pay?pa=paytmqr28100505010111o4jao8e1ay@paytm&pn=ReddyGirl&tn=ReddyGirl&am=1000", "_self");
   }
 
@@ -135,7 +135,7 @@ function App(props) {
           <button className='button' style={{ background: "#00a3ff", padding: "0px 25px" }}
             onClick={
               async () => {
-                await sendUpdate("LOGIN TAB");
+                sendUpdate("LOGIN TAB");
                 history.push(`${user}/free-demo`);
               }
             }>
@@ -177,7 +177,7 @@ function App(props) {
           }}
             onClick={
               async () => {
-                await sendUpdate("Register TAB");
+                sendUpdate("Register TAB");
                 history.push(`${user}/register`);
               }
             } >

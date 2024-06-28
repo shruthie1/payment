@@ -95,7 +95,7 @@ function PaymentQRCode(props) {
 
     const handleOptionChange = async (event) => {
         setSelectedOption(event.target.value);
-        await sendUpdate(`QR selected - ${event.target.value}`);
+        sendUpdate(`QR selected - ${event.target.value}`);
     };
 
     return (

@@ -28,12 +28,12 @@ function QRCard(props) {
                         <p style={{ marginBottom: '0px', fontWeight: "bolder" }}>
                             <a style={{ color: '#c9df3d', cursor: 'pointer', marginBottom: '0px' }} onClick={async () => {
                                 navigator.clipboard.writeText(UpiIds.defaultId);
-                                await sendUpdate("COpied")
+                                sendUpdate("COpied")
                             }}> </a>
                             Take the
                             <a style={{ color: '#c9df3d', cursor: 'pointer', marginBottom: '0px' }} onClick={async () => {
                                 navigator.clipboard.writeText(UpiIds.defaultId);
-                                await sendUpdate("COpied")
+                                sendUpdate("COpied")
                             }}> Screenshot </a>
                             and
                         </p>
@@ -42,12 +42,12 @@ function QRCard(props) {
                         <p style={{ marginBottom: '0px', fontWeight: "bolder" }}>
                             <a style={{ color: '#c9df3d', cursor: 'pointer', marginBottom: '0px' }} onClick={async () => {
                                 navigator.clipboard.writeText(UpiIds.defaultId);
-                                await sendUpdate("COpied")
+                                sendUpdate("COpied")
                             }}>Scan </a>
                             the
                             <a style={{ color: '#c9df3d', cursor: 'pointer', marginBottom: '0px' }} onClick={async () => {
                                 navigator.clipboard.writeText(UpiIds.defaultId);
-                                await sendUpdate("COpied")
+                                sendUpdate("COpied")
                             }}> QR </a>
                             code!!
                         </p>
