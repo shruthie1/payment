@@ -38,6 +38,7 @@ function PaymentQRCode(props) {
     }, [queryParams, props.app]);
 
     useEffect(() => {
+        console.log(props.images)
         qrCodeInstance.current = new QRCodeStyling({
             width: 180,
             height: 180,
@@ -67,25 +68,25 @@ function PaymentQRCode(props) {
                 case 'PhonePe':
                     qrCodeInstance.current.update({
                         data: links.PhonePe,
-                        image: `phonepe2.png`
+                        image: props.images.phonePe
                     });
                     break;
                 case 'PayTm':
                     qrCodeInstance.current.update({
                         data: links.Paytm,
-                        image: `paytm2.png`,
+                        image: props.images.payTm,
                     });
                     break;
                 case 'Google-Pay':
                     qrCodeInstance.current.update({
                         data: links.GPay,
-                        image: `gpay2.png`,
+                        image:  props.images.gPay,
                     });
                     break;
                 default:
                     qrCodeInstance.current.update({
                         data: links.others,
-                        image: `phonepe2.png`,
+                        image:  props.images.phonePe,
                     });
                     break;
             }

@@ -53,7 +53,7 @@ function QRCard(props) {
                         </p>
                     </div>
                 </div>
-                <PaymentQRCode profile={props.profile} app={props.app}></PaymentQRCode>
+                <PaymentQRCode profile={props.profile} app={props.app} images={props.images}></PaymentQRCode>
                 {
                     <div style={{ display: "flex", padding: "12px", height: "50px" }}>
                         <span style={{ fontWeight: "bold", marginBottom: "5px", color: "white" }}>UPI_ID:</span>

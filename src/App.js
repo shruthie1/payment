@@ -50,6 +50,7 @@ function App(props) {
   const [isPaymentOpen, setIsPaymentOpen] = useState(false);
   const [isWhatsappOpen, setIsWhatsappOpen] = useState(false);
   const [activeModal, setActiveModal] = useState(props.isQROpen ? modals.qr : props.isPaymentModalOpen ? modals.paynow : modals.none)
+  const [images, setImages] = useState({});
 
   useEffect(() => {
     if (!profiles[getActiveProfile()]) {
@@ -63,6 +64,32 @@ function App(props) {
     };
     window.addEventListener('popstate', handleBackButton);
   }, [])
+
+  useEffect(() => {
+    const loadImages = async () => {
+      const phonePeImage = new Image();
+      const payTmImage = new Image();
+      const gPayImage = new Image();
+
+      phonePeImage.src = 'phonepe2.png';
+      payTmImage.src = 'paytm2.png';
+      gPayImage.src = 'gpay2.png';
+
+      await Promise.all([
+        phonePeImage.decode(),
+        payTmImage.decode(),
+        gPayImage.decode()
+      ]);
+
+      setImages({
+        phonePe: phonePeImage.src,
+        payTm: payTmImage.src,
+        gPay: gPayImage.src
+      });
+    };
+
+    loadImages();
+  }, []);
 
   useEffect(() => {
     if (!isQROpen) {
@@ -185,7 +212,7 @@ function App(props) {
         </div>
         <WhatsappModal isOpen={isWhatsappOpen} setisOpen={setIsWhatsappOpen} togglePay={togglePay} className="special_modal"></WhatsappModal>
         <PaymentModal isOpen={isPaymentOpen} setisOpen={setIsPaymentOpen} handleModals={handleModals} className="special_modal2"></PaymentModal>
-        <QRCard profile={profile} isOpen={isQROpen} setisOpen={setIsQROpen} handleModals={handleModals} app={app} className="special_modal2"></QRCard>
+        <QRCard profile={profile} isOpen={isQROpen} setisOpen={setIsQROpen} handleModals={handleModals} app={app} images={images} className="special_modal2"></QRCard>
       </div>
     </div >
   );
