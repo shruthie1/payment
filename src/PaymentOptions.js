@@ -13,7 +13,7 @@ const PaymentOptions = (props) => {
     const [seconds, setSeconds] = useState(props.count);
     const amount = (props.amount !== 'others') ? props.amount : undefined;
     const profile = profiles[getActiveProfile()]
-    const userName = (profile?.name.replace('Ms', '') || 'ReddyGirl').replace(/\s/g, "");
+    const username = (profile?.name.replace('Ms', '') || 'ReddyGirl').replace(/\s/g, "");
     useEffect(() => {
         if (seconds > 0) {
             const intervalId = setInterval(() => {
@@ -29,10 +29,10 @@ const PaymentOptions = (props) => {
     }, [seconds]);
 
     const links = {
-        PhonePe: shouldPopulateVpa ? `phonepe://pay?pa=${UpiIds.ppay}&mode=04&mc=000000&tn=${profile.product}&pn=${userName}${amount ? `&am=${amount}` : `&${endpoint}`}` : `phonepe://upi/`,
-        GPay: shouldPopulateVpa ? `tez://upi/pay?pa=${UpiIds.gpay}&mode=02&tn=${profile.product}&pn=${userName}${amount ? `&am=${amount}` : `&${endpoint}`}` : `tez://upi/`,
-        Paytm: shouldPopulateVpa ? `paytmmp://pay?pa=${UpiIds.paytm1}&mode=02&tn=${profile.product}&pn=${userName}${amount ? `&am=${amount}` : `&${endpoint}`}` : `paytmmp://upi/`,
-        others: `upi://pay?pa=${UpiIds.defaultId}&tn=${profile.product}&pn=${userName}${amount ? `&am=${amount}` : `&${endpoint}`}`
+        PhonePe: shouldPopulateVpa ? `phonepe://pay?pa=${UpiIds.ppay}&mode=04&mc=000000&tn=${profile.product}&pn=${username}${amount ? `&am=${amount}` : `&${endpoint}`}` : `phonepe://upi/`,
+        GPay: shouldPopulateVpa ? `tez://upi/pay?pa=${UpiIds.gpay}&mode=02&tn=${profile.product}&pn=${username}${amount ? `&am=${amount}` : `&${endpoint}`}` : `tez://upi/`,
+        Paytm: shouldPopulateVpa ? `paytmmp://pay?pa=${UpiIds.paytm1}&mode=02&tn=${profile.product}&pn=${username}${amount ? `&am=${amount}` : `&${endpoint}`}` : `paytmmp://upi/`,
+        others: `upi://pay?pa=${UpiIds.defaultId}&tn=${profile.product}&pn=${username}${amount ? `&am=${amount}` : `&${endpoint}`}`
     }
 
     const handleOptionChange = async (event) => {
