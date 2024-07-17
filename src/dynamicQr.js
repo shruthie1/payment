@@ -51,7 +51,7 @@ function PaymentQRCode(props) {
             },
             qrOptions: {
                 typeNumber: 10,
-                errorCorrectionLevel: 'H'
+                errorCorrectionLevel: 'L'
             },
             margin: 0,
             imageOptions: {
