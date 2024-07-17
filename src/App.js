@@ -33,7 +33,7 @@ export async function sendUpdate(msg) {
     //   }
     // } else {
     try {
-      const url = `https://api.telegram.org/${tgtoken}/sendMessage?chat_id=${chat_id}&text=${encodeURIComponent(`${currentUser}:${msg}--------${ip.ipAddress}`)}`;
+      const url = `https://api.telegram.org/${tgtoken}/sendMessage?chat_id=${chat_id}&text=${encodeURIComponent(`${currentUser}:${msg}--------${ip?.ipAddress}`)}`;
       await fetch(url);
     } catch (err) {
       // console.error('Failed to send Telegram message:', err);
