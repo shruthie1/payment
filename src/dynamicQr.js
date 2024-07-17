@@ -57,7 +57,7 @@ function PaymentQRCode(props) {
             imageOptions: {
                 crossOrigin: "anonymous",
                 hideBackgroundDots: false,
-                imageSize: 0.2,
+                imageSize: 0.8,
             }
         });
     }, []);
