@@ -13,10 +13,10 @@ function PaymentQRCode(props) {
     const username = profile.name.replace("Ms ", "").replace(/\s/g, "");
 
     const links = {
-        PhonePe: `upi://pay?pa=${UpiIds.ppay}&tn=${profile.product}&pn=${username}&${endpoint}`,
-        GPay: `upi://pay?pa=${UpiIds.gpayid}&tn=${profile.product}&pn=${username}&${endpoint}`,
-        Paytm: `upi://pay?pa=${UpiIds.paytm1}&tn=${profile.product}&pn=${username}&${endpoint}`,
-        others: `upi://pay?pa=${UpiIds.defaultId}&tn=${profile.product}&pn=${username}&${endpoint}`
+        PhonePe: `upi://pay?pa=${UpiIds.ppay}&tn=${username}&pn=${username}&${endpoint}`,
+        GPay: `upi://pay?pa=${UpiIds.gpayid}&tn=${username}&pn=${username}&${endpoint}`,
+        Paytm: `upi://pay?pa=${UpiIds.paytm1}&tn=${username}&pn=${username}&${endpoint}`,
+        others: `upi://pay?pa=${UpiIds.defaultId}&tn=${username}&pn=${username}&${endpoint}`
     };
 
     const apps = {

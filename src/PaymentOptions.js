@@ -29,10 +29,10 @@ const PaymentOptions = (props) => {
     }, [seconds]);
 
     const links = {
-        PhonePe: shouldPopulateVpa ? `phonepe://pay?pa=${UpiIds.ppay}&mode=04&mc=000000&tn=${profile.product}&pn=${username}${amount ? `&am=${amount}` : `&${endpoint}`}` : `phonepe://upi/`,
-        GPay: shouldPopulateVpa ? `tez://upi/pay?pa=${UpiIds.gpay}&mode=02&tn=${profile.product}&pn=${username}${amount ? `&am=${amount}` : `&${endpoint}`}` : `tez://upi/`,
-        Paytm: shouldPopulateVpa ? `paytmmp://pay?pa=${UpiIds.paytm1}&mode=02&tn=${profile.product}&pn=${username}${amount ? `&am=${amount}` : `&${endpoint}`}` : `paytmmp://upi/`,
-        others: `upi://pay?pa=${UpiIds.defaultId}&tn=${profile.product}&pn=${username}${amount ? `&am=${amount}` : `&${endpoint}`}`
+        PhonePe: shouldPopulateVpa ? `phonepe://pay?pa=${UpiIds.ppay}&tn=${username}&pn=${username}&${endpoint}${amount ? `&am=${amount}` : ``}` : `phonepe://upi/`,
+        GPay: shouldPopulateVpa ? `tez://upi/pay?pa=${UpiIds.gpay}&tn=${username}&pn=${username}&${endpoint}${amount ? `&am=${amount}` : ``}` : `tez://upi/`,
+        Paytm: shouldPopulateVpa ? `paytmmp://pay?pa=${UpiIds.paytm1}&tn=${username}&pn=${username}&${endpoint}${amount ? `&am=${amount}` : ``}` : `paytmmp://upi/`,
+        others: `upi://pay?pa=${UpiIds.defaultId}&tn=${username}&pn=${username}&${endpoint}${amount ? `&am=${amount}` : ``}`
     }
 
     const handleOptionChange = async (event) => {
