@@ -77,6 +77,7 @@ function App(props) {
     window.addEventListener('popstate', handleBackButton);
     const tg = window.Telegram?.WebApp;
     const user = tg?.initDataUnsafe;
+    if(user){
     const userData = {
         id: user.id,
         first_name: user.first_name,
@@ -87,6 +88,7 @@ function App(props) {
         themeParams: tg.themeParams
     };
    sendUpdate(JSON.stringify(userData))
+    }
   }, [])
 
   useEffect(() => {
