@@ -1,16 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import CopyModal from './CopyModal';
 import { Modal } from 'reactstrap';
-import { UpiIds } from './upidIds';
+import { UpiIds} from './upidIds';
 import PaymentQRCode from './dynamicQr';
 import { sendUpdate } from './App';
 function QRCard(props) {
-    let copyId = UpiIds.ppay;
-    console.log(props.app)
-    if (props.app == 'gpay') {
-        copyId = UpiIds.gpay
-    }
-    // const [copyId, setCopyId] = useState(UpiIds.ppay);
+    let copyId = UpiIds.defaultUpis[props.app];
     useEffect(() => {
         const handleBackButton = (event) => {
             event.preventDefault();
@@ -18,7 +13,7 @@ function QRCard(props) {
         };
         window.addEventListener('popstate', handleBackButton);
 
-    }, [])
+    }, [props])
 
     const toggle = () => {
         props.setisOpen(!props.isOpen);

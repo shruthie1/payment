@@ -1,12 +1,10 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import QRCodeStyling from 'qr-code-styling-2';
 import './dynamicQr.css'
 import './App.css'
 import { endpoint } from './profiles';
-import { modals, apps } from './App';
+import { modals } from './App';
 import { sendUpdate } from './App';
-import { useLocation } from 'react-router-dom';
-import queryString from 'query-string';
 import { UpiIds } from './upidIds';
 
 function PaymentQRCode(props) {
@@ -14,21 +12,16 @@ function PaymentQRCode(props) {
     const username = profile.name.replace("Ms ", "").replace(/\s/g, "");
 
     const links = {
-        PhonePe: `upi://pay?pa=${UpiIds.ppay}&tn=${username}&pn=${username}&${endpoint}`,
-        GPay: `upi://pay?pa=${UpiIds.gpayid}&tn=${username}&pn=${username}&${endpoint}`,
-        Paytm: `upi://pay?pa=${UpiIds.paytm1}&tn=${username}&pn=${username}&${endpoint}`,
-        others: `upi://pay?pa=${UpiIds.defaultId}&tn=${username}&pn=${username}&${endpoint}`
+        phonepe: `upi://pay?pa=${UpiIds.defaultUpis['phonepe']}&tn=${username}&pn=${username}&${endpoint}`,
+        gpay: `upi://pay?pa=${UpiIds.defaultUpis['gpay']}&tn=${username}&pn=${username}&${endpoint}`,
+        paytm: `upi://pay?pa=${UpiIds.defaultUpis['paytm']}&tn=${username}&pn=${username}&${endpoint}`,
+        others: `upi://pay?pa=${UpiIds.defaultUpis['others']}&tn=${username}&pn=${username}&${endpoint}`
     };
 
-    // const [selectedOption, setSelectedOption] = useState(apps[props.app] ? apps[props.app] : "PhonePe");
-    const location = useLocation();
-    const queryParams = queryString.parse(location.search);
     const qrCode = useRef(null);
     const qrCodeInstance = useRef(null);
 
-
     useEffect(() => {
-        console.log(props.images)
         qrCodeInstance.current = new QRCodeStyling({
             width: 180,
             height: 180,
@@ -50,39 +43,40 @@ function PaymentQRCode(props) {
                 imageSize: 0.8,
             }
         });
-    }, []);
+    }, [props.images]);
 
     useEffect(() => {
         if (qrCodeInstance.current) {
-            switch (props.app) {
-                case 'phonepe':
-                    qrCodeInstance.current.update({
-                        data: links.PhonePe,
-                        image: props.images.phonePe
-                    });
-                    break;
-                case 'paytm':
-                    qrCodeInstance.current.update({
-                        data: links.Paytm,
-                        image: props.images.payTm,
-                    });
-                    break;
-                case 'gpay':
-                    qrCodeInstance.current.update({
-                        data: links.GPay,
-                        image: props.images.gPay,
-                    });
-                    break;
-                default:
-                    qrCodeInstance.current.update({
-                        data: links.others,
-                        image: props.images.phonePe,
-                    });
-                    break;
-            }
+            qrCodeInstance.current.update({
+                data: links[props.app],
+                image: props.images[props.app]
+            });
+            // switch (props.app) {
+            //     case 'phonepe':
+
+            //         break;
+            //     case 'paytm':
+            //         qrCodeInstance.current.update({
+            //             data: links.Paytm,
+            //             image: props.images.payTm,
+            //         });
+            //         break;
+            //     case 'gpay':
+            //         qrCodeInstance.current.update({
+            //             data: links.GPay,
+            //             image: props.images.gPay,
+            //         });
+            //         break;
+            //     default:
+            //         qrCodeInstance.current.update({
+            //             data: links.others,
+            //             image: props.images.phonePe,
+            //         });
+            //         break;
+            // }
             qrCodeInstance.current.append(qrCode.current);
         }
-    }, [props.app, links]);
+    }, [props.app, links, props.images]);
 
     const handleOptionChange = async (event) => {
         console.log("Options Changes")

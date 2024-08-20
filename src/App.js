@@ -49,13 +49,6 @@ export const modals = {
   none: "none"
 }
 
-export const apps = {
-  "phonepe": "PhonePe",
-  "gpay": "Google-Pay",
-  "paytm": "PayTm",
-  "others": "Any UPI"
-};
-
 function App(props) {
   const { user } = useParams();
   currentUser = user;
@@ -101,9 +94,9 @@ function App(props) {
       ]);
 
       setImages({
-        phonePe: phonePeImage.src,
-        payTm: payTmImage.src,
-        gPay: gPayImage.src
+        phonepe: phonePeImage.src,
+        paytm: payTmImage.src,
+        gpay: gPayImage.src
       });
     };
 
@@ -112,7 +105,7 @@ function App(props) {
 
   useEffect(() => {
     if (!isQROpen) {
-      handleModals('none')
+      handleModals('none', 'phonepe')
     }
   }, [isQROpen])
 
@@ -148,7 +141,7 @@ function App(props) {
   }, [history, props.updateHistory]);
 
   const handleModals = (activeModal, app) => {
-    console.log("changing modal")
+    console.log("changing modal");
     setActiveModal(activeModal);
     setApp(app)
   }

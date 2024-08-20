@@ -17,14 +17,32 @@ export class UpiIds {
     static setUpiId(key, value) {
         UpiIds[key] = value;
     }
+
+    static defaultUpis = {
+        phonepe: UpiIds.ppay,
+        gpay: UpiIds.gpay,
+        paytm: UpiIds.paytm1,
+        others: UpiIds.defaultId
+    }
+
+    static setDefaultUpis(){
+        UpiIds.defaultUpis = {
+            phonepe: UpiIds.ppay,
+            gpay: UpiIds.gpay,
+            paytm: UpiIds.paytm1,
+            others: UpiIds.defaultId
+        }
+    }
 }
 
 export function assigntoUpis(jsonData) {
     Object.entries(jsonData).forEach(([key, value]) => {
         if (UpiIds.hasOwnProperty(key)) {
+            console.log(`setting - ${key}:${value}`)
             UpiIds.setUpiId(key, value);
         }
     });
+    UpiIds.setDefaultUpis()
 }
 
 export async function setUpiIds() {

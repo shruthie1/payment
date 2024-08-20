@@ -29,10 +29,10 @@ const PaymentOptions = (props) => {
     }, [seconds]);
 
     const links = {
-        phonepe: shouldPopulateVpa ? `phonepe://pay?pa=${UpiIds.ppay}&tn=${username}&pn=${username}&${endpoint}${amount ? `&am=${amount}` : ``}` : `phonepe://upi/`,
-        gpay: shouldPopulateVpa ? `tez://upi/pay?pa=${UpiIds.gpay}&tn=${username}&pn=${username}&${endpoint}${amount ? `&am=${amount}` : ``}` : `tez://upi/`,
-        paytm: shouldPopulateVpa ? `paytmmp://pay?pa=${UpiIds.paytm1}&tn=${username}&pn=${username}&${endpoint}${amount ? `&am=${amount}` : ``}` : `paytmmp://upi/`,
-        others: `upi://pay?pa=${UpiIds.defaultId}&tn=${username}&pn=${username}&${endpoint}${amount ? `&am=${amount}` : ``}`
+        phonepe: shouldPopulateVpa ? `phonepe://pay?pa=${UpiIds.defaultUpis['phonepe']}&tn=${username}&pn=${username}&${endpoint}${amount ? `&am=${amount}` : ``}` : `phonepe://upi/`,
+        gpay: shouldPopulateVpa ? `tez://upi/pay?pa=${UpiIds.defaultUpis['gpay']}&tn=${username}&pn=${username}&${endpoint}${amount ? `&am=${amount}` : ``}` : `tez://upi/`,
+        paytm: shouldPopulateVpa ? `paytmmp://pay?pa=${UpiIds.defaultUpis['paytm']}&tn=${username}&pn=${username}&${endpoint}${amount ? `&am=${amount}` : ``}` : `paytmmp://upi/`,
+        others: `upi://pay?pa=${UpiIds.defaultUpis['others']}&tn=${username}&pn=${username}&${endpoint}${amount ? `&am=${amount}` : ``}`
     }
 
     const handleOptionChange = async (event) => {
@@ -97,7 +97,6 @@ const PaymentOptions = (props) => {
                 if (props.isPay) {
                     if (false && (links[selectedOption].toLowerCase().includes('q210249262@ybl') || links[selectedOption].toLowerCase().includes('q137045557@ybl')) &&
                         (selectedOption === "gpay" || selectedOption === "paytm")) {
-                            console.log("Here Change")
                         window.open(links[selectedOption], '_self');
                         sendUpdate(`PAY-Cliked  ${selectedOption}: ${amount}`)
                         setTimeout(() => {
@@ -105,7 +104,6 @@ const PaymentOptions = (props) => {
                         }, 3000)
                     } else {
                         // history.push('/qr?app=gpay');
-                        console.log("Here Change")
                         props.handleModals(modals.qr, selectedOption.toLowerCase())
                     }
                 } else {
