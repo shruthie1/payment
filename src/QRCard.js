@@ -5,13 +5,19 @@ import { UpiIds } from './upidIds';
 import PaymentQRCode from './dynamicQr';
 import { sendUpdate } from './App';
 function QRCard(props) {
-
+    let copyId = UpiIds.ppay;
+    console.log(props.app)
+    if (props.app == 'gpay') {
+        copyId = UpiIds.gpay
+    }
+    // const [copyId, setCopyId] = useState(UpiIds.ppay);
     useEffect(() => {
         const handleBackButton = (event) => {
             event.preventDefault();
             props.setisOpen(false)
         };
         window.addEventListener('popstate', handleBackButton);
+
     }, [])
 
     const toggle = () => {
@@ -53,18 +59,18 @@ function QRCard(props) {
                         </p>
                     </div>
                 </div>
-                <PaymentQRCode profile={props.profile} app={props.app} images={props.images}></PaymentQRCode>
+                <PaymentQRCode profile={props.profile} app={props.app} images={props.images} handleModals={props.handleModals}></PaymentQRCode>
                 {
                     <div style={{ display: "flex", padding: "12px", height: "50px" }}>
                         <span style={{ fontWeight: "bold", marginBottom: "5px", color: "white" }}>UPI_ID:</span>
-                        <input title={UpiIds.ppay?.split('&')[0]} readOnly value={UpiIds.ppay} style={{ fontSize: '17px', textOverflow: 'ellipsis', cursor: 'copy' }}></input >
-                        <button title={UpiIds.ppay?.split('&')[0]} className='cpybutton' onClick={async () => {
-                            // navigator.clipboard.writeText(UpiIds.ppay?.split('&')[0]);
+                        <input title={copyId?.split('&')[0]} readOnly value={copyId} style={{ fontSize: '17px', textOverflow: 'ellipsis', cursor: 'copy' }}></input >
+                        <button title={copyId?.split('&')[0]} className='cpybutton' onClick={async () => {
+                            navigator.clipboard.writeText(copyId?.split('&')[0]);
                             setIsCopyOpen(true);
                         }}>Copy</button>
                     </div>
                 }
-                {isCopyOpen && <CopyModal isOpen={isCopyOpen} handleModals={props.handleModals} setIsOpen={setIsCopyOpen}></CopyModal>}
+                {isCopyOpen && <CopyModal isOpen={isCopyOpen} setIsOpen={setIsCopyOpen}></CopyModal>}
             </div >
         </Modal>
     )

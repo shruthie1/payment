@@ -3,6 +3,7 @@ import QRCodeStyling from 'qr-code-styling-2';
 import './dynamicQr.css'
 import './App.css'
 import { endpoint } from './profiles';
+import { modals, apps } from './App';
 import { sendUpdate } from './App';
 import { useLocation } from 'react-router-dom';
 import queryString from 'query-string';
@@ -19,23 +20,12 @@ function PaymentQRCode(props) {
         others: `upi://pay?pa=${UpiIds.defaultId}&tn=${username}&pn=${username}&${endpoint}`
     };
 
-    const apps = {
-        "phonpe": "PhonePe",
-        "gpay": "Google-Pay",
-        "paytm": "PayTm",
-        "any": "Any UPI"
-    };
-    const [selectedOption, setSelectedOption] = useState(apps[props.app] ? apps[props.app] : "PhonePe");
+    // const [selectedOption, setSelectedOption] = useState(apps[props.app] ? apps[props.app] : "PhonePe");
     const location = useLocation();
     const queryParams = queryString.parse(location.search);
     const qrCode = useRef(null);
     const qrCodeInstance = useRef(null);
 
-    useEffect(() => {
-        if (queryParams.app) {
-            setSelectedOption(props.app ? props.app : (apps[queryParams.app] ? apps[queryParams.app] : "PhonePe"));
-        }
-    }, [queryParams, props.app]);
 
     useEffect(() => {
         console.log(props.images)
@@ -64,38 +54,39 @@ function PaymentQRCode(props) {
 
     useEffect(() => {
         if (qrCodeInstance.current) {
-            switch (selectedOption) {
-                case 'PhonePe':
+            switch (props.app) {
+                case 'phonepe':
                     qrCodeInstance.current.update({
                         data: links.PhonePe,
                         image: props.images.phonePe
                     });
                     break;
-                case 'PayTm':
+                case 'paytm':
                     qrCodeInstance.current.update({
                         data: links.Paytm,
                         image: props.images.payTm,
                     });
                     break;
-                case 'Google-Pay':
+                case 'gpay':
                     qrCodeInstance.current.update({
                         data: links.GPay,
-                        image:  props.images.gPay,
+                        image: props.images.gPay,
                     });
                     break;
                 default:
                     qrCodeInstance.current.update({
                         data: links.others,
-                        image:  props.images.phonePe,
+                        image: props.images.phonePe,
                     });
                     break;
             }
             qrCodeInstance.current.append(qrCode.current);
         }
-    }, [selectedOption, links]);
+    }, [props.app, links]);
 
     const handleOptionChange = async (event) => {
-        setSelectedOption(event.target.value);
+        console.log("Options Changes")
+        props.handleModals(modals.qr, event.target.value.toLowerCase())
         sendUpdate(`QR selected - ${event.target.value}`);
     };
 
@@ -105,17 +96,17 @@ function PaymentQRCode(props) {
                 <div style={{ margin: "3px", borderRadius: "10px", background: "#123a5d" }}>
                     <h1 style={{ paddingTop: "3px", fontSize: "13px" }}>Select Payment App</h1>
                     <div className="dropdown-container">
-                        <select className='qrSelect' value={selectedOption} onChange={handleOptionChange}>
-                            <option value="PhonePe">PhonePe</option>
-                            <option value="Google-Pay">Google Pay</option>
-                            <option value="PayTm">PayTm</option>
-                            <option value="Any UPI">Others</option>
+                        <select className='qrSelect' value={props.app} onChange={handleOptionChange}>
+                            <option value="phonepe">PhonePe</option>
+                            <option value="gpay">Google Pay</option>
+                            <option value="paytm">PayTm</option>
+                            <option value="others">Others</option>
                         </select>
                     </div>
                 </div>
             }
             <div className="qr-code">
-                <h6 style={{ margin: '5px 0px 0px 0px', color: "black" }}>{selectedOption}</h6>
+                <h6 style={{ margin: '5px 0px 0px 0px', color: "black" }}>{props.app}</h6>
                 <div className="outer-div">
                     <div className="inner-div">
                         <div style={{ display: "flex" }} ref={qrCode} />

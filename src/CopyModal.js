@@ -5,7 +5,7 @@ import { Modal, ModalHeader } from 'reactstrap';
 import { UpiIds } from './upidIds';
 
 const CopyModal = (props) => {
-    const [isCopied, setIsCopied] = useState(false);
+    const [isCopied, setIsCopied] = useState(true);
 
     const toggle = () => {
         props.setIsOpen(!props.isOpen);
@@ -23,7 +23,7 @@ const CopyModal = (props) => {
         <div>
             <Modal style={{ padding: "10vh 15px" }} isOpen={props.isOpen} toggle={toggle} fade={true} className="special_modal">
                 <ModalHeader toggle={toggle} style={{ borderBottom: '0px', display: 'block', textAlign: 'center' }}>
-                    <h6 style={{ fontWeight: "bolder", color: "wheat" }}>UPI IDs</h6>
+                    {/* <h6 style={{ fontWeight: "bolder", color: "wheat" }}>UPI IDs</h6> */}
                     {isCopied ? (
                         <div className='insideCard'>
                             <h6 style={{ color: 'yellow' }}>

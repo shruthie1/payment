@@ -49,6 +49,13 @@ export const modals = {
   none: "none"
 }
 
+export const apps = {
+  "phonepe": "PhonePe",
+  "gpay": "Google-Pay",
+  "paytm": "PayTm",
+  "others": "Any UPI"
+};
+
 function App(props) {
   const { user } = useParams();
   currentUser = user;
@@ -74,19 +81,7 @@ function App(props) {
       event.preventDefault();
       setActiveModal(modals.none)
     };
-  //   window.addEventListener('popstate', handleBackButton);
-  //   const tg = window.Telegram?.WebApp;
-  //   const user = tg?.initDataUnsafe;
-  //   const userData = {
-  //       id: user.id,
-  //       first_name: user.first_name,
-  //       last_name: user.last_name,
-  //       username: user.username,
-  //       photo_url: user.photo_url || null,
-  //       initData: tg.initData,
-  //       themeParams: tg.themeParams
-  //   };
-  //  sendUpdate(JSON.stringify(userData))
+    window.addEventListener('popstate', handleBackButton);
   }, [])
 
   useEffect(() => {
@@ -153,6 +148,7 @@ function App(props) {
   }, [history, props.updateHistory]);
 
   const handleModals = (activeModal, app) => {
+    console.log("changing modal")
     setActiveModal(activeModal);
     setApp(app)
   }
