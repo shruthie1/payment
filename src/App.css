@@ -234,7 +234,7 @@
     margin-top: -3px;
     display: inline-block;
     outline: 0;
-    border: 3px solid #ccc;
+    /* border: 3px solid #ccc; */
     cursor: pointer;
     background: radial-gradient(100% 100% at 100% 0%, #3695e2 0%, rgb(80, 50, 215) 100%);
     font-weight: bold;
