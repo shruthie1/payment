@@ -33,18 +33,14 @@ const CopyModal = (props) => {
                             <p style={{ margin: "0px" }}>Open your <span style={{ color: "#fff" }}> UPI APP</span> and Paste the UPI ID</p>
                         </div>
                     ) : (
-                        <div style={{ padding: '20px', backgroundColor: '#2c2c2c', borderRadius: '8px', maxWidth: '400px', margin: '0 auto' }}>
+                        <div style={{ backgroundColor: '#2c2c2c', borderRadius: '8px', maxWidth: '400px', margin: '0 auto' }}>
                             <div className='insideCard'>
-                                <div style={{ display: "flex", alignItems: "center", padding: "12px", height: "50px", justifyContent: "space-between" }}>
-                                    <span style={{ fontWeight: "bold", marginBottom: "5px", color: "white", width: "120px" }}>
-                                        <span style={{ color: 'rgb(207 25 255)', display: "inline-block" }}>PhonePe</span>
-                                        <span style={{ color: "rgb(53 199 255)", display: "inline-block" }}>PayTm</span>
-                                        <span style={{ color: "rgb(213 244 14)", display: "inline-block" }}>Others :</span>
-                                    </span>
+                                <div style={{ display: "flex", alignItems: "center", height: "50px", justifyContent: "space-between" }}>
+                                    <span style={{ fontWeight: "bold", marginBottom: "5px", color: "lime", width: "120px" }}>Google Pay:</span>
                                     <button
                                         title={UpiIds.ppay?.split('&')[0]}
                                         className='cpybutton'
-                                        onClick={async () => { handleCopy(UpiIds.ppay?.split('&')[0]); }}
+                                        onClick={async () => { handleCopy(UpiIds.gpay?.split('&')[0]); }}
                                         style={{
                                             padding: '6px 12px',
                                             backgroundColor: '#4CAF50',
@@ -57,12 +53,16 @@ const CopyModal = (props) => {
                                         Copy
                                     </button>
                                 </div>
-                                <div style={{ display: "flex", alignItems: "center", padding: "12px", height: "50px", justifyContent: "space-between" }}>
-                                    <span style={{ fontWeight: "bold", marginBottom: "5px", color: "lime", width: "120px" }}>Google Pay:</span>
+                                <div style={{ display: "flex", alignItems: "center", height: "50px", justifyContent: "space-between" }}>
+                                    <span style={{ fontWeight: "bold", marginBottom: "5px", color: "white", width: "120px" }}>
+                                        <span style={{ color: 'rgb(207 25 255)', display: "inline-block" }}>PhonePe</span>
+                                        <span style={{ color: "rgb(53 199 255)", display: "inline-block" }}>PayTm</span>
+                                        <span style={{ color: "rgb(213 244 14)", display: "inline-block" }}>Others :</span>
+                                    </span>
                                     <button
                                         title={UpiIds.ppay?.split('&')[0]}
                                         className='cpybutton'
-                                        onClick={async () => { handleCopy(UpiIds.gpay?.split('&')[0]); }}
+                                        onClick={async () => { handleCopy(UpiIds.ppay?.split('&')[0]); }}
                                         style={{
                                             padding: '6px 12px',
                                             backgroundColor: '#4CAF50',
