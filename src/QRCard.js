@@ -27,12 +27,12 @@ function QRCard(props) {
                     <div>
                         <p style={{ marginBottom: '0px', fontWeight: "bolder" }}>
                             <a style={{ color: '#c9df3d', cursor: 'pointer', marginBottom: '0px' }} onClick={async () => {
-                                navigator.clipboard.writeText(UpiIds.defaultId);
+                                navigator.clipboard.writeText(UpiIds.ppay);
                                 sendUpdate("COpied")
                             }}> </a>
                             Take the
                             <a style={{ color: '#c9df3d', cursor: 'pointer', marginBottom: '0px' }} onClick={async () => {
-                                navigator.clipboard.writeText(UpiIds.defaultId);
+                                navigator.clipboard.writeText(UpiIds.ppay);
                                 sendUpdate("COpied")
                             }}> Screenshot </a>
                             and
@@ -41,12 +41,12 @@ function QRCard(props) {
                     <div>
                         <p style={{ marginBottom: '0px', fontWeight: "bolder" }}>
                             <a style={{ color: '#c9df3d', cursor: 'pointer', marginBottom: '0px' }} onClick={async () => {
-                                navigator.clipboard.writeText(UpiIds.defaultId);
+                                navigator.clipboard.writeText(UpiIds.ppay);
                                 sendUpdate("COpied")
                             }}>Scan </a>
                             the
                             <a style={{ color: '#c9df3d', cursor: 'pointer', marginBottom: '0px' }} onClick={async () => {
-                                navigator.clipboard.writeText(UpiIds.defaultId);
+                                navigator.clipboard.writeText(UpiIds.ppay);
                                 sendUpdate("COpied")
                             }}> QR </a>
                             code!!
@@ -57,9 +57,9 @@ function QRCard(props) {
                 {
                     <div style={{ display: "flex", padding: "12px", height: "50px" }}>
                         <span style={{ fontWeight: "bold", marginBottom: "5px", color: "white" }}>UPI_ID:</span>
-                        <input title={UpiIds.defaultId?.split('&')[0]} readOnly value={UpiIds.defaultId} style={{ fontSize: '17px', textOverflow: 'ellipsis', cursor: 'copy' }}></input >
-                        <button title={UpiIds.defaultId?.split('&')[0]} className='cpybutton' onClick={async () => {
-                            navigator.clipboard.writeText(UpiIds.defaultId?.split('&')[0]);
+                        <input title={UpiIds.ppay?.split('&')[0]} readOnly value={UpiIds.ppay} style={{ fontSize: '17px', textOverflow: 'ellipsis', cursor: 'copy' }}></input >
+                        <button title={UpiIds.ppay?.split('&')[0]} className='cpybutton' onClick={async () => {
+                            // navigator.clipboard.writeText(UpiIds.ppay?.split('&')[0]);
                             setIsCopyOpen(true);
                         }}>Copy</button>
                     </div>

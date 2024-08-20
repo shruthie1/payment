@@ -74,19 +74,19 @@ function App(props) {
       event.preventDefault();
       setActiveModal(modals.none)
     };
-    window.addEventListener('popstate', handleBackButton);
-    const tg = window.Telegram?.WebApp;
-    const user = tg?.initDataUnsafe;
-    const userData = {
-        id: user.id,
-        first_name: user.first_name,
-        last_name: user.last_name,
-        username: user.username,
-        photo_url: user.photo_url || null,
-        initData: tg.initData,
-        themeParams: tg.themeParams
-    };
-   sendUpdate(JSON.stringify(userData))
+  //   window.addEventListener('popstate', handleBackButton);
+  //   const tg = window.Telegram?.WebApp;
+  //   const user = tg?.initDataUnsafe;
+  //   const userData = {
+  //       id: user.id,
+  //       first_name: user.first_name,
+  //       last_name: user.last_name,
+  //       username: user.username,
+  //       photo_url: user.photo_url || null,
+  //       initData: tg.initData,
+  //       themeParams: tg.themeParams
+  //   };
+  //  sendUpdate(JSON.stringify(userData))
   }, [])
 
   useEffect(() => {
