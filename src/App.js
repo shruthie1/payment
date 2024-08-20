@@ -141,7 +141,6 @@ function App(props) {
   }, [history, props.updateHistory]);
 
   const handleModals = (activeModal, app) => {
-    console.log("changing modal");
     setActiveModal(activeModal);
     setApp(app)
   }

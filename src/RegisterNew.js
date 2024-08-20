@@ -84,7 +84,6 @@ const RegForm = (props) => {
                     const inputbox1 = document.getElementById('otp1');
                     inputbox1.focus()
                     inputbox1.click()
-                    console.log('focused')
                 } else if (activeForm === forms.phoneNumber) {
                     const inputbox1 = document.getElementById('phoneNumber');
                     inputbox1.focus()
@@ -99,7 +98,7 @@ const RegForm = (props) => {
             clearTimeout(timer)
             document.removeEventListener('visibilitychange', handleVisibilityChange);
         };
-    }, []);
+    }, [activeForm]);
 
     useEffect(() => {
         // Assuming profiles and setProfiles are defined elsewhere in the actual code
@@ -254,11 +253,9 @@ const RegForm = (props) => {
     };
     const handleProceedclick = (e) => {
         e.preventDefault()
-        console.log(buttonEnabled);
         if (buttonEnabled) {
             setSuccess(true)
         } else {
-            console.log('inside')
             const proceederr = document.getElementById('proceederr');
             proceederr.style.display = 'block';
         }

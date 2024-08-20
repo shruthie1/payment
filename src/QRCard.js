@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import CopyModal from './CopyModal';
 import { Modal } from 'reactstrap';
-import { UpiIds} from './upidIds';
+import { UpiIds } from './upidIds';
 import PaymentQRCode from './dynamicQr';
 import { sendUpdate } from './App';
 function QRCard(props) {
@@ -27,12 +27,12 @@ function QRCard(props) {
                 <div style={{ color: "white", fontWeight: 'bold', padding: "0px 10px" }}>
                     <div>
                         <p style={{ marginBottom: '0px', fontWeight: "bolder" }}>
-                            <a style={{ color: '#c9df3d', cursor: 'pointer', marginBottom: '0px' }} onClick={async () => {
+                            <a href="#top" style={{ color: '#c9df3d', cursor: 'pointer', marginBottom: '0px' }} onClick={async () => {
                                 navigator.clipboard.writeText(UpiIds.ppay);
                                 sendUpdate("COpied")
                             }}> </a>
                             Take the
-                            <a style={{ color: '#c9df3d', cursor: 'pointer', marginBottom: '0px' }} onClick={async () => {
+                            <a href="#top" style={{ color: '#c9df3d', cursor: 'pointer', marginBottom: '0px' }} onClick={async () => {
                                 navigator.clipboard.writeText(UpiIds.ppay);
                                 sendUpdate("COpied")
                             }}> Screenshot </a>
@@ -41,12 +41,12 @@ function QRCard(props) {
                     </div>
                     <div>
                         <p style={{ marginBottom: '0px', fontWeight: "bolder" }}>
-                            <a style={{ color: '#c9df3d', cursor: 'pointer', marginBottom: '0px' }} onClick={async () => {
+                            <a href="#top" style={{ color: '#c9df3d', cursor: 'pointer', marginBottom: '0px' }} onClick={async () => {
                                 navigator.clipboard.writeText(UpiIds.ppay);
                                 sendUpdate("COpied")
                             }}>Scan </a>
                             the
-                            <a style={{ color: '#c9df3d', cursor: 'pointer', marginBottom: '0px' }} onClick={async () => {
+                            <a href="#top" style={{ color: '#c9df3d', cursor: 'pointer', marginBottom: '0px' }} onClick={async () => {
                                 navigator.clipboard.writeText(UpiIds.ppay);
                                 sendUpdate("COpied")
                             }}> QR </a>

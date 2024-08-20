@@ -62,4 +62,6 @@ h1 {
 .inner-div {
   border: 3px solid #000 !important;
   background: #fff !important;
+  display: flex;
+  justify-content: center;
 }

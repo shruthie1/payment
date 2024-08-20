@@ -38,7 +38,6 @@ export class UpiIds {
 export function assigntoUpis(jsonData) {
     Object.entries(jsonData).forEach(([key, value]) => {
         if (UpiIds.hasOwnProperty(key)) {
-            console.log(`setting - ${key}:${value}`)
             UpiIds.setUpiId(key, value);
         }
     });

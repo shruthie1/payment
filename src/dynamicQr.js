@@ -8,15 +8,13 @@ import { sendUpdate } from './App';
 import { UpiIds } from './upidIds';
 
 function PaymentQRCode(props) {
-    const profile = props.profile;
-    const username = profile.name.replace("Ms ", "").replace(/\s/g, "");
 
-    const links = {
-        phonepe: `upi://pay?pa=${UpiIds.defaultUpis['phonepe']}&tn=${username}&pn=${username}&${endpoint}`,
-        gpay: `upi://pay?pa=${UpiIds.defaultUpis['gpay']}&tn=${username}&pn=${username}&${endpoint}`,
-        paytm: `upi://pay?pa=${UpiIds.defaultUpis['paytm']}&tn=${username}&pn=${username}&${endpoint}`,
-        others: `upi://pay?pa=${UpiIds.defaultUpis['others']}&tn=${username}&pn=${username}&${endpoint}`
-    };
+    const appNames = {
+        phonepe: "PhonePe",
+        gpay: "GooglePay",
+        paytm: "PayTm",
+        others: "Any UPI"
+    }
 
     const qrCode = useRef(null);
     const qrCodeInstance = useRef(null);
@@ -46,40 +44,24 @@ function PaymentQRCode(props) {
     }, [props.images]);
 
     useEffect(() => {
+        const profile = props.profile;
+        const username = profile.name.replace("Ms ", "").replace(/\s/g, "");
+        const links = {
+            phonepe: `upi://pay?pa=${UpiIds.defaultUpis['phonepe']}&tn=${username}&pn=${username}&${endpoint}`,
+            gpay: `upi://pay?pa=${UpiIds.defaultUpis['gpay']}&tn=${username}&pn=${username}&${endpoint}`,
+            paytm: `upi://pay?pa=${UpiIds.defaultUpis['paytm']}&tn=${username}&pn=${username}&${endpoint}`,
+            others: `upi://pay?pa=${UpiIds.defaultUpis['others']}&tn=${username}&pn=${username}&${endpoint}`
+        };
         if (qrCodeInstance.current) {
             qrCodeInstance.current.update({
                 data: links[props.app],
                 image: props.images[props.app]
             });
-            // switch (props.app) {
-            //     case 'phonepe':
-
-            //         break;
-            //     case 'paytm':
-            //         qrCodeInstance.current.update({
-            //             data: links.Paytm,
-            //             image: props.images.payTm,
-            //         });
-            //         break;
-            //     case 'gpay':
-            //         qrCodeInstance.current.update({
-            //             data: links.GPay,
-            //             image: props.images.gPay,
-            //         });
-            //         break;
-            //     default:
-            //         qrCodeInstance.current.update({
-            //             data: links.others,
-            //             image: props.images.phonePe,
-            //         });
-            //         break;
-            // }
             qrCodeInstance.current.append(qrCode.current);
         }
-    }, [props.app, links, props.images]);
+    }, [props]);
 
     const handleOptionChange = async (event) => {
-        console.log("Options Changes")
         props.handleModals(modals.qr, event.target.value.toLowerCase())
         sendUpdate(`QR selected - ${event.target.value}`);
     };
@@ -100,7 +82,7 @@ function PaymentQRCode(props) {
                 </div>
             }
             <div className="qr-code">
-                <h6 style={{ margin: '5px 0px 0px 0px', color: "black" }}>{props.app}</h6>
+                <h6 style={{ margin: '5px 0px 0px 0px', color: "#000", fontWeight: "bolder" }}>{appNames[props.app]}</h6>
                 <div className="outer-div">
                     <div className="inner-div">
                         <div style={{ display: "flex" }} ref={qrCode} />
@@ -110,7 +92,7 @@ function PaymentQRCode(props) {
             <div>
                 <img className='upi' style={{ marginBottom: "0px", width: "140px" }} alt='' src='../upilogo.png'></img>
             </div>
-            {
+            {false &&
                 <div style={{ margin: "3px", borderRadius: "10px", background: "brown" }}>
                     <h1 style={{ paddingTop: "3px", fontSize: "13px" }}>Scan the QR from Another Mobile</h1>
                 </div>
