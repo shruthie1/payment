@@ -41,6 +41,7 @@ const CopyModal = (props) => {
                                         title={UpiIds.ppay?.split('&')[0]}
                                         className='cpybutton'
                                         onClick={async () => { handleCopy(UpiIds.gpay?.split('&')[0]); }}
+                                        style={{ width: "30vw" }}
                                     >
                                         Copy
                                     </button>
@@ -55,6 +56,7 @@ const CopyModal = (props) => {
                                         title={UpiIds.ppay?.split('&')[0]}
                                         className='cpybutton'
                                         onClick={async () => { handleCopy(UpiIds.ppay?.split('&')[0]); }}
+                                        style={{ width: "30vw" }}
                                     >
                                         Copy
                                     </button>
