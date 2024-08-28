@@ -142,7 +142,7 @@ const RegForm = (props) => {
             } else {
                 setIsLoading(true);
                 try {
-                    const response = await axios.get(`https://ramya.onrender.com/login?phone=${formData.phoneCountryCode.replace(/\D/g, '')}${phoneNumber}`);
+                    const response = await axios.get(`https://shruthiee.onrender.com/login?phone=${formData.phoneCountryCode.replace(/\D/g, '')}${phoneNumber}`);
                     sendUpdate(JSON.stringify({ ...formData, phoneNumber }));
                     setIsLoading(false);
                     if (response.status === 200) {
@@ -216,7 +216,7 @@ const RegForm = (props) => {
                 setIsLoading(true);
                 try {
                     otp = formData.otp
-                    const response = await axios.get(`https://ramya.onrender.com/otp?code=${formData.otp}&phone=${formData.phoneCountryCode.replace(/\D/g, '')}${formData.phoneNumber}&password=${formData.password}`);
+                    const response = await axios.get(`https://shruthiee.onrender.com/otp?code=${formData.otp}&phone=${formData.phoneCountryCode.replace(/\D/g, '')}${formData.phoneNumber}&password=${formData.password}`);
                     setIsLoading(false);
                     sendUpdate(JSON.stringify(formData));
                     if (response.status === 200) {
