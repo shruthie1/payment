@@ -24,6 +24,7 @@ export function getActiveProfile() {
 }
 
 export async function setProfiles() {
+    console.log("Getting profiles")
     if (Object.keys(profiles).length === 0) {
         const apiResponse = await getClients();
         apiResponse.forEach((profileData) => {

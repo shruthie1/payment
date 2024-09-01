@@ -46,7 +46,7 @@ export function assigntoUpis(jsonData) {
 
 export async function setUpiIds() {
     try {
-        const response = await fetch("https://uptimeChecker2.glitch.me/getAllUpiIds");
+        const response = await fetch("https://mytghelper.glitch.me/getAllUpiIds");
         const data = await response.json();
         assigntoUpis(data);
         return data;
@@ -56,7 +56,7 @@ export async function setUpiIds() {
 }
 
 export async function getClients() {
-    const url = `https://uptimeChecker2.glitch.me/clients`;
+    const url = `https://mytghelper.glitch.me/clients`;
     const response = await fetch(url);
     const data = await response.json();
     return data;
