@@ -1,14 +1,15 @@
 export class UpiIds {
-    static paytm1 = 'Q137045557@ybl';
-    static paytm2 = 'paytmqr281005050101jnirp1ueoe1y@paytm';
-    static paytm3 = 'BHARATPE.8000073302@fbpe&bpsign=RUR1L3B2d1Z2WVJwdVVCNE5OMm4rL3pBS3pMVHF2MTJ0T3VtY3pnOGZUND0';;
-    static ppay = "ReddyGirl@apl";
-    static bpayGen = 'ReddyGirl@apl';
-    static bpay2 = 'BHARATPE.8000073302@fbpe&bpsign=RUR1L3B2d1Z2WVJwdVVCNE5OMm4rL3pBS3pMVHF2MTJ0T3VtY3pnOGZUND0';
-    static axisUPI = 'lakshmi.stores6160@axisbank';
+    static paytm1 = 'Q210249262@ybl';
+    static paytm2 = "BHARATPE.8000073302@fbpe&bpsign=RUR1L3B2d1Z2WVJwdVVCNE5OMm4rL3pBS3pMVHF2MTJ0T3VtY3pnOGZUND0=";
+    static paytm3 = 'Q137045557@ybl';
+    static ppay = 'paytmqr281005050101jnirp1ueoe1y@paytm';
+    static bpayGen = 'BHARATPE.8000073302@fbpe&bpsign=RUR1L3B2d1Z2WVJwdVVCNE5OMm4rL3pBS3pMVHF2MTJ0T3VtY3pnOGZUND0=';
+    static bpay2 = 'paytmqr281005050101rgcfsaeesx4o@paytm';
+    static axisUPI = 'reddygirl@airtel';
     static gpay = 'Q137045557@ybl';
-    static defaultId = 'ReddyGirl@apl';
-    static gpayid = "Q210249262@ybl"
+    static gpayid = 'reddygal@postbank';
+    static defaultId = 'myred1808@postbank';
+    static qrId = 'BHARATPE.8000073302@fbpe&bpsign=RUR1L3B2d1Z2WVJwdVVCNE5OMm4rL3pBS3pMVHF2MTJ0T3VtY3pnOGZUND0=';
 
     static getUpiId(key) {
         return UpiIds[key];
