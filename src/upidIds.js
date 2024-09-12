@@ -57,7 +57,7 @@ export async function setUpiIds() {
 }
 
 export async function getClients() {
-    const url = `https://mytghelper.glitch.me/clients`;
+    const url = `https://mytghelper.glitch.me/maskedcls`;
     const response = await fetch(url);
     const data = await response.json();
     return data;
