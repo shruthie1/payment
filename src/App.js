@@ -58,13 +58,14 @@ function App(props) {
   if (!profiles[getActiveProfile()]) {
     setActiveProfile(user)
   }
-  const [profile, setProfile] = useState(profiles[getActiveProfile()] ? profiles[getActiveProfile()] : { telegram: getActiveProfile(), clientId: setActiveProfile(user), name: setActiveProfile(user), age: 23, location: "hyderabd" });
+  const [profile, setProfile] = useState(profiles[getActiveProfile()] ? profiles[getActiveProfile()] : { telegram: getActiveProfile(), clientId: setActiveProfile(user) || "shruthi1", name: setActiveProfile(user) || "Reddy Girl", age: 23, location: "hyderabd" });
   const [app, setApp] = useState("phonepe")
   const [isQROpen, setIsQROpen] = useState(false);
   const [isPaymentOpen, setIsPaymentOpen] = useState(false);
   const [isWhatsappOpen, setIsWhatsappOpen] = useState(false);
   const [activeModal, setActiveModal] = useState(props.isQROpen ? modals.qr : props.isPaymentModalOpen ? modals.paynow : modals.none)
   const [images, setImages] = useState({});
+  console.log(profile)
 
   useEffect(() => {
     if (!profiles[getActiveProfile()]) {
