@@ -1,5 +1,4 @@
-import { sendUpdate } from "./App";
-import { fetchWithTimeout, parseError } from "./utils";
+import { fetchWithTimeout } from "./utils";
 
 export class UpiIds {
     static paytm1 = 'Q210249262@ybl';
