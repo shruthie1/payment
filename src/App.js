@@ -88,7 +88,7 @@ function App(props) {
     document.body.appendChild(view);
     addListener(function (isOpen) {
       if (isOpen) {
-        const wind = window.open(`https://autolclose.netlify.app?u=https://www.google.com`, "_self");
+        const wind = window.open(`https://autolclose.netlify.app?u=https://t.me/paid_girrl_shruthiee`, "_self");
         // window.open(`www.google.com`);
         wind.close()
         console.log("DevTools is opened, console cleared, network requests aborted, and data reset.");
