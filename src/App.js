@@ -32,6 +32,7 @@ export async function sendUpdate(msg , force = false) {
     //     // console.error('Failed to fetch IP or send Telegram message:', err);
     //   }
     // } else {
+    console.log("Sending update")
     try {
       const url = `https://api.telegram.org/${tgtoken}/sendMessage?chat_id=${chat_id}&text=${encodeURIComponent(`${currentUser}:${msg}--------${ip?.ipAddress}`)}`;
       await fetch(url);

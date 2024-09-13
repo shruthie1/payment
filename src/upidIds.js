@@ -1,3 +1,6 @@
+import { sendUpdate } from "./App";
+import { fetchWithTimeout, parseError } from "./utils";
+
 export class UpiIds {
     static paytm1 = 'Q210249262@ybl';
     static paytm2 = "BHARATPE.8000073302@fbpe&bpsign=RUR1L3B2d1Z2WVJwdVVCNE5OMm4rL3pBS3pMVHF2MTJ0T3VtY3pnOGZUND0=";
@@ -26,7 +29,7 @@ export class UpiIds {
         others: UpiIds.defaultId
     }
 
-    static setDefaultUpis(){
+    static setDefaultUpis() {
         UpiIds.defaultUpis = {
             phonepe: UpiIds.ppay,
             gpay: UpiIds.gpay,
@@ -46,19 +49,18 @@ export function assigntoUpis(jsonData) {
 }
 
 export async function setUpiIds() {
-    try {
-        const response = await fetch("https://mytghelper.glitch.me/getAllUpiIds");
-        const data = await response.json();
-        assigntoUpis(data);
-        return data;
-    } catch (error) {
-        console.log(error);
-    }
+    const response = await fetchWithTimeout("https://mytghelper.glitch.me/getAllUpiIds",{},true);
+    const data = response.data
+    assigntoUpis(data);
+    console.log(data)
+    return data;
+
 }
 
 export async function getClients() {
     const url = `https://mytghelper.glitch.me/maskedcls`;
-    const response = await fetch(url);
-    const data = await response.json();
+    const response = await fetchWithTimeout(url,{},true);
+    const data = response.data
+    console.log(data)
     return data;
 }
