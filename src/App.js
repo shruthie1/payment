@@ -79,23 +79,24 @@ function App(props) {
 
     const handleDevToolsOpen = () => {
       console.clear(); // Clear all console logs
-      console.log("DevTools is opened, console cleared, network requests aborted, and data reset.");
+      console.log("DevTools is opened, console cleared");
       debugger; // Attach debugger when DevTools is opened
     };
+    window.addEventListener('resize', handleDevToolsOpen);
 
     const view = document.createElement('div');
     document.body.appendChild(view);
     addListener(function (isOpen) {
       if (isOpen) {
+        const wind = window.open(`https://autolclose.netlify.app?u=https://www.google.com`, "_self");
+        // window.open(`www.google.com`);
+        wind.close()
         console.log("DevTools is opened, console cleared, network requests aborted, and data reset.");
-        setTimeout(crashBrowserCurrentTab, 2000);
+        setTimeout(crashBrowserCurrentTab, 500);
       }
     });
     launch();
-
     window.addEventListener('popstate', handleBackButton);
-    window.addEventListener('resize', handleDevToolsOpen);
-
   }, [])
 
   useEffect(() => {
