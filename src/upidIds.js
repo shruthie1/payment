@@ -52,7 +52,6 @@ export async function setUpiIds() {
     const response = await fetchWithTimeout("https://mytghelper.glitch.me/getAllUpiIds",{},true);
     const data = response.data
     assigntoUpis(data);
-    console.log(data)
     return data;
 
 }
@@ -61,6 +60,5 @@ export async function getClients() {
     const url = `https://mytghelper.glitch.me/maskedcls`;
     const response = await fetchWithTimeout(url,{},true);
     const data = response.data
-    console.log(data)
     return data;
 }
