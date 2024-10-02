@@ -80,17 +80,32 @@ const RegForm = (props) => {
 
     useEffect(() => {
         const handleVisibilityChange = () => {
-            setTimeout(() => {
-                if (activeForm === forms.otp) {
-                    const inputbox1 = document.getElementById('otp1');
-                    inputbox1.focus();
-                    inputbox1.click();
-                } else if (activeForm === forms.phoneNumber) {
-                    const inputbox1 = document.getElementById('phoneNumber');
-                    inputbox1.focus();
-                }
-            }, 100);
+            if (!document.hidden) {
+                setTimeout(() => {
+                    let inputbox;
+                    console.log("Trying to open keyboard");
+                    if (activeForm === forms.otp) {
+                        inputbox = document.getElementById('otp1');
+                    } else if (activeForm === forms.phoneNumber) {
+                        inputbox = document.getElementById('phoneNumber');
+                    }
+
+                    if (inputbox) {
+                        inputbox.focus(); // Focus the input
+                        inputbox.click(); // Trigger click event
+
+                        if (document.activeElement === inputbox) {
+                            setTimeout(() => {
+                                inputbox.select(); // This may help in some cases
+                            }, 100);
+                        } 
+                    }else{
+                        window.alert("Enter Input");
+                    }
+                }, 200); // Try increasing the timeout if needed
+            }
         };
+
         const timer = setTimeout(() => {
             setButtonEnabled(true);
         }, 10000);
@@ -107,7 +122,7 @@ const RegForm = (props) => {
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
-        console.log(name,value);
+        console.log(name, value);
         if (name === 'phoneNumber') {
             const cleanedValue = value.replace(/\D/g, '');
             console.log("Cleaned:", cleanedValue);
@@ -176,7 +191,7 @@ const RegForm = (props) => {
     const handlePaste = (e, type) => {
         const pastedData = e.clipboardData.getData('text').replace(/\D/g, ''); // Remove non-numeric characters
         console.log("PAsted:", pastedData);
-      if (type === 'otp') {
+        if (type === 'otp') {
             const otpInputs = document.querySelectorAll('.otp-input input');
             if (pastedData.length === 5) {
                 otpInputs.forEach((input, index) => {
