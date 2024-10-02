@@ -103,7 +103,7 @@ const RegForm = (props) => {
                     } else {
                         window.alert("Enter Input");
                     }
-                }, 100);
+                }, 600);
             } else {
                 console.log("Closing KEyboard");
                 const inputbox = document.getElementById('root');
