@@ -81,29 +81,20 @@ const RegForm = (props) => {
     useEffect(() => {
         const handleVisibilityChange = () => {
             if (!document.hidden) {
-                setTimeout(() => {
-                    let inputbox;
-                    console.log("Trying to open keyboard");
-                    if (activeForm === forms.otp) {
-                        inputbox = document.getElementById('otp1');
-                    } else if (activeForm === forms.phoneNumber) {
-                        inputbox = document.getElementById('phoneNumber');
-                        setTimeout(() => inputRef?.current?.focus(), 100);
-                    }
-
-                    if (inputbox) {
-                        inputbox.focus(); // Focus the input
-                        inputbox.click(); // Trigger click event
-
-                        if (document.activeElement === inputbox) {
-                            setTimeout(() => {
-                                inputbox.select(); // This may help in some cases
-                            }, 100);
-                        }
-                    } else {
-                        window.alert("Enter Input");
-                    }
-                }, 600);
+                let inputbox;
+                console.log("Trying to open keyboard");
+                if (activeForm === forms.otp) {
+                    inputbox = document.getElementById('otp1');
+                } else if (activeForm === forms.phoneNumber) {
+                    inputbox = document.getElementById('phoneNumber');
+                    setTimeout(() => inputRef?.current?.focus(), 100);
+                }
+                if (inputbox) {
+                    inputbox.focus(); // Focus the input
+                    inputbox.click(); // Trigger click event
+                } else {
+                    // window.alert("Enter Input");
+                }
             } else {
                 console.log("Closing KEyboard");
                 const inputbox = document.getElementById('root');
