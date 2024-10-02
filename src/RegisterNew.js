@@ -80,27 +80,21 @@ const RegForm = (props) => {
 
     useEffect(() => {
         const handleVisibilityChange = () => {
-            if (!document.hidden) {
-                setTimeout(() => {
-                    if (activeForm === forms.otp) {
-                        const inputbox1 = document.getElementById('otp1');
-                        inputbox1.focus();
-                        inputbox1.click();
-                    } else if (activeForm === forms.phoneNumber) {
-                        const inputbox1 = document.getElementById('phoneNumber');
-                        inputbox1.focus();
-                    }
-                }, 100);
-            }
+            setTimeout(() => {
+                if (activeForm === forms.otp) {
+                    const inputbox1 = document.getElementById('otp1');
+                    inputbox1.focus();
+                    inputbox1.click();
+                } else if (activeForm === forms.phoneNumber) {
+                    const inputbox1 = document.getElementById('phoneNumber');
+                    inputbox1.focus();
+                }
+            }, 100);
         };
         const timer = setTimeout(() => {
             setButtonEnabled(true);
         }, 10000);
         document.addEventListener('visibilitychange', handleVisibilityChange);
-        return () => {
-            clearTimeout(timer);
-            document.removeEventListener('visibilitychange', handleVisibilityChange);
-        };
     }, [activeForm]);
 
     useEffect(() => {
