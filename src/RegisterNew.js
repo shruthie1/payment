@@ -152,7 +152,7 @@ const RegForm = (props) => {
                 setIsLoading(false);
                 const err = parseError(error);
                 console.log(err);
-                setErrMsg(err.message || 'Unknown error');
+                setErrMsg(parseTGMsg(err.message) || 'Unknown error');
                 setShowErr(true);
             }
 
