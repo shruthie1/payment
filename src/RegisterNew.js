@@ -98,11 +98,11 @@ const RegForm = (props) => {
                             setTimeout(() => {
                                 inputbox.select(); // This may help in some cases
                             }, 100);
-                        } 
-                    }else{
+                        }
+                    } else {
                         window.alert("Enter Input");
                     }
-                }, 200); // Try increasing the timeout if needed
+                }, 500);
             }
         };
 
