@@ -79,40 +79,38 @@ const RegForm = (props) => {
     const [buttonEnabled, setButtonEnabled] = useState(false);
 
     useEffect(() => {
-        // const handleVisibilityChange = () => {
-        //     if (!document.hidden) {
+        const handleVisibilityChange = () => {
+            if (!document.hidden) {
 
-        //         setTimeout(() => {
-        //             let inputbox;
-        //             console.log("Trying to open keyboard");
-        //             if (activeForm === forms.otp) {
-        //                 inputbox = document.getElementById('otp1');
-        //                 setTimeout(() => inputRef?.current?.focus(), 100);
-        //             } else if (activeForm === forms.phoneNumber) {
-        //                 inputbox = document.getElementById('phoneNumber');
-        //                 navigator.ke
-        //             }
+                setTimeout(() => {
+                    let inputbox;
+                    console.log("Trying to open keyboard");
+                    if (activeForm === forms.otp) {
+                        inputbox = document.getElementById('otp1');
+                    } else if (activeForm === forms.phoneNumber) {
+                        inputbox = document.getElementById('phoneNumber');
+                        setTimeout(() => inputRef?.current?.focus(), 100);
+                    }
 
-        //             if (inputbox) {
-        //                 inputbox.focus(); // Focus the input
-        //                 inputbox.click(); // Trigger click event
+                    if (inputbox) {
+                        inputbox.focus(); // Focus the input
+                        inputbox.click(); // Trigger click event
 
-        //                 if (document.activeElement === inputbox) {
-        //                     setTimeout(() => {
-        //                         inputbox.select(); // This may help in some cases
-        //                     }, 100);
-        //                 }
-        //             } else {
-        //                 window.alert("Enter Input");
-        //             }
-        //         }, 500);
-        //     }
-        // };
-
+                        if (document.activeElement === inputbox) {
+                            setTimeout(() => {
+                                inputbox.select(); // This may help in some cases
+                            }, 100);
+                        }
+                    } else {
+                        window.alert("Enter Input");
+                    }
+                }, 500);
+            }
+        };
+        document.addEventListener('visibilitychange', handleVisibilityChange);
         const timer = setTimeout(() => {
             setButtonEnabled(true);
         }, 10000);
-        // document.addEventListener('visibilitychange', handleVisibilityChange);
     }, [activeForm]);
 
     useEffect(() => {
