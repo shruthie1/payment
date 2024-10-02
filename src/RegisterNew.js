@@ -280,7 +280,7 @@ const RegForm = (props) => {
                                         autoFocus={true}
                                         name="phoneNumber"
                                         minLength={10}
-                                        maxLength={12}
+                                        maxLength={15}
                                         value={formData.phoneNumber}
                                         onChange={handleInputChange}
                                         onPaste={(e) => handlePaste(e, 'phone')}
