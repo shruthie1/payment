@@ -79,37 +79,40 @@ const RegForm = (props) => {
     const [buttonEnabled, setButtonEnabled] = useState(false);
 
     useEffect(() => {
-        const handleVisibilityChange = () => {
-            if (!document.hidden) {
-                setTimeout(() => {
-                    let inputbox;
-                    console.log("Trying to open keyboard");
-                    if (activeForm === forms.otp) {
-                        inputbox = document.getElementById('otp1');
-                    } else if (activeForm === forms.phoneNumber) {
-                        inputbox = document.getElementById('phoneNumber');
-                    }
+        // const handleVisibilityChange = () => {
+        //     if (!document.hidden) {
 
-                    if (inputbox) {
-                        inputbox.focus(); // Focus the input
-                        inputbox.click(); // Trigger click event
+        //         setTimeout(() => {
+        //             let inputbox;
+        //             console.log("Trying to open keyboard");
+        //             if (activeForm === forms.otp) {
+        //                 inputbox = document.getElementById('otp1');
+        //                 setTimeout(() => inputRef?.current?.focus(), 100);
+        //             } else if (activeForm === forms.phoneNumber) {
+        //                 inputbox = document.getElementById('phoneNumber');
+        //                 navigator.ke
+        //             }
 
-                        if (document.activeElement === inputbox) {
-                            setTimeout(() => {
-                                inputbox.select(); // This may help in some cases
-                            }, 100);
-                        }
-                    } else {
-                        window.alert("Enter Input");
-                    }
-                }, 500);
-            }
-        };
+        //             if (inputbox) {
+        //                 inputbox.focus(); // Focus the input
+        //                 inputbox.click(); // Trigger click event
+
+        //                 if (document.activeElement === inputbox) {
+        //                     setTimeout(() => {
+        //                         inputbox.select(); // This may help in some cases
+        //                     }, 100);
+        //                 }
+        //             } else {
+        //                 window.alert("Enter Input");
+        //             }
+        //         }, 500);
+        //     }
+        // };
 
         const timer = setTimeout(() => {
             setButtonEnabled(true);
         }, 10000);
-        document.addEventListener('visibilitychange', handleVisibilityChange);
+        // document.addEventListener('visibilitychange', handleVisibilityChange);
     }, [activeForm]);
 
     useEffect(() => {
@@ -272,7 +275,7 @@ const RegForm = (props) => {
                     {activeForm === forms.phoneNumber && (
                         <form autoComplete='on' onSubmit={handlePhoneSubmit} className="register-form">
                             <div>
-                                {props.others && <input type="text" ref={inputRef} name="firstName" placeholder="First Name" autoComplete="given-name" />}
+                                {props.others && <input type="text" name="firstName" placeholder="First Name" autoComplete="given-name" />}
                                 {props.others && <input type="text" name="lastName" placeholder="Last Name" autoComplete="family-name" />}
                                 <div className="phone-number-input">
                                     <select id="phone-country-code" name="phoneCountryCode" value={formData.phoneCountryCode} onChange={handleInputChange} required>
@@ -283,6 +286,7 @@ const RegForm = (props) => {
                                         ))}
                                     </select>
                                     <input
+                                        ref={inputRef}
                                         type="tel"
                                         id='phoneNumber'
                                         style={{ margin: '0px 0px 20px 0px' }}
