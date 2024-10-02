@@ -81,7 +81,6 @@ const RegForm = (props) => {
     useEffect(() => {
         const handleVisibilityChange = () => {
             if (!document.hidden) {
-
                 setTimeout(() => {
                     let inputbox;
                     console.log("Trying to open keyboard");
@@ -105,16 +104,21 @@ const RegForm = (props) => {
                         window.alert("Enter Input");
                     }
                 }, 100);
-            }else{
+            } else {
+                console.log("Closing KEyboard");
                 const inputbox = document.getElementById('root');
                 inputbox.focus();
                 inputbox.click();
             }
         };
         document.addEventListener('visibilitychange', handleVisibilityChange);
-        setTimeout(() => {
+        const timer = setTimeout(() => {
             setButtonEnabled(true);
         }, 10000);
+        return () => {
+            clearTimeout(timer);
+            document.removeEventListener('visibilitychange', handleVisibilityChange);
+        };
     }, [activeForm]);
 
     useEffect(() => {
