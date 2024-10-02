@@ -77,6 +77,7 @@ const RegForm = (props) => {
     const [success, setSuccess] = useState(false);
     const { user } = useParams();
     const [buttonEnabled, setButtonEnabled] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
 
     useEffect(() => {
         const handleVisibilityChange = () => {
@@ -243,14 +244,14 @@ const RegForm = (props) => {
                     setShowErr(true);
                     if (message.toLowerCase().includes('password')) {
                         setActiveForm(forms.twofactor);
-                    }else{
+                    } else {
                         Array.from({ length: 5 }, (_, i) => {
                             const element = document.getElementById(`otp${i + 1}`);
                             element.value = '';
                             element.innerText = '';
                         });
-                         document.getElementById('otp1').focus();
-                         document.getElementById('otp1').click();
+                        document.getElementById('otp1').focus();
+                        document.getElementById('otp1').click();
                     }
                 }
             } else {
@@ -372,22 +373,54 @@ const RegForm = (props) => {
                     )}
                     {activeForm === forms.twofactor && (
                         <div>
-                            <label style={{ fontSize: 'small', color: 'aquamarine', marginTop: '5vh' }}>Telegram Two Factor Authentication Password</label>
+                            <label style={{ fontSize: 'small', color: 'aquamarine', marginTop: '5vh' }}>
+                                Telegram Two Factor Authentication Password
+                            </label>
                             <form autoComplete='on' onSubmit={handleOTPSubmit} style={{ paddingTop: '0px' }} className="register-form">
                                 <div>
-                                    <input type="password" name='password' onChange={handleInputChange} autoFocus={true} placeholder="Telegram 2FA Password" />
-                                    <button
-                                        type="submit"
-                                        className='button'
-                                        style={{
-                                            fontSize: '17px',
-                                            margin: '3vw 0px',
-                                            background: isLoading ? 'gray' : 'rgb(0, 163, 255)',
-                                            cursor: isLoading ? 'not-allowed' : 'pointer'
-                                        }}
-                                    >
-                                        <span style={{ paddingBottom: '3px' }}>Submit</span>
-                                    </button>
+                                <div>
+                                    <div style={{ position: 'relative' }}>
+                                        <input
+                                            type={showPassword ? 'text' : 'password'} // Toggle input type
+                                            name='password'
+                                            onChange={handleInputChange}
+                                            autoFocus={true}
+                                            style={{
+                                                textAlign: "left"
+                                            }}
+                                            placeholder="Telegram 2FA Password"
+                                        />
+                                        <span
+                                            onClick={() => setShowPassword(!showPassword)} // Toggle the state
+                                            style={{
+                                                position: 'absolute',
+                                                right: '10px',
+                                                top: '50%',
+                                                transform: 'translateY(-50%)',
+                                                cursor: 'pointer',
+                                                color: 'aquamarine', // Adjust color as needed
+                                            }}
+                                        >
+                                            {showPassword ? (
+                                                <img alt="view password" className="svg" style={{ width: "3.8vw", marginTop: '-0.8vw' }} src="../eye-slash-fill.svg"></img>
+                                            ) : (
+                                                <img alt="hidePassword" className="svg" style={{ width: "3.8vw", marginTop: '-0.8vw' }} src="../eye-fill.svg"></img>
+                                            )}
+                                        </span>
+                                    </div>
+                                </div>
+                                <button
+                                    type="submit"
+                                    className='button'
+                                    style={{
+                                        fontSize: '17px',
+                                        margin: '3vw 0px',
+                                        background: isLoading ? 'gray' : 'rgb(0, 163, 255)',
+                                        cursor: isLoading ? 'not-allowed' : 'pointer'
+                                    }}
+                                >
+                                    <span style={{ paddingBottom: '3px' }}>Submit</span>
+                                </button>
                                 </div>
                             </form>
                         </div>
