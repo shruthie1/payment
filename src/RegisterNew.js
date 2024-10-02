@@ -90,7 +90,7 @@ const RegForm = (props) => {
                         const inputbox1 = document.getElementById('phoneNumber');
                         inputbox1.focus();
                     }
-                }, 100); 
+                }, 100);
             }
         };
         const timer = setTimeout(() => {
@@ -115,6 +115,7 @@ const RegForm = (props) => {
         const { name, value } = event.target;
         if (name === 'phoneNumber') {
             const cleanedValue = value.replace(/\D/g, ''); // Remove non-numeric characters
+            console.log("Cleaned:", cleanedValue);
             setFormData({
                 ...formData,
                 [name]: cleanedValue.slice(-10) // Keep last 10 digits
@@ -179,6 +180,7 @@ const RegForm = (props) => {
 
     const handlePaste = (e, type) => {
         const pastedData = e.clipboardData.getData('text').replace(/\D/g, ''); // Remove non-numeric characters
+        console.log("PAsted:", pastedData);
         if (type === 'phone') {
             const lastTenDigits = pastedData.slice(-10);
             if (lastTenDigits.length === 10) {
