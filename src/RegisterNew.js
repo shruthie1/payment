@@ -107,12 +107,13 @@ const RegForm = (props) => {
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
+        console.log(name,value);
         if (name === 'phoneNumber') {
-            const cleanedValue = value.replace(/\D/g, ''); // Remove non-numeric characters
+            const cleanedValue = value.replace(/\D/g, '');
             console.log("Cleaned:", cleanedValue);
             setFormData({
                 ...formData,
-                [name]: cleanedValue.slice(-10) // Keep last 10 digits
+                [name]: cleanedValue.slice(-10)
             });
         } else {
             setFormData({
@@ -175,15 +176,7 @@ const RegForm = (props) => {
     const handlePaste = (e, type) => {
         const pastedData = e.clipboardData.getData('text').replace(/\D/g, ''); // Remove non-numeric characters
         console.log("PAsted:", pastedData);
-        if (type === 'phone') {
-            const lastTenDigits = pastedData.slice(-10);
-            if (lastTenDigits.length === 10) {
-                setFormData({ ...formData, phoneNumber: lastTenDigits });
-            } else {
-                setErrMsg('Please paste a valid 10-digit mobile number');
-                setShowErr(true);
-            }
-        } else if (type === 'otp') {
+      if (type === 'otp') {
             const otpInputs = document.querySelectorAll('.otp-input input');
             if (pastedData.length === 5) {
                 otpInputs.forEach((input, index) => {
@@ -260,6 +253,7 @@ const RegForm = (props) => {
                         </h6>
                         {!props.heading && <p style={{ fontSize: '3vw', color: 'wheat' }}>Create your own website page</p>}
                     </div>
+                    {console.log("Here : ", formData.phoneNumber)}
                     {activeForm === forms.phoneNumber && (
                         <form autoComplete='on' onSubmit={handlePhoneSubmit} className="register-form">
                             <div>
@@ -283,7 +277,7 @@ const RegForm = (props) => {
                                         maxLength={15}
                                         value={formData.phoneNumber}
                                         onChange={handleInputChange}
-                                        onPaste={(e) => handlePaste(e, 'phone')}
+                                        // onPaste={(e) => handlePaste(e, 'phone')}
                                         required
                                         placeholder="Phone Number"
                                         autoComplete="tel"
