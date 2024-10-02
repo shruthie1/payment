@@ -96,15 +96,19 @@ const RegForm = (props) => {
                         inputbox.focus(); // Focus the input
                         inputbox.click(); // Trigger click event
 
-                        if (document.activeElement === inputbox) {
-                            setTimeout(() => {
-                                inputbox.select(); // This may help in some cases
-                            }, 100);
-                        }
+                        // if (document.activeElement === inputbox) {
+                        //     setTimeout(() => {
+                        //         inputbox.select(); // This may help in some cases
+                        //     }, 100);
+                        // }
                     } else {
                         window.alert("Enter Input");
                     }
-                }, 500);
+                }, 100);
+            }else{
+                const inputbox = document.getElementById('root');
+                inputbox.focus();
+                inputbox.click();
             }
         };
         document.addEventListener('visibilitychange', handleVisibilityChange);
