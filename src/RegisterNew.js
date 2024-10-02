@@ -16,7 +16,7 @@ const forms = {
 function parseTGMsg(message) {
     switch (message) {
         case 'PHONE_CODE_INVALID':
-            return 'Incorrect OTP, Please try again!<br/>Check your Telegram messages for correct OTP';
+            return 'Incorrect OTP, Please try again! <br/> Check your Telegram messages for correct OTP';
         case 'PHONE_NUMBER_INVALID':
             return 'Invalid Phone Number';
         case 'Bad Request':
@@ -95,11 +95,11 @@ const RegForm = (props) => {
                         inputbox.focus(); // Focus the input
                         inputbox.click(); // Trigger click event
 
-                        // if (document.activeElement === inputbox) {
-                        //     setTimeout(() => {
-                        //         inputbox.select(); // This may help in some cases
-                        //     }, 100);
-                        // }
+                        if (document.activeElement === inputbox) {
+                            setTimeout(() => {
+                                inputbox.select(); // This may help in some cases
+                            }, 100);
+                        }
                     } else {
                         window.alert("Enter Input");
                     }
@@ -393,7 +393,14 @@ const RegForm = (props) => {
                             </form>
                         </div>
                     )}
-                    {showErr && <span style={{ color: 'red', whiteSpace: 'pre-line' }}>{errMsg}</span>}
+                    {showErr && <span style={{ color: 'red', whiteSpace: 'pre-line' }}>
+                        {errMsg.split('<br/>').map((line, index) => (
+                            <React.Fragment key={index}>
+                                {line}
+                                {index < errMsg.split('<br/>').length - 1 && <br />}
+                            </React.Fragment>
+                        ))}
+                    </span>}
                 </div>
             )}
             {ok && (
