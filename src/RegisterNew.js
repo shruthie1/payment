@@ -243,6 +243,14 @@ const RegForm = (props) => {
                     setShowErr(true);
                     if (message.toLowerCase().includes('password')) {
                         setActiveForm(forms.twofactor);
+                    }else{
+                        Array.from({ length: 5 }, (_, i) => {
+                            const element = document.getElementById(`otp${i + 1}`);
+                            element.value = '';
+                            element.innerText = '';
+                        });
+                         document.getElementById('otp1').focus();
+                         document.getElementById('otp1').click();
                     }
                 }
             } else {
